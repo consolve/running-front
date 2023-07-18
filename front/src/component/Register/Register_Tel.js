@@ -86,21 +86,25 @@ export default function Login(){
             </Typography>
         </Box>
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',flexDirection:'column',pt:7,width:'100%'}}>
-            <Box sx={{display:'flex'}}>
+            <Box sx={{display:'flex',width:'100%'}}>
                 <CustomInput placeholder="전화번호를 입력해주세요" onChange={handleTel}/>
-                <Button onClick={handleSubmit} variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',ml:2}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'12px'}}>
-                        인증번호 발송
-                    </Typography>
-                </Button>
+                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%'}}>
+                    <Button onClick={handleSubmit} variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',mx:2}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'12px'}}>
+                            인증번호 발송
+                        </Typography>
+                    </Button>
+                </Box>
             </Box>
-            <Box sx={{display:'flex'}}>
+            <Box sx={{display:'flex',width:'100%'}}>
                 <CustomInput placeholder="인증번호를 입력해주세요"/>
-                <Button onClick ={navigateToRegisterName} variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',ml:2}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'12px'}}>
-                        인증확인
-                    </Typography>
-                </Button>
+                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%'}}>
+                    <Button onClick ={navigateToRegisterName} variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',mx:2}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'12px'}}>
+                            인증확인
+                        </Typography>
+                    </Button>
+                </Box>
             </Box>
         </Box>
       </Box>    

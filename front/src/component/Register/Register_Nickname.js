@@ -65,18 +65,20 @@ export default function Login(){
             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'36px'}}>
                 무엇인가요 ?
             </Typography>
-            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D',pt:3}}>
+            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D',pt:1}}>
                 이제 하나만 남았어요 !
             </Typography>
         </Box>
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',flexDirection:'column',pt:2,width:'100%'}}>
-            <Box sx={{display:'flex'}}>
+            <Box sx={{display:'flex',width:'100%'}}>
                 <CustomInput placeholder="닉네임을 입력해주세요" />
-                <Button onClick={navigateToRegisterCrew} variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',ml:2}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'12px'}}>
-                        중복확인
-                    </Typography>
-                </Button>
+                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%'}}>
+                    <Button onClick={navigateToRegisterCrew} variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',mx:2}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'12px'}}>
+                            중복확인
+                        </Typography>
+                    </Button>
+                </Box>
             </Box>
         </Box>
       </Box>    

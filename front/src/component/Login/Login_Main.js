@@ -40,8 +40,8 @@ export default function Login(){
                     </Typography>
                 </Box>
             </Box>
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"absolute",bottom:30,maxWidth:'420px',minWidth:'360px'}}>
-                <Button onClick={navigateToRegister} variant="contained" color='primary' sx={{width:'85%',height:'50px',borderRadius:3}}>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"absolute",bottom:30,minWidth:'360px'}}>
+                <Button onClick={navigateToRegister} variant="contained" color='primary' sx={{width:'90%',height:'50px',borderRadius:3}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'14px'}}>
                         업그레이드 하기
                     </Typography>

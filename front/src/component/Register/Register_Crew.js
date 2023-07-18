@@ -61,18 +61,20 @@ export default function Login(){
             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'36px'}}>
                 있으신가요 ?
             </Typography>
-            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D',pt:3}}>
+            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D',pt:1}}>
                 벌써 마지막이에요 !
             </Typography>
         </Box>
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',flexDirection:'column',pt:2,width:'100%'}}>
-            <Box sx={{display:'flex'}}>
+            <Box sx={{display:'flex',width:'100%'}}>
                 <CustomInput placeholder="크루이름을 입력해주세요"/>
-                <Button variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',ml:2}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'12px'}}>
-                        확인
-                    </Typography>
-                </Button>
+                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%'}}>
+                    <Button variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',mx:2}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'12px'}}>
+                            확인
+                        </Typography>
+                    </Button>
+                </Box>
             </Box>
         </Box>
       </Box>    
