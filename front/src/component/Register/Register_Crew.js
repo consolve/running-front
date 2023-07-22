@@ -39,6 +39,11 @@ const StyledInputElement = styled('input')(
 
 export default function Login(){
     
+    const navigate = useNavigate();
+
+    const navigateToMain = () =>{
+        navigate("/Main");
+    }
 
     return(
       <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'100vh',flexDirection:'column',pl:2}}>
@@ -69,7 +74,7 @@ export default function Login(){
             <Box sx={{display:'flex',width:'100%'}}>
                 <CustomInput placeholder="크루이름을 입력해주세요"/>
                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%'}}>
-                    <Button variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',mx:2}}>
+                    <Button onClick={navigateToMain} variant="contained" color='primary' sx={{width:'100px',height:'42px',borderRadius:3,mt:'20px',mx:2}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'12px'}}>
                             확인
                         </Typography>

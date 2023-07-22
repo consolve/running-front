@@ -10,11 +10,13 @@ import User_Login from "./component/Login/User_Login"
 import Register_Tel from "./component/Register/Register_Tel"
 import Register_Nickname from "./component/Register/Register_Nickname"
 import Register_Crew from "./component/Register/Register_Crew"
+import Schedule from "./component/Main/Competition/Competition_Schedule/Competition_Schedule";
+import Main from "./component/Main/Main";
 import styled from "styled-components"
 
 function App() {
   return (
-    <Main>
+    <WebMain>
       <APP>
         <BrowserRouter>
           <Routes>
@@ -23,15 +25,17 @@ function App() {
             <Route path ="/register_tel" element={<Register_Tel/>}/>
             <Route path ="/register_name" element={<Register_Nickname/>}/>
             <Route path ="/register_crew" element={<Register_Crew/>}/>
+            <Route path ="/Main" element={<Main/>}/>
+            <Route path='/Schedule' element = {<Schedule/>}/>
           </Routes>
         </BrowserRouter>
       </APP>
-    </Main>
+    </WebMain>
   );
 }
 
 //배경
-const Main = styled.div`
+const WebMain = styled.div`
   background-color:#141414;
   display:flex;
   justify-content:center;
