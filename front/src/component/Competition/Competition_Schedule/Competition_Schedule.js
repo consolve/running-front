@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import TopBar from "./Competition_Schedule_Component/Competition_TopBar";
 import Month from "./Competition_Schedule_Component/Competition_Schedule_Month"
 import Register from "./Competition_Schedule_Component/Competition_Schedule_canRegister"
+import Calendar from "./Competition_Schedule_Component/Competition_Schedule_Calendar"
 
 export default function Competition_Schedule(){
 
@@ -13,10 +14,13 @@ export default function Competition_Schedule(){
     },[])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
+        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar/>
-            <Month/>
-            <Register/>
+            <Box sx={{width:'95%'}}>
+                <Month/>
+                <Register/>
+                <Calendar/>
+            </Box>
         </Box>    
     )
 }
