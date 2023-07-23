@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   return (
-    <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={0}>
+    <Box sx={{ position: 'fixed', bottom: 0, left: 0, right: 0,width:'100%' }} elevation={0}>
       <BottomNavigation value={value} onChange={handleChange}>
         <BottomNavigationAction
           label="Recents"

@@ -11,7 +11,7 @@ export default function Competition_Detail(){
     },[])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',height:'100vh'}}>
            <Banner/>
             <Box sx={{width:'95%'}}>
                 
