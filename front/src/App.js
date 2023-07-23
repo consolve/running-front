@@ -10,9 +10,27 @@ import User_Login from "./component/Login/User_Login"
 import Register_Tel from "./component/Register/Register_Tel"
 import Register_Nickname from "./component/Register/Register_Nickname"
 import Register_Crew from "./component/Register/Register_Crew"
-import Schedule from "./component/Main/Competition/Competition_Schedule/Competition_Schedule";
+import Schedule from "./component/Competition/Competition_Schedule/Competition_Schedule"
 import Main from "./component/Main/Main";
 import styled from "styled-components"
+import Navbar from "./component/Navbar/Navbar"
+import Competition_Detail from './component/Competition/Competition_Detail/Competition_Detail'
+import { Outlet } from 'react-router-dom';
+
+const WithNav = () =>{
+  return(
+    <>
+      <Outlet/>
+      <Navbar/>
+    </>
+  )
+}
+
+const WithoutNav =()=>{
+  return(
+    <Outlet/>
+  )
+}
 
 function App() {
   return (
@@ -20,13 +38,20 @@ function App() {
       <APP>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login/>}/>
-            <Route path ="/user_login" element={<User_Login/>}/>
-            <Route path ="/register_tel" element={<Register_Tel/>}/>
-            <Route path ="/register_name" element={<Register_Nickname/>}/>
-            <Route path ="/register_crew" element={<Register_Crew/>}/>
-            <Route path ="/Main" element={<Main/>}/>
-            <Route path='/Schedule' element = {<Schedule/>}/>
+            <Route element={<WithNav/>}>
+              <Route path ="/main" element={<Main/>}/>
+              <Route path='/schedule' element = {<Schedule/>}/>
+              <Route path='/comp_detail' element ={<Competition_Detail/>}/>
+            </Route>
+
+            <Route element={<WithoutNav/>}>
+              <Route path="/" element={<Login/>}/>
+              <Route path ="/user_login" element={<User_Login/>}/>
+              <Route path ="/register_tel" element={<Register_Tel/>}/>
+              <Route path ="/register_name" element={<Register_Nickname/>}/>
+              <Route path ="/register_crew" element={<Register_Crew/>}/>        
+            </Route>
+
           </Routes>
         </BrowserRouter>
       </APP>

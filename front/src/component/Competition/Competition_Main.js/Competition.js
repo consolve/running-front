@@ -2,7 +2,6 @@ import {Box,Typography,Button,Card} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import "../../../../style/fonts/pretendardvariable.css"
 import { useNavigate } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -80,6 +79,12 @@ export default function Competition(){
         }
     ]
 
+    const navigate = useNavigate();
+
+    const navigateToCompetitionDetail =() =>{
+        navigate("/comp_detail")
+    }
+
     const [show_competition,setShow_Competition] = useState([
         
     ]);
@@ -103,7 +108,9 @@ export default function Competition(){
                         지금 인기있는 러닝대회
                     </Typography>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px',color:'#8E8D8D',mr:2}}>
-                        더보기 {'>'}
+                        <Link to ="/schedule" style={{ textDecoration: 'none', color:'#4F1D76' }}>
+                            더보기 {'>'}
+                        </Link>
                     </Typography>
                 </Box>
             </Box>
@@ -127,7 +134,7 @@ export default function Competition(){
                         }
                         return(
                         <SwiperSlide key ={index}>
-                            <Box  sx={{display:'flex',justifyContent:'start',alignItems:'start',width:'310px',height:'100%',flexDirection:'column',ml:1}}>
+                            <Box onClick={navigateToCompetitionDetail} sx={{display:'flex',justifyContent:'start',alignItems:'start',width:'310px',height:'100%',flexDirection:'column',ml:1}}>
                             {slide_list.map((item,index)=>(
                                     <Box key = {show_competition[index].id} sx={{width:'330px',height:'280px',mt:2,backgroundColor:'#F6F6F6',borderRadius:3,display:'flex',justifyContent:'start',alignItems:'center'}}>
                                         <Box sx={{width:'100px',height:'100px',backgroundColor:'#4F1D76',borderRadius:3,mx:2}}/>

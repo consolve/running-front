@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import "../../style/fonts/pretendardvariable.css"
 import { useNavigate } from "react-router-dom";
 import Banner from "./Banner/Banner"
-import Competition from "./Competition/Competition_Main.js/Competition"
+import Competition from "../Competition/Competition_Main.js/Competition"
 
 export default function Main(){
 
