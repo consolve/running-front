@@ -15,6 +15,8 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import './style.css';
 
+import { EffectCoverflow, Pagination } from 'swiper/modules';
+
 export default function Main(){
 
     useEffect(() =>{
@@ -22,24 +24,47 @@ export default function Main(){
     },[]);
 
     return(
-        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',height:'250px',flexDirection:'column',width:'100%'}}>
-            <Swiper
-                modules={[Autoplay]}
-                spaceBetween={50}
-                slidesPerView={1}
-                autoplay={{ delay: 4000 }}	// 추가
+        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'480px',flexDirection:'column',width:'100%',mt:'100px'}}>
+           <Swiper
+                effect={'coverflow'}
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView={'auto'}
+                spaceBetween={-15}
+                coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+                }}
+                pagination={true}
+                modules={[EffectCoverflow, Pagination]}
+                className="swiper-banner"
             >
-                <SwiperSlide>
-                    Slide 1
+                <SwiperSlide className="swiper-slide-banner">
+                <img className = "swiper-slide-image" src="https://swiperjs.com/demos/images/nature-1.jpg" />
                 </SwiperSlide>
-                <SwiperSlide>
-                    Slide 2
+                <SwiperSlide className="swiper-slide-banner">
+                <img className = "swiper-slide-image" src="https://swiperjs.com/demos/images/nature-2.jpg" />
                 </SwiperSlide>
-                <SwiperSlide>
-                    Slide 3
+                <SwiperSlide className="swiper-slide-banner">
+                <img className = "swiper-slide-image" src="https://swiperjs.com/demos/images/nature-3.jpg" />
                 </SwiperSlide>
-                <SwiperSlide>
-                    Slide 4
+                <SwiperSlide className="swiper-slide-banner">
+                <img className = "swiper-slide-image" src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide-banner">
+                <img className = "swiper-slide-image" src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide-banner">
+                <img className = "swiper-slide-image" src="https://swiperjs.com/demos/images/nature-6.jpg" />
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide-banner">
+                <img className = "swiper-slide-image" src="https://swiperjs.com/demos/images/nature-7.jpg" />
+                </SwiperSlide>
+                <SwiperSlide className="swiper-slide-banner">
+                <img className = "swiper-slide-image" src="https://swiperjs.com/demos/images/nature-8.jpg" />
                 </SwiperSlide>
             </Swiper>
         </Box>    

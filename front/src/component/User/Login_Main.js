@@ -2,10 +2,10 @@ import {Box,Typography,Button} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
 import Logo from "../../Image/RIFE_Logo.png"
-import User_Login from "./User_Login";
 import { Link } from 'react-router-dom';
-import "../../style/fonts/pretendardvariable.css"
 import { useNavigate } from "react-router-dom";
+import {motion} from 'framer-motion';
+
 
 
 
@@ -13,7 +13,7 @@ export default function Login(){
     const navigate = useNavigate();
 
     const navigateToRegister =() =>{
-        navigate("/register_tel");
+        navigate("/register/tel");
     }
 
     return(
@@ -39,7 +39,7 @@ export default function Login(){
                     </Typography>
                 </Box>
             </Box>
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"absolute",bottom:30,minWidth:'360px'}}>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"absolute",bottom:30,minWidth:'360px',maxWidth:"420px",width:"100%"}}>
                 <Button onClick={navigateToRegister} variant="contained" color='primary' sx={{width:'90%',height:'50px',borderRadius:3}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'14px'}}>
                         업그레이드 하기
@@ -50,7 +50,7 @@ export default function Login(){
                         이미 계정이 있나요? 
                     </Typography>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'bold',fontSize:'14px'}}>
-                        <Link to ="/user_login" style={{ textDecoration: 'none', color:'#4F1D76' }}>
+                        <Link to ="/login" style={{ textDecoration: 'none', color:'#4F1D76' }}>
                             로그인
                         </Link>
                     </Typography>
