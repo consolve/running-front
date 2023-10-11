@@ -1,7 +1,7 @@
 import {Box,Typography} from '@mui/material';
 import React, { useState } from "react";
 import { useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import Auth from "../../../hoc/auth"
 import Banner from "./Shoes_Detail_Component/Shoes_Detail_Banner"
 import Title from "./Shoes_Detail_Component/Shoes_Detail_Title"
 import TopBar from "./Shoes_Detail_Component/Shoes_Detail_TopBar"
@@ -28,20 +28,23 @@ const style = {
 
 
 
-export default function Shoes_Detail(){
+function Shoes_Detail(){
     const { id } = useParams();
+    const session = localStorage.getItem("sessionid");
 
     const [loading,setLoading] = useState(true);
     const [open, setOpen] = React.useState(false);
+    const [error,setError] = useState("");
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [shoes,setShoes] = useState({});
 
     const FetchShoes = async () => {
-        const _ShoesDetail = await fetchShoesDetail(id);
+        const _ShoesDetail = await fetchShoesDetail(id,session);
         console.log(_ShoesDetail)
         
         if(_ShoesDetail.response){
+            setError(_ShoesDetail.response.status)
             setOpen(true);
         }
         else{
@@ -64,18 +67,18 @@ export default function Shoes_Detail(){
             {/* 60px은 navbar*/}
             <Box sx={{width:'100%',mt:'60px'}}>
                 <Banner shoes={shoes}/>
-                <Box sx={{position:'relative',mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
+                <Box sx={{zIndex:1,backgroundColor:"#ffffff"}}>
                     {
                         loading? 
                         <Box sx={{width:"100%",height:"720px"}}>
-                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{mt:1,borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}/>
+                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{}}/>
                         </Box>
                         :
                         <Box sx={{width:"100%",display:"flex",justifyContent:"center"}}>
                             {
-                                !shoes.response?
+                                shoes?
                                 <Box sx={{width:"100%"}}>
-                                    <Title shoes = {shoes}/>
+                                    <Title setError = {setError} shoes = {shoes}/>
                                     <Divider/>
 
                                     <Recommend shoes = {shoes}/>
@@ -104,14 +107,15 @@ export default function Shoes_Detail(){
                 >
                     <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
+                        {error}
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography>
+                    
                     </Box>
                 </Modal>
             </Box>
         </Box>    
     )
 }
+
+
+export default Auth(Shoes_Detail,null);

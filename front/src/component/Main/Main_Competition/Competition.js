@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Skeleton from '@mui/material/Skeleton';
 import {API_URL} from "../../../API/URL/url"
 import { fetchPopularContest } from '../../../API/api/Contest/contest_api';
-
 import { Swiper, SwiperSlide } from "swiper/react";
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 //모듈 필요
 import { FreeMode,Grid } from 'swiper/modules';
 //Swiper css
@@ -28,85 +28,21 @@ const convertToCustomDate = (date) => {
 
 
 export default function Competition(props){
-    const [competition1,setCompetition1] = useState([]);
-    const [competition2,setCompetition2] = useState([]);
+    const [competition,setCompetition] = useState([]);
 
     const FetchList = async () => {
-        const _Popularcompetitions = await fetchPopularContest(6);
+        const _Popularcompetitions = await fetchPopularContest(3);
     
         if(_Popularcompetitions.response){
             props.setError(_Popularcompetitions.response.status)
             props.setOpen(true)
         }
         else{
-            setCompetition1(_Popularcompetitions.filter((obj,index) => index % 2 === 0));
-            setCompetition2(_Popularcompetitions.filter((obj,index) => index % 2 === 1));
+            setCompetition(_Popularcompetitions);
         }
         
         props.setLoading1(false);
     }
-
-    const Detail = (props) =>{
-        return(
-            <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',width:'100%',height:'100%',flexDirection:'column'}}>
-                <Box onClick={()=>navigateToCompetitionDetail(props.item.id)} key = {props.item.id} sx={{width:'270px',height:'110px',mt:2,backgroundColor:'#F6F6F6',borderRadius:3,display:'flex',justifyContent:'start',alignItems:'center'}}>
-                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#4F1D76',borderRadius:3,mx:1,backgroundImage:`url(${API_URL}${props.item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
-                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'160px',flexDirection:'column'}}>
-                        <Box sx={{display:'flex',width:'100%',justifyContent:'start',alignItems:'center'}}>
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
-                                {props.item.name}
-                            </Typography>
-                        </Box>
-                        <Box sx={{width:'100%'}}>
-                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'10px',color:'#606060',mr:2}}>
-                                    {convertToCustomDate(props.item.competitionTime)}
-                                </Typography>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'10px',color:'#606060'}}>
-                                    {props.item.place}
-                                </Typography>
-                            </Box>
-                        </Box>
-                        <Box sx={{width:'100%'}}>
-                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'10px',color:'#606060'}}>
-                                    접수마감 :
-                                </Typography>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'10px',color:'#606060'}}>
-                                    {convertToCustomDate(props.item.receptionStartTime)}
-                                </Typography>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'10px',color:'#606060'}}>
-                                    ~
-                                </Typography>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'10px',color:'#606060'}}>
-                                    {convertToCustomDate(props.item.receptionEndTime)}
-                                </Typography>
-                            </Box>
-                        </Box>
-                        <Box sx={{width:'100%',mt:1}}>
-                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                {
-                                    props.item.courseTags.map((item,index)=>{
-                                        return(
-                                            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'30px',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:1}}>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'8px',color:'#ffffff'}}>
-                                                    {item.name}
-                                                </Typography>
-                                            </Box>
-                                        )
-                                    })  
-                                }
-                                
-                                
-                            </Box>
-                        </Box>
-                    </Box>
-                </Box>
-            </Box>
-        )
-    }
-    
-    const loadingcomponent = [1,2,3];
 
     const navigate = useNavigate();
 
@@ -116,22 +52,21 @@ export default function Competition(props){
 
     useEffect(()=>{
         FetchList();
-        props.setLoading1(true);
     },[])
 
 
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',py:'22px'}}>
 
             {/*상단제목*/}
             <Box sx={{width:'100%'}}>
-                <Box sx={{width:'100%',pt:4,display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+                <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px',ml:2}}>
                         지금 인기있는 러닝대회
                     </Typography>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D',mr:2}}>
-                        <Link to ="/schedule" style={{ textDecoration: 'none', color:'#4F1D76' }}>
+                        <Link to ="/schedule" style={{ textDecoration: 'none', color:'#9D9D9D' }}>
                             더보기 {'>'}
                         </Link>
                     </Typography>
@@ -141,53 +76,80 @@ export default function Competition(props){
             {/*대회정보*/}
             {
                 props.loadingall?
-                <Box sx={{width:'100%',height:'260px',pt:1}}>
-                    <Swiper
-                        spaceBetween={0}
-                        modules={[FreeMode]}
-                        slidesPerView={'auto'}
-                        freeMode={{enabled: true}}	// 추가
-                    >
-                        {loadingcomponent.map((item,index)=>{
-                            return(
-                            <SwiperSlide key ={index} className="competition">
-                                <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',width:'100%',height:'100%',flexDirection:'column'}}>
-                                    <Skeleton variant="rectangular" width={'100%'} height={"100px"} sx={{mt:1,borderRadius:2}}/>
-
-                                    <Skeleton variant="rectangular" width={'100%'} height={"100px"} sx={{mt:1,borderRadius:2}}/>
-                                </Box>
-                            </SwiperSlide>   
-                            )
-                        })}
-                    </Swiper>
+                <Box sx={{width:"100%",height:'120px'}}>
+                    <Skeleton variant="rectangular" width={'100%'} height={"100px"} sx={{mt:1,borderRadius:2}}/>
                 </Box>
                 :
                 <Box sx={{width:"100%"}}>
                     {
-                        competition1&&competition2?
-                        <Box sx={{width:'100%',height:'260px',pt:1}}>
+                        competition?
+                        <Box sx={{width:'100%',pt:1}}>
                             <Swiper
-                                spaceBetween={0}
+                                spaceBetween={-5}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}
                                 freeMode={{enabled: true}}	// 추가
                             >
-                                {competition1.map((item,index)=>{
-                                    return(
-                                    <SwiperSlide key ={index} className="competition">
-                                        <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',width:'100%',height:'100%',flexDirection:'column'}}>
-                                        <Detail item = {competition1[index]}/>
-
-                                        {
-                                            competition2[index]?
-                                            <Detail item = {competition2[index]}/>
-                                            :
-                                            ""
-                                        }
-                                        </Box>
-                                    </SwiperSlide>   
-                                    )
-                                })}
+                                {
+                                    competition.map((item,index)=>{
+                                        return(
+                                            <SwiperSlide key ={index} className='competition'>
+                                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'100px',mt:1,width:'100%'}}>
+                                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#4F1D76',borderRadius:3,mx:2,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 100px)`,flexDirection:'column'  }}>
+                                                        <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
+                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'16px'}}>
+                                                                {item.name}
+                                                            </Typography>
+                                                            <NotificationsActiveIcon sx={{pr:2}}/>
+                                                        </Box>
+                                                        <Box sx={{width:'100%'}}>
+                                                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                                    {item.place}
+                                                                </Typography>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                                    &nbsp;{'|'}&nbsp;
+                                                                </Typography>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',mr:2}}>
+                                                                    {convertToCustomDate(item.competitionTime)}
+                                                                </Typography>
+                                                            </Box>
+                                                        </Box>
+                                                        <Box sx={{width:'100%'}}>
+                                                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                                    접수기간
+                                                                </Typography>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                                    &nbsp;{'|'}&nbsp;
+                                                                </Typography>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                                    {convertToCustomDate(item.receptionEndTime)}
+                                                                </Typography>
+                                                            </Box>
+                                                        </Box>
+                                                        <Box sx={{width:"100%",my:0.5}}>
+                                                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
+                                                                {
+                                                                    item.courseTags.map((item,index)=>{
+                                                                        return(
+                                                                            <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'40px',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:1}}>
+                                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px',color:'#ffffff'}}>
+                                                                                    {item.name}
+                                                                                </Typography>
+                                                                            </Box>
+                                                                        )
+                                                                })
+                                                                }      
+                                                            </Box>
+                                                        </Box>
+                                                    </Box>
+                                                </Box>
+                                            </SwiperSlide>
+                                        )
+                                    })
+                                }
                             </Swiper>
                         </Box>
                         :

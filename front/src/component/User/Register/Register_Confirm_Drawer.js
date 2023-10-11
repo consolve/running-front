@@ -120,7 +120,7 @@ export default function TemporaryDrawer(props) {
             setCrew("");
     
             setLoading(false);
-            navigate('/main');
+            navigate('/');
         }
 
     }

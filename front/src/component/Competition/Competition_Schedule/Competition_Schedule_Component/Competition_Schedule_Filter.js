@@ -48,8 +48,8 @@ export default function Competition_Schedule_Filter(){
     },[])
 
     return(
-        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'60px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'100%',minWidth:'360px',maxWidth:'420px'}}>
-            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',ml:1}}>
+        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'60px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'90%',minWidth:'360px',maxWidth:'420px'}}>
+            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
                 <Box backgroundColor={month.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {month.length == 0?'black':'white'} sx={buttonTyphography}>
                         날짜별 {month.length == 0?'':month.length}{'>'}

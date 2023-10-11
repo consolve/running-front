@@ -24,3 +24,8 @@ export const CompetitionSchedule_AllLoading = atom({
     key: 'CompetitionSchedule_AllLoading', // unique ID (with respect to other atoms/selectors)
     default: true, // default value (aka initial value)
 });
+
+export const CompetitionSchedule_Comment = atom({
+    key: 'CompetitionSchedule_Comment', // unique ID (with respect to other atoms/selectors)
+    default: [], // default value (aka initial value)
+});

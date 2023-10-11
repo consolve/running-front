@@ -315,6 +315,7 @@ export default function TemporaryDrawer(props) {
         <Box sx={{display:'flex',justifyContent:'center',alignItems:"center"}}>
             <React.Fragment>
             <Drawer
+                disableScrollLock={ true }
                 PaperProps={{
                     sx: {
                     backgroundColor: "rgba(0, 0, 0, 0.1)",

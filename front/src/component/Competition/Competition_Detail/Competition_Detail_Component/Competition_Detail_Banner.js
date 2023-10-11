@@ -13,7 +13,7 @@ export default function Competition_Detail_Banner(props){
     },[])
 
     return(
-        <Box sx={{position:'relative',zIndex:0,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',flexDirection:'column',width:'100%',height:'210px'}}>
+        <Box sx={{position:'relative',zIndex:0,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',flexDirection:'column',width:'100%',height:'300px'}}>
             {
                 props.competition?
                     <Box sx={{backgroundImage:`url(${API_URL}${props.competition.mainBanner.mainBanner})`,width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}>
@@ -31,7 +31,6 @@ export default function Competition_Detail_Banner(props){
                 <Box sx={{backgroundColor:"#4F1D76",width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
             }
             
-        
         </Box>    
     )
 }

@@ -7,7 +7,7 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import TopbarTheme from '../../../../style/plate/topbar';
-
+import WestIcon from '@mui/icons-material/West';
 
 
 export default function Shoes_TopBar(){
@@ -15,7 +15,11 @@ export default function Shoes_TopBar(){
     const navigate = useNavigate();
 
     const navigateToShoesSearch = () =>{
-        navigate('/shoes/search?min=10000&max=200000')
+        navigate('/shoes/search')
+    }
+
+    const navigateToHome = () =>{
+        navigate('/')
     }
 
     useEffect(() =>{
@@ -23,24 +27,21 @@ export default function Shoes_TopBar(){
 
     return(
         <Box sx={TopbarTheme}>
+            <Box onClick = {navigateToHome} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                <IconButton type="button" sx={{ }} aria-label="search">
+                    <WestIcon sx={{}}/>
+                </IconButton>
+            </Box>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px',ml:3}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px'}}>
                     러닝화
                 </Typography>
             </Box>
 
             <Box
                 onClick={navigateToShoesSearch}
-                component="form"
-                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 160,mr:2,backgroundColor:'#f4f4f4',borderRadius:3 }}
                 >
-                <InputBase
-                    sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
-                    placeholder=""
-                    inputProps={{ 'aria-label': 'search google maps' }}
-                    
-                />
-                <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                <IconButton type="button" sx={{ }} aria-label="search">
                     <SearchIcon />
                 </IconButton>
             </Box>

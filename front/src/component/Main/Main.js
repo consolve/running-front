@@ -9,9 +9,8 @@ import Competition from "./Main_Competition/Competition"
 import Shoes from "./Main_Shoes/Shoes"
 import Community from "./Main_Community/Community"
 import Crew from './Main_Crew/Crew'
-import { fetchPopularContest } from '../../API/api/Contest/contest_api';
-import { fetchPopularShoes } from '../../API/api/RunningShoes/shoes_api';
-import {Modal} from '@mui/material';
+import Auth from "../../hoc/auth"
+import {Modal,Divider} from '@mui/material';
 import TopBar from "./TopBar/TopBar"
 
 const style = {
@@ -19,7 +18,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 200,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -27,9 +26,11 @@ const style = {
   };
 
 
-export default function Main(){
+function Main(){
     const [loading1,setLoading1] = useState(true);
     const [loading2,setLoading2] = useState(true);
+    const [loading3,setLoading3] = useState(true);
+    const [loading4,setLoading4] = useState(true);
     const [loadingall,setLoadingall] = useState(true);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -42,12 +43,12 @@ export default function Main(){
     const navigate = useNavigate();
 
     const navigateToBack  = () =>{
-        navigate("/");
+        navigate("/login/main");
     }
 
 
     const LoadingCompilation = () => {
-        if(!loading1&&!loading2){
+        if(!loading1&&!loading2&&!loading3&&!loading4){
             setLoadingall(false);
         }
     }
@@ -55,12 +56,15 @@ export default function Main(){
     useEffect(() =>{
         setLoading1(true);
         setLoading2(true);
+        setLoading3(true);
+        setLoading4(true);
         setLoadingall(true);
+        window.scrollTo({top:0})
     },[])
 
     useEffect(()=>{
         LoadingCompilation();
-    },[loading1,loading2])
+    },[loading1,loading2,loading3,loading4])
 
 
     return(
@@ -69,11 +73,16 @@ export default function Main(){
                 <TopBar/>
                 <Banner/>
             </Box>
-            <Box sx={{width:'98%',mb:10}}>
+            <Box sx={{width:'98%',mb:8,display:'flex',flexDirection:'column',alignItems:"center",jusstifyContent:"center"}}>
+                <Divider sx={{width:'90%'}}/>
                 <Competition setLoading1={setLoading1} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
+                <Divider sx={{width:'90%'}}/>
                 <Shoes setLoading2={setLoading2} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
-                <Community/>
-                <Crew/>
+                <Divider sx={{width:'90%'}}/>
+                <Community setLoading4={setLoading4} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
+                <Divider sx={{width:'90%'}}/>
+                <Crew setLoading3={setLoading3} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
+
             </Box>
 
             <Box>
@@ -84,10 +93,7 @@ export default function Main(){
                 >
                     <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        {error}
                     </Typography>
                     </Box>
                 </Modal>
@@ -95,3 +101,5 @@ export default function Main(){
         </Box>    
     )
 }
+
+export default Auth(Main,null)

@@ -6,9 +6,9 @@ const TopbarTheme = {
     alignItems:'center',
     backgroundColor:'#ffffff',
     height:'60px',
-    width:'100%',
+    width:'95%',
     borderBottom:1,
-    borderColor:'#E8E8E8',
+    borderBottomColor:'#E0E0E0',
     minWidth:'360px',
     maxWidth:'420px',
     zIndex:1000

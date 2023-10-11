@@ -65,11 +65,11 @@ export default function Shoes_Hot(props){
 
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',mt:'50px'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
 
             {/*상단제목*/}
             <Box sx={{width:'100%'}}>
-                <Box sx={{width:'100%',pt:1,display:'flex',alignItems:'start',justifyContent:'center',flexDirection:'column'}}>
+                <Box sx={{width:'100%',display:'flex',alignItems:'start',justifyContent:'center',flexDirection:'column'}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px',ml:2}}>
                         지금 인기있는 러닝화
                     </Typography>
@@ -104,7 +104,7 @@ export default function Shoes_Hot(props){
                 <Box sx={{width:'100%'}}>
                     {
                         popular?
-                        <Box sx={{width:'100%',height:'220px',pt:1}}>
+                        <Box sx={{width:'100%',pt:1}}>
                             <Swiper
                                 spaceBetween={-6}
                                 modules={[FreeMode]}
@@ -115,8 +115,8 @@ export default function Shoes_Hot(props){
                                     popular.map((item,index)=>{
                                         return(
                                             <SwiperSlide key={item.id} className='shoes'>
-                                                <Box onClick = {()=>navigateToShoesDetail(item.id)} sx={{width:'100%',height:'220px'}}>
-                                                    <Box sx={{width:'150px',height:'150px',backgroundColor:'#4F1D76',borderRadius:3,backgroundImage:`url(${API_URL}${item.shoesImg})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                                <Box onClick = {()=>navigateToShoesDetail(item.id)} sx={{width:'100%'}}>
+                                                    <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,backgroundImage:`url(${API_URL}${item.shoesImg})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
                                                     <Box sx={{display:'flex',flexDirection:'column',ml:1,mt:1}}>
                                                         <Typography sx={{lineHeight:"20px",fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                                             {item.brand}

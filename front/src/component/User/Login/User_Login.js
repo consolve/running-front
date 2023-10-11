@@ -1,7 +1,7 @@
 import {Box,Typography,Button,Input,CircularProgress} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import Logo from "../../../Image/RIFE_Logo.png"
+import Auth from '../../../hoc/auth';
 import { styled } from '@mui/system';
 import { useNavigate } from "react-router-dom";
 import Drawer from "./User_Tel_Drawer"
@@ -57,7 +57,7 @@ const StyledInpunameement = styled('input')(
 `,
 );
 
-export default function Login(){
+function Login(){
 
     const [modalOpen, setModalOpen] = React.useState(false);
     const handleOpen = () => setModalOpen(true);
@@ -178,3 +178,6 @@ export default function Login(){
     </Box>    
     )
 }
+
+
+export default Auth(Login,false,'/');

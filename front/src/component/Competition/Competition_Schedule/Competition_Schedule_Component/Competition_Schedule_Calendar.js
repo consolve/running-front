@@ -42,11 +42,11 @@ export default function Competition_Schedule_Calendar(props){
 
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%',mb:5}}>
-            <Box sx={{display:'flex',flexDirection:'column',justifyContent:'start',alignItems:'start',width:'100%',mt:3}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'30px',ml:1}}>
+            <Box sx={{display:'flex',flexDirection:'column',justifyContent:'start',alignItems:'start',width:'100%'}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'30px'}}>
                     러닝 캘린더
                 </Typography>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px',color:"#9D9D9D",ml:1}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px',color:"#9D9D9D"}}>
                     러닝 대회를 캘린더로 한 눈에 확인하세요
                 </Typography>
             </Box>

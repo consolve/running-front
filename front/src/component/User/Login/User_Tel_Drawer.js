@@ -122,7 +122,7 @@ export default function TemporaryDrawer(props) {
                 setNickName("");
                 setCrew("");
         
-                navigate('/main');
+                navigate('/');
             }
         }
         else{

@@ -1,16 +1,14 @@
-import {Box,Typography,Button,Card} from '@mui/material';
+import {Box,Typography,Button,Divider} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Auth from "../../../hoc/auth"
 import { useNavigate } from "react-router-dom";
 import TopBar from "./Competition_Schedule_Component/Competition_TopBar";
 import Month from "./Competition_Schedule_Component/Competition_Schedule_Month"
 import Register from "./Competition_Schedule_Component/Competition_Schedule_canRegister"
 import Calendar from "./Competition_Schedule_Component/Competition_Schedule_Calendar"
 import Filter from "./Competition_Schedule_Component/Competition_Schedule_Filter"
-import {fetchAcceptableContest} from "../../../API/api/Contest/contest_api"
-import {fetchMonthContest} from "../../../API/api/Contest/contest_api"
-import { fetchCalendarContest } from '../../../API/api/Contest/contest_api';
+import Dial from "./Competition_Schedule_Component/Competition_Schedule_Dial"
 import {Modal} from '@mui/material';
 import {useRecoilState} from 'recoil'
 import { CompetitionSchedule_MonthLoading,
@@ -32,7 +30,7 @@ const style = {
     p: 4,
   };
 
-export default function Competition_Schedule(){
+function Competition_Schedule(){
 
     const navigate = useNavigate();
 
@@ -59,6 +57,7 @@ export default function Competition_Schedule(){
     }
 
     useEffect(() =>{
+        window.scrollTo({top:0})
         setLoading1(true);
         setLoading2(true);
         setLoading3(true)
@@ -70,14 +69,18 @@ export default function Competition_Schedule(){
     },[loading1,loading2,loading3])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
+        <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar/>
             <Filter/>
-            <Box sx={{width:'95%',mt:'60px'}}>
+            <Box sx={{width:'90%',mt:'60px'}}>
                 <Month setError={setError} setOpen={setOpen}/>
+                <Divider sx={{width:'100%',my:3}}/>
                 <Register setError={setError} setOpen={setOpen}/>
+                <Divider sx={{width:'100%',my:3}}/>
                 <Calendar setError={setError} setOpen={setOpen}/>
             </Box>
+            
+            <Dial/>
 
             <Box>   
                 <Modal
@@ -87,10 +90,10 @@ export default function Competition_Schedule(){
                 >
                     <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
+                        {error}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        
                     </Typography>
                     </Box>
                 </Modal>
@@ -98,3 +101,5 @@ export default function Competition_Schedule(){
         </Box>    
     )
 }
+
+export default Auth(Competition_Schedule,null);

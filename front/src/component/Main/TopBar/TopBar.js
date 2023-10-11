@@ -10,41 +10,52 @@ import WestIcon from '@mui/icons-material/West';
 import Logo from "../../../Image/White_Logo.png"
 import { API_URL } from '../../../API/URL';
 
-const TopbarTheme = {
-    position:'fixed',
-    top:50,
-    display:'flex',
-    justifyContent:'space-between',
-    alignItems:'center',
-    height:'60px',
-    width:'100%',
-    borderBottom:1,
-    minWidth:'360px',
-    maxWidth:'420px',
-    zIndex:1000,
-    backgroundColor:'transparent',
-    borderBottom:0
-}
-
 export default function Main_TopBar(){
 
     const navigate = useNavigate();
+
+    const [scrollOpacity, setScrollOpacity] = useState(1);
+    const updateScroll = () => {
+        setScrollOpacity(1-(window.scrollY || document.documentElement.scrollTop)/500);
+    }
+
+    useEffect(()=>{
+        window.addEventListener('scroll', updateScroll);
+    });
 
     const navigateToScheduleMain = () =>{
         navigate('/schedule')
     }
 
     const profile = window.localStorage.getItem('profile');
-    const test = "/media/TAMSAMSOM-006.png"
 
     return(
-        <Box sx={TopbarTheme}>
+        <Box 
+        visibility={scrollOpacity>=0.2?'visible':'hidden'}
+        style ={{
+            opacity:scrollOpacity,
+        }}
+        sx={{
+            position:'fixed',
+            top:10,
+            display:'flex',
+            justifyContent:'space-between',
+            alignItems:'center',
+            height:'60px',
+            width:'100%',
+            borderBottom:1,
+            minWidth:'360px',
+            maxWidth:'420px',
+            zIndex:1000,
+            backgroundColor:'transparent',
+            borderBottom:0,
+        }}>
             <Box onClick = {navigateToScheduleMain} sx={{display:'flex',justifyContent:'center',alignItems:'center',ml:2}}>
                 <Box component='img' src={Logo} sx={{}}/>
             </Box>
 
             <Box sx={{mr:2}}>
-                <Avatar alt="T" src={`${API_URL}${test}`} />
+                <Avatar alt="Profile" src={`${API_URL}${profile}`} />
             </Box>
         </Box>    
     )

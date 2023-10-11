@@ -1,7 +1,7 @@
 import {Box,Typography,Button,Card} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Auth from "../../../hoc/auth"
 import { useNavigate } from "react-router-dom";
 import TopBar from "./Shoes_Search_Component/Shoes_Search_TopBar";
 import Filter from "./Shoes_Search_Component/Shoes_Search_Filter"
@@ -34,9 +34,11 @@ const style = {
 };
 
 
-export default function Shoes_Search(){
+function Shoes_Search(){
     const loadinglist = [1,2,3,4,5,6,7,8];
     const querylocation = useLocation();
+    const session = localStorage.getItem("sessionid");
+
     const filterContent ={
         brand:[],
         feature:[],
@@ -103,13 +105,12 @@ export default function Shoes_Search(){
         setFeature((prev)=> prev = filterContent.feature);
         setUseage((prev)=> prev = filterContent.useage);
         setKeyword((prev)=> prev = filterContent.keyword);
-        setPrice((prev)=> prev = filterContent.price.map(item => item/2000));
-
+        setPrice((prev)=> prev = filterContent.price.map(item => item>=0&&item<=100?item:item/2000));
     }
 
     const FetchShoesList = async (value) => {
-        const _SearchShoes = await fetchSearchShoes(value);
-
+        const _SearchShoes = await fetchSearchShoes(value,session);
+        
         if(_SearchShoes.response){
             setError(_SearchShoes.response.status)
             setOpen(true)
@@ -202,12 +203,13 @@ export default function Shoes_Search(){
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         {error}
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography>
+                    
                     </Box>
                 </Modal>
             </Box>
         </Box>    
     )
 }
+
+
+export default Auth(Shoes_Search,null);

@@ -1,8 +1,14 @@
 import axios from "axios";
+import { API_URL } from "../../URL";
 
-export const fetchPopularShoes = async (count) =>{
+export const fetchPopularShoes = async (count,session) =>{
     try{
-        const response = await axios.get(`/api/runningshoes/popular/${count}`);
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+        const response = await axios.get(`/api/runningshoes/popular/${count}`,header);
         return response.data.shoes;   
 
     } catch(error){
@@ -10,9 +16,14 @@ export const fetchPopularShoes = async (count) =>{
     }
 }
 
-export const fetchShoesDetail = async (id) =>{
+export const fetchShoesDetail = async (id,session) =>{
     try{
-        const response = await axios.get(`/api/runningshoes/detail/${id}`);
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+        const response = await axios.get(`/api/runningshoes/detail/${id}`,header);
         return response.data.shoes;   
 
     } catch(error){
@@ -20,9 +31,14 @@ export const fetchShoesDetail = async (id) =>{
     }
 }
 
-export const fetchBrandShoes = async (brand) =>{
+export const fetchBrandShoes = async (brand,session) =>{
     try{
-        const response = await axios.get(`/api/runningshoes/brand/${brand}`);
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+        const response = await axios.get(`/api/runningshoes/brand/${brand}`,header);
         return response.data.shoes;   
 
     } catch(error){
@@ -30,13 +46,29 @@ export const fetchBrandShoes = async (brand) =>{
     }
 }
 
-export const fetchFeatureShoes = async (feature) =>{
-    const request = feature.map((url) => axios.get(`/api/runningshoes/feature/${url}`));
-
-
+export const fetchFeatureShoes = async (feature,session) =>{
     try{
-        const response = await axios.all(request);
-        return response;   
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+        const response = await axios.get(`/api/runningshoes/feature/${feature}`,header);
+        return response.data.shoes;   
+    } catch(error){
+        return error
+    }
+}
+
+export const fetchPurposeShoes = async (feature,session) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+        const response = await axios.get(`/api/runningshoes/purpose/${feature}`,header);
+        return response.data.shoes;   
     } catch(error){
         return error
     }
@@ -62,12 +94,49 @@ export const fetchBrandTag = async () =>{
     }
 }
 
-export const fetchSearchShoes = async (query) =>{
+export const fetchPurPoseTag = async () =>{
     try{
-        const response = await axios.get(`/api/runnin1gshoes/search${query}`);
+        const response = await axios.get(`/api/runningshoes/purpose-tag`);
+        return response.data.tag;   
+
+    } catch(error){
+        return error
+    }
+}
+
+export const fetchSearchShoes = async (query,session) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+        const response = await axios.get(`/api/runningshoes/search${query}`,header);
         return response.data.shoes;   
 
     } catch(error){
+        return error
+    }
+}
+
+export const runningShoesBookMark = async (id,session) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+
+        const body ={
+                "postId":id
+            }
+        const response = await axios.post(`/api/runningshoes/bookmark`,body,header);
+        return response;   
+
+    } catch(error){
+        if(error.status === 409){
+            return
+        }
         return error
     }
 }

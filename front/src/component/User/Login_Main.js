@@ -4,12 +4,12 @@ import { useRef,useEffect } from 'react';
 import Logo from "../../Image/RIFE_Logo.png"
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import {motion} from 'framer-motion';
+import Auth from "../../hoc/auth"
 
 
 
 
-export default function Login(){
+function Login(){
     const navigate = useNavigate();
 
     const navigateToRegister =() =>{
@@ -59,3 +59,5 @@ export default function Login(){
       </Box>    
     )
 }
+
+export default Auth(Login,null);

@@ -7,6 +7,7 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import TopbarTheme from '../../../../style/plate/topbar';
+import WestIcon from '@mui/icons-material/West';
 
 
 export default function Competition_TopBar(){
@@ -17,29 +18,31 @@ export default function Competition_TopBar(){
         navigate('/schedule/search')
     }
 
+    const navigateToHome = () =>{
+        navigate('/');
+    }
+
+
     useEffect(() =>{
     },[])
 
     return(
         <Box sx={TopbarTheme}>
+            <Box onClick = {navigateToHome} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                <IconButton type="button" sx={{ }} aria-label="search">
+                    <WestIcon sx={{}}/>
+                </IconButton>
+            </Box>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px',ml:3}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px'}}>
                     대회일정
                 </Typography>
             </Box>
 
             <Box
                 onClick={navigateToScheduleSearch}
-                component="form"
-                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 160,mr:2,backgroundColor:'#f4f4f4',borderRadius:3 }}
                 >
-                <InputBase
-                    sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
-                    placeholder="풀코스, 10K, 하프"
-                    inputProps={{ 'aria-label': 'search google maps' }}
-                    
-                />
-                <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                <IconButton type="button" sx={{ }} aria-label="search">
                     <SearchIcon />
                 </IconButton>
             </Box>

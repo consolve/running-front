@@ -79,7 +79,9 @@ export default function Competition_TopBar(props){
     return(
         <Box sx={TopbarTheme}>
             <Box onClick = {navigateToScheduleMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <WestIcon sx={{ml:2}}/>
+                <IconButton type="button" sx={{ }} aria-label="search">
+                    <WestIcon sx={{}}/>
+                </IconButton>
             </Box>
 
             <Box

@@ -1,8 +1,6 @@
 import {Box,Typography,Button,Input,CircularProgress} from '@mui/material';
 import React, { useState } from "react";
-import { useRef,useEffect } from 'react';
-import Logo from "../../../Image/RIFE_Logo.png"
-import { styled } from '@mui/system';
+import Auth from '../../../hoc/auth';
 import { useNavigate } from "react-router-dom";
 import {useRecoilState} from 'recoil';
 import {
@@ -24,8 +22,7 @@ const style = {
     p: 4,
 };
 
-
-export default function Login(){
+function Login(){
 
     const navigate = useNavigate(); 
     const [crew,setCrew] = useRecoilState(User_Crew);
@@ -117,3 +114,6 @@ export default function Login(){
       </Box>    
     )
 }
+
+
+export default Auth(Login,false);

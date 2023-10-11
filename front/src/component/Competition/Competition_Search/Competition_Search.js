@@ -1,7 +1,7 @@
 import {Box,Typography,Button,Card} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Auth from '../../../hoc/auth'
 import { useNavigate } from "react-router-dom";
 import TopBar from "./Competition_Search_Component/Competition_TopBar";
 import Filter from "./Competition_Search_Component/Competition_Search_Filter"
@@ -33,7 +33,7 @@ const style = {
 };
 
 
-export default function Competition_Search(){
+function Competition_Search(){
     const loadinglist = [1,2,3,4,5,6,7,8];
     const querylocation = useLocation();
     const filterContent ={
@@ -133,12 +133,12 @@ export default function Competition_Search(){
         <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar />   
             <Filter/>
-            <Box sx={{position:'relative',width:'95%',mt:'60px'}}>
+            <Box sx={{position:'relative',width:'90%',mt:'60px'}}>
                 {
                     loading?
                     <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column',mt:'50px'}}>
                         {loadinglist.map((item,index) =>(
-                                <Skeleton key = {index} variant="rectangular" width={'100%'} height={"100px"} sx={{mt:1,borderRadius:2}}/>   
+                                <Skeleton key = {index} variant="rectangular" width={'100%'} height={"110px"} sx={{mt:1,borderRadius:2}}/>   
                         ))}
                     </Box>
                     :
@@ -176,3 +176,5 @@ export default function Competition_Search(){
         </Box>    
     )
 }
+
+export default Auth(Competition_Search,null)

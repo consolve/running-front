@@ -105,7 +105,7 @@ export default function TemporaryDrawer(props) {
                         <Box sx={{mt:1}}>
                             <Box sx={{display:'flex',width:"100%"}}>
                                 {['1월','2월','3월','4월','5월','6월','7월','8월'].map((text,index)=>(
-                                    <Box onClick ={()=>handleToggleMonth(index+1)} backgroundColor={month.includes(index+1)?'#4F1D76':''}  sx={{width:"35px",height:'23px',border:1,borderRadius:5,display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                                    <Box key={index} onClick ={()=>handleToggleMonth(index+1)} backgroundColor={month.includes(index+1)?'#4F1D76':''}  sx={{width:"35px",height:'23px',border:1,borderRadius:5,display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                         <Typography color = {month.includes(index+1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
                                             {text}
                                         </Typography>
@@ -115,7 +115,7 @@ export default function TemporaryDrawer(props) {
                             </Box>
                             <Box sx={{display:'flex',width:"100%",mt:1}}>
                                 {['9월','10월','11월','12월'].map((text,index)=>(
-                                    <Box onClick ={()=>handleToggleMonth(index+9)} backgroundColor={month.includes(index+9)?'#4F1D76':''} sx={{width:"35px",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                                    <Box key={index} onClick ={()=>handleToggleMonth(index+9)} backgroundColor={month.includes(index+9)?'#4F1D76':''} sx={{width:"35px",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                         <Typography color = {month.includes(index+9)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
                                             {text}
                                         </Typography>
@@ -128,14 +128,14 @@ export default function TemporaryDrawer(props) {
                     <Divider/>
 
                     {/*코스*/}
-                    <Box sx={{width:"92%",height:'100px',mx:'auto'}}>
+                    <Box sx={{width:"92%",height:'80px',mx:'auto'}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px',mt:2}}>
                             코스
                         </Typography>
                         <Box sx={{mt:1.5}}>
                             <Box sx={{display:'flex',width:"100%"}}>
                                 {['FULL','HALF','10K','5K','ULTRA','챌린지'].map((text,index)=>(
-                                    <Box onClick ={()=>handleToggleCourse(index)} backgroundColor={course.includes(index)?'#4F1D76':''} sx={{height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                                    <Box key={index} onClick ={()=>handleToggleCourse(index)} backgroundColor={course.includes(index)?'#4F1D76':''} sx={{height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                         <Typography color = {course.includes(index)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
                                             {text}
                                         </Typography>
@@ -155,7 +155,7 @@ export default function TemporaryDrawer(props) {
                         <Box sx={{mt:1.5}}>
                             <Box sx={{display:'flex',width:"100%"}}>
                                 {['수도권','충청권','강원권','전라권','경상권','제주권'].map((text,index)=>(
-                                    <Box onClick ={()=>handleToggleLocation(index)} backgroundColor={location.includes(index)?'#4F1D76':''} sx={{width:"50px",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                                    <Box key={index} onClick ={()=>handleToggleLocation(index)} backgroundColor={location.includes(index)?'#4F1D76':''} sx={{width:"50px",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                         <Typography color = {location.includes(index)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
                                             {text}
                                         </Typography>
@@ -168,7 +168,7 @@ export default function TemporaryDrawer(props) {
 
                     {/*하단 버튼*/}
                     <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'92%',mx:'auto',mt:1}}>
-                        <Button onClick ={navigateToSearch} variant="contained" color='primary' sx={{width:'100%',height:'45px',borderRadius:'7px'}}>
+                        <Button onClick ={navigateToSearch} disabled={!month.length&&!location.length&&!course.length} variant="contained" color='primary' sx={{width:'100%',height:'45px',borderRadius:'7px'}}>
                             <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'15px',fontWeight:700}}>
                                 러닝대회 찾기
                             </Typography>
@@ -181,10 +181,17 @@ export default function TemporaryDrawer(props) {
         </Box>
     );
 
+    useEffect(()=>{
+        console.log(!month.length&&!location.length&&!course.length);
+    },[month,location,course])
+
     return (
-        <Box sx={{display:'flex',justifyContent:'center',alignItems:"center"}}>
+        <Box sx={{display:'flex',justifyContent:'center',alignItems:"center"}}
+        
+        >
             <React.Fragment>
             <Drawer
+                disableScrollLock={ true }
                 PaperProps={{
                     sx: {
                     backgroundColor: "rgba(0, 0, 0, 0.1)",

@@ -166,8 +166,6 @@ export default function TemporaryDrawer(props) {
             }
         }
 
-        console.log(payload)
-
         var payloadString = Object.entries(payload).map(e => e.join('=')).join('&');
         props.setOpen(false)
 

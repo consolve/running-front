@@ -133,7 +133,7 @@ export default function TemporaryDrawer(props) {
                     <Divider/>
 
                     {/*코스*/}
-                    <Box sx={{width:"92%",height:'100px',mx:'auto'}}>
+                    <Box sx={{width:"92%",height:'80px',mx:'auto'}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px',mt:2}}>
                             코스
                         </Typography>

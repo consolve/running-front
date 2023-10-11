@@ -20,6 +20,11 @@ import Shoes from "./component/Shoes/Shoes_Main/Shoes_Main";
 import { Outlet } from 'react-router-dom';
 import ShoesSearch from "./component/Shoes/Shoes_Search/Shoes_Search"
 import Shoes_Detail from "./component/Shoes/Shoes_Detail/Shoes_Detail"
+import Crew from "./component/Crew/Crew_Main/Crew_Main"
+import CrewLocation from "./component/Crew/Crew_Location/Crew_Location"
+import CrewDetail from './component/Crew/Crew_Detail/Crew_Detail';
+import RunnerTalk from "./component/RunnerTalk/RunnerTalk_Main/RunnerTalk_Main"
+import RunnerTalkFilter from "./component/RunnerTalk/RunnerTalk_Filtering/RunnerTalk_Filtering"
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   RecoilRoot,
@@ -52,15 +57,20 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route element={<WithNav/>}>
-                <Route path ="/main" element={<Main/>}/>
+                <Route path ="/" element={<Main/>}/>
                 <Route path='/schedule' element = {<Schedule/>}/>
                 <Route path='/schedule/search' element ={<ScheduleSearch/>}/>
                 <Route path='/shoes' element ={<Shoes/>}/>
                 <Route path='/shoes/search' element ={<ShoesSearch/>}/>
+                <Route path='/crew' element ={<Crew/>}/>
+                <Route path="/crew/location" element={<CrewLocation/>}/>
+                <Route path="crew/detail/:id" element={<CrewDetail/>}/>
+                <Route path="/runnertalk" element={<RunnerTalk/>}/>
+                <Route path="/runnertalk/category/:id" element={<RunnerTalkFilter/>}/>
               </Route>
 
               <Route element={<WithoutNav/>}>
-                <Route path="/" element={<LoginMain/>} />
+                <Route path="/login/main" element={<LoginMain/>} />
                 <Route path="/login" element={<Login/>} />
                 <Route path="/register/tel" element={<RegisterTel/>}/>
                 <Route path="/register/nickname" element={<RegisterNickname/>} />

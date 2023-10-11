@@ -1,8 +1,6 @@
 import {Box,Typography,Button,Input} from '@mui/material';
 import React, { useState } from "react";
-import { useRef,useEffect } from 'react';
-import Logo from "../../../Image/RIFE_Logo.png"
-
+import Auth from '../../../hoc/auth'
 import { styled } from '@mui/system';
 import { useNavigate } from "react-router-dom";
 import {useRecoilState} from 'recoil';
@@ -11,8 +9,7 @@ import {
 } from '../../../state/User/UserLogin_State';
 import WestIcon from '@mui/icons-material/West';
 
-
-export default function Login(){
+function Login(){
 
     const navigate = useNavigate();
     const [nickName,setNickName] = useRecoilState(User_NickName);
@@ -69,3 +66,5 @@ export default function Login(){
       </Box>    
     )
 }
+
+export default Auth(Login,false);

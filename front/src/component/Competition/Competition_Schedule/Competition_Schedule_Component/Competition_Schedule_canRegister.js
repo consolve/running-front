@@ -12,7 +12,7 @@ import { CompetitionSchedule_AccceptableLoading,
         CompetitionSchedule_AllLoading
 } from '../../../../state/Competition/CompetitionSchedule_State';
 
-export default function Competition_Schedule_Month(props){
+export default function Competition_Schedule_canRegister(props){
 
     const navigate = useNavigate();
     const [loading2,setLoading2] = useRecoilState(CompetitionSchedule_AccceptableLoading);
@@ -47,34 +47,38 @@ export default function Competition_Schedule_Month(props){
         navigate(`/competition/detail/${id}`);
     }
 
+    const navigateToMoreContest = () =>{
+        navigate(`/schedule/search`)
+    }
+
     useEffect(() =>{
         FetchList();
     },[])
 
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%'}}>
-            <Box sx={{display:'flex',flexDirection:'column',justifyContent:'start',alignItems:'start',width:'100%',mt:3}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'30px',ml:1}}>
+            <Box sx={{display:'flex',flexDirection:'column',justifyContent:'start',alignItems:'start',width:'100%'}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'30px'}}>
                     접수 가능한 대회
                 </Typography>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px',color:"#9D9D9D",ml:1}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px',color:"#9D9D9D"}}>
                     지금 당장 접수 가능한 대회에요
                 </Typography>
             </Box>
 
             {loadingall
                     ?
-                    <Box sx={{width:"100%",height:'324px'}}>
-                        <Skeleton variant="rectangular" width={'100%'} height={"100px"} sx={{mt:1,borderRadius:2}}/>
-                        <Skeleton variant="rectangular" width={'100%'} height={"100px"} sx={{mt:1,borderRadius:2}}/>
-                        <Skeleton variant="rectangular" width={'100%'} height={"100px"} sx={{mt:1,borderRadius:2}}/>
+                    <Box sx={{width:"100%"}}>
+                        <Skeleton variant="rectangular" width={'100%'} height={"110px"} sx={{mt:1,borderRadius:2}}/>
+                        <Skeleton variant="rectangular" width={'100%'} height={"110px"} sx={{mt:1,borderRadius:2}}/>
+                        <Skeleton variant="rectangular" width={'100%'} height={"110px"} sx={{mt:1,borderRadius:2}}/>
                     </Box>
                     :
-                    <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column',mt:1,height:'324px'}}>
+                    <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column',mt:1}}>
                         {acceptable?
                         <Box sx={{width:"100%"}}>
                             {acceptable.map((item,index) =>(
-                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'100px',mt:1,width:'100%'}}>
+                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'100%'}}>
                                     <Box sx={{width:'90px',height:'90px',backgroundColor:'#4F1D76',borderRadius:3,mx:2,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                                     <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 100px)`,flexDirection:'column'  }}>
                                         <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
@@ -114,7 +118,7 @@ export default function Competition_Schedule_Month(props){
                                                 {
                                                     item.courseTags.map((item,index)=>{
                                                         return(
-                                                            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'40px',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:1}}>
+                                                            <Box key={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'40px',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:1}}>
                                                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px',color:'#ffffff'}}>
                                                                     {item.name}
                                                                 </Typography>

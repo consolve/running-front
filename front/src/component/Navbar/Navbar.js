@@ -14,7 +14,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const navigateToMain = () =>{
-    navigate('/main');
+    navigate('/');
   }
 
 
@@ -26,22 +26,31 @@ export default function Navbar() {
     <Box sx={{ position: 'fixed', bottom: 0, left: '50%', right: 0,width:'100%',minWidth:'360px',maxWidth:'420px',transform:'translate(-50%,0)',zIndex:2 }} elevation={0}>
       <BottomNavigation value={value} onChange={handleChange}>
         <BottomNavigationAction
-          label="Recents"
-          value="recents"
+          label="홈"
+          value="Home"
           onClick = {navigateToMain}
           icon={<RestoreIcon />}
         />
         <BottomNavigationAction
-          label="Favorites"
-          value="favorites"
+          label="대회일정"
+          value="Contest"
           icon={<FavoriteIcon />}
         />
         <BottomNavigationAction
-          label="Nearby"
-          value="nearby"
+          label="러너톡"
+          value="Talk"
           icon={<LocationOnIcon />}
         />
-        <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
+        <BottomNavigationAction
+          label="러닝크루"
+          value="Crew"
+          icon={<LocationOnIcon />}
+        />
+        <BottomNavigationAction
+          label="러닝화"
+          value="Shoes"
+          icon={<LocationOnIcon />}
+        />
       </BottomNavigation>
     </Box>
   );

@@ -44,6 +44,7 @@ export default function Shoes_TopBar(props){
         let queryfeature = feature.join("%20");
         let queryuseage = useage.join("%20");
         let querykeyword = value;
+
         let minMoney = price[0]*2000;
         let maxMoney = price[1]*2000;
 
@@ -57,8 +58,7 @@ export default function Shoes_TopBar(props){
                 payload[queryKey[i]] = queryArray[i];
             }
         }
-
-        console.log(payload)
+        
         props.setSearchState("keyword",(prev)=>prev=value);
 
 
@@ -84,7 +84,9 @@ export default function Shoes_TopBar(props){
     return(
         <Box sx={TopbarTheme}>
             <Box onClick = {navigateToShoesMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <WestIcon sx={{ml:2}}/>
+                <IconButton type="button" sx={{ }} aria-label="search">
+                    <WestIcon sx={{}}/>
+                </IconButton>
             </Box>
 
             <Box

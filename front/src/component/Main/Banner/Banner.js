@@ -24,7 +24,7 @@ export default function Main(){
     },[]);
 
     return(
-        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'480px',flexDirection:'column',width:'100%',mt:'100px'}}>
+        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'480px',flexDirection:'column',width:'100%',mt:'60px'}}>
            <Swiper
                 effect={'coverflow'}
                 grabCursor={true}
@@ -32,11 +32,11 @@ export default function Main(){
                 slidesPerView={'auto'}
                 spaceBetween={-15}
                 coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
                 }}
                 pagination={true}
                 modules={[EffectCoverflow, Pagination]}

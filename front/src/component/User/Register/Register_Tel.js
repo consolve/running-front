@@ -15,6 +15,7 @@ import {
     User_Crew
 } from '../../../state/User/UserLogin_State';
 import WestIcon from '@mui/icons-material/West';
+import Auth from "../../../hoc/auth"
 
 const style = {
     position: 'absolute',
@@ -57,7 +58,7 @@ const StyledInpunameement = styled('input')(
 `,
 );
 
-export default function Login(){
+function Login(){
 
     const [modalOpen, setModalOpen] = React.useState(false);
     const handleOpen = () => setModalOpen(true);
@@ -180,3 +181,5 @@ export default function Login(){
     </Box>    
     )
 }
+
+export default Auth(Login,false,'/');

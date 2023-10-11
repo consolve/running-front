@@ -1,7 +1,7 @@
 import {atom} from 'recoil';
 
-export const ShoesMain_PopularLoading = atom({
-    key: 'ShoesMain_PopularLoading', // unique ID (with respect to other atoms/selectors)
+export const ShoesMain_UseageLoading = atom({
+    key: 'ShoesMain_UseageLoading', // unique ID (with respect to other atoms/selectors)
     default: true, // default value (aka initial value)
 });
 
@@ -10,8 +10,18 @@ export const ShoesMain_BrandLoading = atom({
     default: true, // default value (aka initial value)
 });
 
+export const ShoesMain_ShoesBookMark = atom({
+    key: 'ShoesMain_ShoesBookMark', // unique ID (with respect to other atoms/selectors)
+    default: {}, // default value (aka initial value)
+});
+
 export const ShoesMain_FeatureLoading = atom({
     key: 'ShoesMain_FeatureLoading', // unique ID (with respect to other atoms/selectors)
+    default: true, // default value (aka initial value)
+});
+
+export const ShoesMain_AllShoesLoading = atom({
+    key: 'ShoesMain_AllShoesLoading', // unique ID (with respect to other atoms/selectors)
     default: true, // default value (aka initial value)
 });
 
@@ -24,3 +34,4 @@ export const ShoesMain_AllLoading = atom({
     key: 'ShoesMain_AllLoading', // unique ID (with respect to other atoms/selectors)
     default: true, // default value (aka initial value)
 });
+
