@@ -42,6 +42,8 @@ import {
   useRecoilState,
   useRecoilValue,
 } from 'recoil';
+import './style/plate/reset.css'
+
 
 const WithNav = () =>{
   return(
