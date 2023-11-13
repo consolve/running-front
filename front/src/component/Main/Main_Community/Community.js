@@ -25,8 +25,8 @@ export default function  Community(props){
 
     const navigate = useNavigate();
 
-    const navigateToCompetitionDetail =() =>{
-        navigate("/comp_detail")
+    const navigateToCompetitionDetail =(id) =>{
+        navigate(`/runnertalk/detail/${id}`)
     }
 
     const [runningtalk,setRunningTalk] = useState([]);
@@ -83,7 +83,7 @@ export default function  Community(props){
                         runningtalk.map((item,index)=>{
                             return(
                                     <SwiperSlide key = {index} className='swiper-slide-community'>
-                                        <Box sx={{width:'100%',height:'110px',backgroundColor:'#F6F6F6',borderRadius:3,display:'flex',alignItems:'center'}}>
+                                        <Box onClick ={() => navigateToCompetitionDetail(item.id)} sx={{width:'100%',height:'110px',backgroundColor:'#F6F6F6',borderRadius:3,display:'flex',alignItems:'center'}}>
                                             <Box sx={{width:'90px',height:'90px',backgroundColor:'#4F1D76',borderRadius:3,mx:1}}/>
                                             <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',width:`calc(100% - 106px)`,flexDirection:'column',height:"100%"}}>
                                                 <Box sx={{width:'100%'}}>
@@ -106,8 +106,8 @@ export default function  Community(props){
                                                     <Box sx={{mr:3, display:'flex'}}>
                                                         <Box sx={{display:'flex',alignItems:'center',height:'14px'}}>
                                                             <TurnedInNotIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
-                                                            <Typography align ="center" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%',lineHeight:'normal'}}>
-                                                                {item.scrap}
+                                                            <Typography align ="center" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
+                                                                {item.bookmarkPoint}
                                                             </Typography>
                                                         </Box>
                                                         <Box sx={{display:'flex',alignItems:'center',height:'14px'}}> 

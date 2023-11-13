@@ -15,3 +15,12 @@
     display: block; 
     object-fit: cover;
   } 
+
+  .comment-scroll-hide{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .comment-scroll-hide::-webkit-scrollbar{
+    display: none; /* Chrome, Safari, Opera*/
+  }

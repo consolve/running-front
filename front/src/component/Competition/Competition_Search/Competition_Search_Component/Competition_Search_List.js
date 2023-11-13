@@ -82,26 +82,30 @@ export default function Competition_Search_List(props){
 
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column'}}>
                 {list.map((item,index) =>{
+                    console.log(item)
                     return(
                     <React.Fragment key={index}>
                         {
                             list.length-1==index?
                             <Box ref = {ref} onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'100%'}}>
-                                <Box sx={{width:'90px',height:'90px',backgroundColor:'#4F1D76',borderRadius:3,mx:1,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:1,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain',objectFit:'contain',objectPosition:'center'}}/>
                                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 100px)`,flexDirection:'column'  }}>
                                     <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
-                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
+                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                             {item.name}
                                         </Typography>
                                         <NotificationsActiveIcon sx={{pr:2}}/>
                                     </Box>
                                     <Box sx={{width:'100%'}}>
                                         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',mr:2}}>
-                                                {convertToCustomDate(item.competitionTime)}
+                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                {item.place}
                                             </Typography>
                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
-                                                {item.place}
+                                                &nbsp;{'|'}&nbsp;
+                                            </Typography>
+                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',mr:2}}>
+                                                {convertToCustomDate(item.competitionTime)}
                                             </Typography>
                                         </Box>
                                     </Box>
@@ -143,28 +147,31 @@ export default function Competition_Search_List(props){
                             </Box>
                             :
                             <Box onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'100px',mt:1,width:'100%'}}>
-                                <Box sx={{width:'90px',height:'90px',backgroundColor:'#4F1D76',borderRadius:3,mx:1,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:1,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain',objectFit:'contain',objectPosition:'center'}}/>
                                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 100px)`,flexDirection:'column'  }}>
                                     <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
-                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
+                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                             {item.name}
                                         </Typography>
                                         <NotificationsActiveIcon sx={{pr:2}}/>
                                     </Box>
                                     <Box sx={{width:'100%'}}>
                                         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',mr:2}}>
-                                                {convertToCustomDate(item.competitionTime)}
+                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                {item.place}
                                             </Typography>
                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
-                                                {item.place}
+                                                &nbsp;{'|'}&nbsp;
+                                            </Typography>
+                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',mr:2}}>
+                                                {convertToCustomDate(item.competitionTime)}
                                             </Typography>
                                         </Box>
                                     </Box>
                                     <Box sx={{width:'100%'}}>
                                         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
-                                                접수마감 :
+                                                접수기간 :
                                             </Typography>
                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
                                                 {convertToCustomDate(item.receptionStartTime)}

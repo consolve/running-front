@@ -24,3 +24,4 @@ export const CrewMain_CrewBookMark = atom({
     key: 'CrewMain_CrewBookMark', // unique ID (with respect to other atoms/selectors)
     default: {}, // default value (aka initial value)
 });
+

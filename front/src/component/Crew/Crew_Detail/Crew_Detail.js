@@ -8,17 +8,19 @@ import TopBar from "./Crew_Detail_Component/Crew_Detail_TopBar"
 import {Divider} from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import Detail from "./Crew_Detail_Component/Crew_Detail_Detail"
-import Course from "./Crew_Detail_Component/Crew_Detail_Course"
 import Image from "./Crew_Detail_Component/Crew_Detail_Image"
 import Navbar from './Crew_Detail_Component/Crew_Detail_Navbar';
-import {CompetitionSchedule_Comment} from "../../../state/Competition/CompetitionSchedule_State"
 import Skeleton from '@mui/material/Skeleton';
-import Comment from "./Crew_Detail_Component/Crew_Detail_Comment"
 import { useParams } from "react-router-dom";
-import { UpdateContestView,fetchContestDetail } from '../../../API/api/Contest/contest_api';
-import {FetchContestComment} from "../../../API/api/Contest/contest_api"
+import {fetchCrewDetail} from "../../../API/api/RunningCrew/crew_api"
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
+import Comment from "./Crew_Detail_Component/Crew_Detail_Comment"
+import {
+    CrewDetail_Comment,
+    CrewDetail_Comment_Order
+} from "../../../state/Crew/CrewDetail_Comment_State";
+
 
 const style = {
     position: 'absolute',
@@ -37,6 +39,7 @@ const style = {
 function Crew_Detail(){
 
     const { id } = useParams();
+    const session = localStorage.getItem('sessionid');
 
     const navigate = useNavigate();
 
@@ -46,9 +49,11 @@ function Crew_Detail(){
 
     const [loading,setLoading] = useState(true);
     const [error,setError] = useState("");
-    const [comment,setComment] = useRecoilState(CompetitionSchedule_Comment);
     const [open, setOpen] = React.useState(false);
-    const [contest,setContest] = useState({});
+    const [crew,setCrew] = useState({});
+    const [comment,setComment] = useRecoilState(CrewDetail_Comment);
+    const [commentOrder,setCommentOrder] = useRecoilState(CrewDetail_Comment_Order);
+    
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
@@ -56,20 +61,15 @@ function Crew_Detail(){
         navigateToBack();
     };
 
-    const FetchContest = async () => {
-        // const [_ContestDetail,_Comment] = await axios.all([fetchContestDetail(id),FetchContestComment(id)]);
+    const Fetchcrew = async () => {
+        const [_CrewDetail] = await axios.all([fetchCrewDetail(id,session)]);
 
-        console.log(_ContestDetail);
-        console.log(_Comment);
-        console.log(_Comment.response.status)
-
-        if(_ContestDetail.response||_Comment.response){
-            setError(_ContestDetail.response?_ContestDetail.response.status:_Comment.response.status)
+        if(_CrewDetail.response){
+            setError(_CrewDetail.response?_CrewDetail.response.status:"")
             setOpen(true);
         }
         else{
-            setContest(_ContestDetail);
-            setComment(_Comment);
+            setCrew(_CrewDetail);
         }
 
         setLoading(false);
@@ -78,13 +78,13 @@ function Crew_Detail(){
     useEffect(()=>{
         window.scrollTo({top:0})
         setLoading(true);
-        FetchContest();
+        Fetchcrew();
 
 
-        const session = window.localStorage.getItem("sessionid");
-        console.log(`Bearer `+`${session}`)
+        // const session = window.localStorage.getItem("sessionid");
+        // console.log(`Bearer `+`${session}`)
 
-        UpdateContestView(session,id);
+        // UpdatecrewView(session,id);
     },[])
 
     return(
@@ -97,10 +97,10 @@ function Crew_Detail(){
                     :
                     <Box sx={{width:"100%"}}>
                     {
-                        contest&&comment.length!=0?
+                        crew!=0?
                         <Box sx={{width:"100%"}}>
-                            <TopBar competition={contest}/>
-                            <Banner competition={contest}/>
+                            <TopBar crew={crew}/>
+                            <Banner crew={crew}/>
                         </Box>
                         :
                         <Box sx={{width:'100%',height:'300px',backgroundColor:'#4F1D76'}}>
@@ -117,21 +117,18 @@ function Crew_Detail(){
                         :
                         <Box sx={{width:"100%",display:"flex",justifyContent:"center"}}>
                             {
-                                contest&&comment.length!=0?
+                                crew!=0?
                                 <Box sx={{width:"100%"}}>
-                                    <Title competition = {contest}/>
+                                    <Title crew = {crew}/>
                                     <Divider/>
 
-                                    <Detail competition = {contest}/>
+                                    <Detail crew = {crew}/>
                                     <Divider/> 
-                                
-                                    <Course competition = {contest}/>
+
+                                    <Image crew = {crew}/>
                                     <Divider/>
 
-                                    <Image competition = {contest}/>
-                                    <Divider/>
-
-                                    {/* <Comment/> */}
+                                    <Comment setError = {setError} setOpen={setOpen}/>
                                 </Box>
                                 :
                                 <Box sx={{width:'100%',height:"500px",display:'flex',justifyContent:"center",alignItems:"center"}}>

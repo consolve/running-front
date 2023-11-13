@@ -8,10 +8,6 @@ export default function Navbar() {
 
   const navigate = useNavigate();
 
-  const navigateToMain = () =>{
-    navigate('/main');
-  }
-
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -22,7 +18,7 @@ export default function Navbar() {
         <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',mx:2,marginY:'auto',width:"100%"}}>
             <Button variant="contained" color="primary" sx={{width:'98%',height:'40px',borderRadius:'10px',boxShadow:0}}>
                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'16px'}}>
-                    대회 신청하기
+                    크루 신청하기
                 </Typography>
             </Button>
         </Box>

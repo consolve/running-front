@@ -28,35 +28,6 @@ const style = {
     p: 4,
   };
 
-const CustomInput = React.forwardRef(function CustomInput(props, ref) {
-  return <Input slots={{ input: StyledInpunameement }} {...props} ref={ref}/>;
-});
-
-const StyledInpunameement = styled('input')(
-({ theme }) => `
-    width: 220px;
-    font-family: Pretendard Variable;
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.5rem;
-    padding: 8px 12px;
-    border-radius: 10px;
-    margin-top:20px;
-    color: #1A2027;
-    background-color: #F4F4F4;
-    border: 1px solid #ffffff;
-
-    &:focus {
-        border-color: #4F1D76;
-    }
-
-    // firefox
-    &:focus-visible {
-        outline: 0;
-    }
-`,
-);
-
 function Login(){
 
     const [modalOpen, setModalOpen] = React.useState(false);

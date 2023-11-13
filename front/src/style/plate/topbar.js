@@ -7,8 +7,8 @@ const TopbarTheme = {
     backgroundColor:'#ffffff',
     height:'60px',
     width:'95%',
-    borderBottom:1,
-    borderBottomColor:'#E0E0E0',
+    borderBottom:'3px solid',
+    borderBottomColor:'#F6F6F6',
     minWidth:'360px',
     maxWidth:'420px',
     zIndex:1000

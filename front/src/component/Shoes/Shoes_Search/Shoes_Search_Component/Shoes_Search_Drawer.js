@@ -22,7 +22,7 @@ const MoneySlider = styled(Slider)(({ theme }) => ({
     height: 2,
     padding: '15px 0',
     '& .MuiSlider-valueLabel': {
-      fontSize: 13,
+      fontSize: 12,
       fontWeight: 700,
       top: 45,
       backgroundColor: 'unset',
@@ -292,7 +292,7 @@ export default function TemporaryDrawer(props) {
                             navigateToShoesSearch();
                             }} variant="contained" color='primary' sx={{width:'100%',height:'45px',borderRadius:'7px'}}>
                             <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'15px',fontWeight:700}}>
-                                러닝대회 찾기
+                                러닝화 찾기
                             </Typography>
                         </Button>
                     </Box>

@@ -38,8 +38,8 @@ export default function Shoes_Detail_TopBar(){
     return(
         <Box sx={TopbarTheme}>
             <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <IconButton type="button" sx={{ }} aria-label="search">
-                    <WestIcon sx={{ml:1}}/>
+                <IconButton type="button" sx={{ml:1}} aria-label="search">
+                    <WestIcon sx={{}}/>
                 </IconButton>
             </Box>
         </Box>    

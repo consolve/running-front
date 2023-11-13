@@ -98,7 +98,7 @@ function Competition_Search(){
             setOpen(true)
         }
         else{
-            setList(_SearchCompetition)
+            setList(prev=>prev=_SearchCompetition)
         }
 
         setLoading(false);
@@ -107,7 +107,6 @@ function Competition_Search(){
     useEffect(()=>{
         setLoading(true);
         getQuery();
-        FetchCompetitionList(decodeURI(querylocation.search));
     },[])
 
     useEffect(()=>{

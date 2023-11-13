@@ -29,3 +29,8 @@ export const CompetitionSchedule_Comment = atom({
     key: 'CompetitionSchedule_Comment', // unique ID (with respect to other atoms/selectors)
     default: [], // default value (aka initial value)
 });
+
+export const CompetitionSchedule_Comment_Order = atom({
+    key: 'CompetitionSchedule_Comment_Order', // unique ID (with respect to other atoms/selectors)
+    default: [0], // default value (aka initial value)
+});

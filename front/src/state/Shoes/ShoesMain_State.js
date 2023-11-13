@@ -35,3 +35,12 @@ export const ShoesMain_AllLoading = atom({
     default: true, // default value (aka initial value)
 });
 
+export const ShoesDetail_Comment = atom({
+    key: 'ShoesDetail_Comment', // unique ID (with respect to other atoms/selectors)
+    default: [], // default value (aka initial value)
+});
+
+export const ShoesDetail_Comment_Order = atom({
+    key: 'ShoesDetail_Comment_Order', // unique ID (with respect to other atoms/selectors)
+    default: [0], // default value (aka initial value)
+});

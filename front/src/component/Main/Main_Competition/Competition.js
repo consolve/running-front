@@ -95,17 +95,17 @@ export default function Competition(props){
                                         return(
                                             <SwiperSlide key ={index} className='competition'>
                                                 <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'100px',mt:1,width:'100%'}}>
-                                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#4F1D76',borderRadius:3,mx:2,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:3,mx:2,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
                                                     <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 100px)`,flexDirection:'column'  }}>
                                                         <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
-                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'16px'}}>
+                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                                                 {item.name}
                                                             </Typography>
                                                             <NotificationsActiveIcon sx={{pr:2}}/>
                                                         </Box>
                                                         <Box sx={{width:'100%'}}>
                                                             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                                                     {item.place}
                                                                 </Typography>
                                                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
@@ -119,10 +119,13 @@ export default function Competition(props){
                                                         <Box sx={{width:'100%'}}>
                                                             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
                                                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
-                                                                    접수기간
+                                                                    접수기간 :
                                                                 </Typography>
                                                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
-                                                                    &nbsp;{'|'}&nbsp;
+                                                                    {convertToCustomDate(item.receptionStartTime)}
+                                                                </Typography>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                                    ~
                                                                 </Typography>
                                                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
                                                                     {convertToCustomDate(item.receptionEndTime)}

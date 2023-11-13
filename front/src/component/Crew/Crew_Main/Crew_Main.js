@@ -60,7 +60,7 @@ function Crew_Main(){
             setOpen(true);
         }
         else{
-            setList(_CrewList)
+            setList(prev=>prev=_CrewList)
         }
         setLoading(false);
     }
@@ -77,6 +77,7 @@ function Crew_Main(){
         return () => {
           // 컴포넌트가 언마운트되기 전에 실행될 함수 (클린업 함수)
             setLocatioin([]);
+            setList([]);
           // ...
         };
       }, []);
@@ -85,7 +86,7 @@ function Crew_Main(){
         <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar/>
             
-            <Box sx={{width:'90%',mb:8,mt:'70px'}}>
+            <Box sx={{width:'93%',mb:8,mt:'70px'}}>
                 <Title/>
                 {
                     loading?

@@ -4,7 +4,7 @@ import { useRef,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import TurnedInNotIcon from '@mui/icons-material/TurnedInNot';
-import RecommendOutlinedIcon from '@mui/icons-material/RecommendOutlined';
+import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import {useLocation} from "react-router-dom"
 import { useInView } from "react-intersection-observer"
@@ -55,7 +55,7 @@ export default function RunnerTalk_Main_List(props){
     }, [inView])
 
     const navigateToCompetitionDetail =(id) =>{
-        navigate(`/competition/detail/${id}`);
+        navigate(`/runnertalk/detail/${id}`);
     }
 
 
@@ -90,7 +90,7 @@ export default function RunnerTalk_Main_List(props){
                                         <Divider orientation="vertical" flexItem variant="middle"  sx={{height:"10px"}}/>
                                         <Box sx={{ml:0.5, display:'flex'}}>
                                             <Box sx={{display:'flex',alignItems:'center',height:'14px'}}> 
-                                                <RecommendOutlinedIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
+                                                <ThumbUpOffAltOutlinedIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
                                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
                                                     {item.likePoint}
                                                 </Typography>
@@ -104,7 +104,7 @@ export default function RunnerTalk_Main_List(props){
                                         </Box>
                                     </Box>
                                  </Box>
-                                <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images[0]})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
                             :
                             <Box onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'rgba(237, 237, 237, 1)'}}>
@@ -122,28 +122,28 @@ export default function RunnerTalk_Main_List(props){
                                     <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:"center"}}>
                                         <Box sx={{display:'flex',height:'14px',alignItems:"center",mr:0.5}}>
                                             <Avatar sx={{width:'11px',height:'11px',mr:0.5}}/>
-                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060'  ,height:'100%',lineHeight:'normal'}}>
+                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px',color:'#606060'  ,height:'100%',lineHeight:'15.51px'}}>
                                                 {item.user}
                                             </Typography>
                                         </Box>
                                         <Divider orientation="vertical" flexItem variant="middle"  sx={{height:"10px"}}/>
                                         <Box sx={{ml:0.5, display:'flex'}}>
                                             <Box sx={{display:'flex',alignItems:'center',height:'14px'}}> 
-                                                <RecommendOutlinedIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
+                                                <ThumbUpOffAltOutlinedIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',color:'#606060',mr:1,height:'100%',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px'}}>
                                                     {item.likePoint}
                                                 </Typography>
                                             </Box>
                                             <Box sx={{display:'flex',alignItems:'center',height:'14px'}}>
                                                 <ModeCommentOutlinedIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',height:'100%'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px',color:'#606060',height:'100%',lineHeight:'15.51px'}}>
                                                     {item.commentPoint}
                                                 </Typography>
                                             </Box>
                                         </Box>
                                     </Box>
                                  </Box>
-                                <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images[0]})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
 
                         }

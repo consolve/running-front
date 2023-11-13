@@ -159,7 +159,7 @@ export default function Shoes_Brand(props){
     },[brand])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',mt:'50px'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
 
             {/*상단제목*/}
             <Box sx={{width:'100%'}}>
@@ -172,7 +172,7 @@ export default function Shoes_Brand(props){
             
             {
                 brandloading?
-                <Box sx={{width:'100%',mt:1,mb:2}}>
+                <Box sx={{width:'100%',mt:2,mb:2}}>
                     {/*필터*/}
                     <Swiper
                         spaceBetween={-6}
@@ -194,7 +194,7 @@ export default function Shoes_Brand(props){
                     </Swiper>
                 </Box>
                 :
-                <Box sx={{width:"100%",mt:1,mb:2}}>
+                <Box sx={{width:"100%",mt:2,mb:2}}>
                     {
                         brandtags?
                         <Box sx={{width:'100%'}}>
@@ -259,7 +259,7 @@ export default function Shoes_Brand(props){
                             {
                                 shoes.length!=0?
                                     <Swiper
-                                        spaceBetween={-6}
+                                        spaceBetween={-10}
                                         modules={[FreeMode]}
                                         slidesPerView={'auto'}
                                         freeMode={{enabled: true}}	// 추가
@@ -269,8 +269,8 @@ export default function Shoes_Brand(props){
                                                 return(
                                                     <SwiperSlide className='shoes'>
                                                         <Box onClick = {()=>navigateToShoesDetail(item.id)} sx={{width:'100%',display:'flex',alignItems:"center",flexDirection:"column",alignItems:"start"}}>
-                                                            <Box sx={{position:'relative'}}>
-                                                                <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                                            <Box sx={{position:'relative',backgroundColor:'#f4f4f4',borderRadius:'8px'}}>
+                                                                <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`} style={{width:'170px',height:'170px',objectFit:'contain',objectPosition:'center'}}/>
                                                                 {
                                                                     shoesBookmark[item.id]?
                                                                     <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>

@@ -6,7 +6,7 @@ export const SmsSendCode = async (number) =>{
         const sendCode = {
             "phone_number": number,
         }
-        const response = await axios.post(`/api/users/sms/send-code`,sendCode);
+        const response = await axios.post(`${API_URL}/api/users/sms/send-code`,sendCode);
         return response;   
 
     } catch(error){
@@ -20,7 +20,7 @@ export const SmsCheckCode = async (otp,number) =>{
             "phone_number": number,
             "code":otp
         }
-        const response = await axios.post(`/api/users/sms/check-code`,sendCode);
+        const response = await axios.post(`${API_URL}/api/users/sms/check-code`,sendCode);
         
         return response;   
 
@@ -40,7 +40,7 @@ export const UserRegister = async (name,number,nickname,crew,terms,privacy,marke
             "privacyAccepted" : privacy,
             "marketingAccepted" : marketing
           }
-        const response = await axios.post(`/api/users/signup`,sendCode);
+        const response = await axios.post(`${API_URL}/api/users/signup`,sendCode);
 
         return response;   
 
@@ -54,7 +54,7 @@ export const UserLogin = async (number) =>{
         const sendCode = {
             "phonenumber": number
         }
-        const response = await axios.post(`/api/users/login`,sendCode);
+        const response = await axios.post(`${API_URL}/api/users/login`,sendCode);
 
         return response;   
     } catch(error){

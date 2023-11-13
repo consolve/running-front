@@ -71,8 +71,9 @@ function Shoes_Main(){
     return(
         <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar/>
-            <Filter/>
             <Box sx={{width:'95%',mt:'60px'}}>
+                <Filter setOpen = {handleOpen} setClose = {handleClose} setError = {setError}/>
+
                 <ShoesBrand setOpen = {handleOpen} setClose = {handleClose} setError = {setError}/>
                 <Divider sx={{my:'20px'}}/>
                 <ShoesFeature setOpen = {handleOpen} setClose = {handleClose} setError = {setError}/>

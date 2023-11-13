@@ -14,8 +14,8 @@ export default function RunnerTalk_Main_TopBar(){
 
     const navigate = useNavigate();
 
-    const navigateToScheduleSearch = () =>{
-        navigate('/schedule/search')
+    const navigateToRunnerTalkSearch = () =>{
+        navigate('/runnertalk/search')
     }
 
     const navigateToHome = () =>{
@@ -43,7 +43,7 @@ export default function RunnerTalk_Main_TopBar(){
             </Box>
 
             <Box
-                onClick={navigateToScheduleSearch}
+                onClick={navigateToRunnerTalkSearch}
                 >
                 <IconButton type="button" sx={{ }} aria-label="search">
                     <SearchIcon />

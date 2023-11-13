@@ -1,10 +1,12 @@
-import {Box,Typography,Grid} from '@mui/material';
+import {Box,Typography,Grid,IconButton} from '@mui/material';
 import React, { useState,useCallback } from "react";
 import { useRef,useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer"
 import {CircularProgress} from '@mui/material';
 import {API_URL} from "../../../../API/URL/index"
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import {useRecoilState} from 'recoil'
 import {
     CrewLocation_List,
@@ -12,7 +14,10 @@ import {
     CrewLocation_Error,
     CrewLocation_Location
 } from '../../../../state/Crew/CrewLocation_State';
-import { fetchCrewLocation } from '../../../../API/api/RunningCrew/crew_api';
+import {    
+    CrewMain_CrewBookMark
+} from "../../../../state/Crew/CrewMain_State"
+import { fetchCrewLocation,runningCrewBookMark } from '../../../../API/api/RunningCrew/crew_api';
 
 export default function Crew_Location_List(props){
 
@@ -44,6 +49,7 @@ export default function Crew_Location_List(props){
     const [page, setPage] = useState(2);
     const [loading, setLoading] = useState(CrewLocation_Loading);  
     const [location,setLocation] = useRecoilState(CrewLocation_Location);
+    const [crewBookMark,setCrewBookMark] = useRecoilState(CrewMain_CrewBookMark);
 
     const getItems = useCallback(async () => {
         
@@ -61,12 +67,31 @@ export default function Crew_Location_List(props){
         setLoading(false);
     }, [page])
 
+    const bookMark = async (id) =>{
+        const response = await runningCrewBookMark(id,session);
+        if(response.response){
+            setError(response.response.status)
+            props.setOpen(true);
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    const onClickBookMark = (id,event) =>{
+        event.stopPropagation();
+        if(bookMark(id)){
+            setCrewBookMark((prev)=>({...prev,[id]:!crewBookMark[id]}))
+        }
+    }
+
     useEffect(() => {
         getItems();
     }, [getItems])
 
     const navigateToCrewDetail =(id) =>{
-        navigate(`/crew`);
+        navigate(`/crew/detail/${id}`);
     }
 
     useEffect(() => {
@@ -81,7 +106,7 @@ export default function Crew_Location_List(props){
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%',mb:8}}>
             <Box sx={{width:"100%"}}>
                 
-                <Grid container spacing={0} columns={16} >
+                <Grid container spacing={1} columns={16} >
                         {
                             list.map((item,index)=>{
                                 return(
@@ -89,8 +114,20 @@ export default function Crew_Location_List(props){
                                     {
                                         list.length-1===index?
                                         <Grid item xs={8} key={item.id} sx={{display:'flex',justifyContent:'center'}}>
-                                            <Box ref={ref} onClick={()=>navigateToCrewDetail(item.id)} sx={{width:'170px',mb:1}}>
-                                                <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${item.mainImg})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                            <Box ref={ref} onClick={()=>navigateToCrewDetail(item.id)} sx={{width:'100%',mb:1,display:'flex',flexDirection:'column',alignItems:"start",justifyContent:'center'}}>
+                                                <Box sx={{position:'relative',backgroundColor:'#f4f4f4',width:'100%',pb:'100%',overflow:"hidden",borderRadius:'8px'}}>
+                                                    <img src={`${API_URL}${item.mainImg}`} style={{position:"absolute",width:"100%",height:"100%",objectFit:'contain',objectPosition:'contain'}}/>
+                                                    {
+                                                        crewBookMark[item.id]?
+                                                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                            <BookmarkIcon/>
+                                                        </IconButton>
+                                                        :
+                                                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                            <BookmarkBorderIcon/>
+                                                        </IconButton>
+                                                    }
+                                                </Box>
                                                 <Box sx={{mt:1,mb:0,ml:0.5}}>
                                                         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
                                                             {
@@ -139,8 +176,20 @@ export default function Crew_Location_List(props){
                                         </Grid>
                                         :
                                         <Grid item xs={8} key={item.id} sx={{display:'flex',justifyContent:'center'}}>
-                                            <Box onClick={()=>navigateToCrewDetail(item.id)} sx={{width:'170px',mb:1}}>
-                                                <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${item.mainImg})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                           <Box ref={ref} onClick={()=>navigateToCrewDetail(item.id)} sx={{width:'100%',mb:1,display:'flex',flexDirection:'column',alignItems:"start",justifyContent:'center'}}>
+                                                <Box sx={{position:'relative',backgroundColor:'#f4f4f4',width:'100%',pb:'100%',overflow:"hidden",borderRadius:'8px'}}>
+                                                    <img src={`${API_URL}${item.mainImg}`} style={{position:"absolute",width:"100%",height:"100%",objectFit:'contain',objectPosition:'contain'}}/>
+                                                    {
+                                                        crewBookMark[item.id]?
+                                                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                            <BookmarkIcon/>
+                                                        </IconButton>
+                                                        :
+                                                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                            <BookmarkBorderIcon/>
+                                                        </IconButton>
+                                                    }
+                                                </Box>
                                                 <Box sx={{mt:1,mb:0,ml:0.5}}>
                                                         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
                                                             {

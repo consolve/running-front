@@ -79,7 +79,7 @@ function Crew_Location(){
             setOpen(true);
         }
         else{
-            setList(_CrewList)
+            setList(prev=>prev=_CrewList)
         }
         setLoading(prev=>prev=false);
     }

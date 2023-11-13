@@ -50,7 +50,7 @@ export default function Competition_Detail_Course(props) {
 
             {
                 props.competition.courseTags[current]?
-                <Box sx={{backgroundImage:`url(${API_URL}${props.competition.courseTags[current].map}})`,width:'90%',pb:'90%',borderRadius:3,mx:'auto',mt:1}}/>
+                <Box sx={{backgroundImage:`url(${API_URL}${props.competition.courseTags[current].map})`,width:'90%',pb:'90%',borderRadius:'8px',mx:'auto',mt:1,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain',objectFit:"contain"}}/>
                 :
                 <Box sx={{width:'90%',pb:'90%',borderRadius:3,mx:'auto',mt:1}}/>
             }

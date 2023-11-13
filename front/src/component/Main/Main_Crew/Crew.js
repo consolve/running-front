@@ -45,7 +45,7 @@ export default function Crew(props){
     const navigate = useNavigate();
 
     const navigateToShoesDetail =(index) =>{
-        navigate(`/shoes/detail/${index}`)
+        navigate(`/crew/detail/${index}`)
     }
 
     const bookMark = async (id) =>{

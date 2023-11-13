@@ -12,7 +12,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import "swiper/css/grid";
 
-export default function Competition_Detail_Image(props) {
+export default function Crew_Detail_Image(props) {
 
     const [current,setCurrent] = useState(0);
     const [OfficialImg,setOfficialImg] = useState([]);
@@ -23,21 +23,20 @@ export default function Competition_Detail_Image(props) {
     }
 
     useEffect(()=>{
-        console.log(props.competition)
-        setOfficialImg(props.competition.courseImgs);
+        setOfficialImg(props.crew.detailImgs);
     },[])
 
     return (
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',mt:2}}>
             <Box sx={{width:'90%'}}>
                 <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
-                    대회 공식 이미지
+                    크루 이미지
                 </Typography>
             </Box>
 
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'90%',mt:1}}>
                 {
-                    props.competition.courseImgs.map((item,index)=>{
+                    props.crew.detailImgs.map((item,index)=>{
                         return(
                             <Box key = {index} onClick ={()=>handleToggle(index)} backgroundColor={current===index?'#4F1D76':''}  sx={{width:"auto",height:'23px',border:1,borderRadius:5,display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                 <Typography color = {current===index?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
@@ -50,8 +49,8 @@ export default function Competition_Detail_Image(props) {
             </Box>
 
             {
-                props.competition.courseImgs[current]?
-                <Box sx={{backgroundImage:`url(${API_URL}${props.competition.courseImgs[current].img})`,width:'90%',pb:'90%',borderRadius:3,mx:'auto',mt:1}}/>
+                props.crew.detailImgs[current]?
+                <Box sx={{backgroundImage:`url(${API_URL}${props.crew.detailImgs[current].img})`,width:'90%',pb:'90%',borderRadius:3,mx:'auto',mt:1}}/>
                 :
                 <Box sx={{width:'90%',pb:'90%',borderRadius:3,mx:'auto',mt:1}}/>
             }

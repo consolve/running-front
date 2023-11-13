@@ -136,18 +136,18 @@ export default function Shoes(props){
                                         return(
                                             <SwiperSlide key={index} className='shoes'>
                                                 <Box onClick={()=>navigateToShoesDetail(item.id)} sx={{width:'100%',height:'250px'}}>
-                                                    <Box sx={{position:'relative'}}>
-                                                        <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
-                                                        {
-                                                            shoesBookmark[item.id]?
-                                                            <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                                <BookmarkIcon/>
-                                                            </IconButton>
-                                                            :
-                                                            <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                                <BookmarkBorderIcon/>
-                                                            </IconButton>
-                                                        }
+                                                    <Box sx={{position:'relative',backgroundColor:'#f4f4f4',borderRadius:'8px'}}>
+                                                        <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`} style={{width:'170px',height:'170px',objectFit:'contain',objectPosition:'center'}}/>
+                                                            {
+                                                                shoesBookmark[item.id]?
+                                                                <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                                    <BookmarkIcon/>
+                                                                </IconButton>
+                                                                :
+                                                                <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                                    <BookmarkBorderIcon/>
+                                                                </IconButton>
+                                                            }
                                                     </Box>
                                                     <Box sx={{display:'flex',flexDirection:'column',ml:0.5,mt:1}}>
                                                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>

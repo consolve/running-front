@@ -116,7 +116,7 @@ function Shoes_Search(){
             setOpen(true)
         }
         else{
-            setList(_SearchShoes)
+            setList(prev=>prev=_SearchShoes)
         }
 
         setLoading(false);
@@ -125,7 +125,6 @@ function Shoes_Search(){
     useEffect(()=>{
         setLoading(true);
         getQuery();
-        FetchShoesList(decodeURI(querylocation.search));
     },[])
 
 
@@ -142,6 +141,7 @@ function Shoes_Search(){
             setUseage([]);
             setPrice([5,100]);
             setKeyword("");
+            setList([]);
             // ...
           };
     },[])
@@ -158,7 +158,7 @@ function Shoes_Search(){
             }}
             setSearchState = {setSearchState}/>
             <Filter />
-            <Box sx={{width:'95%',mt:'60px'}}>
+            <Box sx={{width:'95%',mt:'63px'}}>
                 {
                     loading?
                     <Box sx={{width:'100%',display:'flex',justifyContent:"center",mt:'50px'}}>

@@ -13,6 +13,15 @@ import { fetchShoesDetail } from '../../../API/api/RunningShoes/shoes_api';
 import Skeleton from '@mui/material/Skeleton';
 import { useParams } from "react-router-dom";
 import {Modal} from '@mui/material';
+import {
+    ShoesDetail_Comment,
+    ShoesDetail_Comment_Order
+} from "../../../state/Shoes/ShoesMain_State";
+import Comment from "./Shoes_Detail_Component/Shoes_Detail_Comment"
+import { FetchRunningshoesCommentPopular } from '../../../API/api/RunningShoes/Shoes_comment_api';
+import axios from 'axios';
+import { useRecoilState } from 'recoil';
+
 
 const style = {
     position: 'absolute',
@@ -38,16 +47,19 @@ function Shoes_Detail(){
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [shoes,setShoes] = useState({});
+    const [comment,setComment] = useRecoilState(ShoesDetail_Comment);
+    const [commentOrder,setCommentOrder] = useRecoilState(ShoesDetail_Comment_Order);
+    
 
     const FetchShoes = async () => {
-        const _ShoesDetail = await fetchShoesDetail(id,session);
-        console.log(_ShoesDetail)
+        const [_ShoesDetail,_Comment] = await axios.all([fetchShoesDetail(id,session),FetchRunningshoesCommentPopular(id,session)]);
         
-        if(_ShoesDetail.response){
-            setError(_ShoesDetail.response.status)
+        if(_ShoesDetail.response||_Comment.response){
+            setError(_ShoesDetail.response?_ShoesDetail.response.status:_Comment.response.status)
             setOpen(true);
         }
         else{
+            setComment(prev=>prev=_Comment);
             setShoes(_ShoesDetail);
         }
 
@@ -65,7 +77,7 @@ function Shoes_Detail(){
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             <TopBar shoes={shoes}/>
             {/* 60px은 navbar*/}
-            <Box sx={{width:'100%',mt:'60px'}}>
+            <Box sx={{width:'100%',mt:'60px',mb:10}}>
                 <Banner shoes={shoes}/>
                 <Box sx={{zIndex:1,backgroundColor:"#ffffff"}}>
                     {
@@ -76,7 +88,7 @@ function Shoes_Detail(){
                         :
                         <Box sx={{width:"100%",display:"flex",justifyContent:"center"}}>
                             {
-                                shoes?
+                                shoes&&comment?
                                 <Box sx={{width:"100%"}}>
                                     <Title setError = {setError} shoes = {shoes}/>
                                     <Divider/>
@@ -86,6 +98,8 @@ function Shoes_Detail(){
 
                                     <Feature shoes = {shoes}/>
                                     <Divider/>
+
+                                    <Comment setError = {setError} setOpen={setOpen}/>
                                 </Box>
                                 :
                                 <Box sx={{width:'100%',height:"500px",display:'flex',justifyContent:"center",alignItems:"center"}}>

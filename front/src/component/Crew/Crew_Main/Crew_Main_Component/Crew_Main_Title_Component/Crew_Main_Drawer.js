@@ -34,7 +34,6 @@ export default function TemporaryDrawer(props) {
         return;
         }
         props.setOpen((prev)=>prev=open);
-        console.log(props.open)
     };
     {/*
         속성마다 Drawer의 버튼 선택 여부 변경

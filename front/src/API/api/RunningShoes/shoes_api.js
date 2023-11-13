@@ -8,7 +8,7 @@ export const fetchPopularShoes = async (count,session) =>{
                 Authorization:`Bearer `+`${session}`
             }
         }
-        const response = await axios.get(`/api/runningshoes/popular/${count}`,header);
+        const response = await axios.get(`${API_URL}/api/runningshoes/popular/${count}`,header);
         return response.data.shoes;   
 
     } catch(error){
@@ -23,7 +23,7 @@ export const fetchShoesDetail = async (id,session) =>{
                 Authorization:`Bearer `+`${session}`
             }
         }
-        const response = await axios.get(`/api/runningshoes/detail/${id}`,header);
+        const response = await axios.get(`${API_URL}/api/runningshoes/detail/${id}`,header);
         return response.data.shoes;   
 
     } catch(error){
@@ -38,7 +38,7 @@ export const fetchBrandShoes = async (brand,session) =>{
                 Authorization:`Bearer `+`${session}`
             }
         }
-        const response = await axios.get(`/api/runningshoes/brand/${brand}`,header);
+        const response = await axios.get(`${API_URL}/api/runningshoes/brand/${brand}`,header);
         return response.data.shoes;   
 
     } catch(error){
@@ -53,7 +53,7 @@ export const fetchFeatureShoes = async (feature,session) =>{
                 Authorization:`Bearer `+`${session}`
             }
         }
-        const response = await axios.get(`/api/runningshoes/feature/${feature}`,header);
+        const response = await axios.get(`${API_URL}/api/runningshoes/feature/${feature}`,header);
         return response.data.shoes;   
     } catch(error){
         return error
@@ -67,7 +67,7 @@ export const fetchPurposeShoes = async (feature,session) =>{
                 Authorization:`Bearer `+`${session}`
             }
         }
-        const response = await axios.get(`/api/runningshoes/purpose/${feature}`,header);
+        const response = await axios.get(`${API_URL}/api/runningshoes/purpose/${feature}`,header);
         return response.data.shoes;   
     } catch(error){
         return error
@@ -76,7 +76,7 @@ export const fetchPurposeShoes = async (feature,session) =>{
 
 export const fetchFeatureTag = async () =>{
     try{
-        const response = await axios.get(`/api/runningshoes/feature-tag`);
+        const response = await axios.get(`${API_URL}/api/runningshoes/feature-tag`);
         return response.data.tag;   
 
     } catch(error){
@@ -86,7 +86,7 @@ export const fetchFeatureTag = async () =>{
 
 export const fetchBrandTag = async () =>{
     try{
-        const response = await axios.get(`/api/runningshoes/brand-tag`);
+        const response = await axios.get(`${API_URL}/api/runningshoes/brand-tag`);
         return response.data.tag;   
 
     } catch(error){
@@ -96,7 +96,7 @@ export const fetchBrandTag = async () =>{
 
 export const fetchPurPoseTag = async () =>{
     try{
-        const response = await axios.get(`/api/runningshoes/purpose-tag`);
+        const response = await axios.get(`${API_URL}/api/runningshoes/purpose-tag`);
         return response.data.tag;   
 
     } catch(error){
@@ -111,7 +111,7 @@ export const fetchSearchShoes = async (query,session) =>{
                 Authorization:`Bearer `+`${session}`
             }
         }
-        const response = await axios.get(`/api/runningshoes/search${query}`,header);
+        const response = await axios.get(`${API_URL}/api/runningshoes/search${query}`,header);
         return response.data.shoes;   
 
     } catch(error){
@@ -130,8 +130,28 @@ export const runningShoesBookMark = async (id,session) =>{
         const body ={
                 "postId":id
             }
-        const response = await axios.post(`/api/runningshoes/bookmark`,body,header);
+        const response = await axios.post(`${API_URL}/api/runningshoes/bookmark`,body,header);
         return response;   
+
+    } catch(error){
+        if(error.status === 409){
+            return
+        }
+        return error
+    }
+}
+
+export const fetchUserName = async (session) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${API_URL}/api/users/name`,header);
+
+        return response.data.name;   
 
     } catch(error){
         if(error.status === 409){

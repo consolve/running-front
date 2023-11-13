@@ -38,6 +38,7 @@ export default function Shoes_Search_List(props){
     
     const getItems = useCallback(async () => {
         const query = querylocation.search
+
         const decodeUri = decodeURI(query);
         setLoading(true);
 
@@ -74,7 +75,7 @@ export default function Shoes_Search_List(props){
         }
     }
 
-    const onClickBookMart = (id,event) =>{
+    const onClickBookMark = (id,event) =>{
         event.stopPropagation();
         if(bookMark(id)){
             setShoesBookmark((prev)=>({...prev,[id]:!shoesBookmark[id]}))
@@ -107,7 +108,7 @@ export default function Shoes_Search_List(props){
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%',mb:8,mt:'50px'}}>
             <Box sx={{width:"100%"}}>
                 
-                <Grid container spacing={0} columns={16} >
+                <Grid container spacing={1} columns={16} >
                         {
                             list.map((item,index)=>{
                                 return(
@@ -115,16 +116,16 @@ export default function Shoes_Search_List(props){
                                     {
                                         list.length-1===index?
                                         <Grid item xs={8} key={item.id} sx={{display:'flex',justifyContent:'center'}}>
-                                            <Box ref={ref} onClick={()=>navigateToShoesDetail(item.id)} sx={{width:'170px',mb:1}}>
-                                                <Box sx={{position:'relative'}}>
-                                                    <Box sx={{position:'relative',zIndex:2,width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                           <Box ref={ref} onClick={()=>navigateToShoesDetail(item.id)} sx={{width:'100%',mb:1,display:'flex',flexDirection:'column',alignItems:"start",justifyContent:'center'}}>
+                                                <Box sx={{position:'relative',backgroundColor:'#f4f4f4',width:'100%',pb:'100%',overflow:"hidden",borderRadius:'8px'}}>
+                                                    <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`}  style={{position:"absolute",width:"100%",height:"100%",objectFit:'contain',objectPosition:'contain'}}/>
                                                     {
                                                         shoesBookmark[item.id]?
-                                                        <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
                                                             <BookmarkIcon/>
                                                         </IconButton>
                                                         :
-                                                        <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
                                                             <BookmarkBorderIcon/>
                                                         </IconButton>
                                                     }
@@ -144,16 +145,16 @@ export default function Shoes_Search_List(props){
                                         </Grid>
                                         :
                                         <Grid item xs={8} key={item.id} sx={{display:'flex',justifyContent:'center'}}>
-                                            <Box onClick={()=>navigateToShoesDetail(item.id)} sx={{width:'170px',mb:1}}>
-                                                <Box sx={{position:'relative'}}>
-                                                    <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                            <Box ref={ref} onClick={()=>navigateToShoesDetail(item.id)} sx={{width:'100%',mb:1,display:'flex',flexDirection:'column',alignItems:"start",justifyContent:'center'}}>
+                                                <Box sx={{position:'relative',backgroundColor:'#f4f4f4',width:'100%',pb:'100%',overflow:"hidden",borderRadius:'8px'}}>
+                                                    <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`}  style={{position:"absolute",width:"100%",height:"100%",objectFit:'contain',objectPosition:'contain'}}/>
                                                     {
                                                         shoesBookmark[item.id]?
-                                                        <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
                                                             <BookmarkIcon/>
                                                         </IconButton>
                                                         :
-                                                        <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
                                                             <BookmarkBorderIcon/>
                                                         </IconButton>
                                                     }

@@ -3,7 +3,7 @@ import { API_URL } from "../../URL";
 
 export const fetchMonthContest = async (count) =>{
     try{
-        const response = await axios.get(`/api/contest/month/${count}`);
+        const response = await axios.get(`${API_URL}/api/contest/month/${count}`);
         return response.data.month_contest;   
 
     } catch(error){
@@ -13,7 +13,7 @@ export const fetchMonthContest = async (count) =>{
 
 export const fetchAcceptableContest = async (count) =>{
     try{
-        const response = await axios.get(`/api/contest/acceptable/${count}`);
+        const response = await axios.get(`${API_URL}/api/contest/acceptable/${count}`);
         return response.data.acceptable_contest;   
     } catch(error){
         return error
@@ -22,7 +22,7 @@ export const fetchAcceptableContest = async (count) =>{
 
 export const fetchCalendarContest = async () =>{
     try{
-        const response = await axios.get(`/api/contest/calendar`);
+        const response = await axios.get(`${API_URL}/api/contest/calendar`);
         return response.data.calendar;   
 
     } catch(error){
@@ -32,7 +32,7 @@ export const fetchCalendarContest = async () =>{
 
 export const fetchPopularContest = async (count) =>{
     try{
-        const response = await axios.get(`/api/contest/popular/${count}`);
+        const response = await axios.get(`${API_URL}/api/contest/popular/${count}`);
         return response.data.contest;   
 
     } catch(error){
@@ -40,9 +40,16 @@ export const fetchPopularContest = async (count) =>{
     }
 }
 
-export const fetchContestDetail = async (id) =>{
+export const fetchContestDetail = async (id,sessionid) =>{
     try{
-        const response = await axios.get(`/api/contest/detail/${id}`);
+
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${sessionid}`
+            }
+        }
+
+        const response = await axios.get(`${API_URL}/api/contest/detail/${id}`,header);
         return response.data.contest;   
 
     } catch(error){
@@ -52,7 +59,7 @@ export const fetchContestDetail = async (id) =>{
 
 export const fetchSearchContest = async (query) =>{
     try{
-        const response = await axios.get(`/api/contest/search${query}`);
+        const response = await axios.get(`${API_URL}/api/contest/search${query}`);
         return response.data.contest;   
 
     } catch(error){
@@ -62,7 +69,7 @@ export const fetchSearchContest = async (query) =>{
 
 export const UpdateContestView = async (session,id) =>{
     try{
-        const response = await axios.post(`/api/contest/view`,
+        const response = await axios.post(`${API_URL}/api/contest/view`,
             {  
                 "postId" : id
             }
@@ -91,7 +98,7 @@ export const ContestBookMark = async (id,session) =>{
         const body ={
                 "postId":id
             }
-        const response = await axios.post(`/api/contest/bookmark`,body,header);
+        const response = await axios.post(`${API_URL}/api/contest/bookmark`,body,header);
         return response;   
 
     } catch(error){
@@ -102,9 +109,16 @@ export const ContestBookMark = async (id,session) =>{
     }
 }
 
-export const FetchContestComment = async (id) =>{
+export const FetchContestComment = async (id,sessionid) =>{
     try{
-        const response = await axios.get(`/api/contest/comment/${id}`);
+
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${sessionid}`
+            }
+        }
+
+        const response = await axios.get(`${API_URL}/api/contest/comment/${id}`,header);
         return response;   
 
     } catch(error){

@@ -54,15 +54,15 @@ function RunnerTalk(){
     const [loadingall,setLoadingall] = useRecoilState(RunnerTalkMain_LoadingAll);
     const [list,setList] = useRecoilState(RunnerTalkMain_List);
 
-    const FetchRunnerTalkAll = async (value) => {
-        const RunnerTalk = await fetchPopularTalk(value);
+    const FetchRunnerTalkAll = async () => {
+        const RunnerTalk = await fetchRunnerTalkAll("?page="+1);
 
         if(RunnerTalk.response){
             setError(RunnerTalk.response.status)
             setOpen(true)
         }
         else{
-            setList(RunnerTalk)
+            setList(prev=>prev=RunnerTalk)
         }
 
         setLoading3(false);
@@ -80,18 +80,28 @@ function RunnerTalk(){
         setLoading2(true);
         setLoading3(true)
         setLoadingall(true);
-        FetchRunnerTalkAll(6);
+        FetchRunnerTalkAll();
     },[])
 
     useEffect(()=>{
         LoadingCompilation();
     },[loading1,loading2,loading3])
 
+    useEffect(() => {
+        return () => {
+            setList([])
+            setLoading1(true);
+            setLoading2(true);
+            setLoading3(true)
+            setLoadingall(true);
+        };
+      }, []);
     return(
         <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar/>
             <Box sx={{position:'relative',width:'90%',mt:'60px'}}>
                 <Filter setOpen={setOpen}/>
+                
                 <Hot setOpen={setOpen}/>
                 <Divider/>
                 {

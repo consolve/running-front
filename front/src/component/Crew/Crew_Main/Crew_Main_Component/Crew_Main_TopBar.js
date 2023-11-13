@@ -15,7 +15,7 @@ export default function Competition_TopBar(){
     const navigate = useNavigate();
 
     const navigateToCrewSearch = () =>{
-        navigate('/crew')
+        navigate('/crew/search')
     }
 
     const navigateToHome = () =>{

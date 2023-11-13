@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import WestIcon from '@mui/icons-material/West';
-import {ContestBookMark} from "../../../../API/api/Contest/contest_api"
+import {runningCrewBookMark} from "../../../../API/api/RunningCrew/crew_api"
 
 const TopbarTheme = {
     position:'fixed',
@@ -23,7 +23,7 @@ const TopbarTheme = {
 }
 
 
-export default function Competition_TopBar(props){
+export default function Crew_Detail_TopBar(props){
 
     const session = localStorage.getItem('sessionid');
 
@@ -35,7 +35,7 @@ export default function Competition_TopBar(props){
     }
 
     const bookMark = async (id) =>{
-        const response = await ContestBookMark(id,session);
+        const response = await runningCrewBookMark(id,session);
         if(response.response){
             return false;
         }
@@ -51,7 +51,7 @@ export default function Competition_TopBar(props){
     }
 
     useEffect(() =>{
-        setBookmark(prev=>prev=props.competition.bookmarked)
+        setBookmark(prev=>prev=props.crew.bookmarked)
     },[])
 
     return(
@@ -64,11 +64,11 @@ export default function Competition_TopBar(props){
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 {
                     bookmark?
-                    <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white'}}>
+                    <IconButton onClick={(e)=>onClickBookMart(props.crew.id,e)} sx={{color:'white'}}>
                         <BookmarkIcon sx={{mr:2}}/>
                     </IconButton>
                     :
-                    <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white'}}>
+                    <IconButton onClick={(e)=>onClickBookMart(props.crew.id,e)} sx={{color:'white'}}>
                         <BookmarkBorderIcon sx={{mr:2}}/>
                     </IconButton>
                 }

@@ -45,7 +45,7 @@ export default function Shoes_Search_Filter(props){
     }
 
     return(
-        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'60px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'90%',minWidth:'360px',maxWidth:'420px'}}>
+        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'63px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'90%',minWidth:'360px',maxWidth:'420px'}}>
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
                 <Box backgroundColor={brand.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {brand.length == 0?'black':'white'} sx={buttonTyphography}>

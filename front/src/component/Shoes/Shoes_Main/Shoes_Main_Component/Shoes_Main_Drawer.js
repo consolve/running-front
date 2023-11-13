@@ -9,20 +9,12 @@ import {Button,Slider} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import {useRecoilState} from 'recoil'
-import {
-    ShoesFilter_Brand,
-    ShoesFilter_Feature,
-    ShoesFilter_Useage,
-    ShoesFilter_Keyword,
-    ShoesFilter_Price,
-} from '../../../../state/Shoes/ShoesSearch_State';
 
 const MoneySlider = styled(Slider)(({ theme }) => ({
     height: 2,
     padding: '15px 0',
     '& .MuiSlider-valueLabel': {
-      fontSize: 13,
+      fontSize: 12,
       fontWeight: 700,
       top: 45,
       backgroundColor: 'unset',
@@ -72,11 +64,11 @@ export default function TemporaryDrawer(props) {
 
     const navigate = useNavigate();
 
-    const [brand, setBrand] = useRecoilState(ShoesFilter_Brand);
-    const [feature, setFeature] = useRecoilState(ShoesFilter_Feature);
-    const [useage, setUseage] = useRecoilState(ShoesFilter_Useage);
-    const [keyword, setKeyword] = useRecoilState(ShoesFilter_Keyword);
-    const [price, setPrice] = useRecoilState(ShoesFilter_Price);
+    const [brand, setBrand] = useState([]);
+    const [feature, setFeature] = useState([]);
+    const [useage, setUseage] = useState([]);
+    const [keyword, setKeyword] = useState([]);
+    const [price, setPrice] = useState([0,100]);
 
     const DrawerTheme = {
         width:'100%',
@@ -171,13 +163,8 @@ export default function TemporaryDrawer(props) {
         var payloadString = Object.entries(payload).map(e => e.join('=')).join('&');
         props.setOpen(false)
 
-        navigate("/shoes/search?"+payloadString)
+        props.setQuery(payloadString)
     }
-
-    useEffect(()=>{
-        console.log(price)
-        console.log(price)
-    },[])
 
 
     const list = (anchor) => (
@@ -300,7 +287,7 @@ export default function TemporaryDrawer(props) {
                             navigateToShoesSearch();
                             }} variant="contained" color='primary' sx={{width:'100%',height:'45px',borderRadius:'7px'}}>
                             <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'15px',fontWeight:700}}>
-                                러닝대회 찾기
+                                러닝화 찾기
                             </Typography>
                         </Button>
                     </Box>

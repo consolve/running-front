@@ -71,7 +71,6 @@ export default function Shoes_Detail_Title(props){
                     <Box sx={{display:'flex'}}>
                         {
                             props.shoes.launchColor.map((item,index)=>{
-                                console.log(item.content)
                                 return(
                                     <Box key ={index} backgroundColor={item.content} sx={{borderRadius:'50%',width:'15px',height:'15px',mr:1,border:1}}/>
                                 )

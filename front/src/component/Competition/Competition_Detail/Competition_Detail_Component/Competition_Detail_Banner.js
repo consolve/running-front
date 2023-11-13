@@ -18,12 +18,7 @@ export default function Competition_Detail_Banner(props){
                 props.competition?
                     <Box sx={{backgroundImage:`url(${API_URL}${props.competition.mainBanner.mainBanner})`,width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}>
                         <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%',height:'100%',backgroundColor:'rgba(0, 0, 0, 0.6)',flexDirection:'column'}}>
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'20px',color:"#ffffff"}}>
-                                DAY-23
-                            </Typography>
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'20px',color:"#ffffff",mt:-0.5,mb:'20px'}}>
-                                2023 서울 마라톤 대회
-                            </Typography>
+                            
                             
                         </Box>
                     </Box>

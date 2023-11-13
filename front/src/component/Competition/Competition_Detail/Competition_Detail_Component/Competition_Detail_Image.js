@@ -51,7 +51,7 @@ export default function Competition_Detail_Image(props) {
 
             {
                 props.competition.courseImgs[current]?
-                <Box sx={{backgroundImage:`url(${API_URL}${props.competition.courseImgs[current].img})`,width:'90%',pb:'90%',borderRadius:3,mx:'auto',mt:1}}/>
+                <Box sx={{backgroundImage:`url(${API_URL}${props.competition.courseImgs[current].img})`,width:'90%',pb:'90%',borderRadius:'8px',mx:'auto',mt:1,backgroundPosition: 'contain',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
                 :
                 <Box sx={{width:'90%',pb:'90%',borderRadius:3,mx:'auto',mt:1}}/>
             }
