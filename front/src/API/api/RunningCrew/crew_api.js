@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API_URL } from "../../URL";
 
 export const fetchCrewAll = async (query,session) =>{
     try{
@@ -9,7 +8,7 @@ export const fetchCrewAll = async (query,session) =>{
             }
         }
 
-        const response = await axios.get(`${API_URL}/api/runningcrew/all${query}`,header);
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningcrew/all${query}`,header);
         return response.data.crew;   
 
     } catch(error){
@@ -24,7 +23,7 @@ export const fetchCrewLocation = async (value,session) =>{
                 Authorization:`Bearer `+`${session}`
             }
         }
-        const response = await axios.get(`${API_URL}/api/runningcrew/${value}`,header);
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningcrew/${value}`,header);
         return response.data.crew;   
 
     } catch(error){
@@ -40,7 +39,7 @@ export const fetchCrewDetail = async (id,session) =>{
             }
         }
 
-        const response = await axios.get(`${API_URL}/api/runningcrew/detail/${id}`,header);
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningcrew/detail/${id}`,header);
         return response.data.crew_detail;   
 
     } catch(error){
@@ -59,7 +58,7 @@ export const runningCrewBookMark = async (id,session) =>{
         const body ={
                 "postId":id
             }
-        const response = await axios.post(`${API_URL}/api/runningcrew/bookmark`,body,header);
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningcrew/bookmark`,body,header);
         return response;   
 
     } catch(error){
@@ -77,7 +76,7 @@ export const fetchCrewSearch = async (query,session) =>{
                 Authorization:`Bearer `+`${session}`
             }
         }
-        const response = await axios.get(`${API_URL}/api/runningcrew/search${query}`,header);
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningcrew/search${query}`,header);
         return response.data.crew;   
 
     } catch(error){
@@ -93,7 +92,7 @@ export const AddCrew = async (data,session) =>{
             }
         }
 
-        const response = await axios.post(`${API_URL}/api/runningcrew/manage`,data,header);
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningcrew/manage`,data,header);
         return response.data.message;   
 
     } catch(error){

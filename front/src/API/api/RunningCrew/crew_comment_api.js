@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API_URL } from "../../URL";
 
 export const FetchCrewCommentPopular = async (id,sessionid) =>{
     try{
@@ -10,7 +9,7 @@ export const FetchCrewCommentPopular = async (id,sessionid) =>{
             }
         }
 
-        const response = await axios.get(`${API_URL}/api/runningcrew/comment/${id}/popular`,header);
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningcrew/comment/${id}/popular`,header);
         return response.data.comments.reverse();   
 
     } catch(error){
@@ -30,7 +29,7 @@ export const FetchCrewCommentLatest = async (id,sessionid) =>{
             }
         }
 
-        const response = await axios.get(`${API_URL}/api/runningcrew/comment/${id}/latest`,header);
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningcrew/comment/${id}/latest`,header);
         return response.data.comments.reverse();   
 
     } catch(error){
@@ -50,7 +49,7 @@ export const FetchCrewCommentReplies = async (id,sessionid) =>{
             }
         }
 
-        const response = await axios.get(`${API_URL}/api/runningcrew/comment/${id}/replies`,header);
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningcrew/comment/${id}/replies`,header);
         return response.data;   
 
     } catch(error){
@@ -72,7 +71,7 @@ export const CrewCommentLike = async (id,sessionid) =>{
 
         const request = null;
 
-        const response = await axios.post(`${API_URL}/api/runningcrew/comment/${id}/like`,request,header);
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningcrew/comment/${id}/like`,request,header);
         return response.data.message;   
 
     } catch(error){
@@ -95,7 +94,7 @@ export const AddCrewComment = async (sessionid,data) =>{
 
         const request = data;
 
-        const response = await axios.post(`${API_URL}/api/runningcrew/comment`,request,header);
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningcrew/comment`,request,header);
         return response.data;   
     } catch(error){
         if(error.status === 409){
@@ -116,7 +115,7 @@ export const AddCrewChildComment = async (sessionid,data) =>{
 
         const request = data;
 
-        const response = await axios.post(`${API_URL}/api/runningcrew/comment`,request,header);
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningcrew/comment`,request,header);
         return response.data;   
     } catch(error){
         if(error.status === 409){
