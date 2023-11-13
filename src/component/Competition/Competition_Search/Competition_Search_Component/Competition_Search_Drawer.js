@@ -29,7 +29,7 @@ export default function TemporaryDrawer(props) {
         width:'100%',
         height:'100%',
         minWidth:'360px',
-        maxWidth:'420px',
+        maxWidth:'450px',
         borderTopLeftRadius:20,
         borderTopRightRadius:20, 
         backgroundColor:'#ffffff'
