@@ -1,7 +1,6 @@
 import {Box,Typography,Button,Card} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import ResizeObserver from "resize-observer-polyfill";
 
 
 
