@@ -1,7 +1,6 @@
 import {Box,Typography,Card} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import ResizeObserver from "resize-observer-polyfill";
 import styled from "styled-components"
 
 export default function RunnerTalk_Detail_Detail(props){
