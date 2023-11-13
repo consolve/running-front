@@ -122,7 +122,7 @@ const WebMain = styled.div`
 const APP = styled.div`
   width:100%;
   min-width:360px;
-  max-width:420px;
+  max-width:450px;
   min-height:100vh;
   background-color:#ffffff;
 `
