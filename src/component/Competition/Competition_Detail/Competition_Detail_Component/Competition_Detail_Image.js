@@ -40,7 +40,7 @@ export default function Competition_Detail_Image(props) {
                     props.competition.courseImgs.map((item,index)=>{
                         return(
                             <Box key = {index} onClick ={()=>handleToggle(index)} backgroundColor={current===index?'#4F1D76':''}  sx={{width:"auto",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                <Typography color = {current===index?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
+                                <Typography color = {current===index?'white':"#606060"} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
                                     {index+1}
                                 </Typography>
                             </Box>   

@@ -86,7 +86,7 @@ export default function Competition_Search_List(props){
                     <React.Fragment key={index}>
                         {
                             list.length-1==index?
-                            <Box ref={ref} key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'97%'}}>
+                            <Box ref={ref} key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'100%'}}>
                                 <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
                                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
                                     <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
@@ -124,13 +124,14 @@ export default function Competition_Search_List(props){
                                             </Typography>
                                         </Box>
                                     </Box>
-                                    <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',pt:0.5}}>
+                                    
+                                    <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',pt:'8px'}}>
                                         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
                                         {
                                             item.courseTags.map((item,index)=>{
                                                 return(
                                                     <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'15px',backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
-                                                        <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"11px",mx:'6px',width:"auto"}}>
+                                                        <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"10.74px",mx:'6px',width:"auto"}}>
                                                             {item.name}
                                                         </Typography>
                                                     </Box>
@@ -142,10 +143,11 @@ export default function Competition_Search_List(props){
                                             상세정보 {'>'}
                                         </Typography>
                                     </Box>
+
                                 </Box>
                             </Box>
                             :
-                            <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'97%'}}>
+                            <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'100%'}}>
                                 <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
                                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
                                     <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
@@ -183,13 +185,13 @@ export default function Competition_Search_List(props){
                                             </Typography>
                                         </Box>
                                     </Box>
-                                    <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',pt:0.5}}>
+                                    <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',pt:'8px'}}>
                                         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
                                         {
                                             item.courseTags.map((item,index)=>{
                                                 return(
                                                     <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'15px',backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
-                                                        <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"11px",mx:'6px',width:"auto"}}>
+                                                        <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"10.74px",mx:'6px',width:"auto"}}>
                                                             {item.name}
                                                         </Typography>
                                                     </Box>

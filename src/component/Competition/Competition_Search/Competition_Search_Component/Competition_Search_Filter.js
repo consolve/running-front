@@ -34,8 +34,9 @@ export default function Competition_Schedule_Filter(props){
 
     const buttonTyphography ={
         fontFamily:'Pretendard Variable',
-        fontWeight:'300',
-        fontSize:'13px'
+        fontWeight:'500',
+        fontSize:'13px',
+        color:"#606060"
     }
 
     const openDrawer = () => {

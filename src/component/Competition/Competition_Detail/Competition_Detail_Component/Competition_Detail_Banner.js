@@ -17,7 +17,7 @@ export default function Competition_Detail_Banner(props){
             {
                 props.competition?
                     <Box sx={{backgroundImage:`url(${API_URL}${props.competition.mainBanner.mainBanner})`,width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain'}}>
-                        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%',height:'100%',backgroundColor:'rgba(0, 0, 0, 0.6)',flexDirection:'column'}}>
+                        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%',height:'100%',flexDirection:'column'}}>
                             
                             
                         </Box>

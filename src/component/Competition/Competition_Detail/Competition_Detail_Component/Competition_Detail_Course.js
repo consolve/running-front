@@ -39,7 +39,7 @@ export default function Competition_Detail_Course(props) {
                     props.competition.courseTags.map((item,index)=>{
                         return(
                             <Box key = {index} onClick ={()=>handleToggle(index)} backgroundColor={current===index?'#4F1D76':''}  sx={{border:1,borderRadius:'8px',p:'4px 8px 4px 8px',display:'flex',justifyContent:'center',alignItems:'center',mr:'6px',borderColor:'#E8E8E8'}}>
-                                <Typography color = {current===index?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',lineHeight:"14.32px"}}>
+                                <Typography color = {current===index?'white':"#606060"} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',lineHeight:"14.32px"}}>
                                     {item.name}
                                 </Typography>
                             </Box>   

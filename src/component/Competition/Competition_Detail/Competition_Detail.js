@@ -92,14 +92,14 @@ function Competition_Detail(){
             <Box sx={{width:'100%'}}>
                 {
                     loading?
-                    <Box sx={{position:'fixed',width:'100%',width:"100%",backgroundColor:'#4F1D76'}}>
+                    <Box sx={{position:'fixed',width:'100%',width:"100%",backgroundColor:'#4F1D76',maxWidth:"450px",minWidth:"360px"}}>
                         <Skeleton variant="rectangular" width={'100%'} height={"300px"} sx={{position:'relative',zIndex:-1}}/>
                     </Box>
                     :
                     <Box sx={{width:"100%"}}>
                     {
                         contest&&comment?
-                        <Box sx={{width:"100%",height:"300px",position:"fixed"}}>
+                        <Box sx={{width:"100%",height:"300px",position:"fixed",maxWidth:"450px",minWidth:"360px"}}>
                             <TopBar competition={contest}/>
                             <Banner competition={contest}/>
                         </Box>

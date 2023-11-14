@@ -13,7 +13,7 @@ export default function Competition_Detail_Detail(props) {
     const [firstDetail,setFirstDetail] = useState([]);
     const [secondDetail,setSecondDetail] = useState([]);
     const category = ["대회일시","접수기간","대회장소","대회종목"];
-    const secondCategory = ["홈페이지","주최","주관"];
+    const secondCategory = ["홈페이지","주최/주관","후원"];
 
     const convertToCustomDate = (date) => {
         const customDate = new Date(date); // 월은 0부터 시작하므로 2는 3월을 의미합니다.
@@ -57,7 +57,7 @@ export default function Competition_Detail_Detail(props) {
     },[])
 
     return (
-        <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',mt:2}}>
+        <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',mt:'15px'}}>
             <Box sx={{width:'90%'}}>
                 <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
                     대회상세

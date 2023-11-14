@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import { Typography } from '@mui/material';
+import { Typography,Grid } from '@mui/material';
 import { useEffect,useState } from 'react';
 import Divider from '@mui/material/Divider';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -15,6 +15,29 @@ import {
     CompetitionFilter_Month,
     CompetitionFilter_Keywords,
 } from '../../../../state/Competition/CompetitionSearch_State';
+import {createTheme} from '@mui/material/styles';
+
+
+const theme = createTheme({
+    breakpoints: {
+      values: {
+        mobile: 0,
+        largeMobile: 425,
+        tablet: 640,
+        laptop: 1024,
+        desktop: 1200,
+      },
+    },
+  });
+
+const tagtypo = {
+    fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',lineHeight:"16.71px"
+}
+
+const tagbox = {
+    border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',borderColor:'#D9D9D9',py:'7px',px:'12px'
+}
+
 
 export default function TemporaryDrawer(props) {
 
@@ -88,14 +111,14 @@ export default function TemporaryDrawer(props) {
 
     const list = (anchor) => (
         <Box
-        sx={{display:'flex',justifyContent:'center'}}
+        sx={{display:'flex',justifyContent:'center',position:'relative'}}
         role="presentation"
         onKeyDown={toggleDrawer(false)}
         >
             <Box sx={DrawerTheme}>
-                <Box sx={{height:'450px'}}>
+                <Box sx={{mb:'100px'}}>
                     <Box sx={{height:'50px',width:'100%',display:'flex',justifyContent:'center',alignItems:'center',position:'relative'}}>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px'}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
                             필터
                         </Typography>
                         <ClearIcon onClick={toggleDrawer(false)} sx={{position:'absolute', right:30}}/>
@@ -103,76 +126,70 @@ export default function TemporaryDrawer(props) {
                     <Divider/>
 
                     {/*날짜*/}
-                    <Box sx={{width:"92%",height:'100px',mx:'auto'}}>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px',mt:2}}>
+                    <Box sx={{width:"90%",mx:'auto'}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',mt:2}}>
                             날짜
                         </Typography>
-                        <Box sx={{mt:1}}>
-                            <Box sx={{display:'flex',width:"100%"}}>
-                                {['1월','2월','3월','4월','5월','6월','7월','8월'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleMonth(index+1)} backgroundColor={month.includes(index+1)?'#4F1D76':''}  sx={{width:"35px",height:'23px',border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {month.includes(index+1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
+
+                        <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:'0px'}}>
+                            {['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월','접수가능'].map((text,index)=>(
+                                <Grid item mobile={2} largeMobile={2} key = {index}>
+                                    <Box onClick ={()=>handleToggleMonth(index+1)} backgroundColor={month.includes(index+1)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                        <Typography color = {month.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
                                     </Box>   
+                                </Grid>
                                 ))
-                                }
-                            </Box>
-                            <Box sx={{display:'flex',width:"100%",mt:1}}>
-                                {['9월','10월','11월','12월'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleMonth(index+9)} backgroundColor={month.includes(index+9)?'#4F1D76':''} sx={{width:"35px",height:'23px',border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {month.includes(index+9)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
-                                            {text}
-                                        </Typography>
-                                    </Box>   
-                                ))
-                                }
-                            </Box>
-                        </Box>
+                            }
+                        </Grid>
                     </Box>
                     <Divider/>
 
                     {/*코스*/}
-                    <Box sx={{width:"92%",height:'80px',mx:'auto'}}>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px',mt:2}}>
+                    <Box sx={{width:"90%",mx:'auto'}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',mt:2}}>
                             코스
                         </Typography>
-                        <Box sx={{mt:1.5}}>
-                            <Box sx={{display:'flex',width:"100%"}}>
-                                {['FULL','HALF','10K','5K','ULTRA','챌린지'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleCourse(index)} backgroundColor={course.includes(index)?'#4F1D76':''} sx={{height:'23px',border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {course.includes(index)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
+
+                        <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:10,largeMobile:12}} sx={{mb:'11px',mt:"0px"}}>
+                            {['FULL','HALF','10K','5K','ULTRA','챌린지'].map((text,index)=>(
+                                <Grid item mobile={2} largeMobile={2} key = {index}>
+                                    <Box onClick ={()=>handleToggleCourse(index)} backgroundColor={course.includes(index)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                        <Typography color = {course.includes(index)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
                                     </Box>   
+                                </Grid>
                                 ))
-                                }
-                            </Box>
-                        </Box>
+                            }
+                        </Grid>
+
                     </Box>
                     <Divider/>
 
                     {/*지역*/}
-                    <Box sx={{width:"92%",height:'80px',mx:'auto'}}>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px',mt:2}}>
+                    <Box sx={{width:"90%",mx:'auto'}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',mt:2}}>
                             지역
                         </Typography>
-                        <Box sx={{mt:1.5}}>
-                            <Box sx={{display:'flex',width:"100%"}}>
-                                {['수도권','충청권','강원권','전라권','경상권','제주권'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleLocation(index)} backgroundColor={location.includes(index)?'#4F1D76':''} sx={{width:"50px",height:'23px',border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {location.includes(index)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
+
+                        <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:"0px"}}>
+                            {['수도권','충청권','강원권','전라권','경상권','제주권'].map((text,index)=>(
+                                <Grid item mobile={2} largeMobile={2} key = {index}>
+                                    <Box onClick ={()=>handleToggleLocation(index)} backgroundColor={location.includes(index)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                        <Typography color = {location.includes(index)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
                                     </Box>   
+                                </Grid>
                                 ))
-                                }
-                            </Box>
-                        </Box>
+                            }
+                        </Grid>
                     </Box>
 
                     {/*하단 버튼*/}
-                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'92%',mx:'auto',mt:1}}>
+                    <Box sx={{display:'flex',position:"absolute",bottom:'33px',justifyContent:'center',alignItems:'center',left:"50%",transform:'translateX(-50%)',width:'90%',mx:'auto',mt:1,minWidth:'324px',maxWidth:"405px"}}>
                         <Button onClick ={()=>{
                             navigateToSearch();
                             }} variant="contained" color='primary' sx={{width:'100%',height:'45px',borderRadius:'7px'}}>

@@ -48,7 +48,7 @@ export default function Competition_Schedule_canRegister(props){
     }
 
     const navigateToMoreContest = () =>{
-        navigate(`/schedule/search`)
+        navigate(`/schedule/search?month=13`)
     }
 
     useEffect(() =>{
@@ -116,13 +116,13 @@ export default function Competition_Schedule_canRegister(props){
                                                 </Typography>
                                             </Box>
                                         </Box>
-                                        <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',pt:0.5}}>
+                                        <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',pt:'8px'}}>
                                             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
                                             {
                                                 item.courseTags.map((item,index)=>{
                                                     return(
                                                         <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'15px',backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
-                                                            <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"11px",mx:'6px',width:"auto"}}>
+                                                            <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"10.74px",mx:'6px',width:"auto"}}>
                                                                 {item.name}
                                                             </Typography>
                                                         </Box>
@@ -146,7 +146,7 @@ export default function Competition_Schedule_canRegister(props){
                     </Box>
                 }
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column',mt:1}}>
-                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px',height:'40px',mt:1,width:'calc(100% - 2px)',border:1,color:'#E8E8E8'}}>
+                <Box onClick ={navigateToMoreContest} sx={{display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px',height:'40px',mt:1,width:'calc(100% - 2px)',border:1,color:'#E8E8E8'}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#606060'}}>
                         더보기
                     </Typography>

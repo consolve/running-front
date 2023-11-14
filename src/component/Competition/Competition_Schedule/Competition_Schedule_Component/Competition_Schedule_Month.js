@@ -121,7 +121,7 @@ export default function Competition_Schedule_Month(props){
                                                 </Typography>
                                             </Box>
                                         </Box>
-                                        <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',pt:0.5}}>
+                                        <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',pt:'8px'}}>
                                             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
                                             {
                                                 item.courseTags.map((item,index)=>{
