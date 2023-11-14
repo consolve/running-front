@@ -89,10 +89,12 @@ function Competition_Detail(){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             
-            <Box sx={{width:'100%',mb:10}}>
+            <Box sx={{width:'100%'}}>
                 {
                     loading?
-                    <Skeleton variant="rectangular" width={'100%'} height={"300px"} sx={{position:'relative',zIndex:-1}}/>
+                    <Box sx={{width:"100%",backgroundColor:'#4F1D76'}}>
+                        <Skeleton variant="rectangular" width={'100%'} height={"300px"} sx={{position:'relative',zIndex:-1}}/>
+                    </Box>
                     :
                     <Box sx={{width:"100%"}}>
                     {
@@ -107,30 +109,33 @@ function Competition_Detail(){
                     }
                     </Box>
                 }
-                <Box sx={{position:'relative',mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
+                <Box sx={{position:'relative',display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px',mb:loading?0:10}}>
                     {
                         loading? 
                         <Box sx={{width:"100%",height:"600px",mb:1}}>
-                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{mt:1,borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}/>
+                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}/>
                         </Box>
                         :
-                        <Box sx={{width:"100%",display:"flex",justifyContent:"center"}}>
+                        <Box sx={{width:"90%",display:"flex",justifyContent:"center"}}>
                             {
                                 contest&&comment?
                                 <Box sx={{width:"100%"}}>
                                     <Title competition = {contest}/>
-                                    <Divider/>
+                                    <Divider sx={{color:"#F6F6F6",border:2}}/>
 
                                     <Detail competition = {contest}/>
-                                    <Divider/> 
+                                    <Divider sx={{color:"#F6F6F6",border:2}}/> 
                                 
                                     <Course competition = {contest}/>
-                                    <Divider/>
+                                    <Divider sx={{color:"#F6F6F6",border:2}}/>
 
                                     <Image competition = {contest}/>
-                                    <Divider/>
+                                    <Divider sx={{color:"#F6F6F6",border:2,mt:'24px',mb:'19px'}}/>
                                     
                                     <Comment setError = {setError} setOpen={setOpen}/>
+                                    
+                                    
+                                    <Navbar/>
                                 </Box>
                                 :
                                 <Box sx={{width:'100%',height:"500px",display:'flex',justifyContent:"center",alignItems:"center"}}>
@@ -157,8 +162,6 @@ function Competition_Detail(){
                     </Box>
                 </Modal>
             </Box>
-
-            <Navbar/>
         </Box>    
     )
 }

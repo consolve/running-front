@@ -50,7 +50,7 @@ export default function CommentAdder(props) {
     }
 
     return (
-        <Box sx={{position:'absolute',display:'flex',justifyContent:'center',alignItems:"center",width:'100%',bottom:0,py:1,minWidth:'360px',maxWidth:'420px',left:'50%',transform: 'translate(-50%)'}}>
+        <Box sx={{position:'absolute',display:'flex',justifyContent:'center',backgroundColor:'#ffffff',borderTop:2,borderColor:'#F6F6F6',alignItems:"center",width:'100%',bottom:0,py:1,minWidth:'360px',maxWidth:'450px',left:'50%',transform: 'translate(-50%)'}}>
             <Box>
                 <Avatar src={`${API_URL}${userProifile}`} sx={{width:'20px',height:'20px',mx:1.5}}/>
             </Box>
@@ -68,9 +68,9 @@ export default function CommentAdder(props) {
                 />
                 {
                     loading?
-                    <CircularProgress color="primary" size={'25px'} sx={{p:'5px'}} />
+                    <CircularProgress color="primary" size={'15px'} sx={{p:'5px'}} />
                     :
-                    <IconButton onClick={AddComment} type="button" sx={{ p: '5px' }} aria-label="search">
+                    <IconButton onClick={AddComment} type="button" sx={{ p: '1px' }} aria-label="search">
                         <SendIcon color="primary"/>
                     </IconButton>
                 }

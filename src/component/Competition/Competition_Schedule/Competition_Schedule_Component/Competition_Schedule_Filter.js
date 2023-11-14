@@ -28,7 +28,7 @@ export default function Competition_Schedule_Filter(){
         width:'60px',
         height:'25px',
         border:1,
-        borderRadius:3,
+        borderRadius:'8px',
         borderColor:'#D9D9D9',
         mr:1
     }
@@ -48,7 +48,7 @@ export default function Competition_Schedule_Filter(){
     },[])
 
     return(
-        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'63px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'90%',minWidth:'360px',maxWidth:'420px'}}>
+        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'63px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'90%',minWidth:'324px',maxWidth:'405px'}}>
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
                 <Box backgroundColor={month.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {month.length == 0?'black':'white'} sx={buttonTyphography}>

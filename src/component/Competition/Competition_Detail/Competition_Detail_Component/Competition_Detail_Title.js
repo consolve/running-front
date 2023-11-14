@@ -17,7 +17,7 @@ export default function Competition_Detail_Detail(props){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',height:'80px',backgroundColor:'#ffffff',borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
             
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'90%',pt:2,pb:1}}>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',pt:2,pb:1}}>
                 <Typography color = {isOpen?"#4F1D76":'gray'} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
                     {isOpen?"모집중":"모집완료"}
                 </Typography>

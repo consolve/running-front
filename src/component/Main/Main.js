@@ -74,13 +74,13 @@ function Main(){
                 <Banner/>
             </Box>
             <Box sx={{width:'98%',mb:8,display:'flex',flexDirection:'column',alignItems:"center",jusstifyContent:"center"}}>
-                <Divider sx={{width:'90%'}}/>
+                <Divider sx={{width:'97%'}}/>
                 <Competition setLoading1={setLoading1} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'90%'}}/>
+                <Divider sx={{width:'97%'}}/>
                 <Shoes setLoading2={setLoading2} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'90%'}}/>
+                <Divider sx={{width:'97%'}}/>
                 <Community setLoading4={setLoading4} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'90%'}}/>
+                <Divider sx={{width:'97%'}}/>
                 <Crew setLoading3={setLoading3} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
 
             </Box>

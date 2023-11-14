@@ -74,9 +74,9 @@ function Competition_Schedule(){
             <Filter/>
             <Box sx={{width:'90%',mt:'60px'}}>
                 <Month setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'100%',my:3}}/>
+                <Divider sx={{width:'100%',mt:3,mb:'20px',border:2,color:"#F6F6F6"}}/>
                 <Register setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'100%',my:3}}/>
+                <Divider sx={{width:'100%',mt:3,mb:'20px',border:2,color:"#F6F6F6"}}/>
                 <Calendar setError={setError} setOpen={setOpen}/>
             </Box>
             

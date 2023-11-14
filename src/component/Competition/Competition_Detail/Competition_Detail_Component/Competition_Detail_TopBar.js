@@ -15,10 +15,12 @@ const TopbarTheme = {
     justifyContent:'space-between',
     alignItems:'center',
     backgroundColor:'transparent',
+    transform: 'translate(-50%, 0)',
+    left: '50%',
     height:'60px',
-    width:'100%',
-    minWidth:'360px',
-    maxWidth:'420px',
+    width:'90%',
+    minWidth:'324px',
+    maxWidth:'405px',
     zIndex:1000
 }
 
@@ -58,18 +60,18 @@ export default function Competition_TopBar(props){
         <Box sx={TopbarTheme}>
             <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <IconButton type="button" sx={{color:'white' }} aria-label="search">
-                    <WestIcon sx={{ml:2}}/>
+                    <WestIcon sx={{}}/>
                 </IconButton>
             </Box>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 {
                     bookmark?
                     <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white'}}>
-                        <BookmarkIcon sx={{mr:2}}/>
+                        <BookmarkIcon sx={{}}/>
                     </IconButton>
                     :
                     <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white'}}>
-                        <BookmarkBorderIcon sx={{mr:2}}/>
+                        <BookmarkBorderIcon sx={{}}/>
                     </IconButton>
                 }
             </Box>

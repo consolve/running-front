@@ -57,7 +57,7 @@ export default function TemporaryDrawer(props) {
         width:'100%',
         height:'100%',
         minWidth:'360px',
-        maxWidth:'420px',
+        maxWidth:'450px',
         borderTopLeftRadius:20,
         borderTopRightRadius:20, 
         backgroundColor:'#ffffff',
@@ -190,7 +190,7 @@ export default function TemporaryDrawer(props) {
         >
             <Box sx={DrawerTheme}>
                 <Box sx={{}}>
-                    <Box sx={{height:'100px',display:'flex',justifyContent:'center',alignItems:'start',position:'relative',flexDirection:'column',px:2}}>
+                    <Box sx={{height:'100px',display:'flex',justifyContent:'center',alignItems:'start',position:'relative',flexDirection:'column',px:'20px'}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px'}}>
                             댓글
                         </Typography>
@@ -217,7 +217,7 @@ export default function TemporaryDrawer(props) {
                         </Box>
                         :
                         <Box sx={{width:"100%",height:'360px',mx:'auto',display:'flex',flexDirection:"column"}}>
-                            <Box sx={{height:"100%",overflow:'hidden'}}>
+                            <Box sx={{height:"100%",overflow:'scroll'}}>
                             {
                                 comment.map((item,index) => {
                                     return(

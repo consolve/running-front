@@ -34,7 +34,7 @@ export default function Competition_Detail_Comment(props) {
 
     return (
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',mt:2}}>
-            <Box sx={{width:'90%',display:'flex',alignItems:'end'}}>
+            <Box sx={{width:'100%',display:'flex',alignItems:'end'}}>
                 <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
                     댓글
                 </Typography>
@@ -43,7 +43,7 @@ export default function Competition_Detail_Comment(props) {
                 </Typography>
             </Box>
 
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'90%',mt:0.5}}>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',mt:0.5}}>
                 <Box onClick ={openDrawer} sx={{width:'100%',height:'50px',borderRadius:'5px',my:0.5,backgroundColor:'#F9F9F9'}}>
                     <Box sx={{width:'95%',margin:'auto',alignItems:"center",display:'flex',justifyContent:"start",height:'100%'}}>
                         <Avatar src={comment.length ===0 ?`${API_URL}${myProfile}`:`${API_URL}${comment[0].user_profile}`} sx={{width:'20px',height:'20px',mr:1}}/>

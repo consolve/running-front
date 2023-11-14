@@ -85,7 +85,7 @@ export default function Competition(props){
                         competition?
                         <Box sx={{width:'100%',pt:1}}>
                             <Swiper
-                                spaceBetween={-5}
+                                spaceBetween={-15}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}
                                 freeMode={{enabled: true}}	// 추가
@@ -94,14 +94,14 @@ export default function Competition(props){
                                     competition.map((item,index)=>{
                                         return(
                                             <SwiperSlide key ={index} className='competition'>
-                                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'100px',mt:1,width:'100%'}}>
-                                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:3,mx:2,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
-                                                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 122px)`,flexDirection:'column'  }}>
+                                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'100px',mt:1,width:'97%'}}>
+                                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:3,mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
+                                                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
                                                         <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
                                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'21.46px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                                                 {item.name}
                                                             </Typography>
-                                                            <NotificationsActiveIcon sx={{pr:2,size:'22px'}}/>
+                                                            <NotificationsActiveIcon fontSize={'small'} sx={{pr:2}}/>
                                                         </Box>
                                                         <Box sx={{width:'100%',mt:'7px'}}>
                                                             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
@@ -132,13 +132,13 @@ export default function Competition(props){
                                                                 </Typography>
                                                             </Box>
                                                         </Box>
-                                                        <Box sx={{width:"100%",my:0.5}}>
+                                                        <Box sx={{width:"100%",mt:'8px'}}>
                                                             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
                                                                 {
                                                                     item.courseTags.map((item,index)=>{
                                                                         return(
                                                                             <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:'3px'}}>
-                                                                                <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"11px",mx:'8px',width:"auto"}}>
+                                                                                <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"11px",mx:'6px',width:"auto"}}>
                                                                                     {item.name}
                                                                                 </Typography>
                                                                             </Box>

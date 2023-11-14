@@ -57,14 +57,14 @@ export default function Competition_Detail_Detail(props) {
     },[])
 
     return (
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',mt:2}}>
+        <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',mt:2}}>
             <Box sx={{width:'90%'}}>
                 <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
                     대회상세
                 </Typography>
             </Box>
 
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'90%',mt:1}}>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',mt:1}}>
                 {
                     firstDetail.map((item,index)=>{
                         if(index!==1){
@@ -99,7 +99,7 @@ export default function Competition_Detail_Detail(props) {
                 }
             </Box>
 
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'90%',my:2}}>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',my:2}}>
                 {
                     secondDetail.map((item,index)=>{
                         return(

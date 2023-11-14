@@ -68,7 +68,7 @@ function Competition_Search(){
         const query = querylocation.search
         const decodeUri = decodeURI(query);
         
-        const searchParams = new URLSearchParams(decodeUri);
+        const searchParams = new URLSearchParams(decodeUri+"?page=1");
         console.log(decodeUri)
         console.log(searchParams)
         
@@ -132,7 +132,7 @@ function Competition_Search(){
         <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar />   
             <Filter/>
-            <Box sx={{position:'relative',width:'90%',mt:'60px'}}>
+            <Box sx={{position:'relative',width:'90%',my:'60px'}}>
                 {
                     loading?
                     <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column',mt:'50px'}}>

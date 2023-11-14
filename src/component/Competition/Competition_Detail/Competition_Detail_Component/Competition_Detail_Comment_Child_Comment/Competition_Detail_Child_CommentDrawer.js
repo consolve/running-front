@@ -1,19 +1,14 @@
 import * as React from 'react';
-import { useCallback } from 'react';
+import { useCallback,useRef } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import { Typography,CircularProgress,IconButton,Modal,Button} from '@mui/material';
 import { useEffect,useState } from 'react';
 import Divider from '@mui/material/Divider';
-import ClearIcon from '@mui/icons-material/Clear';
 import {Avatar} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import WestIcon from '@mui/icons-material/West';
 import { useParams } from "react-router-dom";
-import {
-    CompetitionSchedule_Comment,
-    CompetitionSchedule_Comment_Order
-} from "../../../../../state/Competition/CompetitionSchedule_State"
 import {API_URL} from "../../../../../API/URL/index"
 import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -59,12 +54,10 @@ export default function TemporaryDrawer(props) {
         width:'100%',
         height:'100%',
         minWidth:'360px',
-        maxWidth:'420px',
+        maxWidth:'450px',
         borderTopLeftRadius:20,
         borderTopRightRadius:20, 
         backgroundColor:'#ffffff',
-        pb:'60px',
-
     }
 
     const style = {
@@ -119,13 +112,19 @@ export default function TemporaryDrawer(props) {
     
     const [clickedId,setClickedId] = useState(0);
 
+    const useGettingHeight = () => {
+        const [height, setHeight] = useState(null);
 
-    useEffect(()=>{
-        return(()=>{
-            document.body.style.removeProperty('overflow');
-        })
-        
-    },[])
+        const ref = useCallback((node) => {
+          if (node !== null) {
+            setHeight(node.getBoundingClientRect().height);
+          }
+        }, []);
+      
+        return [height, ref];
+    };
+
+    const [totalHeight,ref] = useGettingHeight();
 
     const FetchContestCommentRepliesFunction = async () => {
         const _Comment = await FetchContestCommentReplies(props.id,session);
@@ -168,17 +167,16 @@ export default function TemporaryDrawer(props) {
         <Box
         sx={{display:'flex',justifyContent:'center',height:"100%"}}
         role="presentation"
-        onKeyDown={toggleDrawer(false)}
         >
             <Box sx={DrawerTheme}>
-                <Box sx={{}}>
+                <Box sx={{display:"flex",flexDirection:"column",width:'100%'}}>
                     <Box sx={{display:"flex",height:'60px'}}>
                         <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                            <IconButton onClick = {toggleDrawer(false)} type="button" sx={{color:'black',ml:2 }} aria-label="search">
+                            <IconButton onClick = {toggleDrawer(false)} type="button" sx={{color:'black',ml:'14px' }} aria-label="search">
                                 <WestIcon sx={{}}/>
                             </IconButton>
                         </Box>
-                        <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',position:'relative',flexDirection:'column',px:2}}>
+                        <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',position:'relative',flexDirection:'column',px:'6px'}}>
                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px'}}>
                                 {"답글"}
                             </Typography>
@@ -189,27 +187,27 @@ export default function TemporaryDrawer(props) {
                     {/*날짜*/}
                     {
                         loading?
-                        <Box sx={{width:"100%",height:'400px',mx:'auto',display:'flex',flexDirection:"column",justifyContent:"center",alignItems:'center'}}>
+                        <Box sx={{width:"100%",height:'460px',mx:'auto',display:'flex',flexDirection:"column",justifyContent:"center",alignItems:'center'}}>
                             <CircularProgress color="primary" />
                         </Box>
                         :
-                        <Box sx={{width:"100%",height:'400px',mx:'auto',display:'flex',flexDirection:"column"}}>
+                        <Box sx={{width:"100%",height:'460px',mx:'auto',display:'flex',flexDirection:"column"}}>
                             {/*댓글*/}
-                            <Box sx={{display:'flex',alignItems:'start',px:2,py:1.5,backgroundColor:"#D9D9D9"}}>
+                            <Box ref = {ref} sx={{display:'flex',alignItems:'start',px:2,py:1.5,backgroundColor:"#D9D9D9"}}>
                                 <Box sx={{height:'100%',mt:0.5}}>
                                     <Avatar src={`${API_URL}${mainComment.user_profile}`} sx={{width:'20px',height:'20px',mr:1}}/>
                                 </Box>
                                 <Box sx={{flex:1}}>
                                     <Box sx={{display:'flex'}}>
-                                        <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px'}}>
+                                        <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',lineHeight:"14px"}}>
                                             {mainComment.user}{" -"}
                                         </Typography>
-                                        <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:0.5}}>
+                                        <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:0.5,lineHeight:"14px"}}>
                                             {timeForToday(mainComment.created)}
                                         </Typography>
                                     </Box>
-                                    <Box sx={{width:"100%",mb:0.6}}>
-                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000'}}>
+                                    <Box sx={{width:"100%",my:'8px'}}>
+                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',lineHeight:"16px"}}>
                                             {mainComment.comment}
                                         </Typography>
                                     </Box>
@@ -229,46 +227,55 @@ export default function TemporaryDrawer(props) {
                                     </Box>
                                     
                                 </Box>
-                            </Box> 
-
-                            {/*대댓글*/}
-                            <Box sx={{height:"100%",overflow:'hidden'}}>
-                            {
-                                comment.map((item,index) => {
-                                    return(
-                                        <Box  key = {index} sx={{display:'flex',alignItems:'start',mx:2,my:1.5}}>
-                                            <Box sx={{height:'100%',mt:0.5}}>
-                                                <Avatar src={`${API_URL}${item.user_profile}`} sx={{width:'20px',height:'20px',mr:1,mb:4.5}}/>
-                                            </Box>
-                                            <Box sx={{flex:1}}>
-                                                <Box sx={{display:'flex'}}>
-                                                    <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px'}}>
-                                                        {item.user}{" -"}
-                                                    </Typography>
-                                                    <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:0.5}}>
-                                                        {timeForToday(item.created)}
-                                                    </Typography>
-                                                </Box>
-                                                <Box sx={{width:"100%",mb:0.6}}>
-                                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',whiteSpace:'normal',wordBreak:'break-all'}}>
-                                                        {item.comment}
-                                                    </Typography>
-                                                </Box>
-                                                <Box sx={{display:"flex",mt:1}}>
-                                                    <Box onClick={()=>handleOpen(item.id)} sx={{display:'flex',alignItems:'center',height:'14px'}}> 
-                                                        <ThumbUpOffAltOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
-                                                            {item.likePoint}
-                                                        </Typography>
-                                                    </Box>
-                                                </Box>
-                                                
-                                            </Box>
-                                        </Box> 
-                                    )
-                                })
-                            }
                             </Box>
+
+                            <Box sx={{display:'flex',flexDirection:'column'}}>
+                                
+                                <CommentAdder setError = {props.setError} setErrorOpen={props.setErrorOpen} id={props.id} setComment={setComment}/> 
+
+                                <Box sx={{width:"100%",display:'flex'}}>
+                                    {/*대댓글*/}
+                                    <Box sx={{width:"100%",height:`calc(409px - ${totalHeight}px )`,overflow:'scroll'}}>
+                                    {
+                                        comment.map((item,index) => {
+                                            return(
+                                                <Box key = {index} sx={{display:'flex',alignItems:'start',ml:'40px',my:1.5}}>
+                                                    <Box sx={{height:'100%',mt:0.5}}>
+                                                        <Avatar src={`${API_URL}${item.user_profile}`} sx={{width:'20px',height:'20px',mr:'12px',mb:4.5}}/>
+                                                    </Box>
+                                                    <Box sx={{flex:1}}>
+                                                        <Box sx={{display:'flex'}}>
+                                                            <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px'}}>
+                                                                {item.user}{" -"}
+                                                            </Typography>
+                                                            <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:0.5}}>
+                                                                {timeForToday(item.created)}
+                                                            </Typography>
+                                                        </Box>
+                                                        <Box sx={{width:"100%",mb:0.6}}>
+                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',whiteSpace:'normal',wordBreak:'break-all'}}>
+                                                                {item.comment}
+                                                            </Typography>
+                                                        </Box>
+                                                        <Box sx={{display:"flex",mt:1}}>
+                                                            <Box onClick={()=>handleOpen(item.id)} sx={{display:'flex',alignItems:'center',height:'14px'}}> 
+                                                                <ThumbUpOffAltOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
+                                                                    {item.likePoint}
+                                                                </Typography>
+                                                            </Box>
+                                                        </Box>
+                                                        
+                                                    </Box>
+                                                </Box> 
+                                            )
+                                        })
+                                    }
+                                    </Box>
+                                </Box>
+                            </Box>
+
+                            
                         </Box>
                     }
 
@@ -297,7 +304,6 @@ export default function TemporaryDrawer(props) {
                 onClose={toggleDrawer(false)}
             >   
                 {list()}
-                <CommentAdder setError = {props.setError} setErrorOpen={props.setErrorOpen} id={props.id} setComment={setComment}/>
             </Drawer>
 
             <Box>

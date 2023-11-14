@@ -6,11 +6,11 @@ const TopbarTheme = {
     alignItems:'center',
     backgroundColor:'#ffffff',
     height:'60px',
-    width:'95%',
+    width:'90%',
     borderBottom:'3px solid',
     borderBottomColor:'#F6F6F6',
-    minWidth:'360px',
-    maxWidth:'420px',
+    minWidth:'324px',
+    maxWidth:'405px',
     zIndex:1000
 }
 export default TopbarTheme;
