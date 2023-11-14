@@ -86,7 +86,7 @@ export default function Competition_TopBar(props){
 
             <Box
                 component="form"
-                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:'80%',mr:2,backgroundColor:'#f4f4f4',borderRadius:3 }}
+                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:'90%',backgroundColor:'#f4f4f4',borderRadius:'10px' }}
                 >
                 <InputBase
                     onKeyDown={handleOnKeyPress}
