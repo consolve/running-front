@@ -184,7 +184,7 @@ export default function TemporaryDrawer(props) {
 
                     {/*하단 버튼*/}
                     <Box sx={{display:'flex',position:"absolute",bottom:'33px',justifyContent:'center',alignItems:'center',left:"50%",transform:'translateX(-50%)',width:'90%',mx:'auto',mt:1,minWidth:'324px',maxWidth:"405px"}}>
-                        <Button onClick ={()=>{
+                        <Button disabled={!month.length&&!course.length&&!location.length} onClick ={()=>{
                             navigateToSearch();
                             }} variant="contained" color='primary' sx={{width:'100%',height:'45px',borderRadius:'7px'}}>
                             <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'15px',fontWeight:700}}>
