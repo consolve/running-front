@@ -155,7 +155,7 @@ function AddCompetition(){
         
         <Topbar/>
         
-        <Box sx={{width:'93%',mt:2}}>
+        <Box sx={{width:'90%',mt:2}}>
             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px'}}>
                 러닝대회를 공유해주세요 !
             </Typography>
@@ -320,7 +320,7 @@ function AddCompetition(){
 }
 
 const Form = styled.form`
-  width:93%;
+  width:90%;
   display:'flex';
   justify-content:'space-between';
   align-items:'start';

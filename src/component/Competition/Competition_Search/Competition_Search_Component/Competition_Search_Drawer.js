@@ -110,7 +110,7 @@ export default function TemporaryDrawer(props) {
                         <Box sx={{mt:1}}>
                             <Box sx={{display:'flex',width:"100%"}}>
                                 {['1월','2월','3월','4월','5월','6월','7월','8월'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleMonth(index+1)} backgroundColor={month.includes(index+1)?'#4F1D76':''}  sx={{width:"35px",height:'23px',border:1,borderRadius:5,display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                                    <Box key = {index} onClick ={()=>handleToggleMonth(index+1)} backgroundColor={month.includes(index+1)?'#4F1D76':''}  sx={{width:"35px",height:'23px',border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                         <Typography color = {month.includes(index+1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
                                             {text}
                                         </Typography>
@@ -120,7 +120,7 @@ export default function TemporaryDrawer(props) {
                             </Box>
                             <Box sx={{display:'flex',width:"100%",mt:1}}>
                                 {['9월','10월','11월','12월'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleMonth(index+9)} backgroundColor={month.includes(index+9)?'#4F1D76':''} sx={{width:"35px",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                                    <Box key = {index} onClick ={()=>handleToggleMonth(index+9)} backgroundColor={month.includes(index+9)?'#4F1D76':''} sx={{width:"35px",height:'23px',border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                         <Typography color = {month.includes(index+9)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
                                             {text}
                                         </Typography>
@@ -140,7 +140,7 @@ export default function TemporaryDrawer(props) {
                         <Box sx={{mt:1.5}}>
                             <Box sx={{display:'flex',width:"100%"}}>
                                 {['FULL','HALF','10K','5K','ULTRA','챌린지'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleCourse(index)} backgroundColor={course.includes(index)?'#4F1D76':''} sx={{height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                                    <Box key = {index} onClick ={()=>handleToggleCourse(index)} backgroundColor={course.includes(index)?'#4F1D76':''} sx={{height:'23px',border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                         <Typography color = {course.includes(index)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
                                             {text}
                                         </Typography>
@@ -160,7 +160,7 @@ export default function TemporaryDrawer(props) {
                         <Box sx={{mt:1.5}}>
                             <Box sx={{display:'flex',width:"100%"}}>
                                 {['수도권','충청권','강원권','전라권','경상권','제주권'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleLocation(index)} backgroundColor={location.includes(index)?'#4F1D76':''} sx={{width:"50px",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                                    <Box key = {index} onClick ={()=>handleToggleLocation(index)} backgroundColor={location.includes(index)?'#4F1D76':''} sx={{width:"50px",height:'23px',border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                         <Typography color = {location.includes(index)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
                                             {text}
                                         </Typography>

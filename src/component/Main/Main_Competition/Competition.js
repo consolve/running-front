@@ -94,8 +94,8 @@ export default function Competition(props){
                                     competition.map((item,index)=>{
                                         return(
                                             <SwiperSlide key ={index} className='competition'>
-                                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'100px',mt:1,width:'97%'}}>
-                                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:3,mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
+                                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'97%'}}>
+                                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
                                                     <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
                                                         <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
                                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'21.46px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
@@ -137,7 +137,7 @@ export default function Competition(props){
                                                                 {
                                                                     item.courseTags.map((item,index)=>{
                                                                         return(
-                                                                            <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:'3px'}}>
+                                                                            <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'15px',backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
                                                                                 <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"11px",mx:'6px',width:"auto"}}>
                                                                                     {item.name}
                                                                                 </Typography>

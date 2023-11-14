@@ -92,28 +92,28 @@ function Competition_Detail(){
             <Box sx={{width:'100%'}}>
                 {
                     loading?
-                    <Box sx={{width:"100%",backgroundColor:'#4F1D76'}}>
+                    <Box sx={{position:'fixed',width:'100%',width:"100%",backgroundColor:'#4F1D76'}}>
                         <Skeleton variant="rectangular" width={'100%'} height={"300px"} sx={{position:'relative',zIndex:-1}}/>
                     </Box>
                     :
                     <Box sx={{width:"100%"}}>
                     {
                         contest&&comment?
-                        <Box sx={{width:"100%"}}>
+                        <Box sx={{width:"100%",height:"300px",position:"fixed"}}>
                             <TopBar competition={contest}/>
                             <Banner competition={contest}/>
                         </Box>
                         :
-                        <Box sx={{width:'100%',height:'300px',backgroundColor:'#4F1D76'}}>
+                        <Box sx={{position:'fixed',width:'100%',height:'300px',backgroundColor:'#4F1D76'}}>
                         </Box>
                     }
                     </Box>
                 }
-                <Box sx={{position:'relative',display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px',mb:loading?0:10}}>
+                <Box sx={{position:'relative',display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px',mb:10,mt:"270px"}}>
                     {
                         loading? 
                         <Box sx={{width:"100%",height:"600px",mb:1}}>
-                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}/>
+                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{borderTopLeftRadius:'20px',borderTopRightRadius:'20px',pb:11}}/>
                         </Box>
                         :
                         <Box sx={{width:"90%",display:"flex",justifyContent:"center"}}>
@@ -135,7 +135,7 @@ function Competition_Detail(){
                                     <Comment setError = {setError} setOpen={setOpen}/>
                                     
                                     
-                                    <Navbar/>
+                                    <Navbar competition = {contest}/>
                                 </Box>
                                 :
                                 <Box sx={{width:'100%',height:"500px",display:'flex',justifyContent:"center",alignItems:"center"}}>

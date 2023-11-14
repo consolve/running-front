@@ -22,7 +22,7 @@ export default function Competition_TopBar(){
     },[])
 
     return(
-        <Box sx={{position:"relative",display:'flex',alignItems:'center',justifyContent:'center',width:'95%',maxWidth:'420px',minWidth:'360px',height:'60px',borderBottom:1,borderBottomColor:'#E0E0E0'}}>
+        <Box sx={{position:"relative",display:'flex',alignItems:'center',justifyContent:'center',width:'90%',maxWidth:'405px',minWidth:'324px',height:'60px',borderBottom:1,borderBottomColor:'#E0E0E0'}}>
 
             <Box onClick = {navigateToHome} sx={{position:"absolute",left:0,display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <IconButton type="button" sx={{ }} aria-label="search">

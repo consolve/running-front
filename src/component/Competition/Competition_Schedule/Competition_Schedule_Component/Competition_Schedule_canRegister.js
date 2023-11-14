@@ -78,59 +78,59 @@ export default function Competition_Schedule_canRegister(props){
                         {acceptable?
                         <Box sx={{width:"100%"}}>
                             {acceptable.map((item,index) =>(
-                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'100%'}}>
-                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:2,backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain',objectFit:'contain',objectPosition:'center'}}/>
-                                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 122px)`,flexDirection:'column'  }}>
+                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'97%'}}>
+                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
+                                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
                                         <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
-                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'21.46px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                                 {item.name}
                                             </Typography>
-                                            <NotificationsActiveIcon sx={{pr:2}}/>
+                                            <NotificationsActiveIcon fontSize={'small'} sx={{pr:2}}/>
                                         </Box>
-                                        <Box sx={{width:'100%'}}>
+                                        <Box sx={{width:'100%',mt:'7px'}}>
                                             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                                     {item.place}
                                                 </Typography>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
                                                     &nbsp;{'|'}&nbsp;
                                                 </Typography>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',mr:2}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px',mr:2}}>
                                                     {convertToCustomDate(item.competitionTime)}
                                                 </Typography>
                                             </Box>
                                         </Box>
-                                        <Box sx={{width:'100%'}}>
+                                        <Box sx={{width:'100%',mt:'3px'}}>
                                             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
-                                                    접수기간 :
+                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
+                                                    접수기간 |&nbsp;
                                                 </Typography>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
                                                     {convertToCustomDate(item.receptionStartTime)}
                                                 </Typography>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
                                                     ~
                                                 </Typography>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
                                                     {convertToCustomDate(item.receptionEndTime)}
                                                 </Typography>
                                             </Box>
                                         </Box>
                                         <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',pt:0.5}}>
-                                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                                {
-                                                    item.courseTags.map((item,index)=>{
-                                                        return(
-                                                            <Box key={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'40px',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:1}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px',color:'#ffffff'}}>
-                                                                    {item.name}
-                                                                </Typography>
-                                                            </Box>
-                                                        )
-                                                })
-                                                }      
+                                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
+                                            {
+                                                item.courseTags.map((item,index)=>{
+                                                    return(
+                                                        <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'15px',backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
+                                                            <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"11px",mx:'6px',width:"auto"}}>
+                                                                {item.name}
+                                                            </Typography>
+                                                        </Box>
+                                                    )
+                                            })
+                                            }   
                                             </Box>
-                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'12px',color:'#606060',width:'100px'}}>
+                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'8px',color:'#606060',width:'35px',mr:'15px'}}>
                                                 상세정보 {'>'}
                                             </Typography>
                                         </Box>
