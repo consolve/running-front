@@ -10,6 +10,7 @@ import { fetchPopularShoes,runningShoesBookMark } from '../../../API/api/Running
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import {ShoesMain_ShoesBookMark} from "../../../state/Shoes/ShoesMain_State"
+import { shoesList } from '../../../style/plate/ShoesList';
 
 import './style.css';
 
@@ -83,15 +84,15 @@ export default function Shoes(props){
     },[shoes])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',my:'22px'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',my:'22px'}}>
 
             {/*상단제목*/}
-            <Box sx={{width:'100%'}}>
+            <Box sx={{width:'90%'}}>
                 <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px',ml:2}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px'}}>
                         지금 인기있는 러닝화
                     </Typography>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D',mr:2}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D'}}>
                         <Link to ="/shoes" style={{ textDecoration: 'none', color:'#9D9D9D' }}>
                             더보기 {'>'}
                         </Link>
@@ -104,7 +105,7 @@ export default function Shoes(props){
                 props.loadingall?
                 <Box sx={{width:'100%',pt:2,height:'250px'}}>
                     <Swiper
-                        spaceBetween={0}
+                        spaceBetween={8}
                         modules={[FreeMode]}
                         slidesPerView={'auto'}
                         freeMode={{enabled: true}}	// 추가
@@ -121,12 +122,12 @@ export default function Shoes(props){
                     </Swiper>
                 </Box>
                 :
-                <Box sx={{width:'100%'}}>
+                <Box sx={{width:"100%",display:"flex",justifyContent:"end",pt:2}}>
                     {
                         shoes?
-                        <Box sx={{width:'100%',pt:2}}>
+                        <Box sx={{width:'95%'}}>
                             <Swiper
-                                spaceBetween={-10}
+                                spaceBetween={8}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}
                                 freeMode={{enabled: true}}	// 추가
@@ -137,7 +138,7 @@ export default function Shoes(props){
                                             <SwiperSlide key={index} className='shoes'>
                                                 <Box onClick={()=>navigateToShoesDetail(item.id)} sx={{width:'100%',height:'250px'}}>
                                                     <Box sx={{position:'relative',backgroundColor:'#f4f4f4',borderRadius:'8px'}}>
-                                                        <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`} style={{width:'170px',height:'170px',objectFit:'contain',objectPosition:'center'}}/>
+                                                        <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`} style={{width:'170px',height:'170px',objectFit:'contain',objectPosition:'center',px:1}}/>
                                                             {
                                                                 shoesBookmark[item.id]?
                                                                 <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
@@ -149,14 +150,14 @@ export default function Shoes(props){
                                                                 </IconButton>
                                                             }
                                                     </Box>
-                                                    <Box sx={{display:'flex',flexDirection:'column',ml:0.5,mt:1}}>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
+                                                    <Box sx={shoesList.shoesDetailBox}>
+                                                        <Typography sx={shoesList.shoesDetailBrand}>
                                                             {item.brand}
                                                         </Typography>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                        <Typography sx={shoesList.shoesDetailName}>
                                                             {item.koreanName}
                                                         </Typography>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
+                                                        <Typography sx={shoesList.shoesDetailPrice}>
                                                             {formatNumberWithCommas(item.price)}
                                                         </Typography>
                                                     </Box>

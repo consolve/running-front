@@ -57,15 +57,15 @@ export default function Competition(props){
 
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',py:'22px'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',py:'22px'}}>
 
             {/*상단제목*/}
-            <Box sx={{width:'100%'}}>
+            <Box sx={{width:'90%'}}>
                 <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px',ml:2}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px'}}>
                         지금 인기있는 러닝대회
                     </Typography>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D',mr:2}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D'}}>
                         <Link to ="/schedule" style={{ textDecoration: 'none', color:'#9D9D9D' }}>
                             더보기 {'>'}
                         </Link>
@@ -80,12 +80,12 @@ export default function Competition(props){
                     <Skeleton variant="rectangular" width={'100%'} height={"100px"} sx={{mt:1,borderRadius:2}}/>
                 </Box>
                 :
-                <Box sx={{width:"100%"}}>
+                <Box sx={{width:"100%",display:"flex",justifyContent:"end"}}>
                     {
                         competition?
-                        <Box sx={{width:'100%',pt:1}}>
+                        <Box sx={{width:'95%',pt:1}}>
                             <Swiper
-                                spaceBetween={-15}
+                                spaceBetween={8}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}
                                 freeMode={{enabled: true}}	// 추가
@@ -94,7 +94,7 @@ export default function Competition(props){
                                     competition.map((item,index)=>{
                                         return(
                                             <SwiperSlide key ={index} className='competition'>
-                                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'97%'}}>
+                                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'100%'}}>
                                                     <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
                                                     <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
                                                         <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>

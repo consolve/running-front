@@ -15,6 +15,7 @@ import {
     ShoesMain_AllLoading,
     ShoesMain_ShoesBookMark
 } from '../../../../state/Shoes/ShoesMain_State';
+import { shoesList } from '../../../../style/plate/ShoesList';
 
 import './style.css';
 
@@ -164,7 +165,7 @@ export default function Shoes_Brand(props){
             {/*상단제목*/}
             <Box sx={{width:'100%'}}>
                 <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px',ml:2}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px'}}>
                         브랜드별 러닝화
                     </Typography>
                 </Box>
@@ -175,7 +176,7 @@ export default function Shoes_Brand(props){
                 <Box sx={{width:'100%',mt:2,mb:2}}>
                     {/*필터*/}
                     <Swiper
-                        spaceBetween={-6}
+                        spaceBetween={1}
                         modules={[FreeMode]}
                         slidesPerView={'auto'}
                         freeMode={{enabled: true}}	// 추가
@@ -183,7 +184,7 @@ export default function Shoes_Brand(props){
                         {
                             loadinglist.map((item,index)=>{
                                 return(
-                                    <SwiperSlide key = {item} className="tag-loading swiper-left-margin-16">
+                                    <SwiperSlide key = {item} className="tag-loading">
                                         <Box sx={{width:'100%',height:'22px',display:"flex",alignItems:"center"}}>
                                             <Skeleton variant="rectangular" width={'50px'} height={"22px"} sx={{borderRadius:3}}/>
                                         </Box>
@@ -194,12 +195,12 @@ export default function Shoes_Brand(props){
                     </Swiper>
                 </Box>
                 :
-                <Box sx={{width:"100%",mt:2,mb:2}}>
+                <Box sx={{width:"100%",mt:'21px',mb:2}}>
                     {
                         brandtags?
                         <Box sx={{width:'100%'}}>
                             <Swiper
-                                spaceBetween={-16}
+                                spaceBetween={8}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}
                                 freeMode={{enabled: true}}	// 추가
@@ -208,9 +209,9 @@ export default function Shoes_Brand(props){
                                 {
                                 brandtags.map((item,index)=>{
                                     return(
-                                        <SwiperSlide key ={index} className='swiper-width-auto swiper-left-margin-16'>
-                                            <Box onClick = {() =>handleToggleBrand(index)} backgroundColor = {brand === index?'#4F1D7642':"#E8E8E8"} sx={{height:'22px',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'3px',mx:0.5}}>
-                                                <Typography color = {brand === index?"#4F1D76":"#000000"} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'16px',mx:1}}>
+                                        <SwiperSlide key ={index} className='swiper-width-auto'>
+                                            <Box onClick = {() =>handleToggleBrand(index)} backgroundColor = {brand === index?'#4F1D7642':"#E8E8E8"} sx={{height:'22px',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'3px'}}>
+                                                <Typography color = {brand === index?"#4F1D76":"#000000"} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'16px',mx:1,lineHeight:"19.09px"}}>
                                                     {item.name}
                                                 </Typography>
                                             </Box>
@@ -259,7 +260,7 @@ export default function Shoes_Brand(props){
                             {
                                 shoes.length!=0?
                                     <Swiper
-                                        spaceBetween={-10}
+                                        spaceBetween={-8}
                                         modules={[FreeMode]}
                                         slidesPerView={'auto'}
                                         freeMode={{enabled: true}}	// 추가
@@ -282,14 +283,14 @@ export default function Shoes_Brand(props){
                                                                     </IconButton>
                                                                 }
                                                             </Box>
-                                                            <Box sx={{display:'flex',flexDirection:'column',ml:1,mt:1,width:"100%"}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
+                                                            <Box sx={shoesList.shoesDetailBox}>
+                                                                <Typography sx={shoesList.shoesDetailBrand}>
                                                                     {item.brand}
                                                                 </Typography>
-                                                                <Typography sx={{lineHeight:"20px",fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                                <Typography sx={shoesList.shoesDetailName}>
                                                                     {item.name}
                                                                 </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
+                                                                <Typography sx={shoesList.shoesDetailPrice}>
                                                                     {formatNumberWithCommas(item.price)}{"원"}
                                                                 </Typography>
                                                             </Box>
@@ -314,14 +315,14 @@ export default function Shoes_Brand(props){
             {/*더보기 버튼*/}
             {
                 loading||loadingall?
-                <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'95%',flexDirection:'column',mt:1}}>
+                <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column',mt:1}}>
                     <Skeleton variant="rectangular" sx={{borderRadius:'10px',height:'40px',mt:1,width:'100%'}}/>
                 </Box>
                 :
                 <Box sx={{width:"100%"}}>
                     {
                         brandtags.length?
-                        <Box onClick={()=>navigateToShoesSearch(brandtags[brand].name)} sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'95%',flexDirection:'column',mt:1}}>
+                        <Box onClick={()=>navigateToShoesSearch(brandtags[brand].name)} sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column',mt:1}}>
                             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px',height:'40px',mt:1,width:'100%',border:1,color:'#E8E8E8'}}>
                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'18px',color:'#606060'}}>
                                     더 많은&nbsp;

@@ -207,7 +207,7 @@ export default function Shoes_Search_Filter(props){
                     }
                 </Box>
                 :
-                <Box onClick={openDrawer} sx={{width:"95%",height:"100px",backgroundColor:'#F6F6F6',display:"flex",justifyContent:'center',alignItems:"center"}}>
+                <Box onClick={openDrawer} sx={{width:"100%",height:"100px",borderRadius:'8px',backgroundColor:'#F6F6F6',display:"flex",justifyContent:'center',alignItems:"center"}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'24px'}}>
                         나를 위한 러닝화 찾기
                     </Typography>
