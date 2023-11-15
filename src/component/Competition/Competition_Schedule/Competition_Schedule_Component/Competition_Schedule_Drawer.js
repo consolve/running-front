@@ -34,7 +34,7 @@ const tagtypo = {
 }
 
 const tagbox = {
-    border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',borderColor:'#D9D9D9',py:'7px',px:'12px'
+    border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',borderColor:'#D9D9D9',py:'9px',px:'9px'
 }
 
 export default function TemporaryDrawer(props) {
