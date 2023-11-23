@@ -78,27 +78,28 @@ export default function Competition_TopBar(props){
 
     return(
         <Box sx={TopbarTheme}>
-            <Box onClick = {navigateToScheduleMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <IconButton type="button" sx={{ }} aria-label="search">
-                    <WestIcon sx={{}}/>
-                </IconButton>
-            </Box>
+            <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
+                <Box onClick = {navigateToScheduleMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <IconButton type="button" sx={{ }} aria-label="search">
+                        <WestIcon sx={{}}/>
+                    </IconButton>
+                </Box>
 
-            <Box
-                component="form"
-                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:'90%',backgroundColor:'#f4f4f4',borderRadius:'10px' }}
-                >
-                <InputBase
-                    onKeyDown={handleOnKeyPress}
-                    onChange={(e) => setValuse((prev)=>prev=e.target.value)}
-                    value = {value}
-                    sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
-                    placeholder="풀코스, 10K, 하프"
-                    inputProps={{ 'aria-label': 'search google maps' }}
-                />
-                <IconButton onClick = {navigateToCompetitionSearch} type="button" sx={{ p: '10px' }} aria-label="search">
-                    <SearchIcon />
-                </IconButton>
+                <Box
+                    component="form"
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:'90%',backgroundColor:'#f4f4f4',borderRadius:'10px' }}
+                    >
+                    <InputBase
+                        onKeyDown={handleOnKeyPress}
+                        onChange={(e) => setValuse((prev)=>prev=e.target.value)}
+                        value = {value}
+                        sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
+                        placeholder="풀코스, 10K, 하프"
+                    />
+                    <IconButton onClick = {navigateToCompetitionSearch} type="button" sx={{ p: '10px' }} aria-label="search">
+                        <SearchIcon />
+                    </IconButton>
+                </Box>
             </Box>
         </Box>    
     )

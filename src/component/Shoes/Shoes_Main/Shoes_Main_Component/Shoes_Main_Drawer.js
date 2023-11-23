@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import { Typography } from '@mui/material';
+import { Typography,Grid } from '@mui/material';
 import { useEffect,useState } from 'react';
 import Divider from '@mui/material/Divider';
 import ClearIcon from '@mui/icons-material/Clear';
@@ -9,6 +9,7 @@ import {Button,Slider} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
+import { createTheme } from '@mui/system';
 
 const MoneySlider = styled(Slider)(({ theme }) => ({
     height: 2,
@@ -60,6 +61,26 @@ const MoneySlider = styled(Slider)(({ theme }) => ({
     return `${scaledValue}${units[unitIndex]}`;
   }
 
+  const theme = createTheme({
+    breakpoints: {
+      values: {
+        mobile: 0,
+        largeMobile: 425,
+        tablet: 640,
+        laptop: 1024,
+        desktop: 1200,
+      },
+    },
+  });
+
+  const tagtypo = {
+    fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',lineHeight:"16.71px"
+}
+
+const tagbox = {
+    border:1,borderRadius:'13px',display:'flex',justifyContent:'center',alignItems:'center',borderColor:'#D9D9D9',py:'5px',px:'9px'
+}
+
 export default function TemporaryDrawer(props) {
 
     const navigate = useNavigate();
@@ -74,7 +95,7 @@ export default function TemporaryDrawer(props) {
         width:'100%',
         height:'100%',
         minWidth:'360px',
-        maxWidth:'420px',
+        maxWidth:'450px',
         borderTopLeftRadius:20,
         borderTopRightRadius:20, 
         backgroundColor:'#ffffff'
@@ -139,6 +160,10 @@ export default function TemporaryDrawer(props) {
         queryString으로 검색
     */}
 
+    useEffect(()=>{
+        console.log(price)
+    },[price])
+
     const navigateToShoesSearch = () =>{
         let querybrand = brand.join("%20");
         let queryfeature = feature.join("%20");
@@ -174,7 +199,7 @@ export default function TemporaryDrawer(props) {
         onKeyDown={toggleDrawer(false)}
         >
             <Box sx={DrawerTheme}>
-                <Box sx={{height:'580px'}}>
+                <Box sx={{mb:'100px'}}>
                     <Box sx={{height:'50px',width:'100%',display:'flex',justifyContent:'center',alignItems:'center',position:'relative'}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px'}}>
                             필터
@@ -184,62 +209,44 @@ export default function TemporaryDrawer(props) {
                     <Divider/>
 
                     {/*브랜드*/}
-                    <Box sx={{width:"92%",height:'100px',mx:'auto'}}>
+                    <Box sx={{width:"90%",mx:'auto'}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px',mt:2}}>
                         브랜드
                         </Typography>
-                        <Box sx={{mt:1}}>
-                            <Box sx={{display:'flex',width:"100%"}}>
-                                {['Nike','Adidas','New Balance','Hoka'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleBrand(index+1)} backgroundColor={brand.includes(index+1)?'#4F1D76':''}  sx={{width:"auto",height:'23px',border:1,borderRadius:5,display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {brand.includes(index+1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
+
+                        <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:'0px'}}>
+                            {['Nike','Adidas','New Balance','Hoka','Asics','Mizno'].map((text,index)=>(
+                                <Grid item mobile={2} largeMobile={2} key = {index}>
+                                    <Box onClick ={()=>handleToggleBrand(index+1)} backgroundColor={brand.includes(index+1)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                        <Typography color = {brand.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
                                     </Box>   
+                                </Grid>
                                 ))
-                                }
-                            </Box>
-                            <Box sx={{display:'flex',width:"100%",mt:1}}>
-                                {['Asics','Mizno'].map((text,index)=>(
-                                    <Box key = {index+4} onClick ={()=>handleToggleBrand(index+5)} backgroundColor={brand.includes(index+5)?'#4F1D76':''} sx={{width:"auto",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {brand.includes(index+5)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
-                                            {text}
-                                        </Typography>
-                                    </Box>   
-                                ))
-                                }
-                            </Box>
-                        </Box>
+                            }
+                        </Grid>
                     </Box>
                     <Divider/>
 
                     {/*특징*/}
-                    <Box sx={{width:"92%",height:'100px',mx:'auto'}}>
+                    <Box sx={{width:"90%",mx:'auto'}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px',mt:2}}>
                             특징
                         </Typography>
-                        <Box sx={{mt:1}}>
-                            <Box sx={{display:'flex',width:"100%"}}>
-                                {['발볼넓은','아치보호','카본플레이트','얇은 소재'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleFeature(index+1)} backgroundColor={feature.includes(index+1)?'#4F1D76':''}  sx={{width:"auto",height:'23px',border:1,borderRadius:5,display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {feature.includes(index+1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
+
+                        <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:'0px'}}>
+                            {['발볼넓은','아치보호','카본플레이트','얇은 소재','두꺼운 소재','단단한 쿠션감','푹신한 쿠션감'].map((text,index)=>(
+                                <Grid item mobile={2} largeMobile={2} key = {index}>
+                                    <Box onClick ={()=>handleToggleFeature(index+1)} backgroundColor={feature.includes(index+1)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                        <Typography color = {feature.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
                                     </Box>   
+                                </Grid>
                                 ))
-                                }
-                            </Box>
-                            <Box sx={{display:'flex',width:"100%",mt:1}}>
-                                {['두꺼운 소재','단단한 쿠션감','푹신한 쿠션감'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleFeature(index+5)} backgroundColor={feature.includes(index+5)?'#4F1D76':''} sx={{width:"auto",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {feature.includes(index+5)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',mx:1}}>
-                                            {text}
-                                        </Typography>
-                                    </Box>   
-                                ))
-                                }
-                            </Box>
-                        </Box>
+                            }
+                        </Grid>
                     </Box>
                     <Divider/>
 
@@ -248,29 +255,31 @@ export default function TemporaryDrawer(props) {
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px',mt:2}}>
                             용도
                         </Typography>
-                        <Box sx={{mt:1.5}}>
-                            <Box sx={{display:'flex',width:"100%"}}>
-                                {['단거리','장거리','데일리','훈련','경기','트레일'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleUseage(index+1)} backgroundColor={useage.includes(index+1)?'#4F1D76':''} sx={{width:"50px",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {useage.includes(index+1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
+                        
+                        <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:'0px'}}>
+                            {['단거리','장거리','데일리','훈련','경기','트레일'].map((text,index)=>(
+                                <Grid item mobile={2} largeMobile={2} key = {index}>
+                                    <Box onClick ={()=>handleToggleUseage(index+1)} backgroundColor={useage.includes(index+1)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                        <Typography color = {useage.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
                                     </Box>   
+                                </Grid>
                                 ))
-                                }
-                            </Box>
-                        </Box>
+                            }
+                        </Grid>
+
                     </Box>
                     <Divider/>
 
                     {/*가격대*/}
-                    <Box sx={{width:"92%",height:'120px',mx:'auto',display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column'}}>
+                    <Box sx={{width:"90%",mx:'auto',display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column'}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px',mt:2}}>
                             가격대
                         </Typography>
-                        <Box sx={{my:1.5,width:"85%",display:'flex',justifyContent:'center',alignItems:'center',mx:'auto'}}>
+                        <Box sx={{my:1,width:"85%",display:'flex',justifyContent:'center',alignItems:'center',mx:'auto'}}>
                             <MoneySlider
-                                size='small'
+                                size='medium'
                                 value={price}
                                 onChange={handleChange2}
                                 valueLabelDisplay="on"
@@ -282,8 +291,9 @@ export default function TemporaryDrawer(props) {
                     </Box>
 
                     {/*하단 버튼*/}
-                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'92%',mx:'auto',mt:1}}>
-                        <Button onClick ={()=>{
+                    <Box sx={{display:'flex',position:"absolute",bottom:'33px',justifyContent:'center',alignItems:'center',left:"50%",transform:'translateX(-50%)',width:'90%',mx:'auto',mt:1,minWidth:'324px',maxWidth:"405px"}}>
+                        <Button disabled={!brand.length&&!feature.length&&!useage.length&&(JSON.stringify(price) === JSON.stringify([0,100]))}  
+                            onClick ={()=>{
                             navigateToShoesSearch();
                             }} variant="contained" color='primary' sx={{width:'100%',height:'45px',borderRadius:'7px'}}>
                             <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'15px',fontWeight:700}}>

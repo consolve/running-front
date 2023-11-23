@@ -24,23 +24,25 @@ export default function Crew_Location_TopBar(){
 
     return(
         <Box sx={TopbarTheme}>
-            <Box onClick = {navigateToCrew} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <IconButton type="button" sx={{ }} aria-label="search">
-                    <WestIcon sx={{}}/>
-                </IconButton>
-            </Box>
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px'}}>
-                    러닝크루
-                </Typography>
-            </Box>
+            <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
+                <Box onClick = {navigateToCrew} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <IconButton type="button" sx={{ }} aria-label="search">
+                        <WestIcon sx={{}}/>
+                    </IconButton>
+                </Box>
+                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px'}}>
+                        러닝크루
+                    </Typography>
+                </Box>
 
-            <Box
-                onClick={navigateToCrewSearch}
-                >
-                <IconButton type="button" sx={{ }} aria-label="search">
-                    <SearchIcon />
-                </IconButton>
+                <Box
+                    onClick={navigateToCrewSearch}
+                    >
+                    <IconButton type="button" sx={{ }} aria-label="search">
+                        <SearchIcon />
+                    </IconButton>
+                </Box>
             </Box>
         </Box>    
     )

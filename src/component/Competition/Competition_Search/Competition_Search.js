@@ -20,6 +20,8 @@ import {
 } from '../../../state/Competition/CompetitionSearch_State';
 import {Modal} from '@mui/material';
 
+import ContentSkeleton from '../Competition_Content_Component/Competition_Content_Skeleton';
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -68,9 +70,7 @@ function Competition_Search(){
         const query = querylocation.search
         const decodeUri = decodeURI(query);
         
-        const searchParams = new URLSearchParams(decodeUri+"?page=1");
-        console.log(decodeUri)
-        console.log(searchParams)
+        const searchParams = new URLSearchParams(decodeUri);
         
         for(let pair of searchParams.entries()){
             if(pair[0] == 'keyword'){
@@ -92,7 +92,6 @@ function Competition_Search(){
 
     const FetchCompetitionList = async (value) => {
         const _SearchCompetition = await fetchSearchContest(value);
-        console.log(_SearchCompetition)
 
         if(_SearchCompetition.response){
             setOpen(true)
@@ -129,16 +128,17 @@ function Competition_Search(){
       }, []);
 
     return(
-        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
+        <Box sx={{position:"relative",display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar />   
             <Filter/>
-            <Box sx={{position:'relative',width:'90%',my:'60px'}}>
+            <Box sx={{position:'relative',width:'100%',my:'60px'}}>
                 {
                     loading?
-                    <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column',mt:'50px'}}>
+                    <Box sx={{width:"100%",mt:'50px'}}>
                         {loadinglist.map((item,index) =>(
-                                <Skeleton key = {index} variant="rectangular" width={'100%'} height={"110px"} sx={{mt:1,borderRadius:2}}/>   
-                        ))}
+                            <ContentSkeleton key={index}/>
+                        ))
+                        }
                     </Box>
                     :
                     <Box sx={{width:"100%"}}>

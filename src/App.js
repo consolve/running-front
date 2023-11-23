@@ -118,6 +118,7 @@ const WebMain = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
+  overflow:hidden;
 `
 
 //앱 크기
@@ -127,6 +128,7 @@ const APP = styled.div`
   max-width:450px;
   min-height:100vh;
   background-color:#ffffff;
+  overflow:hidden;
 `
 
 export default App;

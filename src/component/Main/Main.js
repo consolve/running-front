@@ -73,14 +73,14 @@ function Main(){
                 <TopBar/>
                 <Banner/>
             </Box>
-            <Box sx={{width:'100%',mb:8,display:'flex',flexDirection:'column',alignItems:"center",jusstifyContent:"center"}}>
-                <Divider sx={{width:'90%',border:2,borderColor:"#F6F6F6"}}/>
+            <Box sx={{width:'100%',mb:8}}>
+                <Divider sx={{border:2,color:"#F6F6F6",mx:"20px"}}/>
                 <Competition setLoading1={setLoading1} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'90%',border:2,borderColor:"#F6F6F6"}}/>
+                <Divider sx={{border:2,color:"#F6F6F6",mx:"20px"}}/>
                 <Shoes setLoading2={setLoading2} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'90%',border:2,borderColor:"#F6F6F6"}}/>
+                <Divider sx={{border:2,color:"#F6F6F6",mx:"20px"}}/>
                 <Community setLoading4={setLoading4} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'90%',border:2,borderColor:"#F6F6F6"}}/>
+                <Divider sx={{border:2,color:"#F6F6F6",mx:"20px"}}/>
                 <Crew setLoading3={setLoading3} loadingall={loadingall} setError={setError} setOpen={setOpen}/>
 
             </Box>

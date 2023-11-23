@@ -17,7 +17,7 @@ export const ShoesFilter_Useage = atom({
 
 export const ShoesFilter_Price = atom({
     key: 'ShoesFilter_Price', // unique ID (with respect to other atoms/selectors)
-    default: [5,100], // default value (aka initial value)
+    default: [0,100], // default value (aka initial value)
 });
 
 export const ShoesFilter_Keyword = atom({

@@ -20,33 +20,35 @@ export default function Shoes_Search_Filter(props){
     const [brand, setBrand] = useRecoilState(ShoesFilter_Brand);
     const [feature, setFeature] = useRecoilState(ShoesFilter_Feature);
     const [useage, setUseage] = useRecoilState(ShoesFilter_Useage);
+    const [price, setPrice] = useRecoilState(ShoesFilter_Price);
 
 
     const buttonTheme = {
         display:'flex',
         justifyContent:'center',
         alignItems:'center',
-        width:'60px',
         height:'25px',
         border:1,
-        borderRadius:3,     
+        borderRadius:'8px',
         borderColor:'#D9D9D9',
         mr:1
     }
 
     const buttonTyphography ={
         fontFamily:'Pretendard Variable',
-        fontWeight:'300',
-        fontSize:'13px'
+        fontWeight:'500',
+        fontSize:'13px',
+        px:'7px'
     }
 
     const openDrawer = () => {
         setOpen(true);
     }
 
+
     return(
-        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'63px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'90%',minWidth:'360px',maxWidth:'420px'}}>
-            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
+        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'62px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'100%',minWidth:'360px',maxWidth:'450px'}}>
+            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',px:"20px"}}>
                 <Box backgroundColor={brand.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {brand.length == 0?'black':'white'} sx={buttonTyphography}>
                         브랜드 {brand.length == 0?'':brand.length}{'>'}
@@ -60,6 +62,11 @@ export default function Shoes_Search_Filter(props){
                 <Box backgroundColor={useage.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {useage.length == 0?'black':'white'} sx={buttonTyphography}>
                         용도별 {useage.length == 0?'':useage.length}{'>'}
+                    </Typography>
+                </Box>
+                <Box backgroundColor={JSON.stringify(price) === JSON.stringify([0,100])?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
+                    <Typography color = {JSON.stringify(price) === JSON.stringify([0,100])?'black':'white'} sx={buttonTyphography}>
+                        가격대 {'>'}
                     </Typography>
                 </Box>
             </Box>

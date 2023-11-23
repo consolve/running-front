@@ -8,6 +8,11 @@ import {API_URL} from "../../../API/URL/url"
 import { fetchPopularContest } from '../../../API/api/Contest/contest_api';
 import { Swiper, SwiperSlide } from "swiper/react";
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+
+import Title from "../Main_Component/Main_Title"
+
+
+
 //모듈 필요
 import { FreeMode,Grid } from 'swiper/modules';
 //Swiper css
@@ -59,19 +64,7 @@ export default function Competition(props){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',py:'22px'}}>
 
-            {/*상단제목*/}
-            <Box sx={{width:'90%'}}>
-                <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px'}}>
-                        지금 인기있는 러닝대회
-                    </Typography>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D'}}>
-                        <Link to ="/schedule" style={{ textDecoration: 'none', color:'#9D9D9D' }}>
-                            더보기 {'>'}
-                        </Link>
-                    </Typography>
-                </Box>
-            </Box>
+            <Title title={"지금 인기있는 러닝대회"} navigate={"/schedule"}/>
 
             {/*대회정보*/}
             {
@@ -137,8 +130,8 @@ export default function Competition(props){
                                                                 {
                                                                     item.courseTags.map((item,index)=>{
                                                                         return(
-                                                                            <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',height:'15px',backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
-                                                                                <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"11px",mx:'6px',width:"auto"}}>
+                                                                            <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
+                                                                                <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"10.74px",mx:'6px',my:'2px',width:"auto"}}>
                                                                                     {item.name}
                                                                                 </Typography>
                                                                             </Box>

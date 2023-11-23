@@ -72,11 +72,11 @@ function Competition_Schedule(){
         <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar/>
             <Filter/>
-            <Box sx={{width:'90%',mt:'60px'}}>
+            <Box sx={{width:'100%',mt:'60px'}}>
                 <Month setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'100%',mt:3,mb:'20px',border:2,color:"#F6F6F6"}}/>
+                <Divider sx={{mt:3,mb:'20px',border:2,color:"#F6F6F6",mx:"20px"}}/>
                 <Register setError={setError} setOpen={setOpen}/>
-                <Divider sx={{width:'100%',mt:3,mb:'20px',border:2,color:"#F6F6F6"}}/>
+                <Divider sx={{mt:3,mb:'20px',border:2,color:"#F6F6F6",mx:"20px"}}/>
                 <Calendar setError={setError} setOpen={setOpen}/>
             </Box>
             

@@ -71,20 +71,20 @@ function Shoes_Main(){
     return(
         <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar/>
-            <Box sx={{width:'90%',mt:'60px'}}>
+            <Box sx={{width:'100%',mt:'60px'}}>
                 <Filter setOpen = {handleOpen} setClose = {handleClose} setError = {setError}/>
 
                 <ShoesBrand setOpen = {handleOpen} setClose = {handleClose} setError = {setError}/>
-                <Divider sx={{my:'20px'}}/>
+                <Divider sx={{border:2,color:"#F6F6F6",mx:"20px",my:"20px"}}/>
                 <ShoesFeature setOpen = {handleOpen} setClose = {handleClose} setError = {setError}/>
-                <Divider sx={{my:'20px'}}/>
+                <Divider sx={{border:2,color:"#F6F6F6",mx:"20px",my:"20px"}}/>
                 <ShoesUseage setOpen = {handleOpen} setClose = {handleClose} setError = {setError}/>
-                <Divider sx={{my:'20px'}}/>
+                <Divider sx={{border:2,color:"#F6F6F6",mx:"20px",my:"20px"}}/>
                 <ShoesAll setOpen = {handleOpen}/>
             </Box>
 
             <Dial/>
-
+        
             <Box>
                 <Modal
                     open={open}

@@ -10,6 +10,8 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { fetchCrewAll,runningCrewBookMark } from '../../../API/api/RunningCrew/crew_api';
 import { CrewMain_CrewBookMark } from '../../../state/Crew/CrewMain_State';
 
+import Title from "../Main_Component/Main_Title"
+
 import './style.css';
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -92,26 +94,14 @@ export default function Crew(props){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',my:'20px'}}>
 
-            {/*상단제목*/}
-            <Box sx={{width:'100%'}}>
-                <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px',ml:2}}>
-                        혼자말고, 크루와 함께해요
-                    </Typography>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D',mr:2}}>
-                        <Link to ="/crew" style={{ textDecoration: 'none', color:'#9D9D9D' }}>
-                            더보기 {'>'}
-                        </Link>
-                    </Typography>
-                </Box>
-            </Box>
+            <Title title={"혼자말고, 크루와 함께해요"} navigate={"/crew"}/>
 
             {/*크루*/}
             {
                 props.loadingall?
-                <Box sx={{width:'100%',height:'250px'}}>
+                <Box sx={{width:'100%',pt:2,height:'250px'}}>
                     <Swiper
-                        spaceBetween={0}
+                        spaceBetween={8}
                         modules={[FreeMode]}
                         slidesPerView={'auto'}
                         freeMode={{enabled: true}}	// 추가
@@ -128,15 +118,16 @@ export default function Crew(props){
                     </Swiper>
                 </Box>
                 :
-                <Box sx={{width:'100%'}}>
+                <Box sx={{pt:2,width:'100%'}}>
                     {
                         crew?
-                        <Box sx={{width:'100%',pt:2}}>
+                        <Box >
                             <Swiper
-                                spaceBetween={-10}
+                                spaceBetween={8}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}
                                 freeMode={{enabled: true}}	// 추가
+                                style={{paddingLeft:"20px",paddingRight:"20px",width:"auto"}}
                             >
                                 {
                                     crew.map((item,index)=>{

@@ -10,6 +10,8 @@ import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { fetchPopularTalk } from '../../../API/api/RunningTalk/runningTalk_api';
 
+import Title from "../Main_Component/Main_Title"
+
 import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/free-mode';
@@ -52,19 +54,7 @@ export default function  Community(props){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',py:'22px'}}>
 
-            {/*상단제목*/}
-            <Box sx={{width:'100%'}}>
-                <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px',ml:2}}>
-                        이런 러닝 꿀팁은 어때요?
-                    </Typography>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D',mr:2}}>
-                        <Link to ="/runnertalk" style={{ textDecoration: 'none', color:'#9D9D9D' }}>
-                            더보기 {'>'}
-                        </Link>
-                    </Typography>
-                </Box>
-            </Box>
+            <Title title={"이런 러닝 꿀팁은 어때요?"} navigate={"runnertalk"}/>
 
             {/*대회정보*/}
             <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>

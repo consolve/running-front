@@ -12,6 +12,8 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import {ShoesMain_ShoesBookMark} from "../../../state/Shoes/ShoesMain_State"
 import { shoesList } from '../../../style/plate/ShoesList';
 
+import Title from "../Main_Component/Main_Title"
+
 import './style.css';
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -86,19 +88,7 @@ export default function Shoes(props){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',my:'22px'}}>
 
-            {/*상단제목*/}
-            <Box sx={{width:'90%'}}>
-                <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px'}}>
-                        지금 인기있는 러닝화
-                    </Typography>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:'#8E8D8D'}}>
-                        <Link to ="/shoes" style={{ textDecoration: 'none', color:'#9D9D9D' }}>
-                            더보기 {'>'}
-                        </Link>
-                    </Typography>
-                </Box>
-            </Box>
+            <Title title="지금 인기있는 러닝화 " navigate="/shoes" />
 
             {/*대회정보*/}
             {
@@ -122,15 +112,16 @@ export default function Shoes(props){
                     </Swiper>
                 </Box>
                 :
-                <Box sx={{width:"100%",display:"flex",justifyContent:"end",pt:2}}>
+                <Box sx={{pt:2,width:'100%'}}>
                     {
                         shoes?
-                        <Box sx={{width:'95%'}}>
+                        <Box >
                             <Swiper
                                 spaceBetween={8}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}
                                 freeMode={{enabled: true}}	// 추가
+                                style={{paddingLeft:"20px",paddingRight:"20px",width:"auto"}}
                             >
                                 {
                                     shoes.map((item,index)=>{
@@ -169,8 +160,10 @@ export default function Shoes(props){
                             </Swiper>
                         </Box>
                         :
-                        <Box>
-                            error
+                        <Box sx={{height:'250px',width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
+                                존재하지 않습니다 :(
+                            </Typography>
                         </Box>
                     }
                 </Box>

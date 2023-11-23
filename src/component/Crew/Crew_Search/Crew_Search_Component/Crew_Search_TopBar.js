@@ -59,26 +59,28 @@ export default function Crew_TopBar(props){
 
     return(
         <Box sx={TopbarTheme}>
-            <Box onClick = {navigateToCrewMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <IconButton type="button" sx={{ }} aria-label="search">
-                    <WestIcon sx={{}}/>
-                </IconButton>
-            </Box>
+            <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
+                <Box onClick = {navigateToCrewMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <IconButton type="button" sx={{ }} aria-label="search">
+                        <WestIcon sx={{}}/>
+                    </IconButton>
+                </Box>
 
-            <Box
-                component="form"
-                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:'80%',mr:2,backgroundColor:'#f4f4f4',borderRadius:3 }}
-                >
-                <InputBase
-                    onKeyDown={handleOnKeyPress}
-                    onChange = {(e) => setValuse((prev)=>prev=e.target.value)}
-                    value={value}
-                    sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
-                    placeholder=""
-                />
-                <IconButton onClick ={navigateToShoesSearch} type="button" sx={{ p: '10px' }} aria-label="search">
-                    <SearchIcon/>
-                </IconButton>
+                <Box
+                    component="form"
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:'80%',mr:2,backgroundColor:'#f4f4f4',borderRadius:3 }}
+                    >
+                    <InputBase
+                        onKeyDown={handleOnKeyPress}
+                        onChange = {(e) => setValuse((prev)=>prev=e.target.value)}
+                        value={value}
+                        sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
+                        placeholder=""
+                    />
+                    <IconButton onClick ={navigateToShoesSearch} type="button" sx={{ p: '10px' }} aria-label="search">
+                        <SearchIcon/>
+                    </IconButton>
+                </Box>
             </Box>
         </Box>    
     )

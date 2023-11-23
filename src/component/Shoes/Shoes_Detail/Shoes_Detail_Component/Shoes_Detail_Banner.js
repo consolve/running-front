@@ -19,26 +19,36 @@ import './style.css';
 import { Scrollbar } from 'swiper/modules';
 
 export default function Competition_Detail_Banner(props){
+    const ref = useRef(null);
+
     useEffect(() =>{
+        ref.current.style.setProperty('height', '0%');
+
+        ref.current.style.setProperty('height', '350px');
+
     },[])
 
     return(
-        <Box sx={{position:'relative',zIndex:0,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',flexDirection:'column',width:'100%',height:'350px'}}>
+        <Box ref = {ref} sx={{position:'relative',zIndex:0,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',flexDirection:'column',height:'350px'}}>
             {
                 props.shoes.shoesImg?
                     <Swiper
+                        spaceBetween={0}
                         scrollbar={{
                             hide: true,
                         
                         }}
                         modules={[Scrollbar]}
                         className="mySwiper"
+                        style={{overflow:'hidden'}}
                     >
                         {
                             props.shoes.shoesImg.map((item,index)=>{
                                 return(
-                                    <SwiperSlide key={index}>
-                                        <Box sx={{backgroundImage:`url(${API_URL}${item.url})`,width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                    <SwiperSlide key={index} style={{width:'100%'}}>
+                                        <Box sx={{position:'relative',width:"100%",height:"100%",backgroundColor:'#f4f4f4'}}>
+                                            <img src={`${API_URL}${item.url}`} style={{width:'100%',height:'100%',objectFit:'contain',objectPosition:'center'}}/>
+                                        </Box>
                                     </SwiperSlide>
                                 )
                             })

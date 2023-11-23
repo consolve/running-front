@@ -65,8 +65,8 @@ export default function TemporaryDrawer(props) {
 
     const handleToggleMonth = (value) => {
         !month.includes(value)
-        ? setMonth((month) => [...month, value])
-        : setMonth(month.filter((button) => button !== value));
+        ? setMonth(((month) => [...month, value]))
+        : setMonth((month.filter((button) => button !== value)));
     };
 
     const handleToggleCourse = (value) => {
@@ -88,8 +88,6 @@ export default function TemporaryDrawer(props) {
 
         const queryArray = [queryMonth,queryCourse,queryLocation];
         const queryKey = ['month','course','location'];
-
-        console.log(queryLocation)
 
         let payload ={}
 

@@ -12,6 +12,8 @@ import {
     CompetitionSchedule_AllLoading
 }   from '../../../../state/Competition/CompetitionSchedule_State';
 
+import Title from "../../Competition_Content_Component/Competition_Title"
+
 
 export default function Competition_Schedule_Calendar(props){
 
@@ -44,22 +46,16 @@ export default function Competition_Schedule_Calendar(props){
 
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%',mb:'60px'}}>
-            <Box sx={{display:'flex',flexDirection:'column',justifyContent:'start',alignItems:'start',width:'100%'}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px'}}>
-                    러닝 캘린더
-                </Typography>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:"#9D9D9D"}}>
-                    러닝 대회를 캘린더로 한 눈에 확인하세요
-                </Typography>
-            </Box>
+
+            <Title title={"러닝 캘린더"} content={"러닝 대회를 캘린더로 한 눈에 확인하세요"}/>
 
             {
                 loadingall?
-                <Box sx={{width:"100%",height:'324px',mt:3,mb:5}}>
-                    <Skeleton variant="rectangular" width={'100%'} height={"330px"} sx={{mt:1,borderRadius:2}}/>
+                <Box sx={{mt:3,mb:5}}>
+                    <Skeleton variant="rectangular" width={'350px'} height={"350px"} sx={{mt:1,borderRadius:2}}/>
                 </Box>
                 :
-                <Box sx={{backgroundColor:'#D9D9D9',width:'100%',height:'330px',mt:3,mb:5,borderRadius:2,backgroundImage:`url(${API_URL}${calendar[0].url})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain',objectFit:'contain',objectPosition:'center'}}/>
+                <Box sx={{backgroundColor:'#D9D9D9',width:'350px',height:'350px',mt:3,mb:5,borderRadius:2,backgroundImage:`url(${API_URL}${calendar[0].url})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain',objectFit:'contain',objectPosition:'center'}}/>
             }
         </Box>    
     )

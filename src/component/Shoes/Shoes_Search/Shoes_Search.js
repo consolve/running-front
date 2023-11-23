@@ -1,4 +1,4 @@
-import {Box,Typography,Button,Card} from '@mui/material';
+import {Box,Typography,Grid,Card} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
 import Auth from "../../../hoc/auth"
@@ -45,7 +45,7 @@ function Shoes_Search(){
         useage:[],
         money:[],
         keyword:"",
-        min:5,
+        min:0,
         max:100
     };
 
@@ -158,27 +158,35 @@ function Shoes_Search(){
             }}
             setSearchState = {setSearchState}/>
             <Filter />
-            <Box sx={{width:'95%',mt:'63px'}}>
+            <Box sx={{width:'100%',mt:'63px'}}>
                 {
                     loading?
-                    <Box sx={{width:'100%',display:'flex',justifyContent:"center",mt:'50px'}}>
-                        <Box sx={{display:'flex',flexDirection:'column',width:"50%",alignItems:"center"}}>
-                            {loadinglist.slice(0, Math.ceil(loadinglist.length / 2)).map((item, index) => (
-                            <Box key={index} sx={{width:"100%",display:'flex',justifyContent:'center',alignItems:"center"}}>
-                                <Skeleton variant="rectangular" width={'90%'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
-                            </Box>
-                            ))}
+                    <Box sx={{width:"100%",mt:'50px',display:"flex",justifyContent:"center"}}>
+                    {
+                        loadinglist.length!=0?
+                        <Box sx={{width:"100%",px:'20px'}}>
+                            <Grid container spacing={1} columns={16} >
+                                    {
+                                        loadinglist.map((item,index)=>{
+                                            return(
+                                                <React.Fragment key = {index}>
+                                                {
+                                                    <Grid item xs={8} sx={{display:'flex',justifyContent:'center'}}>
+                                                        <Skeleton variant="rectangular" width={'100%'} height={"240px"} sx={{mt:1,borderRadius:2}}/>  
+                                                    </Grid>
+                                                }
+                                                </React.Fragment>
+                                            )
+                                        })
+                                    }
+                            </Grid>
                         </Box>
-                        <Box sx={{display:'flex',flexDirection:'column',width:'50%'}}>
-                            {loadinglist.slice(Math.ceil(loadinglist.length / 2)).map((item, index) => (
-                            <Box key={index} sx={{width:"100%",display:'flex',justifyContent:'center',alignItems:"center"}}>
-                                <Skeleton variant="rectangular" width={'90%'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
-                            </Box>
-                            ))}
-                        </Box>
-                    </Box>
+                        :
+                        ""
+                    }
+                    </Box>   
                     :
-                    <Box sx={{width:"100%"}}>
+                    <Box sx={{width:"100%",mt:"50px"}}>
                         {
                             list.length!=0?
                             <List setOpen = {setOpen}/>

@@ -21,23 +21,23 @@ export default function Shoes_Detail_Feature(props) {
     },[])
 
     return (
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',mt:2,mb:'70px'}}>
-            <Box sx={{width:'90%'}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',mt:2}}>
+            <Box sx={{width:'100%'}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:"21.48px",px:'20px'}}>
                     이런 특징을 가지고 있어요
                 </Typography>
             </Box>
 
 
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'90%',flexDirection:'column',mt:0.5}}>
+            <Box sx={{width:'100%',mt:1}}>
 
                {/*박스*/}
-                <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',mt:1}}>
+                <Box sx={{px:"20px"}}>
                     {
                         FeatureList1.map((item,index)=>{
                             return(
-                                <Box key ={index} sx={{width:'100%',height:'50px',border:1,borderColor:'#E8E8E8',borderRadius:'5px',my:0.5}}>
-                                    <Box sx={{width:'95%',margin:'auto',alignItems:"start",display:'flex',flexDirection:'column',justifyContent:"center",height:'100%'}}>
+                                <Box key ={index} sx={{width:'100%',height:'50px',border:1,borderColor:'#E8E8E8',borderRadius:'5px',my:1}}>
+                                    <Box sx={{px:1,margin:'auto',alignItems:"start",display:'flex',flexDirection:'column',justifyContent:"center",height:'100%'}}>
                                         <Typography color="#9D9D9D" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px'}}>
                                             {item[0]}
                                         </Typography>
@@ -72,28 +72,13 @@ export default function Shoes_Detail_Feature(props) {
 
 
                 {/*그 외*/}
-                <Box sx={{display:'flex',flexDirection:'column',alignItems:"start",justifyContent:'center',width:'100%',mt:3,mb:1}}>
-                    <Box sx={{display:"flex",alignItems:"center",alignItems:"center",justifyContent:'space-between',width:"100%"}}>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
-                            {"용도"}
-                        </Typography>
-                        <Box sx={{display:'flex',alignItems:"center"}}>
-                            <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
-                                {
-                                    props.shoes.recommendTo.map(item=>item.content).join(", ")
-                                }
-                            </Typography>
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
-                            {"에 좋아요"}
-                            </Typography>
-                        </Box>
-                    </Box>
-                    <Box sx={{display:"flex",alignItems:"center",alignItems:"center",justifyContent:'space-between',width:"100%"}}>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
+                <Box sx={{display:'flex',flexDirection:'column',alignItems:"start",justifyContent:'center',mt:'15px',px:"20px"}}>
+                    <Box sx={{display:"flex",alignItems:"center",alignItems:"center",justifyContent:'space-between',width:'100%'}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',lineHeight:'14.32px'}}>
                             {"그 외"}
                         </Typography>
                         <Box sx={{display:'flex',alignItems:"center"}}>
-                            <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
+                            <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',lineHeight:'14.32px'}}>
                                 {
                                     props.shoes.etcTag.map(item=>item.content).join(", ")
                                 }

@@ -11,17 +11,12 @@ import WestIcon from '@mui/icons-material/West';
 const TopbarTheme = {
     position:'fixed',
     top:0,
-    display:'flex',
-    justifyContent:'space-between',
-    alignItems:'center',
     backgroundColor:'#ffffff',
     height:'60px',
-    width:'100%',
-    borderBottom:1,
-    borderBottomColor:'#E0E0E0',
-    minWidth:'360px',
-    maxWidth:'420px',
-    zIndex:1000
+    zIndex:1000,
+    maxWidth:"450px",
+    minWidth:"360px",
+    width:"100%"
 }
 
 export default function Shoes_Detail_TopBar(){
@@ -37,10 +32,12 @@ export default function Shoes_Detail_TopBar(){
 
     return(
         <Box sx={TopbarTheme}>
-            <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <IconButton type="button" sx={{ml:1}} aria-label="search">
-                    <WestIcon sx={{}}/>
-                </IconButton>
+            <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
+                <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center',ml:"20px"}}>
+                    <IconButton type="button" sx={{}} aria-label="search">
+                        <WestIcon sx={{}}/>
+                    </IconButton>
+                </Box>
             </Box>
         </Box>    
     )

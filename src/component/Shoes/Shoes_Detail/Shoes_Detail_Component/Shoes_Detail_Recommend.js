@@ -21,24 +21,25 @@ export default function Shoes_Detail_Recommend(props) {
     },[])
 
     return (
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',mt:2}}>
-            <Box sx={{width:'90%'}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',flexDirection:'column',width:'100%',mt:2}}>
+            <Box sx={{px:"20px"}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:"21.48px"}}>
                     이런 분들에게 추천해요
                 </Typography>
             </Box>
 
-            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',mb:3,mt:1}}>
+            <Box sx={{width:'100%',mt:1}}>
                 {
                     props.shoes.recommendTo.map((item,index)=>{
                         return(
-                            <Box key = {index} sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'90%',mt:1,backgroundColor:'#4F1D76',height:'25px',borderRadius:'3px'}}>
-                                <Box key ={index} sx={{borderRadius:'50%',width:'15px',height:'15px',mx:1,border:1,backgroundColor:'#ffffff',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                                    <Typography marginRight={index==0?'1px':0} align="center" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px',height:'15px',lineHeight:'15.51px'}}>
+                            <Box key = {index} sx={{display:'flex',justifyContent:'start',alignItems:'center',mx:'20px',mt:1,backgroundColor:'#4F1D76',height:'28px',borderRadius:'14px'}}>
+                                <Box key ={index} sx={{borderRadius:'50%',width:'24px',height:'24px',border:"2.5px solid #4F1D76",backgroundColor:'#ffffff',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                                    <Typography marginRight={index==0?'1px':0} align="center" sx={{color:'#4F1D76',fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px',height:'15px',lineHeight:'15.51px'}}>
                                         {index+1}
                                     </Typography>
                                 </Box>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px',color:'#ffffff'}}>
+
+                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#ffffff',ml:'3px',lineHeight:"16.71px"}}>
                                     {item.content}
                                 </Typography>
                             </Box>

@@ -24,7 +24,6 @@ export default function Competition_Schedule_Filter(props){
         display:'flex',
         justifyContent:'center',
         alignItems:'center',
-        width:'60px',
         height:'25px',
         border:1,
         borderRadius:'8px',
@@ -32,11 +31,12 @@ export default function Competition_Schedule_Filter(props){
         mr:1
     }
 
+
     const buttonTyphography ={
         fontFamily:'Pretendard Variable',
         fontWeight:'500',
         fontSize:'13px',
-        color:"#606060"
+        px:'7px'
     }
 
     const openDrawer = () => {
@@ -44,8 +44,8 @@ export default function Competition_Schedule_Filter(props){
     }
 
     return(
-        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'63px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'90%',minWidth:'324px',maxWidth:'405px'}}>
-            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
+        <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'62px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'100%',minWidth:'360px',maxWidth:'450px'}}>
+            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',px:"20px"}}>
                 <Box backgroundColor={month.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {month.length == 0?'black':'white'} sx={buttonTyphography}>
                         날짜별 {month.length == 0?'':month.length}{'>'}

@@ -86,18 +86,21 @@ function Shoes_Detail(){
                             <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{}}/>
                         </Box>
                         :
-                        <Box sx={{width:"100%",display:"flex",justifyContent:"center"}}>
+                        <Box sx={{display:"flex",justifyContent:"center"}}>
                             {
                                 shoes&&comment?
                                 <Box sx={{width:"100%"}}>
                                     <Title setError = {setError} shoes = {shoes}/>
-                                    <Divider/>
+
+                                    <Divider sx={{border:2,color:"#F6F6F6",my:'21px',mx:'20px'}}/>
 
                                     <Recommend shoes = {shoes}/>
-                                    <Divider/> 
+
+                                    <Divider sx={{border:2,color:"#F6F6F6",my:'21px',mx:'20px'}}/>
 
                                     <Feature shoes = {shoes}/>
-                                    <Divider/>
+
+                                    <Divider sx={{border:2,color:"#F6F6F6",my:'20px',mx:'20px'}}/>
 
                                     <Comment setError = {setError} setOpen={setOpen}/>
                                 </Box>

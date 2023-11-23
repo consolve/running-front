@@ -16,23 +16,18 @@ import {
     ShoesMain_ShoesBookMark
 } from '../../../../state/Shoes/ShoesMain_State';
 
-import './style.css';
+import Content from "./Shoes_Main_Content/Shoes_Main_Content"
+import ContentSkeleton from './Shoes_Main_Content/Shoes_Main_Content_Skeleton';
+import Tags from "./Shoes_Main_Content/Shoes_Main_Tags"
+import TagsSkeleton from './Shoes_Main_Content/Shoes_Main_Tags_Skeleton';
+import More from "./Shoes_Main_Content/Shoes_Main_More"
+import MoreSkeleton from './Shoes_Main_Content/Shoes_Main_More_Skeleton';
+import Title from "./Shoes_Main_Content/Shoes_Main_Title"
 
-import { Swiper, SwiperSlide } from "swiper/react";
-//모듈 필요
-import { FreeMode } from 'swiper/modules';
-//Swiper css
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import "swiper/css/grid";
 
 export default function Shoes_Useage(props){
 
     const session = localStorage.getItem("sessionid");
-
-    function formatNumberWithCommas(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    }
 
 
     const [purpose, setPurpose] = useState(0);
@@ -42,8 +37,6 @@ export default function Shoes_Useage(props){
     const [error,setError] = useRecoilState(ShoesMain_Error);
     const [shoesBookmark,setShoesBookmark] = useRecoilState(ShoesMain_ShoesBookMark);
     const [loadingall,setLoadingall] = useRecoilState(ShoesMain_AllLoading);
-
-    const loadinglist = [1,2,3,4,5,6]
 
     const handleTogglePurpose = (value) => {
         if(loading){
@@ -162,188 +155,32 @@ export default function Shoes_Useage(props){
     },[purpose])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%',mb:'60px'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
 
             {/*상단제목*/}
-            <Box sx={{width:'100%'}}>
-                <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'800',fontSize:'24px',ml:2}}>
-                        용도별 러닝화
-                    </Typography>
-                </Box>
-            </Box>
+            <Title content={"용도별 러닝화"}/>
             
             {
                 purposeLoading?
-                <Box sx={{width:'100%',mt:2,mb:2}}>
-                    {/*필터*/}
-                    <Swiper
-                        spaceBetween={-6}
-                        modules={[FreeMode]}
-                        slidesPerView={'auto'}
-                        freeMode={{enabled: true}}	// 추가
-                    >
-                        {
-                            loadinglist.map((item,index)=>{
-                                return(
-                                    <SwiperSlide key = {item} className="tag-loading swiper-left-margin-16">
-                                        <Box sx={{width:'100%',height:'22px',display:"flex",alignItems:"center"}}>
-                                            <Skeleton variant="rectangular" width={'50px'} height={"22px"} sx={{borderRadius:3}}/>
-                                        </Box>
-                                    </SwiperSlide>
-                                )
-                            })
-                        }
-                    </Swiper>
-                </Box>
+                <TagsSkeleton/>
                 :
-                <Box sx={{width:"100%"}}>
-                    {
-                        purposetags?
-                        <Box sx={{width:'100%',mt:2,mb:2}}>
-                            <Swiper
-                                spaceBetween={-16}
-                                modules={[FreeMode]}
-                                slidesPerView={'auto'}
-                                freeMode={{enabled: true}}	// 추가
-                            >
-                            
-                                {
-                                purposetags.map((item,index)=>{
-                                    return(
-                                        <SwiperSlide key ={index} className='swiper-width-auto swiper-left-margin-16'>
-                                            <Box onClick = {() =>handleTogglePurpose(index)} backgroundColor = {purpose === index?'#4F1D7642':"#E8E8E8"} sx={{height:'22px',display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'3px',mx:0.5}}>
-                                                <Typography color = {purpose === index?"#4F1D76":"#000000"} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'16px',mx:1}}>
-                                                    {item.name}
-                                                </Typography>
-                                            </Box>
-                                        </SwiperSlide>
-                                    )
-                                })
-                                }
-        
-                            </Swiper>
-                        </Box>
-                        :
-                        ""
-        
-                    }
-                </Box>
-
+                <Tags tags={purposetags} select={purpose} handleToggle={handleTogglePurpose}/>
             }
 
             {
                 loading||loadingall?
-                <Box sx={{width:"100%"}}>
-
-                    <Swiper
-                        spaceBetween={-6}
-                        modules={[FreeMode]}
-                        slidesPerView={'auto'}
-                        freeMode={{enabled: true}}	// 추가
-                    >
-                        {
-                            loadinglist.map((item,index)=>{
-                                return(
-                                    <SwiperSlide key = {item} className='shoes'>
-                                        <Box sx={{width:'100%'}}>
-                                            <Skeleton variant="rectangular" width={'100%'} height={"250px"} sx={{borderRadius:3}}/>
-                                        </Box>
-                                    </SwiperSlide>
-                                )
-                            })
-                        }
-                    </Swiper>
-                </Box>
+                <ContentSkeleton/>
                 :
-                <Box sx={{width:'100%'}}>
-                    {
-                        <Box sx={{width:'100%'}}>
-                            {
-                                shoes.length!=0?
-                                    <Swiper
-                                        spaceBetween={-10}
-                                        modules={[FreeMode]}
-                                        slidesPerView={'auto'}
-                                        freeMode={{enabled: true}}	// 추가
-                                    >
-                                        {
-                                            shoes.map((item,index)=>{
-                                                console.log(item)
-                                                return(
-                                                    <SwiperSlide className='shoes'>
-                                                        <Box onClick = {()=>navigateToShoesDetail(item.id)} sx={{width:'100%',display:'flex',alignItems:"center",flexDirection:"column",alignItems:"start"}}>
-                                                        <Box sx={{position:'relative',backgroundColor:'#f4f4f4',borderRadius:'8px'}}>
-                                                                <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`} style={{width:'170px',height:'170px',objectFit:'contain',objectPosition:'center'}}/>
-                                                                {
-                                                                    shoesBookmark[item.id]?
-                                                                    <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:1}}>
-                                                                        <BookmarkIcon/>
-                                                                    </IconButton>
-                                                                    :
-                                                                    <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:1}}>
-                                                                        <BookmarkBorderIcon/>
-                                                                    </IconButton>
-                                                                }
-                                                            </Box>
-                                                            <Box sx={{display:'flex',flexDirection:'column',ml:1,mt:1,width:"100%"}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
-                                                                    {item.purpose}
-                                                                </Typography>
-                                                                <Typography sx={{lineHeight:"20px",fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
-                                                                    {item.name}
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
-                                                                    {formatNumberWithCommas(item.price)}{"원"}
-                                                                </Typography>
-                                                            </Box>
-                                                        </Box>
-                                                    </SwiperSlide>
-                                                )
-                                            })
-                                        }
-                                    </Swiper>
-                                :
-                                <Box sx={{height:'250px',width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
-                                        존재하지 않습니다 :(
-                                    </Typography>
-                                </Box>
-                            }
-                        </Box>
-                    }
-                </Box>
+                <Content shoes={shoes} shoesBookmark={shoesBookmark} onClickBookMart={onClickBookMart}/>
             }
 
-             {/*더보기 버튼*/}
-             {
+            {/*더보기 버튼*/}
+            {
                 loading||loadingall?
-                <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'95%',flexDirection:'column',mt:1}}>
-                    <Skeleton variant="rectangular" sx={{borderRadius:'10px',height:'40px',mt:1,width:'100%'}}/>
-                </Box>
+                <MoreSkeleton/>
                 :
-                <Box sx={{width:"100%"}}>
-                    {
-                        purposetags.length?
-                        <Box onClick={()=>navigateToShoesSearch(purposetags[purpose].name)} sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'95%',flexDirection:'column',mt:1}}>
-                            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',borderRadius:'10px',height:'40px',mt:1,width:'100%',border:1,color:'#E8E8E8'}}>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'18px',color:'#606060'}}>
-                                    더 많은&nbsp;
-                                </Typography>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'18px',color:'#000000'}}>
-                                    {purposetags[purpose].name}
-                                </Typography>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'18px',color:'#9D9D9D'}}>
-                                    &nbsp;보기
-                                </Typography>
-                            </Box>
-                        </Box>
-                        :
-                        ""
-                    }
-                </Box>
+                <More select={purpose} tags={purposetags} navigateToShoesSearch={navigateToShoesSearch}/>
             }
-
 
 
         </Box>    
