@@ -90,29 +90,31 @@ function Crew_Detail(){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             
-            <Box sx={{width:'100%',mb:10}}>
+            <Box sx={{width:'100%'}}>
                 {
-                    loading?
-                    <Skeleton variant="rectangular" width={'100%'} height={"300px"} sx={{position:'relative',zIndex:-1}}/>
+                    loading&&comment?
+                    <Box sx={{position:'fixed',width:'100%',width:"100%",backgroundColor:'#4F1D76',maxWidth:"450px",minWidth:"360px"}}>
+                        <Skeleton variant="rectangular" width={'100%'} height={"300px"} sx={{position:'relative',zIndex:-1}}/>
+                    </Box>
                     :
                     <Box sx={{width:"100%"}}>
                     {
-                        crew!=0?
-                        <Box sx={{width:"100%"}}>
+                        crew!=0&&comment?
+                        <Box sx={{width:"100%",height:"300px",position:"fixed",maxWidth:"450px",minWidth:"360px"}}>
                             <TopBar crew={crew}/>
                             <Banner crew={crew}/>
                         </Box>
                         :
-                        <Box sx={{width:'100%',height:'300px',backgroundColor:'#4F1D76'}}>
+                        <Box sx={{position:'fixed',width:'100%',height:'300px',backgroundColor:'#4F1D76'}}>
                         </Box>
                     }
                     </Box>
                 }
-                <Box sx={{position:'relative',mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
+                <Box sx={{position:'relative',display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px',mb:10,mt:"270px"}}>
                     {
                         loading? 
                         <Box sx={{width:"100%",height:"600px",mb:1}}>
-                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{mt:1,borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}/>
+                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{borderTopLeftRadius:'20px',borderTopRightRadius:'20px',pb:11}}/>
                         </Box>
                         :
                         <Box sx={{width:"100%",display:"flex",justifyContent:"center"}}>

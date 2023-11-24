@@ -77,21 +77,21 @@ function Crew_Search(){
     return(
         <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar />
-            <Box sx={{width:'95%',my:'75px'}}>
+            <Box sx={{width:'100%',my:'75px'}}>
                 {
                     loading?
-                    <Box sx={{width:'100%',display:'flex',justifyContent:"center"}}>
+                    <Box sx={{px:"20px",display:'flex',justifyContent:"center"}}>
                         <Box sx={{display:'flex',flexDirection:'column',width:"50%",alignItems:"center"}}>
                             {loadinglist.slice(0, Math.ceil(loadinglist.length / 2)).map((item, index) => (
                             <Box key={index} sx={{width:"100%",display:'flex',justifyContent:'center',alignItems:"center"}}>
-                                <Skeleton variant="rectangular" width={'90%'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
+                                <Skeleton variant="rectangular" width={'95%'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
                             </Box>
                             ))}
                         </Box>
                         <Box sx={{display:'flex',flexDirection:'column',width:'50%'}}>
                             {loadinglist.slice(Math.ceil(loadinglist.length / 2)).map((item, index) => (
                             <Box key={index} sx={{width:"100%",display:'flex',justifyContent:'center',alignItems:"center"}}>
-                                <Skeleton variant="rectangular" width={'90%'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
+                                <Skeleton variant="rectangular" width={'95%'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
                             </Box>
                             ))}
                         </Box>

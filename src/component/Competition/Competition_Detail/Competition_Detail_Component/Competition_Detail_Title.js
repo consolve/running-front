@@ -15,13 +15,13 @@ export default function Competition_Detail_Detail(props){
     },[])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',height:'80px',backgroundColor:'#ffffff',borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
+        <Box sx={{backgroundColor:'#ffffff',borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
             
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',pt:2,pb:1}}>
-                <Typography color = {isOpen?"#4F1D76":'gray'} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',px:'20px',pt:'24px',pb:2}}>
+                <Typography color = {isOpen?"#4F1D76":'gray'} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',lineHeight:"14.32px"}}>
                     {isOpen?"모집중":"모집완료"}
                 </Typography>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'20px',mt:0.5}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px',mt:'3px',lineHeight:"28.64px"}}>
                     {props.competition.name}
                 </Typography>
             </Box>

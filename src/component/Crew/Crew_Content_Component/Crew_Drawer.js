@@ -12,7 +12,7 @@ import { styled } from '@mui/material/styles';
 import {useRecoilState} from 'recoil'
 import {
     CrewMain_Location
-} from '../../../../../state/Crew/CrewMain_State';
+} from '../../../state/Crew/CrewMain_State';
 
 export default function TemporaryDrawer(props) {
 
@@ -23,7 +23,7 @@ export default function TemporaryDrawer(props) {
         width:'100%',
         height:'100%',
         minWidth:'360px',
-        maxWidth:'420px',
+        maxWidth:'450px',
         borderTopLeftRadius:20,
         borderTopRightRadius:20, 
         backgroundColor:'#ffffff'
@@ -57,9 +57,9 @@ export default function TemporaryDrawer(props) {
         onKeyDown={toggleDrawer(false)}
         >
             <Box sx={DrawerTheme}>
-                <Box sx={{}}>
+                <Box sx={{mb:'100px'}}>
                     <Box sx={{height:'50px',width:'100%',display:'flex',justifyContent:'center',alignItems:'center',position:'relative'}}>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px'}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:"21.48px"}}>
                             선택해주세요
                         </Typography>
                         <ClearIcon onClick={toggleDrawer(false)} sx={{position:'absolute', right:30}}/>
@@ -67,15 +67,15 @@ export default function TemporaryDrawer(props) {
                     <Divider/>
 
                     {/*지역*/}
-                    <Box sx={{width:"92%",my:3,mx:'auto'}}>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'13px'}}>
+                    <Box sx={{width:"92%",my:'20px',mx:'auto'}}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
                             지역
                         </Typography>
-                        <Box sx={{mt:1.5}}>
+                        <Box sx={{mt:2}}>
                             <Box sx={{display:'flex',width:"100%"}}>
                                 {['수도권','경상권','충청권','전라권','제주권'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleLocation(index+1)} backgroundColor={location.includes(index+1)?'#4F1D76':''} sx={{width:"50px",height:'23px',border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
-                                        <Typography color = {location.includes(index+1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
+                                    <Box key = {index} onClick ={()=>handleToggleLocation(index+1)} backgroundColor={location.includes(index+1)?'#4F1D76':''} sx={{border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                                        <Typography color = {location.includes(index+1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',lineHeight:"16.71px",mx:'9px',my:"7px"}}>
                                             {text}
                                         </Typography>
                                     </Box>   
@@ -84,10 +84,9 @@ export default function TemporaryDrawer(props) {
                             </Box>
                         </Box>
                     </Box>
-                    <Divider/>
 
                     {/*하단 버튼*/}
-                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'92%',mx:'auto',my:1}}>
+                    <Box sx={{display:'flex',position:"absolute",bottom:'33px',justifyContent:'center',alignItems:'center',left:"50%",transform:'translateX(-50%)',width:'92%',mx:'auto',mt:1,minWidth:'324px',maxWidth:"405px"}}>
                         <Button onClick ={()=>{
                                 navigateToCrewLocatioin();
                             }} disabled= {!location.length} variant="contained" color='primary' sx={{width:'100%',height:'45px',borderRadius:'7px'}}>

@@ -5,7 +5,7 @@ import Auth from "../../../hoc/auth"
 import { useNavigate } from "react-router-dom";
 import TopBar from "./Crew_Main_Component/Crew_Main_TopBar";
 import List from "./Crew_Main_Component/Crew_Main_List"
-import Title from "./Crew_Main_Component/Crew_Main_Title"
+import Title from "../Crew_Content_Component/Crew_Title"
 import Dial from "./Crew_Main_Component/Crew_Main_Dial"
 import {useRecoilState} from 'recoil'
 import {Skeleton} from '@mui/material';
@@ -86,22 +86,22 @@ function Crew_Main(){
         <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar/>
             
-            <Box sx={{width:'93%',mb:8,mt:'70px'}}>
-                <Title/>
+            <Box sx={{width:'100%',mb:8,mt:'87px'}}>
+                <Title title={"크루와 함께해요"} content={"내 주변에 있는 크루를 쉽게 찾을 수 있어요"}/>
                 {
                     loading?
-                    <Box sx={{width:'100%',display:'flex',justifyContent:"center"}}>
+                    <Box sx={{px:"20px",display:'flex',justifyContent:"center"}}>
                         <Box sx={{display:'flex',flexDirection:'column',width:"50%",alignItems:"center"}}>
                             {loadinglist.slice(0, Math.ceil(loadinglist.length / 2)).map((item, index) => (
                             <Box key={index} sx={{width:"100%",display:'flex',justifyContent:'center',alignItems:"center"}}>
-                                <Skeleton variant="rectangular" width={'170px'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
+                                <Skeleton variant="rectangular" width={'95%'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
                             </Box>
                             ))}
                         </Box>
                         <Box sx={{display:'flex',flexDirection:'column',width:'50%'}}>
                             {loadinglist.slice(Math.ceil(loadinglist.length / 2)).map((item, index) => (
                             <Box key={index} sx={{width:"100%",display:'flex',justifyContent:'center',alignItems:"center"}}>
-                                <Skeleton variant="rectangular" width={'170px'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
+                                <Skeleton variant="rectangular" width={'95%'} height={"240px"} sx={{mt:1,borderRadius:2}}/>   
                             </Box>
                             ))}
                         </Box>

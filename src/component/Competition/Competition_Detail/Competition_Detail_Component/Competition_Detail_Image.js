@@ -29,13 +29,14 @@ export default function Competition_Detail_Image(props) {
 
     return (
         <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',mt:'19px'}}>
-            <Box sx={{width:'90%'}}>
-                <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
+            <Box sx={{width:'100%'}}>
+                <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'21.48px',px:"20px"}}>
                     대회 공식 이미지
                 </Typography>
             </Box>
 
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'90%',mt:1}}>
+                <Box sx={{px:"20px"}}>
                 {
                     props.competition.courseImgs.map((item,index)=>{
                         return(
@@ -47,6 +48,7 @@ export default function Competition_Detail_Image(props) {
                         )
                     })
                 }
+                </Box>
             </Box>
 
             {

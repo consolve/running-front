@@ -116,21 +116,24 @@ function Competition_Detail(){
                             <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{borderTopLeftRadius:'20px',borderTopRightRadius:'20px',pb:11}}/>
                         </Box>
                         :
-                        <Box sx={{width:"90%",display:"flex",justifyContent:"center"}}>
+                        <Box sx={{width:"100%",display:"flex",justifyContent:"center"}}>
                             {
                                 contest&&comment?
                                 <Box sx={{width:"100%"}}>
                                     <Title competition = {contest}/>
-                                    <Divider sx={{color:"#F6F6F6",border:2}}/>
+                                    
+                                    <Divider sx={{border:2,color:"#F6F6F6",mx:"20px"}}/>
 
                                     <Detail competition = {contest}/>
-                                    <Divider sx={{color:"#F6F6F6",border:2}}/> 
+                                    <Divider sx={{border:2,color:"#F6F6F6",my:'20px',mx:'20px'}}/>
+ 
                                 
                                     <Course competition = {contest}/>
-                                    <Divider sx={{color:"#F6F6F6",border:2}}/>
+                                    <Divider sx={{border:2,color:"#F6F6F6",my:'21px',mx:'20px'}}/>
+
 
                                     <Image competition = {contest}/>
-                                    <Divider sx={{color:"#F6F6F6",border:2,mt:'24px',mb:'19px'}}/>
+                                    <Divider sx={{border:2,color:"#F6F6F6",my:'21px',mx:'20px'}}/>
                                     
                                     <Comment setError = {setError} setOpen={setOpen}/>
                                     

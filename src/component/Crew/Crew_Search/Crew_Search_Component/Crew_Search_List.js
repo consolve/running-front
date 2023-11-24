@@ -101,10 +101,9 @@ export default function Crew_Search_List(props){
     },[props.list])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%'}}>
+        <Box sx={{mt:2,display:"flex",justifyContent:"center",flexDirection:'column',alignItems:"center",px:'20px'}}>
             <Box sx={{width:"100%"}}>
-                
-                <Grid container spacing={1} columns={16} >
+                    <Grid container spacing={'10px'} columns={16} >
                         {
                             props.list.map((item,index)=>{
                                 return(
@@ -131,8 +130,8 @@ export default function Crew_Search_List(props){
                                                             {
                                                                 item.activityAreaTag.map((item,index)=>{
                                                                     return(
-                                                                        <Box key={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'40px',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:1}}>
-                                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px',color:'#ffffff'}}>
+                                                                        <Box key={index} sx={{backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
+                                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'9px',color:'#ffffff',my:'2px',mx:'6px',lineHeight:"normal"}}>
                                                                                 {item.name}
                                                                             </Typography>
                                                                         </Box>
@@ -141,31 +140,20 @@ export default function Crew_Search_List(props){
                                                             }      
                                                         </Box>
 
-                                                        <Box sx={{display:'flex',justifyContent:'center',flexDirection:'column',width:'100%'}}>
-                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
+                                                        <Box sx={{display:'flex',justifyContent:'center',flexDirection:'column',width:'100%',mt:'4px'}}>
+                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:"normal"}}>
                                                                 {item.name}
                                                             </Typography>
-                                                            <Box sx={{display:'flex'}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060'}}>
-                                                                    정기런
+                                                            <Box sx={{display:'flex',mt:"4px"}}>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:"normal",fontWeight:'300',fontSize:'13px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                                    정기런&nbsp;{'|'}&nbsp;{item.regularRun}
                                                                 </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060'}}>
-                                                                    &nbsp;{'|'}&nbsp;
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
-                                                                    {item.regularRun}
-                                                                </Typography>
+                                                                
                                                             </Box>
 
-                                                            <Box sx={{display:'flex',mt:-0.5}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060'}}>
-                                                                    시간
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060'}}>
-                                                                    &nbsp;{'|'}&nbsp;
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
-                                                                    {extractSentenceAfterWord(item.regularRun)}
+                                                            <Box sx={{display:'flex',mt:'2px'}}>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:"normal",fontWeight:'300',fontSize:'13px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                                    시간&nbsp;{'|'}&nbsp;{extractSentenceAfterWord(item.regularRun)}
                                                                 </Typography>
                                                             </Box>
                                                         </Box>
@@ -174,7 +162,7 @@ export default function Crew_Search_List(props){
                                         </Grid>
                                         :
                                         <Grid item xs={8} key={item.id} sx={{display:'flex',justifyContent:'center'}}>
-                                           <Box ref={ref} onClick={()=>navigateToCrewDetail(item.id)} sx={{width:'100%',mb:1,display:'flex',flexDirection:'column',alignItems:"start",justifyContent:'center'}}>
+                                            <Box onClick={()=>navigateToCrewDetail(item.id)} sx={{width:'100%',mb:1,display:'flex',flexDirection:'column',alignItems:"start",justifyContent:'center'}}>
                                                 <Box sx={{position:'relative',backgroundColor:'#f4f4f4',width:'100%',pb:'100%',overflow:"hidden",borderRadius:'8px'}}>
                                                     <img src={`${API_URL}${item.mainImg}`} style={{position:"absolute",width:"100%",height:"100%",objectFit:'contain',objectPosition:'contain'}}/>
                                                     {
@@ -193,8 +181,8 @@ export default function Crew_Search_List(props){
                                                             {
                                                                 item.activityAreaTag.map((item,index)=>{
                                                                     return(
-                                                                        <Box key={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'40px',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:1}}>
-                                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px',color:'#ffffff'}}>
+                                                                        <Box key={index} sx={{backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
+                                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'9px',color:'#ffffff',my:'2px',mx:'6px',lineHeight:"normal"}}>
                                                                                 {item.name}
                                                                             </Typography>
                                                                         </Box>
@@ -203,31 +191,20 @@ export default function Crew_Search_List(props){
                                                             }      
                                                         </Box>
 
-                                                        <Box sx={{display:'flex',justifyContent:'center',flexDirection:'column',width:'100%'}}>
-                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
+                                                        <Box sx={{display:'flex',justifyContent:'center',flexDirection:'column',width:'100%',mt:'4px'}}>
+                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:"normal"}}>
                                                                 {item.name}
                                                             </Typography>
-                                                            <Box sx={{display:'flex'}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060'}}>
-                                                                    정기런
+                                                            <Box sx={{display:'flex',mt:"4px"}}>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:"normal",fontWeight:'300',fontSize:'13px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                                    정기런&nbsp;{'|'}&nbsp;{item.regularRun}
                                                                 </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060'}}>
-                                                                    &nbsp;{'|'}&nbsp;
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
-                                                                    {item.regularRun}
-                                                                </Typography>
+                                                                
                                                             </Box>
 
-                                                            <Box sx={{display:'flex',mt:-0.5}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060'}}>
-                                                                    시간
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060'}}>
-                                                                    &nbsp;{'|'}&nbsp;
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
-                                                                    {extractSentenceAfterWord(item.regularRun)}
+                                                            <Box sx={{display:'flex',mt:'2px'}}>
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:"normal",fontWeight:'300',fontSize:'13px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                                    시간&nbsp;{'|'}&nbsp;{extractSentenceAfterWord(item.regularRun)}
                                                                 </Typography>
                                                             </Box>
                                                         </Box>

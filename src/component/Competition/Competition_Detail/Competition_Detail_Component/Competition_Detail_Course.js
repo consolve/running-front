@@ -27,14 +27,15 @@ export default function Competition_Detail_Course(props) {
     },[])
 
     return (
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',mt:'18px',mb:3}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             <Box sx={{width:'100%'}}>
-                <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'21.48px'}}>
+                <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'21.48px',px:"20px"}}>
                     코스
                 </Typography>
             </Box>
 
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',mt:'11px',ml:'-2px'}}>
+                <Box sx={{px:'20px'}}>
                 {
                     props.competition.courseTags.map((item,index)=>{
                         return(
@@ -46,6 +47,7 @@ export default function Competition_Detail_Course(props) {
                         )
                     })
                 }
+                </Box>
             </Box>
 
             {
