@@ -28,26 +28,28 @@ export default function RunnerTalk_Main_TopBar(){
 
     return(
         <Box sx={TopbarTheme}>
-            <Box onClick = {navigateToHome} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <IconButton type="button" sx={{ }} aria-label="search">
-                    <WestIcon sx={{}}/>
-                </IconButton>
-            </Box>
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:"column"}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px'}}>
-                    러너톡
-                </Typography>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px',color:'#A6A6A6',mt:-0.5}}>
-                    전체글
-                </Typography>
-            </Box>
+            <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
+                <Box onClick = {navigateToHome} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <IconButton type="button" sx={{ }} aria-label="search">
+                        <WestIcon sx={{}}/>
+                    </IconButton>
+                </Box>
+                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:"column"}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px'}}>
+                        러너톡
+                    </Typography>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px',color:'#A6A6A6',mt:-0.5}}>
+                        전체글
+                    </Typography>
+                </Box>
 
-            <Box
-                onClick={navigateToRunnerTalkSearch}
-                >
-                <IconButton type="button" sx={{ }} aria-label="search">
-                    <SearchIcon />
-                </IconButton>
+                <Box
+                    onClick={navigateToRunnerTalkSearch}
+                    >
+                    <IconButton type="button" sx={{ }} aria-label="search">
+                        <SearchIcon />
+                    </IconButton>
+                </Box>
             </Box>
         </Box>    
     )

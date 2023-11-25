@@ -119,18 +119,23 @@ function Crew_Detail(){
                         :
                         <Box sx={{width:"100%",display:"flex",justifyContent:"center"}}>
                             {
-                                crew!=0?
+                                crew!=0&&comment?
                                 <Box sx={{width:"100%"}}>
                                     <Title crew = {crew}/>
-                                    <Divider/>
+
+                                    <Divider sx={{border:2,color:"#F6F6F6",mx:"20px"}}/>
 
                                     <Detail crew = {crew}/>
-                                    <Divider/> 
+                                    
+                                    <Divider sx={{border:2,color:"#F6F6F6",my:'20px',mx:'20px'}}/>
 
                                     <Image crew = {crew}/>
-                                    <Divider/>
+                                    
+                                    <Divider sx={{border:2,color:"#F6F6F6",my:'20px',mx:'20px'}}/>
 
                                     <Comment setError = {setError} setOpen={setOpen}/>
+
+                                    <Navbar/>
                                 </Box>
                                 :
                                 <Box sx={{width:'100%',height:"500px",display:'flex',justifyContent:"center",alignItems:"center"}}>
@@ -157,8 +162,6 @@ function Crew_Detail(){
                     </Box>
                 </Modal>
             </Box>
-
-            <Navbar/>
         </Box>    
     )
 }

@@ -10,16 +10,15 @@ export default function Crew_Detail_Title(props){
     },[])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',height:'80px',backgroundColor:'#ffffff',borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
-            
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'90%',pt:2,pb:1}}>
-                <Typography color = {"#4F1D76"} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
-                    {props.crew.runningPlace}
+        <Box sx={{backgroundColor:'#ffffff',borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',px:'20px',pt:'24px',pb:2}}>
+                <Typography color = {"#4F1D76"} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',lineHeight:"14.32px"}}>
+                {props.crew.runningPlace}
                 </Typography>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'20px',mt:0.5}}>
-                    {props.crew.name}
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px',mt:'3px',lineHeight:"28.64px"}}>
+                {props.crew.name}
                 </Typography>
             </Box>
-        </Box>    
+        </Box>   
     )
 }

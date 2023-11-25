@@ -68,17 +68,16 @@ export default function Crew_TopBar(props){
 
                 <Box
                     component="form"
-                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:'80%',mr:2,backgroundColor:'#f4f4f4',borderRadius:3 }}
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:'90%',backgroundColor:'#f4f4f4',borderRadius:'10px' }}
                     >
                     <InputBase
                         onKeyDown={handleOnKeyPress}
-                        onChange = {(e) => setValuse((prev)=>prev=e.target.value)}
-                        value={value}
+                        onChange={(e) => setValuse((prev)=>prev=e.target.value)}
+                        value = {value}
                         sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
-                        placeholder=""
                     />
-                    <IconButton onClick ={navigateToShoesSearch} type="button" sx={{ p: '10px' }} aria-label="search">
-                        <SearchIcon/>
+                    <IconButton onClick = {navigateToShoesSearch} type="button" sx={{ p: '10px' }} aria-label="search">
+                        <SearchIcon />
                     </IconButton>
                 </Box>
             </Box>

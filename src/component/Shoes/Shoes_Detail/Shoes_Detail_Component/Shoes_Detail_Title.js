@@ -42,7 +42,7 @@ export default function Shoes_Detail_Title(props){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',backgroundColor:'#ffffff',borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
 
-            <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'start',px:'20px',pt:2,pb:1}}>
+            <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'start',width:"calc(100% - 40px)",mx:"auto",pt:2,pb:1}}>
                 <Box sx={{display:"flex",flexDirection:'column'}}>
                     <Typography color = "#000000" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px',lineHeight:'28.64px'}}>
                         {props.shoes.brand}

@@ -15,7 +15,7 @@ import {
 } from "../../../../state/RunnerTalk/RunnerTalk_Write_State"
 import {FetchRunnerTalkPost} from "../../../../API/api/RunningTalk/runningTalk_api"
 import { fetchPurposeShoes } from '../../../../API/api/RunningShoes/shoes_api';
-
+import TopbarTheme from '../../../../style/plate/topbar';
 
 export default function RunnerTalk_Main_TopBar(props){
 
@@ -60,26 +60,28 @@ export default function RunnerTalk_Main_TopBar(props){
     },[])
 
     return(
-        <Box sx={{position:"relative",display:'flex',alignItems:'center',justifyContent:'space-between',width:'95%',maxWidth:'420px',minWidth:'360px',height:'60px',borderBottom:1,borderBottomColor:'#E0E0E0'}}>
-            <Box onClick = {navigateToRunnerTalkMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <IconButton type="button" sx={{ }} aria-label="search">
-                    <WestIcon sx={{}}/>
-                </IconButton>
-            </Box>
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:"column"}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px'}}>
-                    글쓰기
-                </Typography>
-            </Box>
+        <Box sx={TopbarTheme}>
+            <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
+                <Box onClick = {navigateToRunnerTalkMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <IconButton type="button" sx={{ }} aria-label="search">
+                        <WestIcon sx={{}}/>
+                    </IconButton>
+                </Box>
+                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:"column"}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px'}}>
+                        글쓰기
+                    </Typography>
+                </Box>
 
-            <Box
-                color={header&&content&&categoryState?"#4F1D76":"#A6A6A6"}
-                onClick={header&&content&&categoryState?FetchRunningTalkPostFunction:()=>{}}
-                sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:"column",mr:1}}
-                >
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',mt:'4px'}}>
-                    확인
-                </Typography>
+                <Box
+                    color={header&&content&&categoryState?"#4F1D76":"#A6A6A6"}
+                    onClick={header&&content&&categoryState?FetchRunningTalkPostFunction:()=>{}}
+                    sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:"column",mr:1}}
+                    >
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',mt:'4px'}}>
+                        확인
+                    </Typography>
+                </Box>
             </Box>
         </Box>    
     )

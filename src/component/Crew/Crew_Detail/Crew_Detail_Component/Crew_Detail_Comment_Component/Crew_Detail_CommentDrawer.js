@@ -56,7 +56,7 @@ export default function TemporaryDrawer(props) {
         width:'100%',
         height:'100%',
         minWidth:'360px',
-        maxWidth:'420px',
+        maxWidth:'450px',
         borderTopLeftRadius:20,
         borderTopRightRadius:20, 
         backgroundColor:'#ffffff',
@@ -190,17 +190,17 @@ export default function TemporaryDrawer(props) {
         >
             <Box sx={DrawerTheme}>
                 <Box sx={{}}>
-                    <Box sx={{height:'100px',display:'flex',justifyContent:'center',alignItems:'start',position:'relative',flexDirection:'column',px:2}}>
+                    <Box sx={{height:'100px',display:'flex',justifyContent:'center',alignItems:'start',position:'relative',flexDirection:'column',px:'20px'}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px'}}>
                             댓글
                         </Typography>
                         <Box sx={{display:'flex',mt:1,ml:-0.5}}>
-                            <Box onClick ={()=>handleToggleOrder(0)} backgroundColor={commentOrder.includes(0)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:5,display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                            <Box onClick ={()=>handleToggleOrder(0)} backgroundColor={commentOrder.includes(0)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                 <Typography color = {commentOrder.includes(0)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px'}}>
                                     {"인기순"}
                                 </Typography>
                             </Box>
-                            <Box onClick ={()=>handleToggleOrder(1)} backgroundColor={commentOrder.includes(1)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:5,display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                            <Box onClick ={()=>handleToggleOrder(1)} backgroundColor={commentOrder.includes(1)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                 <Typography color = {commentOrder.includes(1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px'}}>
                                     {"최신순"}
                                 </Typography>
@@ -217,7 +217,7 @@ export default function TemporaryDrawer(props) {
                         </Box>
                         :
                         <Box sx={{width:"100%",height:'360px',mx:'auto',display:'flex',flexDirection:"column"}}>
-                            <Box sx={{height:"100%",overflow:'hidden'}}>
+                            <Box sx={{height:"100%",overflow:'scroll'}}>
                             {
                                 comment.map((item,index) => {
                                     return(

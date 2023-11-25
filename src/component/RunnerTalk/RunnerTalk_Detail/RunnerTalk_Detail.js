@@ -152,7 +152,7 @@ function RunnerTalk_Detail(){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             <TopBar detail={detail}/>
-            <Box sx={{width:'100%',mb:10,mt:'60px'}}>
+            <Box sx={{width:'100%',mb:'54px',mt:'61px'}}>
                 {
                     loading?
                     <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%',flexDirection:'column',height:"500px"}}>

@@ -41,16 +41,16 @@ export default function Crew_Detail_Comment(props) {
                 </Typography>
             </Box>
 
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'90%',mt:0.5}}>
-                <Box onClick ={openDrawer} sx={{width:'100%',height:'50px',borderRadius:'5px',my:0.5,backgroundColor:'#F9F9F9'}}>
-                    <Box sx={{width:'95%',margin:'auto',alignItems:"center",display:'flex',justifyContent:"start",height:'100%'}}>
-                        <Avatar src={comment.length ===0 ?`${API_URL}${myProfile}`:`${API_URL}${comment[0].user_profile}`} sx={{width:'20px',height:'20px',mr:1}}/>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',px:'20px',width:'calc(100% - 40px)',mt:0.5}}>
+                <Box onClick ={openDrawer} sx={{width:"100%",height:'50px',borderRadius:'5px',my:0.5,backgroundColor:'#F9F9F9'}}>
+                    <Box sx={{alignItems:"center",display:'flex',justifyContent:"start",height:'100%'}}>
+                        <Avatar src={comment.length ===0 ?`${API_URL}${myProfile}`:`${API_URL}${comment[0].user_profile}`} sx={{width:'20px',height:'20px',ml:1,mr:'12px'}}/>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',whiteSpace:'pre-line',overflow:'hidden',textOverflow:'ellipsis',WebkitLineClamp:2,display:'-webkit-box',WebkitBoxOrient:'vertical'}}>
                             {comment.length === 0 ? "": comment[0].comment}
                         </Typography>
                     </Box>
                 </Box>
-            </Box>
+            </Box>  
 
             <Drawer open = {open} setOpen ={setOpen} setError={props.setError} setErrorOpen = {props.setOpen}/>
 

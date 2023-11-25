@@ -25,6 +25,7 @@ const HeaderInput = styled.input`
     width:100%;
     font-family:Pretendard Variable;
     font-weight:700;
+    line-height:normal;
     font-size:20px;
     border:none;
     outline:none;

@@ -9,6 +9,8 @@ import {API_URL} from "../../../../../API/URL/index"
 import SendIcon from '@mui/icons-material/Send';
 import { useParams } from "react-router-dom";
 import { AddCrewChildComment } from '../../../../../API/api/RunningCrew/crew_comment_api';
+import styled from "styled-components"
+
 
 export default function CommentAdder(props) {
     const { id } = useParams();
@@ -47,27 +49,19 @@ export default function CommentAdder(props) {
     }
 
     return (
-        <Box sx={{position:'absolute',display:'flex',justifyContent:'center',alignItems:"center",width:'100%',bottom:0,py:1,minWidth:'360px',maxWidth:'420px',left:'50%',transform: 'translate(-50%)'}}>
+        <Box sx={{display:'flex',justifyContent:'center',alignItems:"center",minWidth:'360px',maxWidth:'450px',pl:'28px',borderBottom:2,borderColor:'#F6F6F6',py:'12px'}}>
             <Box>
                 <Avatar src={`${API_URL}${userProifile}`} sx={{width:'20px',height:'20px',mx:1.5}}/>
             </Box>
             <Box
-                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:'100%',mr:2,backgroundColor:'#f4f4f4',borderRadius:3 }}
+                sx={{ display: 'flex', alignItems: 'center', width:'100%'}}
                 >
-                <InputBase
-
-                    onKeyDown={handleOnKeyPress}
-                    onChange={(e) => setValuse((prev)=>prev=e.target.value)}
-                    value = {value}
-                    sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
-                    placeholder="댓글 추가..."
-                    inputProps={{ 'aria-label': 'Add comment' }}
-                />
+                <HeaderInput onChange={(e) => setValuse((prev)=>prev=e.target.value)} value={value} color="#A6A6A6" placeholder={"답글 추가..."}/> 
                 {
                     loading?
-                    <CircularProgress color="primary" size={'25px'} sx={{p:'5px'}} />
+                    <CircularProgress color="primary" size={'15px'} sx={{p:'5px',mr:2}} />
                     :
-                    <IconButton onClick={AddComment} type="button" sx={{ p: '5px' }} aria-label="search">
+                    <IconButton onClick={AddComment} type="button" sx={{ p: '0.5px',mr:2}} aria-label="search">
                         <SendIcon color="primary"/>
                     </IconButton>
                 }
@@ -75,3 +69,12 @@ export default function CommentAdder(props) {
         </Box>
     );
 }
+
+const HeaderInput = styled.input`
+    width:100%;
+    font-family:Pretendard Variable;
+    font-weight:500;
+    font-size:14px;
+    border:none;
+    outline:none;
+`

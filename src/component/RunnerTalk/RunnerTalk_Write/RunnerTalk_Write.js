@@ -106,7 +106,7 @@ function RunnerTalk(){
         <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar setError = {setError} setErrorOpen={setErrorOpen} setLoading = {setLoading}/>
            
-            <Box sx={{width:"95%",mb:'70px'}}>
+            <Box sx={{width:"100%",mb:'70px',mt:'62.4px'}}>
 
                 {
                     loading?
@@ -120,17 +120,18 @@ function RunnerTalk(){
                     <Drawer category ={category} setCheckCategory={setCheckCategory} open={open} setOpen={setOpen}/>
                 }
 
-                <Box onClick={handleOpen} sx={{width:"100%"}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',my:2}}>
+                <Box onClick={handleOpen} sx={{px:"20px"}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',my:'22px'}}>
                         {checkCategory?checkCategory:"주제를 선택해주세요"}
                     </Typography>
 
                     <Divider sx={{color:"#EDEDED",wdith:"100%"}}/>
                 </Box>
+                <Box sx={{px:"20px"}}>
+                    <Header/>                   
 
-                <Header/>                   
-
-                <Content/>
+                    <Content/>
+                </Box>
 
                 <Box sx={{width:"100%",my:1}}>
                     {
@@ -140,6 +141,7 @@ function RunnerTalk(){
                             modules={[FreeMode]}
                             slidesPerView={'auto'}
                             freeMode={{enabled: true}}	// 추가
+                            style={{paddingLeft:"20px",paddingRight:"20px"}}
                         >
                             {
                                 Base64s.map((item,index)=>{

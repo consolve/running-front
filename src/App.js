@@ -77,7 +77,6 @@ function App() {
 
                 <Route path='/crew' element ={<Crew/>}/>
                 <Route path="/crew/location" element={<CrewLocation/>}/>
-                <Route path="/crew/detail/:id" element={<CrewDetail/>}/>
                 <Route path='/crew/search' element ={<CrewSearch/>}/>
 
                 <Route path="/runnertalk" element={<RunnerTalk/>}/>
@@ -102,6 +101,7 @@ function App() {
                 <Route path="/runnertalk/write" element={<RunnerTalkWrite/>}/>
 
                 <Route path="/crew/add" element={<CrewAdd/>}/>
+                <Route path="/crew/detail/:id" element={<CrewDetail/>}/>
               </Route>
 
             </Routes>
