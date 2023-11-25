@@ -22,7 +22,7 @@ import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import {FetchCrewCommentLatest,FetchCrewCommentPopular,CrewCommentLike  } from "../../../../../API/api/RunningCrew/crew_comment_api"
 import CommentAdder from "./Crew_Detail_CommentDrawer_AddComment"
 import ChildComment from "../Crew_Detail_Comment_ChildComment/Crew_Detail_Child_CommentDrawer"
-
+import Comment from "../../../../Comment/Comment"
 
 export default function TemporaryDrawer(props) {
 
@@ -63,30 +63,6 @@ export default function TemporaryDrawer(props) {
         pb:'60px',
 
     }
-
-    function timeForToday(value) {
-        const today = new Date();
-        const timeValue = new Date(value);
-
-        const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
-        if (betweenTime < 1) return '방금전';
-        if (betweenTime < 60) {
-            return `${betweenTime}분전`;
-        }
-
-        const betweenTimeHour = Math.floor(betweenTime / 60);
-        if (betweenTimeHour < 24) {
-            return `${betweenTimeHour}시간전`;
-        }
-
-        const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-        if (betweenTimeDay < 365) {
-            return `${betweenTimeDay}일전`;
-        }
-
-        return `${Math.floor(betweenTimeDay / 365)}년전`;
-    }
-
     const toggleDrawer = (open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -156,21 +132,6 @@ export default function TemporaryDrawer(props) {
         setLoading(false);
     }
 
-
-    const CrewCommentLikeFunction = async () => {
-        const response = await CrewCommentLike(clickedId,session);
-
-        if(response.response){
-            handleClose();
-            return;
-        }
-        else{
-            handleClose();
-        }
-    
-    }
-
-
     useEffect(()=>{
         setLoading(true);
         if(commentOrder.includes(0)){
@@ -221,41 +182,7 @@ export default function TemporaryDrawer(props) {
                             {
                                 comment.map((item,index) => {
                                     return(
-                                        <Box key = {index} sx={{display:'flex',alignItems:'start',px:2,py:1.5}}>
-                                            <Box sx={{height:'100%',display:'block',mt:0.5}}>
-                                                <Avatar src={`${API_URL}${item.user_profile}`} sx={{width:'20px',height:'20px',mr:1}}/>
-                                            </Box>
-                                            <Box sx={{flex:1}}>
-                                                <Box sx={{display:'flex'}}>
-                                                    <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px'}}>
-                                                        {item.user}{" -"}
-                                                    </Typography>
-                                                    <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:0.5}}>
-                                                        {timeForToday(item.created)}
-                                                    </Typography>
-                                                </Box>
-                                                <Box sx={{width:"100%",mb:0.6}}>
-                                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',whiteSpace:'normal',wordBreak:'break-all'}}>
-                                                        {item.comment}
-                                                    </Typography>
-                                                </Box>
-                                                <Box sx={{display:"flex",mt:1.5}}>
-                                                    <Box onClick={()=>handleOpen(item.id)} sx={{display:'flex',alignItems:'center',height:'14px'}}> 
-                                                        <ThumbUpOffAltOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
-                                                            {item.likePoint}
-                                                        </Typography>
-                                                    </Box>
-                                                    <Box onClick={()=>toggleChildCommentDrawer(true,item.id)} sx={{display:'flex',alignItems:'center',height:'14px'}}>
-                                                        <ModeCommentOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',height:'100%'}}>
-                                                            {item.commentPoint}
-                                                        </Typography>
-                                                    </Box>
-                                                </Box>
-                                                
-                                            </Box>
-                                        </Box> 
+                                        <Comment key={index} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction = {CrewCommentLike}/>
                                     )
                                 })
                             }
@@ -294,34 +221,6 @@ export default function TemporaryDrawer(props) {
                     childOpen&&
                     <ChildComment setError = {props.setError} setErrorOpen={props.setErrorOpen} open={childOpen} setOpen={setChildOpen} id={parentId}/>
                 }
-
-                <Box>
-                    <Modal
-                        open={open}
-                        onClose={handleClose}
-                        disableScrollLock
-                    >
-                        <Box sx={style}>
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px'}}>
-                                {"이 댓글을 공감하시겠습니까?"}
-                            </Typography>
-                            <Box sx={{}}>
-                                <Box sx={{display:"flex",justifyContent:'end',alignItems:'center'}}>
-                                    <Button onClick={()=>handleClose()} color='primary'>
-                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px'}}>
-                                            {"취소"}
-                                        </Typography>
-                                    </Button>
-                                    <Button color='primary'>
-                                        <Typography onClick ={()=>CrewCommentLikeFunction()} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px'}}>
-                                            {"확인"}
-                                        </Typography>
-                                    </Button>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Modal>
-                </Box>
 
             </React.Fragment>
         </Box>

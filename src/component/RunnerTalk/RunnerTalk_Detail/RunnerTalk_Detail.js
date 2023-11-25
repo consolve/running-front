@@ -2,10 +2,8 @@ import {Box,Typography,Modal,CircularProgress} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
 import Auth from "../../../hoc/auth"
-import Banner from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_Banner"
 import Title from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_Title"
 import TopBar from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_TopBar"
-import {Divider} from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import User from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_User"
 import Navbar from './RunnerTalk_Detail_Component/RunnerTalk_Detail_Navbar';
@@ -14,10 +12,12 @@ import Image from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_Image"
 import DetailTitle from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_Detail_Title"
 import Comment from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_Comment"
 import { useParams } from "react-router-dom";
-import {fetchRunnerTalkCPostDetail,UpdateRunningTalkView} from "../../../API/api/RunningTalk/runningTalk_api"
+import {fetchRunnerTalkCPostDetail,UpdateRunningTalkView,fetchRunnerTalkCategory} from "../../../API/api/RunningTalk/runningTalk_api"
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import {RunnerTalkDetail_Comment, RunnerTalkDetail_Comment_Order} from "../../../state/RunnerTalk/RunnerTalk_Comment_State"
+import { RunnerTalkDetail_isLiked,RunnerTalkDetail_isBookMarked } from '../../../state/RunnerTalk/RunnerTalk_Detail_State';
+import Recommend from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_Recommend"
 
 const style = {
     position: 'absolute',
@@ -40,83 +40,21 @@ function RunnerTalk_Detail(){
 
     const navigate = useNavigate();
 
-    const devComment =  [
-        {
-            "id": 1,
-            "user": 4,
-            "parent": null,
-            "post": 1,
-            "comment": "124124412",
-            "user_profile": "/media/detailDetailImages/KakaoTalk_20230807_222625438_07.jpg",
-            "created": "2023-10-10T13:31:17.236"
-        },
-        {
-            "id": 2,
-            "user": 4,
-            "parent": 1,
-            "post": 1,
-            "comment": "7o79",
-            "user_profile": "/media/None.png",
-            "created": "2023-10-10T13:34:29.348"
-        },
-        {
-            "id": 2,
-            "user": 4,
-            "parent": 1,
-            "post": 1,
-            "comment": "7o79",
-            "user_profile": "/media/None.png",
-            "created": "2023-10-10T13:34:29.348"
-        },
-        {
-            "id": 2,
-            "user": 4,
-            "parent": 1,
-            "post": 1,
-            "comment": "7o79",
-            "user_profile": "/media/None.png",
-            "created": "2023-10-10T13:34:29.348"
-        },
-        {
-            "id": 2,
-            "user": 4,
-            "parent": 1,
-            "post": 1,
-            "comment": "7o79",
-            "user_profile": "/media/None.png",
-            "created": "2023-10-10T13:34:29.348"
-        },
-        {
-            "id": 2,
-            "user": 4,
-            "parent": 1,
-            "post": 1,
-            "comment": "7o79",
-            "user_profile": "/media/None.png",
-            "created": "2023-10-10T13:34:29.348"
-        },
-        {
-            "id": 2,
-            "user": 4,
-            "parent": 1,
-            "post": 1,
-            "comment": "7o79",
-            "user_profile": "/media/None.png",
-            "created": "2023-10-10T13:34:29.348"
-        },
-        
-    ]
-
     const navigateToBack  = () =>{
         navigate(-1);
     }
 
     const [loading,setLoading] = useState(true);
+    const [categoryLoading,setCategoryLoading] = useState(true);
     const [error,setError] = useState("");
     const [open, setOpen] = React.useState(false);
     const [detail,setDetail] = useState({});
+    const [category, setCategory] = useState([]);
     const [comment,setComment] = useRecoilState(RunnerTalkDetail_Comment);
     const [commentOrder,setCommentOrder] = useRecoilState(RunnerTalkDetail_Comment_Order);
+    const [isBookmark,setIsBookmark] = useRecoilState(RunnerTalkDetail_isBookMarked);
+    const [isLike,setIsLike] = useRecoilState(RunnerTalkDetail_isLiked);
+
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
@@ -124,10 +62,21 @@ function RunnerTalk_Detail(){
         navigateToBack();
     };
 
+    const FetchRunnerTalkCategory = async () => {
+        const _Category = await fetchRunnerTalkCategory();
+
+        if(_Category.response){
+            return;
+        }
+        else{
+            setCategory(prev=>prev=_Category)
+        }
+        setCategoryLoading(false);
+    }
+
     const FetchDetail = async () => {
-        const [_RunnerTalkDetail] = await axios.all([fetchRunnerTalkCPostDetail(id,session)]);
-        
-        console.log(_RunnerTalkDetail)
+        const [_RunnerTalkDetail,_RunnerTalkisBookMarked,_RunnerTalkisLiked] = await fetchRunnerTalkCPostDetail(id,session);
+
 
         if(_RunnerTalkDetail.response){
             setError(_RunnerTalkDetail.response?_RunnerTalkDetail.response.status:"")
@@ -135,6 +84,8 @@ function RunnerTalk_Detail(){
         }
         else{
             setDetail(_RunnerTalkDetail);
+            setIsBookmark(_RunnerTalkisBookMarked.bookmarked);
+            setIsLike(_RunnerTalkisLiked.liked);
             setComment(prev=>prev=_RunnerTalkDetail.comments);
         }
 
@@ -144,7 +95,9 @@ function RunnerTalk_Detail(){
     useEffect(()=>{
         window.scrollTo({top:0})
         setLoading(true);
+        setCategoryLoading(true);
         FetchDetail();
+        FetchRunnerTalkCategory();
 
         UpdateRunningTalkView(session,id);
     },[])
@@ -154,7 +107,7 @@ function RunnerTalk_Detail(){
             <TopBar detail={detail}/>
             <Box sx={{width:'100%',mb:'54px',mt:'61px'}}>
                 {
-                    loading?
+                    loading||categoryLoading?
                     <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'100%',flexDirection:'column',height:"500px"}}>
                         <CircularProgress color="primary" />
                     </Box>
@@ -166,7 +119,7 @@ function RunnerTalk_Detail(){
                             {
                                 detail!=0?
                                 <Box sx={{width:"100%"}}>
-                                    <Title detail = {detail}/>
+                                    <Title detail = {detail} category={category}/>
                                     <User detail = {detail}/>
                                     <Box sx={{width:"100%"}}>
                                         <DetailTitle detail = {detail}/>
@@ -178,6 +131,8 @@ function RunnerTalk_Detail(){
                                             ""
                                         }
                                     </Box>
+
+                                    <Recommend detail={detail}/>
                                         
                                     <Comment detail={detail} setError = {setError} setOpen={setOpen}/>
                                 </Box>

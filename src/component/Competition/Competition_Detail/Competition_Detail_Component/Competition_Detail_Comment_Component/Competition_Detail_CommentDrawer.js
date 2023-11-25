@@ -23,7 +23,7 @@ import {FetchContestCommentLatest} from "../../../../../API/api/Contest/contest_
 import { FetchContestCommentPopular,ContestCommentLike } from '../../../../../API/api/Contest/contest_comment_api';
 import CommentAdder from "./Competition_Detail_CommentDrawer_AddComment"
 import ChildComment from "../Competition_Detail_Comment_Child_Comment/Competition_Detail_Child_CommentDrawer"
-
+import Comment from "../../../../Comment/Comment"
 
 export default function TemporaryDrawer(props) {
 
@@ -221,41 +221,7 @@ export default function TemporaryDrawer(props) {
                             {
                                 comment.map((item,index) => {
                                     return(
-                                        <Box key = {index} sx={{display:'flex',alignItems:'start',px:2,py:1.5}}>
-                                            <Box sx={{height:'100%',display:'block',mt:0.5}}>
-                                                <Avatar src={`${API_URL}${item.user_profile}`} sx={{width:'20px',height:'20px',mr:1}}/>
-                                            </Box>
-                                            <Box sx={{flex:1}}>
-                                                <Box sx={{display:'flex'}}>
-                                                    <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px'}}>
-                                                        {item.user}{" -"}
-                                                    </Typography>
-                                                    <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:0.5}}>
-                                                        {timeForToday(item.created)}
-                                                    </Typography>
-                                                </Box>
-                                                <Box sx={{width:"100%",mb:0.6}}>
-                                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',whiteSpace:'normal',wordBreak:'break-all'}}>
-                                                        {item.comment}
-                                                    </Typography>
-                                                </Box>
-                                                <Box sx={{display:"flex",mt:1.5}}>
-                                                    <Box onClick={()=>handleOpen(item.id)} sx={{display:'flex',alignItems:'center',height:'14px'}}> 
-                                                        <ThumbUpOffAltOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
-                                                            {item.likePoint}
-                                                        </Typography>
-                                                    </Box>
-                                                    <Box onClick={()=>toggleChildCommentDrawer(true,item.id)} sx={{display:'flex',alignItems:'center',height:'14px'}}>
-                                                        <ModeCommentOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',height:'100%'}}>
-                                                            {item.commentPoint}
-                                                        </Typography>
-                                                    </Box>
-                                                </Box>
-                                                
-                                            </Box>
-                                        </Box> 
+                                        <Comment key={index} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction = {ContestCommentLike}/>
                                     )
                                 })
                             }
@@ -294,34 +260,6 @@ export default function TemporaryDrawer(props) {
                     childOpen&&
                     <ChildComment setError = {props.setError} setErrorOpen={props.setErrorOpen} open={childOpen} setOpen={setChildOpen} id={parentId}/>
                 }
-
-                <Box>
-                    <Modal
-                        open={open}
-                        onClose={handleClose}
-                        disableScrollLock
-                    >
-                        <Box sx={style}>
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px'}}>
-                                {"이 댓글을 공감하시겠습니까?"}
-                            </Typography>
-                            <Box sx={{}}>
-                                <Box sx={{display:"flex",justifyContent:'end',alignItems:'center'}}>
-                                    <Button onClick={()=>handleClose()} color='primary'>
-                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px'}}>
-                                            {"취소"}
-                                        </Typography>
-                                    </Button>
-                                    <Button color='primary'>
-                                        <Typography onClick ={()=>ContestCommentLikeFunction()} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px'}}>
-                                            {"확인"}
-                                        </Typography>
-                                    </Button>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Modal>
-                </Box>
 
             </React.Fragment>
         </Box>

@@ -35,7 +35,7 @@ export default function Competition_Detail_Course(props) {
             </Box>
 
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',mt:'11px',ml:'-2px'}}>
-                <Box sx={{px:'20px'}}>
+                <Box sx={{px:'20px',display:"flex"}}>
                 {
                     props.competition.courseTags.map((item,index)=>{
                         return(
@@ -52,7 +52,7 @@ export default function Competition_Detail_Course(props) {
 
             {
                 props.competition.courseTags[current]?
-                <Box sx={{backgroundImage:`url(${API_URL}${props.competition.courseTags[current].map})`,width:'100%',pb:'100%',borderRadius:'8px',mx:'auto',mt:'19px',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain',objectFit:"contain"}}/>
+                <Box sx={{backgroundImage:`url(${API_URL}${props.competition.courseTags[current].map})`,width:'90%',pb:'90%',borderRadius:'8px',mx:'auto',mt:'19px',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain',objectFit:"contain"}}/>
                 :
                 <Box sx={{width:'90%',pb:'90%',borderRadius:3,mx:'auto',mt:1}}/>
             }

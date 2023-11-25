@@ -36,7 +36,7 @@ export default function Competition_Detail_Image(props) {
             </Box>
 
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'90%',mt:1}}>
-                <Box sx={{px:"20px"}}>
+                <Box sx={{px:"20px",display:"flex"}}>
                 {
                     props.competition.courseImgs.map((item,index)=>{
                         return(

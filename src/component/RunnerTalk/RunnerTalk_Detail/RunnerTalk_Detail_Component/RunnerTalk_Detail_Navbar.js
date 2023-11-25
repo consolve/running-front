@@ -51,7 +51,6 @@ export default function CommentAdder(props) {
 
     useEffect(()=>{
       setComment(prev=>prev=props.detail.comments);
-      console.log(comment)
     },[])
 
     return (

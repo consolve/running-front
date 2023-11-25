@@ -105,10 +105,10 @@ export default function Competition_Detail_Detail(props) {
                     secondDetail.map((item,index)=>{
                         return(
                             <Box key ={index} sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'100%',height:'10px',my:0.8}}>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:"20px"}}>
+                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',ml:"20px"}}>
                                     {secondCategory[index]}
                                 </Typography>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'12px',mr:"20px"}}>
+                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',mr:"20px"}}>
                                     {item}
                                 </Typography>
                             </Box>

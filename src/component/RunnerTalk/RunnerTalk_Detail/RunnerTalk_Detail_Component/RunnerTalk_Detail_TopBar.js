@@ -7,22 +7,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import WestIcon from '@mui/icons-material/West';
 import {ContestBookMark} from "../../../../API/api/Contest/contest_api"
-
-const TopbarTheme = {
-    position:'fixed',
-    top:0,
-    display:'flex',
-    justifyContent:'space-between',
-    alignItems:'center',
-    backgroundColor:'#ffffff',
-    height:'60px',
-    width:'100%',
-    borderBottom:1,
-    borderBottomColor:'#E0E0E0',
-    minWidth:'360px',
-    maxWidth:'420px',
-    zIndex:1000
-}
+import TopbarTheme from '../../../../style/plate/topbar';
 
 
 export default function RunnerTalk_TopBar(props){
@@ -36,21 +21,6 @@ export default function RunnerTalk_TopBar(props){
         navigate(-1);
     }
 
-    // const bookMark = async (id) =>{
-    //     const response = await ContestBookMark(id,session);
-    //     if(response.response){
-    //         return false;
-    //     }
-    //     else{
-    //         return true;
-    //     }
-    // }
-
-    // const onClickBookMart = (id) =>{
-    //     if(bookMark(id)){
-    //         setBookmark(prev=>prev=!bookmark);
-    //     }
-    // }
 
     useEffect(() =>{
 
@@ -58,10 +28,12 @@ export default function RunnerTalk_TopBar(props){
 
     return(
         <Box sx={TopbarTheme}>
-            <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <IconButton type="button" sx={{ml:1}} aria-label="search">
-                    <WestIcon sx={{}}/>
-                </IconButton>
+            <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
+                <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <IconButton type="button" sx={{}} aria-label="search">
+                        <WestIcon sx={{}}/>
+                    </IconButton>
+                </Box>
             </Box>
         </Box>    
     )

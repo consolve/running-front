@@ -50,7 +50,7 @@ export const fetchRunnerTalkCPostDetail = async (id,session) =>{
         }
 
         const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/detail/${id}`,header);
-        return response.data.post_detail[0];   
+        return [response.data.post_detail[0],response.data.post_detail[1],response.data.post_detail[2]];   
 
     } catch(error){
         return error
