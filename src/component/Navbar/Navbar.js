@@ -1,5 +1,5 @@
 import * as React from 'react';
-import useEffect from 'react';
+import {useEffect} from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
@@ -34,6 +34,10 @@ export default function Navbar() {
   const navigateToShoes= () =>{
     navigate('/shoes');
   }
+
+  useEffect(()=>{
+    setValue("/"+pathname.split('/')[1]);
+  },[pathname])
 
 
   const handleChange = (event, newValue) => {

@@ -53,7 +53,7 @@ function Crew_Search(){
             setOpen(true)
         }
         else{
-            setList(prev=>prev=[...prev,..._SearchCrew])
+            setList(prev=>prev=[..._SearchCrew])
         }
 
         setLoading(false);

@@ -50,12 +50,3 @@ const Ellipsis = styled.div`
     -webkit-line-clamp: unset;
   }
 `;
-
-const Button = styled.button`
-    max-height: 17.9px;
-    line-height: 17.9px;
-    font-color: #4F1D76;
-  &.hide {
-    display: none;
-  }
-`;

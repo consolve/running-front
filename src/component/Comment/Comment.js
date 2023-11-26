@@ -1,10 +1,12 @@
 import {Box,Typography} from "@mui/material";
-import React, { useState } from "react";
+import React, { useState,useRef,useEffect } from "react";
 import {API_URL} from '../../API/URL/index';
 import Avatar from '@mui/material/Avatar';
 import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import styled from "styled-components"
+
 
 function timeForToday(value) {
     const today = new Date();
@@ -34,6 +36,19 @@ function timeForToday(value) {
 export default function Comment({item,toggleChildCommentDrawer,LikeFunction}){
     const [likePoint,setlikePoint] = useState(item.likePoint);
     const sessionid = localStorage.getItem('sessionid');
+    const contentRef = useRef(null);
+    const [isShowReadMore, setIsShowReadMore] = useState(false);
+
+    const onClick = (e) => {
+        contentRef.current.classList.add("show");
+        setIsShowReadMore(false);
+    };
+
+    useEffect(()=>{
+        if(item.comment.length > 200){
+            setIsShowReadMore(true);
+        }
+    },[])
 
     const CommentLikeFunction = async (id,session) => {
         const response = await LikeFunction(id,session);
@@ -63,9 +78,14 @@ export default function Comment({item,toggleChildCommentDrawer,LikeFunction}){
                     </Typography>
                 </Box>
                 <Box sx={{width:"100%",mb:0.6}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',whiteSpace:'normal',wordBreak:'break-all'}}>
-                        {item.comment}
-                    </Typography>
+                    <Ellipsis ref={contentRef}>
+                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',whiteSpace:'normal',wordBreak:'break-all'}}>
+                            {item.comment}
+                        </Typography>
+                    </Ellipsis>
+                    <Box sx={{width:"90%",display:'flex',justifyContent:"start",alignItems:"center"}}>
+                        {isShowReadMore && <Typography onClick={onClick} sx={{maxHeight:'17.9px',lineHeight:"25px",fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:'#A6A6A6'}}>...자세히 보기</Typography>}
+                    </Box>
                 </Box>
                 <Box sx={{display:"flex",mt:1.5}}>
                     <Box onClick={()=>CommentLikeFunction(item.id,sessionid)} sx={{display:'flex',alignItems:'center',height:'14px'}}> 
@@ -86,3 +106,16 @@ export default function Comment({item,toggleChildCommentDrawer,LikeFunction}){
         </Box> 
     )
 }
+
+const Ellipsis = styled.div`
+  position: relative;
+  display: -webkit-box;
+  max-height: 80px;
+  overflow: hidden;
+  &.show {
+    display: block;
+    max-height: none;
+    overflow: auto;
+    -webkit-line-clamp: unset;
+  }
+`;

@@ -166,7 +166,7 @@ export default function TemporaryDrawer(props) {
                             <CircularProgress color="primary" />
                         </Box>
                         :
-                        <Box sx={{width:"100%",height:'460px',mx:'auto',display:'flex',flexDirection:"column"}}>
+                        <Box sx={{width:"100%",height:'460px',mx:'auto',display:'flex',flexDirection:"column",overflow:"scroll"}}>
                             {/*댓글*/}
                             <Parent setHeight={setHeight} mainComment={mainComment} LikeFunction={CrewCommentLike}/>
 
