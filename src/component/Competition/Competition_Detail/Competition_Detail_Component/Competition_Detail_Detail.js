@@ -108,7 +108,7 @@ export default function Competition_Detail_Detail(props) {
                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',ml:"20px"}}>
                                     {secondCategory[index]}
                                 </Typography>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',mr:"20px"}}>
+                                <Typography sx={{fontFamily:'Pretendard Variable',width:"70%",fontWeight:'700',fontSize:'12px',mr:"20px",whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',textAlign:'right'}}>
                                     {item}
                                 </Typography>
                             </Box>

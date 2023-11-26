@@ -1,5 +1,5 @@
 import {Box,Avatar,Typography} from '@mui/material';
-import React, { useState } from "react";
+import React, { useState,useCallback } from "react";
 import { API_URL } from '../../API/URL';
 import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -28,7 +28,7 @@ function timeForToday(value) {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
 }
 
-export default function Parent({ref,mainComment,LikeFunction}){
+export default function Parent({setHeight,mainComment,LikeFunction}){
     
     const [likePoint,setlikePoint] = useState(mainComment.likePoint);
     const sessionid = localStorage.getItem('sessionid');
@@ -45,6 +45,22 @@ export default function Parent({ref,mainComment,LikeFunction}){
     
     }
 
+    const useGettingHeight = () => {
+      
+        const ref = useCallback((node) => {
+            console.log(node)
+          if (node !== null) {
+            setHeight(node.getBoundingClientRect().height);
+          }
+        }, []);
+      
+        return [ ref];
+      };
+      
+      // ...
+      
+    const [ ref] = useGettingHeight();
+
     return(
         <Box ref = {ref} sx={{display:'flex',alignItems:'start',px:2,py:1.5,backgroundColor:"#D9D9D9"}}>
             <Box sx={{height:'100%',mt:0.5}}>
@@ -60,7 +76,7 @@ export default function Parent({ref,mainComment,LikeFunction}){
                     </Typography>
                 </Box>
                 <Box sx={{width:"100%",my:'8px'}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',lineHeight:"16px"}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',lineHeight:"16px",whiteSpace:'normal',wordBreak:'break-all'}}>
                         {mainComment.comment}
                     </Typography>
                 </Box>

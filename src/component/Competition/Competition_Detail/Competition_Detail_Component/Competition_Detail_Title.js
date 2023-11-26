@@ -21,7 +21,7 @@ export default function Competition_Detail_Detail(props){
                 <Typography color = {isOpen?"#4F1D76":'gray'} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',lineHeight:"14.32px"}}>
                     {isOpen?"모집중":"모집완료"}
                 </Typography>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px',mt:'3px',lineHeight:"28.64px"}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px',mt:'3px',lineHeight:"28.64px",wordBreak:'break-all'}}>
                     {props.competition.name}
                 </Typography>
             </Box>

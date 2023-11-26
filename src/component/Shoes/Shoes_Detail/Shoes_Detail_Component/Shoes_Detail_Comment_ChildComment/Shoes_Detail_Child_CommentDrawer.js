@@ -45,32 +45,6 @@ export default function TemporaryDrawer(props) {
         navigate(-1);
     }
 
-    const useGettingHeight = () => {
-        const [height, setHeight] = useState(null);
-
-        const ref = useCallback((node) => {
-          if (node !== null) {
-            setHeight(node.getBoundingClientRect().height);
-          }
-        }, []);
-      
-        return [height, ref];
-    };
-    
-    const [totalHeight,ref] = useGettingHeight();
-
-    const useBodyScrollLock = () => {
-        const lockScroll = useCallback(() => {
-            document.body.style.overflow = 'hidden';
-        }, []);
-
-        const openScroll = useCallback(() => {
-            document.body.style.removeProperty('overflow');
-        }, []);
-
-        return { lockScroll, openScroll };
-    }
-
     const navigate = useNavigate();
     const DrawerTheme = {
         width:'100%',
@@ -80,29 +54,6 @@ export default function TemporaryDrawer(props) {
         borderTopLeftRadius:20,
         borderTopRightRadius:20, 
         backgroundColor:'#ffffff',
-    }
-
-    function timeForToday(value) {
-        const today = new Date();
-        const timeValue = new Date(value);
-
-        const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
-        if (betweenTime < 1) return '방금전';
-        if (betweenTime < 60) {
-            return `${betweenTime}분전`;
-        }
-
-        const betweenTimeHour = Math.floor(betweenTime / 60);
-        if (betweenTimeHour < 24) {
-            return `${betweenTimeHour}시간전`;
-        }
-
-        const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-        if (betweenTimeDay < 365) {
-            return `${betweenTimeDay}일전`;
-        }
-
-        return `${Math.floor(betweenTimeDay / 365)}년전`;
     }
 
     const toggleDrawer = (open) => (event) => {
@@ -118,7 +69,7 @@ export default function TemporaryDrawer(props) {
     const [comment,setComment] =useState([]);
     const [loading,setLoading] = useState(false);
     const [mainComment,setMainComment] = useState([]);
-
+    const [height,setHeight] = useState(null);
     const [clickedId,setClickedId] = useState(0);
 
 
@@ -140,9 +91,6 @@ export default function TemporaryDrawer(props) {
             setComment(prev=>prev=_Comment.comments);
             setMainComment(prev=>prev=_Comment.main_comment[0]);
         }
-
-        console.log(mainComment)
-        console.log(comment)
 
         setLoading(false);
 
@@ -181,10 +129,10 @@ export default function TemporaryDrawer(props) {
                             <CircularProgress color="primary" />
                         </Box>
                         :
-                        <Box sx={{width:"100%",height:'460px',mx:'auto',display:'flex',flexDirection:"column"}}>
+                        <Box sx={{width:"100%",height:'460px',mx:'auto',display:'flex',flexDirection:"column",overflow:"scroll"}}>
                             {/*댓글*/}
 
-                            <Parent ref={ref} mainComment={mainComment} LikeFunction={RunningshoesCommentLike}/>
+                            <Parent setHeight={setHeight} mainComment={mainComment} LikeFunction={RunningshoesCommentLike}/>
 
                             <Box sx={{display:'flex',flexDirection:'column'}}>
                                 
@@ -192,9 +140,10 @@ export default function TemporaryDrawer(props) {
 
                                 <Box sx={{width:"100%",display:'flex'}}>
                                     {/*대댓글*/}
-                                    <Box sx={{width:"100%",height:`calc(409px - ${totalHeight}px )`,overflow:'scroll'}}>
+                                    <Box sx={{width:"100%",overflow:'scroll'}}>
                                     {
                                         comment.map((item,index) => {
+                                            console.log(item)
                                             return(
                                                 <Comment key = {index} item={item} LikeFunction={RunningshoesCommentLike}/>
                                             )

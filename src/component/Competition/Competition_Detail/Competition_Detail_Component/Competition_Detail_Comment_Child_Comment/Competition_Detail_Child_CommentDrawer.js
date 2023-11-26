@@ -110,19 +110,7 @@ export default function TemporaryDrawer(props) {
     
     const [clickedId,setClickedId] = useState(0);
 
-    const useGettingHeight = () => {
-        const [height, setHeight] = useState(null);
-
-        const ref = useCallback((node) => {
-          if (node !== null) {
-            setHeight(node.getBoundingClientRect().height);
-          }
-        }, []);
-      
-        return [height, ref];
-    };
-
-    const [totalHeight,ref] = useGettingHeight();
+    const [height,setHeight] = useState(null);
 
     const FetchContestCommentRepliesFunction = async () => {
         const _Comment = await FetchContestCommentReplies(props.id,session);
@@ -178,7 +166,7 @@ export default function TemporaryDrawer(props) {
                         :
                         <Box sx={{width:"100%",height:'460px',mx:'auto',display:'flex',flexDirection:"column"}}>
                             {/*댓글*/}
-                            <Parent ref={ref} mainComment={mainComment} LikeFunction={ContestCommentLike}/>
+                            <Parent setHeight={setHeight} mainComment={mainComment} LikeFunction={ContestCommentLike}/>
 
                             <Box sx={{display:'flex',flexDirection:'column'}}>
                                 
@@ -186,7 +174,7 @@ export default function TemporaryDrawer(props) {
 
                                 <Box sx={{width:"100%",display:'flex'}}>
                                     {/*대댓글*/}
-                                    <Box sx={{width:"100%",height:`calc(409px - ${totalHeight}px )`,overflow:'scroll'}}>
+                                    <Box sx={{width:"100%",overflow:'scroll'}}>
                                     {
                                         comment.map((item,index) => {
                                             return(
