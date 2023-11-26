@@ -180,7 +180,7 @@ export default function TemporaryDrawer(props) {
                                     {
                                         comment.map((item,index) => {
                                             return(
-                                                <Comment key = {index} item={item} LikeFunction={CrewCommentLike}/>
+                                                <Comment key = {item.id} item={item} LikeFunction={CrewCommentLike}/>
                                             )
                                         })
                                     }

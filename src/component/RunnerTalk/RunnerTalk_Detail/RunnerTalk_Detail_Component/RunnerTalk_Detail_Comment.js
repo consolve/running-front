@@ -189,7 +189,7 @@ export default function RunningTalk_Detail_Comment(props) {
                             {
                                 comment.map((item,index) => {
                                     return(
-                                       <Comment key={index} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction={RunningTalkCommentLike}/>
+                                       <Comment key = {item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction={RunningTalkCommentLike}/>
                                     )
                                 })
                             }

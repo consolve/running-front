@@ -143,9 +143,8 @@ export default function TemporaryDrawer(props) {
                                     <Box sx={{width:"100%",overflow:'scroll'}}>
                                     {
                                         comment.map((item,index) => {
-                                            console.log(item)
                                             return(
-                                                <Comment key = {index} item={item} LikeFunction={RunningshoesCommentLike}/>
+                                                <Comment key = {item.id} item={item} LikeFunction={RunningshoesCommentLike}/>
                                             )
                                         })
                                     }
