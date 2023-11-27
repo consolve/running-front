@@ -139,7 +139,7 @@ function Login(){
                 disableScrollLock
             >
                 <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
                     {error}
                 </Typography>
                 </Box>

@@ -1,7 +1,7 @@
 import {Box,Typography,Modal,Skeleton,Grid} from '@mui/material';
 import Topbar from "../Component/Topbar"
 import {useState,useEffect} from "react"
-import Content from "../Component/Content._Crewjs"
+import Content from "../Component/Content_Crew.js"
 import {FetchMysavedCrew} from "../../../../API/api/RunningCrew/crew_api"
 
 

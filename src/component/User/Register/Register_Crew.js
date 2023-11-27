@@ -9,18 +9,49 @@ import {
 import Drawer from "./Register_Confirm_Drawer"
 import WestIcon from '@mui/icons-material/West';
 import {Modal} from '@mui/material';
+import { keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
+
+const vibrate = keyframes`
+0%{
+    transform: translate(1px, 1px);
+}
+10%{
+    transform: translate(-1px, -1px);
+}
+20%{
+    transform: translate(-1px, 1px);
+}
+30%{
+    transform: translate(1px, 1px);
+}
+40%{
+    transform: translate(-1px, 1px);
+}
+50%{
+    transform: translate(1px, -1px);
+}
+60%{
+    transform: translate(1px, 1px);
+}
+70%{
+    transform: translate(-1px, 1px);
+}
+80%{
+    transform: translate(1px, -1px);
+}
+90%{
+    transform: translate(-1px, 1px);
+}
+100%{
+    transform: translate(1px, 1px);
+}
+`
+
+const AnimatedBox = styled(Box)`
+animation: ${vibrate} 0.5s ease-in-out;
+`;
 
 function Login(){
 
@@ -36,15 +67,21 @@ function Login(){
 
     const [open,setOpen] = useState(false);
 
-    const navigateToRegisterCrew =() =>{
-        navigate("/register/crew");
-    }
-
     const handleCrew = (e) =>{
+        if(e.target.value.length <= 10){
+            setModalOpen(false);
+        }
+        else{
+            setModalOpen(true);  
+        }
         setCrew(e.target.value);
     }
 
     const handleOpen = () =>{
+        if(crew.length > 10){
+            setModalOpen(true);
+            return;
+        }
         setOpen(true);
     }
 
@@ -84,6 +121,15 @@ function Login(){
             </Box>
         </Box>
 
+        {
+            Modalopen&&
+            <AnimatedBox sx={{width:"100%"}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px',color:"red"}}>
+                    {"크루 이름은 10자 이내로 입력해주세요!"}
+                </Typography>
+            </AnimatedBox>
+        }
+
         <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"absolute",bottom:30,minWidth:'360px',maxWidth:'420px',mr:2,width:"100%"}}>
             <Button onClick={handleOpen} variant="contained" color='primary' disabled={!crew} sx={{width:'90%',height:'50px',borderRadius:3}}>
                 <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'19px',fontWeight:'500'}}>
@@ -93,23 +139,8 @@ function Login(){
         </Box>
 
         <Drawer open={open} setOpen={setOpen} setError={setError} setModalOpen={setModalOpen}/>
-        
-        <Box>
-            <Modal
-                open={Modalopen}
-                onClose={handleModalClose}
-                disableScrollLock
-            >
-                <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                    {error}
-                </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                </Typography>
-                </Box>
-            </Modal>
-        </Box>
+
+    
         
       </Box>    
     )

@@ -105,29 +105,47 @@ export default function TemporaryDrawer(props) {
     const checkOtp = async () =>{
         const res = await SmsCheckCode(otp,number);
 
+        let message = "";
 
-        if(res.status === 200){
-            const response = await UserLogin(number);
-
-            if(response.response){
-                props.setError(response.response.data.error)
-                props.setModalOpen(true);
-                return;
-            }
-            else{
-                window.localStorage.setItem('sessionid', response.data.access);
-                window.localStorage.setItem('profile', response.data.user.profile);
-                setName("");
-                setNumber("");
-                setNickName("");
-                setCrew("");
-        
-                navigate('/');
-            }
+        if(res.response){
+            message = res.response.data.error;
         }
         else{
-            props.setError(res.status);
-            props.setModalOpen(true);
+            message = res.data.success;
+        }
+
+        switch(message){
+            case "correct code":
+                const response = await UserLogin(number);
+
+                if(response.response){
+                    props.setError(response.response.data.error)
+                    props.setModalOpen(true);
+                    return;
+                }
+                else{
+                    window.localStorage.setItem('sessionid', response.data.access);
+                    window.localStorage.setItem('profile', response.data.user.profile);
+                    setName("");
+                    setNumber("");
+                    setNickName("");
+                    setCrew("");
+            
+                    navigate('/');
+                }
+                break;
+            case "Invalid code.":
+                props.setError("인증번호가 일치하지 않습니다.");
+                props.setModalOpen(true);
+                return;
+            case 'Code has expired.':
+                props.setError("인증번호가 만료되었습니다.");
+                props.setModalOpen(true);
+                return;
+            default:
+                props.setError("알 수 없는 오류가 발생했습니다.");
+                props.setModalOpen(true);
+                return;
         }
     }
 

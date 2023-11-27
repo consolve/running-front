@@ -9,6 +9,7 @@ import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { fetchPopularTalk } from '../../../API/api/RunningTalk/runningTalk_api';
+import { API_URL } from '../../../API/URL';
 
 import Title from "../Main_Component/Main_Title"
 
@@ -81,7 +82,7 @@ export default function  Community(props){
                             return(
                                     <SwiperSlide key = {index} className='swiper-slide-community'>
                                         <Box onClick ={() => navigateToCompetitionDetail(item.id)} sx={{width:'100%',height:'110px',backgroundColor:'#F6F6F6',borderRadius:3,display:'flex',alignItems:'center'}}>
-                                            <Box sx={{width:'90px',height:'90px',backgroundColor:'#4F1D76',borderRadius:3,mx:1}}/>
+                                            <Box sx={{width:'90px',height:'90px',backgroundColor:'#4F1D76',borderRadius:3,mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                                             <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',width:`calc(100% - 106px)`,flexDirection:'column',height:"100%"}}>
                                                 <Box sx={{width:'100%'}}>
                                                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
