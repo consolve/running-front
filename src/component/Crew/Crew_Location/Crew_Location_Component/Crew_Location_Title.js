@@ -12,17 +12,14 @@ export default function Shoes_Location_All(props){
 
     const locationName = {
         1:'수도권',
-        2:'경상권',
-        3:'충청권',
+        2:'충청권',
+        3:'강원권' ,
         4:'전라권',
-        5:'제주권',
+        5:'경상권',
+        6:'제주권',
     }
     const [loading,setLoading] = useRecoilState(CrewLocation_Loading);
     const [location,setLocation] = useRecoilState(CrewLocation_Location);
-
-    useEffect(()=>{
-        console.log(loading)
-    },[loading])
 
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%',mb:'30px',mt:3}}>

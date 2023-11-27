@@ -1,4 +1,4 @@
-import {Box,Typography,Paper} from '@mui/material';
+import {Box,CircularProgress,Paper} from '@mui/material';
 import React, { useState,useCallback } from "react";
 import { useRef,useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -71,6 +71,7 @@ export default function Competition_Search_List(props){
         navigate(`/competition/detail/${id}`);
     }
 
+
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%',height:'100%',mt:'50px'}}>
 
@@ -79,8 +80,8 @@ export default function Competition_Search_List(props){
                     return(
                     <React.Fragment key={index}>
                         {
-                            list.length-1==index?
-                            <Content ref={ref} item={item} navigateToCompetitionDetail={navigateToCompetitionDetail}/>
+                            list.length-1===index?
+                            <Content inputref={ref} item={item} navigateToCompetitionDetail={navigateToCompetitionDetail}/>
                             :
                             <Content item={item} navigateToCompetitionDetail={navigateToCompetitionDetail}/>
 
@@ -91,7 +92,7 @@ export default function Competition_Search_List(props){
             </Box>
             {
                 loading?
-                <ContentSkeleton/>
+                <CircularProgress color="primary" />
                 :
                 ""
             }

@@ -17,10 +17,11 @@ export default function Crew_Main_Filter(props){
 
     const locationName = {
         1:'수도권',
-        2:'경상권',
-        3:'충청권',
+        2:'충청권',
+        3:'강원권',
         4:'전라권',
-        5:'제주권',
+        5:'경상권',
+        6:'제주권',
     }
 
     const buttonTheme = {

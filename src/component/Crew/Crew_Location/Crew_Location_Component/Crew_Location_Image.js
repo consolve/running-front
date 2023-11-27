@@ -18,18 +18,20 @@ export default function Shoes_Location_Image(props){
 
     const locationImage = {
         1:Capital,
-        2:gyeongsang,
-        3:chungcheong,
+        2:chungcheong,
+        3:gangwon,
         4:jeolla,
-        5:jeju,
+        5:gyeongsang,
+        6:jeju,
     }
 
     const locationName = {
         1:'수도권',
-        2:'경상권',
-        3:'충청권',
+        2:'충청권',
+        3:'강원권' ,
         4:'전라권',
-        5:'제주권',
+        5:'경상권',
+        6:'제주권',
     }
 
     const [loading,setLoading] = useRecoilState(CrewLocation_Loading);

@@ -22,9 +22,9 @@ const convertToCustomDate = (date) => {
     return `${year}.${month}.${day}`;
 };
 
-export default function Competition_TopBar({item,index,navigateToCompetitionDetail,isVisible}){
+export default function Competition_TopBar({item,navigateToCompetitionDetail,inputref}){
     return(
-        <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,mx:"20px"}}>
+        <Box ref={inputref} key ={item.id} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,mx:"20px"}}>
             <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
                 <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>

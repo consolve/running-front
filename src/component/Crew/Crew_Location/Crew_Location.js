@@ -42,6 +42,7 @@ function Crew_Location(){
         3:'gangwon',
         4:'jeolla',
         5:'gyeongsang',
+        6:'jeju'
     }
 
     const navigate = useNavigate();

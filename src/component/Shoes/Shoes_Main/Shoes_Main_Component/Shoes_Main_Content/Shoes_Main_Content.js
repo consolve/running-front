@@ -66,7 +66,7 @@ export default function ShoesContent({shoes,shoesBookmark,onClickBookMart}){
                                                         {item.koreanName}
                                                     </Typography>
                                                     <Typography sx={shoesList.shoesDetailPrice}>
-                                                        {formatNumberWithCommas(item.price)}
+                                                        {formatNumberWithCommas(item.price)}{"원"}
                                                     </Typography>
                                                 </Box>
                                             </Box>

@@ -39,13 +39,13 @@ export default function AllShoes({list,shoesBookmark,onClickBookMart,navigateToS
                                                 </Box>
                                                 
                                                 <Box sx={{my:1}}>
-                                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                                         {item.brand}
                                                     </Typography>
                                                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                                         {item.koreanName}
                                                     </Typography>
-                                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                                                         {formatNumberWithCommas(item.price)}{"원"}
                                                     </Typography>
                                                 </Box>

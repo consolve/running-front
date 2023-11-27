@@ -45,7 +45,7 @@ export default function Navbar() {
   };
 
   return (
-    <Box sx={{ position: 'fixed', bottom: 0, left: '50%', right: 0,width:'100%',minWidth:'360px',maxWidth:'450px',transform:'translate(-50%,0)',zIndex:2 }} elevation={0}>
+    <Box sx={{ position: 'fixed', bottom: 0, left: '50%', right: 0,width:'100%',minWidth:'360px',maxWidth:'450px',transform:'translate(-50%,0)',zIndex:1000 }} elevation={0}>
       <BottomNavigation value={value} onChange={handleChange}>
         <BottomNavigationAction
           label="홈"

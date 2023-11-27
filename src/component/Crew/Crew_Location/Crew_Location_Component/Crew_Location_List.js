@@ -30,17 +30,7 @@ export default function Crew_Location_List(props){
         3:'gangwon',
         4:'jeolla',
         5:'gyeongsang',
-    }
-
-    const extractSentenceAfterWord = (text) => {
-        const sentences = text.split('.');
-        for (const sentence of sentences) {
-          if (sentence.includes('일')) {
-            const index = sentence.indexOf('일') + 2; // '일' 다음 문자부터 추출
-            return sentence.slice(index).trim();
-          }
-        }
-        return null; // '일'이 포함된 문장을 찾지 못한 경우
+        6:'gyeongsang',
     }
     
     const [error,setError] = useRecoilState(CrewLocation_Error);
@@ -119,11 +109,11 @@ export default function Crew_Location_List(props){
                                                     {
                                                         crewBookMark[item.id]?
                                                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                            <BookmarkIcon/>
+                                                            <BookmarkIcon sx={{color:"#ffffff"}}/>
                                                         </IconButton>
                                                         :
                                                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                            <BookmarkBorderIcon/>
+                                                            <BookmarkBorderIcon sx={{color:"#ffffff"}}/>
                                                         </IconButton>
                                                     }
                                                 </Box>
@@ -155,7 +145,7 @@ export default function Crew_Location_List(props){
 
                                                             <Box sx={{display:'flex',mt:'2px'}}>
                                                                 <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:"normal",fontWeight:'300',fontSize:'13px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
-                                                                    시간&nbsp;{'|'}&nbsp;{extractSentenceAfterWord(item.regularRun)}
+                                                                    시간&nbsp;{'|'}&nbsp;{item.runningTime}
                                                                 </Typography>
                                                             </Box>
                                                         </Box>
@@ -170,11 +160,11 @@ export default function Crew_Location_List(props){
                                                     {
                                                         crewBookMark[item.id]?
                                                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                            <BookmarkIcon/>
+                                                            <BookmarkIcon sx={{color:"#ffffff"}}/>
                                                         </IconButton>
                                                         :
                                                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                            <BookmarkBorderIcon/>
+                                                            <BookmarkBorderIcon sx={{color:"#ffffff"}}/>
                                                         </IconButton>
                                                     }
                                                 </Box>
@@ -206,7 +196,7 @@ export default function Crew_Location_List(props){
 
                                                             <Box sx={{display:'flex',mt:'2px'}}>
                                                                 <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:"normal",fontWeight:'300',fontSize:'13px',color:'#606060',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
-                                                                    시간&nbsp;{'|'}&nbsp;{extractSentenceAfterWord(item.regularRun)}
+                                                                    시간&nbsp;{'|'}&nbsp;{item.runningTime}
                                                                 </Typography>
                                                             </Box>
                                                         </Box>

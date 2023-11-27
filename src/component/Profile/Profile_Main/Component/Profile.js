@@ -22,7 +22,7 @@ export default function Profile(){
     return(
         <Box sx={{width:'100%'}}>
             <Box sx={{px:'20px',display:'flex',alignItems:"center"}}>
-                <Avatar alt="Profile" src={profile==="/media/None.png"?DefaultProfile:`${API_URL}${profile}`} sx={{width:"96px",height:"96px"}}/>
+                <Avatar alt="Profile" color="primary" src={profile==="/media/None.png"?"":`${API_URL}${profile}`} sx={{width:"96px",height:"96px"}}/>
                 <Box sx={{ml:'17px'}}>
                     <Typography color="primary" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:"normal"}}>
                         {userName}{'님,'}
