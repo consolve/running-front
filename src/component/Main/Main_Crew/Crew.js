@@ -139,11 +139,11 @@ export default function Crew(props){
                                                         {
                                                             crewBookmark[item.id]?
                                                             <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                                <BookmarkIcon/>
+                                                                <BookmarkIcon sx={{color:"#ffffff"}}/>
                                                             </IconButton>
                                                             :
                                                             <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                                <BookmarkBorderIcon/>
+                                                                <BookmarkBorderIcon sx={{color:"#ffffff"}}/>
                                                             </IconButton>
                                                         }
                                                     </Box>
@@ -185,8 +185,8 @@ export default function Crew(props){
                                                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060'}}>
                                                                     &nbsp;{'|'}&nbsp;
                                                                 </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px'}}>
-                                                                    {extractSentenceAfterWord(item.regularRun)}
+                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                                    {item.runningTime}
                                                                 </Typography>
                                                             </Box>
                                                         </Box>
