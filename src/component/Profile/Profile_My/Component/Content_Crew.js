@@ -90,7 +90,7 @@ export default function Content({item,isVisible}){
                         </Box>
 
                         <Box sx={{display:'flex',justifyContent:'center',flexDirection:'column',width:'100%',mt:'4px'}}>
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:"normal"}}>
+                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:"normal",whiteSpace:'pre-line',overflow:'hidden',textOverflow:'ellipsis',WebkitLineClamp:1,display:'-webkit-box',WebkitBoxOrient:'vertical'}}>
                                 {item.name}
                             </Typography>
                             <Box sx={{display:'flex',mt:"4px"}}>

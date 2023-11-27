@@ -24,12 +24,37 @@ export default function Like({point,id}){
         }
     }
 
+    const bookMark = async (id) =>{
+        const response = await runningTalkBookMark(id,sessionid);
+        if(response.response){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    const onClickBookMart = (id,event) =>{
+        event.stopPropagation();
+        if(bookMark(id)){
+            {
+                isBookmarked?
+                setBookmarkPoint(prev=>prev = prev-1)
+                :
+                setBookmarkPoint(prev=>prev = prev+1)
+            }
+            setidBookmarked(prev=>prev = !prev)
+        }
+    }
+
+    
+
     return(
         <Box sx={{display:'flex',alignItems:'center',justifyContent:'center',ml:1}}>
             {isBookmarked?
-                <BookmarkIcon onClick={()=>CommentLikeFunction(id,sessionid)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                <BookmarkIcon onClick={(e)=>onClickBookMart(id,e)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
                 :
-                <BookmarkBorderIcon onClick={()=>CommentLikeFunction(id,sessionid)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                <BookmarkBorderIcon onClick={(e)=>onClickBookMart(id,e)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
             }
             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'18px',lineHeight:"normal",ml:"3px"}}>
                 {bookmarkPoint}

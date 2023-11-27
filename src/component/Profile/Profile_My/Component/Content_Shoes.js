@@ -58,13 +58,13 @@ export default function Content({item}){
             </Box>
             
             <Box sx={{my:1}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'pre-line',overflow:'hidden',textOverflow:'ellipsis',WebkitLineClamp:1,display:'-webkit-box',WebkitBoxOrient:'vertical'}}>
                     {item.brand}
                 </Typography>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'pre-line',overflow:'hidden',textOverflow:'ellipsis',WebkitLineClamp:1,display:'-webkit-box',WebkitBoxOrient:'vertical'}}>
                     {item.koreanName}
                 </Typography>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'pre-line',overflow:'hidden',textOverflow:'ellipsis',WebkitLineClamp:1,display:'-webkit-box',WebkitBoxOrient:'vertical'}}>
                     {formatNumberWithCommas(item.price)}{"원"}
                 </Typography>
             </Box>
