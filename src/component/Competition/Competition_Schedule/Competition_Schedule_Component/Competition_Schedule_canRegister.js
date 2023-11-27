@@ -64,7 +64,7 @@ export default function Competition_Schedule_canRegister(props){
                         {acceptable?
                         <Box sx={{width:"100%"}}>
                             {acceptable.map((item,index) =>(
-                                <Content key={index} item={item} navigateToCompetitionDetail={navigateToCompetitionDetail}/>
+                                <Content key={item.id} item={item} navigateToCompetitionDetail={navigateToCompetitionDetail}/>
                             ))}
                         </Box>
                             :

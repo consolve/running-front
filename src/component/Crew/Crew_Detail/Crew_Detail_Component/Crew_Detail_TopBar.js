@@ -18,7 +18,7 @@ const TopbarTheme = {
     height:'60px',
     width:'100%',
     minWidth:'360px',
-    maxWidth:'420px',
+    maxWidth:'450px',
     zIndex:1000
 }
 

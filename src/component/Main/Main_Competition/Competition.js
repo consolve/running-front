@@ -70,7 +70,7 @@ export default function Competition(props){
             {
                 props.loadingall?
                 <Box sx={{width:"100%",height:'120px'}}>
-                    <Skeleton variant="rectangular" width={'100%'} height={"100px"} sx={{mt:1,borderRadius:2}}/>
+                    <Skeleton variant="rectangular" height={"100px"} sx={{mt:1,borderRadius:2,mx:"20px"}}/>
                 </Box>
                 :
                 <Box sx={{width:"100%",display:"flex",justifyContent:"end"}}>

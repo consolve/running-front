@@ -1,4 +1,4 @@
-import {Box,Typography,Button,Card} from '@mui/material';
+import {Box,Typography,Skeleton,Card} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -58,7 +58,14 @@ export default function  Community(props){
 
             {/*대회정보*/}
             <Box sx={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                <Swiper
+                {
+                    props.loadingall?
+                    <Box sx={{width:"100%",mt:"10px"}}>
+                        <Skeleton variant="rectangular" height={"100px"} sx={{mx:"20px",borderRadius:2}}/>
+                        <Skeleton variant="rectangular" height={"100px"} sx={{mx:"20px",borderRadius:2,mt:'10px'}}/>
+                    </Box>
+                    :
+                    <Swiper
                     slidesPerView={1}
                     grid={{
                         rows: 2,
@@ -68,7 +75,7 @@ export default function  Community(props){
                     modules={[Grid,FreeMode]}
                     
                     freeMode={{enabled: true}}	// 추가
-                >
+                    >
                 {
                         runningtalk.map((item,index)=>{
                             return(
@@ -121,6 +128,8 @@ export default function  Community(props){
                         })
                     }
                 </Swiper>
+                }
+               
             </Box>
 
             

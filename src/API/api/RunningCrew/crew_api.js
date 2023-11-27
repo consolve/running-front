@@ -99,3 +99,19 @@ export const AddCrew = async (data,session) =>{
         return error
     }
 }
+
+export const FetchMysavedCrew = async (session) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:'Bearer '+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningcrew/bookmark`,header);
+        return response.data.crew;   
+    }
+    catch(error){
+        return error
+    }
+}

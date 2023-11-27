@@ -34,7 +34,15 @@ import RunnerTalkFilter from "./component/RunnerTalk/RunnerTalk_Filtering/Runner
 import RunnerTalkDetail from "./component/RunnerTalk/RunnerTalk_Detail/RunnerTalk_Detail"
 import RunnerTalkSearch from "./component/RunnerTalk/RunnerTalk_Search/RunnerTalk_Search"
 import RunnerTalkWrite from "./component/RunnerTalk/RunnerTalk_Write/RunnerTalk_Write"
-import { motion, AnimatePresence } from 'framer-motion';
+
+import Profile from "./component/Profile/Profile_Main/Profile_Main"
+import MyCompetition from './component/Profile/Profile_My/Container/SavedCompetition';
+import MyCrew from "./component/Profile/Profile_My/Container/SavedCrew";
+import MyShoes from "./component/Profile/Profile_My/Container/SavedShoes";
+import MyRunnerTalk from "./component/Profile/Profile_My/Container/MyRunnerTalk";
+import MySavedPost from "./component/Profile/Profile_My/Container/SavedRunnerTalk";
+
+import ScrollTop from "./hoc/scrollTop"
 import {
   RecoilRoot,
   atom,
@@ -66,6 +74,7 @@ function App() {
       <WebMain>
         <APP>
           <BrowserRouter>
+            <ScrollTop/>
             <Routes>
               <Route element={<WithNav/>}>
                 <Route path ="/" element={<Main/>}/>
@@ -102,6 +111,13 @@ function App() {
 
                 <Route path="/crew/add" element={<CrewAdd/>}/>
                 <Route path="/crew/detail/:id" element={<CrewDetail/>}/>
+
+                <Route path="/profile" element={<Profile/>}/>
+                <Route path="/profile/savedcompetition" element={<MyCompetition/>}/>
+                <Route path="/profile/savedcrew" element={<MyCrew/>}/>
+                <Route path="/profile/savedshoes" element={<MyShoes/>}/>
+                <Route path="/profile/myrunnertalk" element={<MyRunnerTalk/>}/>
+                <Route path="/profile/savedrunnertalk" element={<MySavedPost/>}/>
               </Route>
 
             </Routes>

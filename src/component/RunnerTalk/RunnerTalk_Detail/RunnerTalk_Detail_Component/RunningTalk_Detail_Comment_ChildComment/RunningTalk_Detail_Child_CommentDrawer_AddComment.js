@@ -62,7 +62,7 @@ export default function CommentAdder(props) {
                     <CircularProgress color="primary" size={'15px'} sx={{p:'5px',mr:2}} />
                     :
                     <IconButton disabled={!value.length} onClick={AddComment} type="button" sx={{ p: '0.5px',mr:2}} aria-label="search">
-                        <SendIcon color={!value.length?'#D9D9D9':"primary"} color="primary"/>
+                        <SendIcon color={!value.length?'#D9D9D9':"primary"}/>
                     </IconButton>
                 }
             </Box>

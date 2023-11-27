@@ -9,6 +9,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import WestIcon from '@mui/icons-material/West';
 import Logo from "../../../Image/White_Logo.png"
 import { API_URL } from '../../../API/URL';
+import DefaultProfile from "../../../Image/user-circle.png"
 
 export default function Main_TopBar(){
 
@@ -25,6 +26,10 @@ export default function Main_TopBar(){
 
     const navigateToScheduleMain = () =>{
         navigate('/schedule')
+    }
+
+    const navigateToProfile = () =>{
+        navigate('/profile')
     }
 
     const profile = window.localStorage.getItem('profile');
@@ -55,7 +60,7 @@ export default function Main_TopBar(){
             </Box>
 
             <Box sx={{mr:2}}>
-                <Avatar alt="Profile" src={`${API_URL}${profile}`} />
+                <Avatar onClick={navigateToProfile} alt="Profile" src={profile==="/media/None.png"?DefaultProfile:`${API_URL}${profile}`} sx={{width:"28px",height:"28px"}}/>
             </Box>
         </Box>    
     )

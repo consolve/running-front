@@ -145,7 +145,7 @@ export default function RunnerTalk_Main_List(props){
                                         </Box>
                                     </Box>
                                  </Box>
-                                <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images[0]})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+            <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
 
                         }

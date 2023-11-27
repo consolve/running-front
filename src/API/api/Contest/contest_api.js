@@ -126,3 +126,22 @@ export const FetchContestComment = async (id,sessionid) =>{
         return error
     }
 }
+
+export const FetchMySavedContest = async (sessionid) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${sessionid}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/bookmark`,header);
+        return response.data.contest;   
+
+    } catch(error){
+        if(error.status === 409){
+            return
+        }
+        return error
+    }
+}

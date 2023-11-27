@@ -162,3 +162,35 @@ export const runningTalkLike = async (id,session) =>{
         return error
     }
 }
+
+export const FetchMyPost = async (session) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:'Bearer '+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/post`,header);
+        return response.data.post;   
+    }
+    catch(error){
+        return error
+    }
+}
+
+export const FetchMySavedPost = async (session) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:'Bearer '+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/bookmark`,header);
+        return response.data.post;   
+    }
+    catch(error){
+        return error
+    }
+}

@@ -2,6 +2,18 @@ import {Box,Typography} from '@mui/material';
 import { API_URL } from '../../../API/URL';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 
+import { keyframes } from '@mui/material';
+
+const vibrate = keyframes`
+    from {
+        transform: rotate(0.5deg);
+    }
+    to {
+        transform: rotate(-0.5deg);
+  }
+`;
+
+
 const convertToCustomDate = (date) => {
     const customDate = new Date(date); // 월은 0부터 시작하므로 2는 3월을 의미합니다.
     const year = customDate.getFullYear();
@@ -10,7 +22,7 @@ const convertToCustomDate = (date) => {
     return `${year}.${month}.${day}`;
 };
 
-export default function Competition_TopBar({item,index,navigateToCompetitionDetail}){
+export default function Competition_TopBar({item,index,navigateToCompetitionDetail,isVisible}){
     return(
         <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,mx:"20px"}}>
             <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>

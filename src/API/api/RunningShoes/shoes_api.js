@@ -159,3 +159,19 @@ export const fetchUserName = async (session) =>{
         return error
     }
 }
+
+export const FetchMyShoes = async (session) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:'Bearer '+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningshoes/bookmark`,header);
+        return response.data.shoes;   
+    }
+    catch(error){
+        return error
+    }
+}
