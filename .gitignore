@@ -11,7 +11,6 @@
 # production
 /build
 
-src/API/URL
 
 # misc
 .DS_Store
