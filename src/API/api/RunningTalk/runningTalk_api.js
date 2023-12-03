@@ -107,8 +107,6 @@ export const FetchRunnerTalkPost = async (session,category,title,content,images 
             "images":images
         }
 
-        console.log(body)
-
         const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningtalk/post`,body,header);
         return response.data.message;   
 
