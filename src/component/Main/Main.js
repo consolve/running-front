@@ -92,8 +92,8 @@ function Main(){
                     disableScrollLock
                 >
                     <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {error}
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
+                        {error===401?"로그인이 필요합니다.":error===403?"권한이 없습니다.":error===404?"존재하지 않는 페이지입니다.":error===500?"서버에 오류가 발생했습니다.":"알 수 없는 오류가 발생했습니다."}
                     </Typography>
                     </Box>
                 </Modal>
@@ -102,4 +102,4 @@ function Main(){
     )
 }
 
-export default Auth(Main,null)
+export default Auth(Main,true)
