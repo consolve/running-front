@@ -60,4 +60,4 @@ function Login(){
     )
 }
 
-export default Auth(Login,null);
+export default Auth(Login,false,"/");

@@ -66,6 +66,12 @@ function Main(){
         LoadingCompilation();
     },[loading1,loading2,loading3,loading4])
 
+    useEffect(()=>{
+        const session = window.localStorage.getItem("sessionid");
+        console.log(session)
+
+    },[])    
+
 
     return(
         <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column'}}>
@@ -102,4 +108,4 @@ function Main(){
     )
 }
 
-export default Auth(Main,true)
+export default Auth(Main,null)
