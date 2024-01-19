@@ -70,16 +70,16 @@ export default function Competition(props){
                         competition?
                         <Box sx={{width:'100%',pt:1}}>
                             <Swiper
-                                spaceBetween={8}
+                                spaceBetween={-34}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}
                                 freeMode={{enabled: true}}	// 추가
-                                style={{paddingLeft:"20px",paddingRight:"20px",width:"auto"}}
+                                style={{width:"auto"}}
                             >
                                 {
                                     competition.map((item,index)=>{
                                         return(
-                                            <SwiperSlide key ={index} className='competition'>
+                                            <SwiperSlide key ={index} className="competition">
                                                 <Content key={item.id} item={item} navigateToCompetitionDetail={()=>navigateToCompetitionDetail(item.id)}/>
                                             </SwiperSlide>
                                         )
