@@ -10,6 +10,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 
 import Title from "../Main_Component/Main_Title"
+import Content from "../../Competition/Competition_Content_Component/Competition_Content";
+import ContentSkeleton from "../../Competition/Competition_Content_Component/Competition_Content_Skeleton"
 
 
 
@@ -21,16 +23,6 @@ import 'swiper/css/free-mode';
 import "swiper/css/grid";
 
 import './style.css';
-
-const convertToCustomDate = (date) => {
-    const customDate = new Date(date); // 월은 0부터 시작하므로 2는 3월을 의미합니다.
-    const year = customDate.getFullYear();
-    const month = (customDate.getMonth() + 1).toString().padStart(2, '0'); // 1을 더하고 두 자리로 맞춥니다.
-    const day = customDate.getDate().toString().padStart(2, '0'); // 두 자리로 맞춥니다.
-    return `${year}.${month}.${day}`;
-};
-
-
 
 export default function Competition(props){
     const [competition,setCompetition] = useState([]);
@@ -70,78 +62,25 @@ export default function Competition(props){
             {
                 props.loadingall?
                 <Box sx={{width:"100%",height:'120px'}}>
-                    <Skeleton variant="rectangular" height={"100px"} sx={{mt:1,borderRadius:2,mx:"20px"}}/>
+                    <ContentSkeleton/>
                 </Box>
                 :
                 <Box sx={{width:"100%",display:"flex",justifyContent:"end"}}>
                     {
                         competition?
-                        <Box sx={{width:'95%',pt:1}}>
+                        <Box sx={{width:'100%',pt:1}}>
                             <Swiper
                                 spaceBetween={8}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}
                                 freeMode={{enabled: true}}	// 추가
+                                style={{paddingLeft:"20px",paddingRight:"20px",width:"auto"}}
                             >
                                 {
                                     competition.map((item,index)=>{
                                         return(
                                             <SwiperSlide key ={index} className='competition'>
-                                                <Box key ={index} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,width:'100%'}}>
-                                                    <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.mainBanner.mainBanner})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
-                                                    <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
-                                                        <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
-                                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'21.46px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
-                                                                {item.name}
-                                                            </Typography>
-                                                            <NotificationsActiveIcon fontSize={'small'} sx={{pr:2}}/>
-                                                        </Box>
-                                                        <Box sx={{width:'100%',mt:'7px'}}>
-                                                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
-                                                                    {item.place}
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
-                                                                    &nbsp;{'|'}&nbsp;
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px',mr:2}}>
-                                                                    {convertToCustomDate(item.competitionTime)}
-                                                                </Typography>
-                                                            </Box>
-                                                        </Box>
-                                                        <Box sx={{width:'100%',mt:'3px'}}>
-                                                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
-                                                                    접수기간 |&nbsp;
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
-                                                                    {convertToCustomDate(item.receptionStartTime)}
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
-                                                                    ~
-                                                                </Typography>
-                                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'13px',color:'#606060',lineHeight:'15.51px'}}>
-                                                                    {convertToCustomDate(item.receptionEndTime)}
-                                                                </Typography>
-                                                            </Box>
-                                                        </Box>
-                                                        <Box sx={{width:"100%",mt:'8px'}}>
-                                                            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>
-                                                                {
-                                                                    item.courseTags.map((item,index)=>{
-                                                                        return(
-                                                                            <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
-                                                                                <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"10.74px",mx:'6px',my:'2px',width:"auto"}}>
-                                                                                    {item.name}
-                                                                                </Typography>
-                                                                            </Box>
-                                                                        )
-                                                                })
-                                                                }      
-                                                            </Box>
-                                                        </Box>
-                                                    </Box>
-                                                </Box>
+                                                <Content key={item.id} item={item} navigateToCompetitionDetail={()=>navigateToCompetitionDetail(item.id)}/>
                                             </SwiperSlide>
                                         )
                                     })

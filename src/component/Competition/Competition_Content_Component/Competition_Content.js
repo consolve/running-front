@@ -4,16 +4,6 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 
 import { keyframes } from '@mui/material';
 
-const vibrate = keyframes`
-    from {
-        transform: rotate(0.5deg);
-    }
-    to {
-        transform: rotate(-0.5deg);
-  }
-`;
-
-
 const convertToCustomDate = (date) => {
     const customDate = new Date(date); // 월은 0부터 시작하므로 2는 3월을 의미합니다.
     const year = customDate.getFullYear();
