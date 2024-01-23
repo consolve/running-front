@@ -4,6 +4,7 @@ import { API_URL } from '../../API/URL';
 import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import {useNavigate} from "react-router-dom";
 
 function timeForToday(value) {
     const today = new Date();
@@ -29,11 +30,18 @@ function timeForToday(value) {
 }
 
 export default function Parent({setHeight,mainComment,LikeFunction}){
+
+    const navigate = useNavigate();
     
     const [likePoint,setlikePoint] = useState(mainComment.likePoint);
     const sessionid = localStorage.getItem('sessionid');
 
     const CommentLikeFunction = async (id,session) => {
+        if(!sessionid){
+            navigate("/login/main")
+        }
+
+
         const response = await LikeFunction(id,session);
 
         if(response === "Request success"){

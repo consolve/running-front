@@ -11,6 +11,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import {ShoesMain_ShoesBookMark} from "../../../state/Shoes/ShoesMain_State"
 import { shoesList } from '../../../style/plate/ShoesList';
+import BookMarkHandle from '../../Util/bookmark';
 
 import Title from "../Main_Component/Main_Title"
 
@@ -46,21 +47,9 @@ export default function Shoes(props){
         props.setLoading2(false);
     }
 
-    const bookMark = async (id) =>{
-        const response = await runningShoesBookMark(id,session);
-        if(response.response){
-            props.setError(response.response.status)
-            props.setOpen(true);
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
     const onClickBookMart = (id,event) =>{
         event.stopPropagation();
-        if(bookMark(id)){
+        if(BookMarkHandle("shoes",id,session,navigate)){
             setShoesBookmark((prev)=>({...prev,[id]:!shoesBookmark[id]}))
         }
     }

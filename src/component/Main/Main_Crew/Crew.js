@@ -9,6 +9,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { fetchCrewAll,runningCrewBookMark } from '../../../API/api/RunningCrew/crew_api';
 import { CrewMain_CrewBookMark } from '../../../state/Crew/CrewMain_State';
+import BookMarkHandle from '../../Util/bookmark';
 
 import Title from "../Main_Component/Main_Title"
 
@@ -50,36 +51,13 @@ export default function Crew(props){
         navigate(`/crew/detail/${index}`)
     }
 
-    const bookMark = async (id) =>{
-        const response = await runningCrewBookMark(id,session);
-        if(response.response){
-            props.setError(response.response.status)
-            props.setOpen(true);
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
     const onClickBookMart = (id,event) =>{
         event.stopPropagation();
-        if(bookMark(id)){
+        if(BookMarkHandle("crew",id,session,navigate)){
             setCrewBookMark((prev)=>({...prev,[id]:!crewBookmark[id]}))
         }
     }
 
-    function extractSentenceAfterWord(text) {
-        const sentences = text.split('.');
-        for (const sentence of sentences) {
-          if (sentence.includes('일')) {
-            const index = sentence.indexOf('일') + 2; // '일' 다음 문자부터 추출
-            return sentence.slice(index).trim();
-          }
-        }
-        return null; // '일'이 포함된 문장을 찾지 못한 경우
-      }
-    
     useEffect(() =>{
         FetchList();
     },[])

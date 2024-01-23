@@ -12,6 +12,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { useRecoilState } from 'recoil';
 import {ShoesMain_ShoesBookMark} from "../../../../state/Shoes/ShoesMain_State"
 import { runningShoesBookMark, fetchUserName } from '../../../../API/api/RunningShoes/shoes_api';
+import BookMarkHandle from '../../../Util/bookmark';
 
 import Content from './Shoes_Main_Content/Shoes_Main_Content';
 import ContentSkeleton from './Shoes_Main_Content/Shoes_Main_Content_Skeleton';
@@ -59,22 +60,9 @@ export default function Shoes_Search_Filter(props){
         setLoading(false);
     }
 
-    const bookMark = async (id) =>{
-        const response = await runningShoesBookMark(id,session);
-
-        if(response.response){
-            props.setError(response.response.status)
-            props.setOpen(true);
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
     const onClickBookMart = (id,event) =>{
         event.stopPropagation();
-        if(bookMark(id)){
+        if(BookMarkHandle("shoes",id,session,navigate)){
             setShoesBookmark((prev)=>({...prev,[id]:!shoesBookmark[id]}))
         }
     }

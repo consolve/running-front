@@ -15,6 +15,7 @@ import {
     CrewMain_CrewBookMark
 } from '../../../../state/Crew/CrewMain_State';
 import { fetchCrewAll,runningCrewBookMark } from '../../../../API/api/RunningCrew/crew_api';
+import BookMarkHandle from '../../../Util/bookmark';
 
 export default function Crew_Main_List(props){
     const session = localStorage.getItem("sessionid");
@@ -51,21 +52,9 @@ export default function Crew_Main_List(props){
         navigate(`/crew/detail/${id}`);
     }
 
-    const bookMark = async (id) =>{
-        const response = await runningCrewBookMark(id,session);
-        if(response.response){
-            setError(response.response.status)
-            props.setOpen(true);
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
     const onClickBookMark = (id,event) =>{
         event.stopPropagation();
-        if(bookMark(id)){
+        if(BookMarkHandle("crew",id,session,navigate)){
             setCrewBookMark((prev)=>({...prev,[id]:!crewBookMark[id]}))
         }
     }

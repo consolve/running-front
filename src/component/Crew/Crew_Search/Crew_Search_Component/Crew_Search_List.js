@@ -10,7 +10,7 @@ import {API_URL} from "../../../../API/URL/index"
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { fetchCrewSearch,runningCrewBookMark } from '../../../../API/api/RunningCrew/crew_api';
-
+import BookMarkHandle from '../../../Util/bookmark';
 
 export default function Crew_Search_List(props){
     const navigate = useNavigate();
@@ -47,21 +47,10 @@ export default function Crew_Search_List(props){
         setLoading(false);
     }, [page])
 
-    const bookMark = async (id) =>{
-        const response = await runningCrewBookMark(id,session);
-        if(response.response){
-            props.setError(response.response.status)
-            props.setOpen(true);
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
 
     const onClickBookMark = (id,event) =>{
         event.stopPropagation();
-        if(bookMark(id)){
+        if(BookMarkHandle("crew",id,session,navigate)){
             setCrewBookMark((prev)=>({...prev,[id]:!crewBookMark[id]}))
         }
     }

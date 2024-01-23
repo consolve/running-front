@@ -5,10 +5,13 @@ import { useParams } from "react-router-dom";
 import {runningShoesBookMark} from "../../../../API/api/RunningShoes/shoes_api"
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookMarkHandle from '../../../Util/bookmark';
+import {useNavigate} from "react-router-dom";
 
 export default function Shoes_Detail_Title(props){
     const { id } = useParams();
     const session = localStorage.getItem('sessionid');
+    const navigate = useNavigate();
 
     const [bookmark,setBookmark] = useState(false);
 
@@ -16,20 +19,8 @@ export default function Shoes_Detail_Title(props){
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 
-    const bookMark = async (id) =>{
-        const response = await runningShoesBookMark(id,session);
-        if(response.response){
-            props.setError(response.response.status)
-            props.setOpen(true);
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
     const onClickBookMart = (id) =>{
-        if(bookMark(id)){
+        if(BookMarkHandle("shoes",id,session,navigate)){
             setBookmark(prev=>prev=!bookmark);
         }
     }

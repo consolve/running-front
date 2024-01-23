@@ -4,6 +4,7 @@ import { useRef,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { fetchFeatureShoes,fetchFeatureTag,runningShoesBookMark } from '../../../../API/api/RunningShoes/shoes_api';
+import BookMarkHandle from '../../../Util/bookmark';
 
 import Content from "./Shoes_Main_Content/Shoes_Main_Content"
 import ContentSkeleton from './Shoes_Main_Content/Shoes_Main_Content_Skeleton';
@@ -50,21 +51,9 @@ export default function Shoes_feature(props){
         navigate(`/shoes/search?keyword=${value}`);
     }
 
-    const bookMark = async (id) =>{
-        const response = await runningShoesBookMark(id,session);
-        if(response.response){
-            props.setError(response.response.status)
-            props.setOpen(true);
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
     const onClickBookMart = (id,event) =>{
         event.stopPropagation();
-        if(bookMark(id)){
+        if(BookMarkHandle("shoes",id,session,navigate)){
             setShoesBookmark((prev)=>({...prev,[id]:!shoesBookmark[id]}))
         }
     }

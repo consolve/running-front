@@ -192,3 +192,20 @@ export const FetchMySavedPost = async (session) =>{
         return error
     }
 }
+
+export const DeletePost = async (session,id) => {
+    try{
+        const header = {
+            headers: {
+                Authorization:'Bearer '+`${session}`
+            }
+        }
+
+        const response = await axios.delete(`${process.env.REACT_APP_URL}/api/runningtalk/delete/${id}`,header);
+        return response
+    }
+    catch(error){
+        
+        return error
+    }
+}

@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Skeleton from '@mui/material/Skeleton';
+import BookMarkHandle from '../../../Util/bookmark';
 
 import All from "./Shoes_Main_Content/Shoes_Main_All"
 import AllSkeleton from './Shoes_Main_Content/Shoes_Main_All_Skeleton';
@@ -37,22 +38,10 @@ export default function Shoes_Main_All(props){
     const [error,setError] = useRecoilState(ShoesSearch_Error);
     const [list,setList] = useRecoilState(ShoesList);
 
-    
-    const bookMark = async (id) =>{
-        const response = await runningShoesBookMark(id,session);
-        if(response.response){
-            setError(response.response.status)
-            props.setOpen(true);
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
 
     const onClickBookMart = (id,event) =>{
         event.stopPropagation();
-        if(bookMark(id)){
+        if(BookMarkHandle("shoes",id,session,navigate)){
             setShoesBookmark((prev)=>({...prev,[id]:!shoesBookmark[id]}))
         }
     }

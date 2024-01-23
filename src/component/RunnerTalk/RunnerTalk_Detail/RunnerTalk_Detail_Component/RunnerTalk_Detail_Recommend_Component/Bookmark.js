@@ -5,38 +5,20 @@ import { useRecoilState } from 'recoil';
 import { RunnerTalkDetail_isBookMarked} from '../../../../../state/RunnerTalk/RunnerTalk_Detail_State';
 import {Box,Typography} from '@mui/material';
 import { useState } from 'react';
+import BookMarkHandle from '../../../../Util/bookmark';
+import {useNavigate} from "react-router-dom"
 
 export default function Like({point,id}){
     const [bookmarkPoint,setBookmarkPoint] = useState(point);
     const [isBookmarked,setidBookmarked] = useRecoilState(RunnerTalkDetail_isBookMarked);
     const sessionid = localStorage.getItem('sessionid');
 
-    const CommentLikeFunction = async (id,session) => {
-        const response = await runningTalkBookMark(id,session);
+    const navigate = useNavigate();
 
-        if(response.data.message === "Bookmark saved"){
-            setidBookmarked(prev=>prev = true)
-            setBookmarkPoint(prev=>prev = prev+1)
-        }
-        else{
-            setidBookmarked(prev=>prev = false)
-            setBookmarkPoint(prev=>prev = prev-1)
-        }
-    }
-
-    const bookMark = async (id) =>{
-        const response = await runningTalkBookMark(id,sessionid);
-        if(response.response){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
 
     const onClickBookMart = (id,event) =>{
         event.stopPropagation();
-        if(bookMark(id)){
+        if(BookMarkHandle("community",id,sessionid,navigate)){
             {
                 isBookmarked?
                 setBookmarkPoint(prev=>prev = prev-1)

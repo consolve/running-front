@@ -18,6 +18,7 @@ import {
     CrewMain_CrewBookMark
 } from "../../../../state/Crew/CrewMain_State"
 import { fetchCrewLocation,runningCrewBookMark } from '../../../../API/api/RunningCrew/crew_api';
+import BookMarkHandle from '../../../Util/bookmark';
 
 export default function Crew_Location_List(props){
 
@@ -57,21 +58,9 @@ export default function Crew_Location_List(props){
         setLoading(false);
     }, [page])
 
-    const bookMark = async (id) =>{
-        const response = await runningCrewBookMark(id,session);
-        if(response.response){
-            setError(response.response.status)
-            props.setOpen(true);
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
     const onClickBookMark = (id,event) =>{
         event.stopPropagation();
-        if(bookMark(id)){
+        if(BookMarkHandle("crew",id,session,navigate)){
             setCrewBookMark((prev)=>({...prev,[id]:!crewBookMark[id]}))
         }
     }

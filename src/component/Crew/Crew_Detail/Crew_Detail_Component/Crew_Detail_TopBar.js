@@ -7,6 +7,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import WestIcon from '@mui/icons-material/West';
 import {runningCrewBookMark} from "../../../../API/api/RunningCrew/crew_api"
+import BookMarkHandle from "../../../Util/bookmark";
 
 const TopbarTheme = {
     position:'fixed',
@@ -34,18 +35,8 @@ export default function Crew_Detail_TopBar(props){
         navigate(-1);
     }
 
-    const bookMark = async (id) =>{
-        const response = await runningCrewBookMark(id,session);
-        if(response.response){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
     const onClickBookMart = (id) =>{
-        if(bookMark(id)){
+        if(BookMarkHandle("crew",id,session,navigate)){
             setBookmark(prev=>prev=!bookmark);
         }
     }
