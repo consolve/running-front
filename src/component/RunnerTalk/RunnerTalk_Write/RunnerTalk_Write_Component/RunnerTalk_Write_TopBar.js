@@ -32,15 +32,6 @@ export default function RunnerTalk_Main_TopBar(props){
         navigate('/runnertalk')
     }
 
-    const navigateToRunnerTalkSearch = () =>{
-        navigate('/runnertalk/search');
-    }
-
-    function removeDataUrlPrefix(dataUrl) {
-        const prefixRegex = /^data:image\/[^;]+;base64,/;
-        return dataUrl.replace(prefixRegex, '');
-    }
-
     const FetchRunningTalkPostFunction = async () =>{
         props.setLoading(true);
 
@@ -51,9 +42,9 @@ export default function RunnerTalk_Main_TopBar(props){
             props.setErrorOpen(true)
         }
         else{
+            props.setLoading(false);
+            navigateToRunnerTalkMain();
         }
-        props.setLoading(false);
-        navigateToRunnerTalkMain();
     }
 
     useEffect(() =>{

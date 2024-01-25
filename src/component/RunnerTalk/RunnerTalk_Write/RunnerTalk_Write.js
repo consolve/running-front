@@ -18,6 +18,7 @@ import {
     RunnerTalk_Write_Header,
     RunnerTalk_Write_Image,
 } from '../../../state/RunnerTalk/RunnerTalk_Write_State';
+import Error from "../../Error/ErrorModal";
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -58,8 +59,6 @@ function RunnerTalk(){
 
     const FetchRunnerTalkCategoryFunction = async () => {
         const _Category = await fetchRunnerTalkCategory();
-
-
 
         if(_Category.response){
             setError(_Category.response.status)
@@ -127,6 +126,7 @@ function RunnerTalk(){
 
                     <Divider sx={{color:"#EDEDED",wdith:"100%"}}/>
                 </Box>
+                
                 <Box sx={{px:"20px"}}>
                     <Header/>                   
 
@@ -165,20 +165,7 @@ function RunnerTalk(){
 
             </Box>
             
-            <Box>   
-                <Modal
-                    open={errorOpen}
-                    onClose={handleClose}
-                    disableScrollLock
-                >
-                    <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {error}
-                    </Typography>
-                    
-                    </Box>
-                </Modal>
-            </Box>
+            <Error error={error} open={errorOpen} handleClose={handleClose}/>
             
             <SetImage setBase64s={setBase64s} Base64s={Base64s} />
         </Box>    

@@ -9,7 +9,7 @@ import {useLocation} from "react-router-dom"
 import {useRecoilState} from 'recoil'
 import {Skeleton} from '@mui/material';
 import { fetchRunnerTalkSearch } from '../../../API/api/RunningTalk/runningTalk_api';
-import {Modal} from '@mui/material';
+import Error from "../../Error/ErrorModal"
 
 const style = {
     position: 'absolute',
@@ -97,21 +97,8 @@ function RunnerTalk_Search(){
                     </Box>
                 }
             </Box>
-
-            <Box>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    disableScrollLock
-                >
-                    <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {error}
-                    </Typography>
-                    
-                    </Box>
-                </Modal>
-            </Box>
+            
+            <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
     )
 }

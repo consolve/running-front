@@ -1,8 +1,10 @@
 import {Box,Modal,Typography} from "@mui/material"
-import {DeletePost} from "../../../../API/api/RunningTalk/runningTalk_api";
-import {useState} from "react";
+import {useState,useEffect} from "react";
 
-export default function DeletePopper({error,open,handleOpen}){
+export default function Error({error,open,handleClose}){
+
+    const [header,setHeader] = useState("");
+    const [body,setBody] = useState("");
 
     const style = {
         position: 'absolute',
@@ -15,24 +17,28 @@ export default function DeletePopper({error,open,handleOpen}){
         borderRadius:'7px',
         p: 3,
         outline: 'none',
-      };
-      
+    };
+
+    useEffect(()=>{
+        setHeader("오류가 발생했습니다");
+        setBody(error);
+    },[error])
 
     return(
         <Box>   
             <Modal
                 open={open}
-                onClose={handleOpen}
+                onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
                 sx={{ '& .Mui-focused': { outline: 'none' } }}
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" sx={{fontFamily:'Pretendard Variable',fontWeight:700}}>
-                        잠시만요, 확인해주세요!
+                        {header}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 0.5,fontFamily:'Pretendard Variable',fontWeight:500}}>
-                        {"한번 삭제된 게시글은 다시 복구할 수 없어요."}<br/>{"확실하신가요?"}
+                        {body}
                     </Typography>
                 </Box>  
             </Modal>
