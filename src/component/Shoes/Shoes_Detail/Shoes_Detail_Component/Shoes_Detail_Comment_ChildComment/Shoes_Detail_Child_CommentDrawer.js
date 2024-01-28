@@ -57,10 +57,6 @@ export default function TemporaryDrawer(props) {
     }
 
     const toggleDrawer = (open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        
         props.setOpen((prev)=>prev=open);
     };
 

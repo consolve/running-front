@@ -43,8 +43,6 @@ export default function Navbar(props) {
         for (let i = 0; i < filesLength; i++) {
             file = fileArr[i];
 
-            console.log(file);
-
             if (file.type !== "image/jpeg" && file.type !== "image/jpg") {
                 alert(`JPG 사진 파일만 가능합니다.`);
                 break;
