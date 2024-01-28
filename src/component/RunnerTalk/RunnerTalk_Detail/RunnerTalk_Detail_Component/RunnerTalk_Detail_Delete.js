@@ -3,7 +3,7 @@ import {DeletePost} from "../../../../API/api/RunningTalk/runningTalk_api";
 import {useState} from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function DeletePopper({id,sessionid,open,handleOpen}){
+export default function DeletePopper({id,sessionid,open,handleOpen,setOpen,setError}){
 
     const style = {
         position: 'absolute',
@@ -22,8 +22,11 @@ export default function DeletePopper({id,sessionid,open,handleOpen}){
       
     const deletePost = async () => {
         const response = await DeletePost(sessionid,id);
-        if(response){
+
+        if(response.response){
             handleOpen();
+            setOpen(true);
+            setError(response.response.status);
         }
         else{
             navigate(-1);

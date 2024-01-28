@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCallback } from 'react';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { Typography,CircularProgress,IconButton,Button,Modal} from '@mui/material';
 import { useEffect,useState } from 'react';
 import Divider from '@mui/material/Divider';
@@ -167,7 +167,7 @@ export default function TemporaryDrawer(props) {
         
         >
             <React.Fragment>
-            <Drawer
+            <SwipeableDrawer
                 disableScrollLock={ true }
                 PaperProps={{
                     sx: {
@@ -180,7 +180,7 @@ export default function TemporaryDrawer(props) {
                 onClose={toggleDrawer(false)}
             >   
                 {list()}
-            </Drawer>
+            </SwipeableDrawer>
 
             </React.Fragment>
         </Box>

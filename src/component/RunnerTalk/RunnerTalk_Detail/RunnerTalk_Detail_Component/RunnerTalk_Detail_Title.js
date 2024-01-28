@@ -85,11 +85,12 @@ export default function RunnerTalk_Detail_Detail(props){
                         </Fade>
                         )}
                     </Popper>
+
                 </Typography>
             </Box>
 
             
-            <Delete id={props.detail.id} sessionid={session} open={opendelete} handleOpen={handleDeleteOpen}/>
+            <Delete id={props.detail.id} sessionid={session} open={opendelete} handleOpen={handleDeleteOpen} setError={props.setError} setOpen={props.setOpen}/>
         </Box>    
     )
 }

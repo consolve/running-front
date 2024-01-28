@@ -107,7 +107,7 @@ function RunnerTalk_Detail(){
                             {
                                 detail!=0?
                                 <Box sx={{width:"100%"}}>
-                                    <Title detail = {detail} category={category}/>
+                                    <Title detail = {detail} category={category} setOpen={setOpen} setError={setError}/>
                                     <User detail = {detail}/>
                                     <Box sx={{width:"100%"}}>
                                         <DetailTitle detail = {detail}/>

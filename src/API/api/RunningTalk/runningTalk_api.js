@@ -201,7 +201,7 @@ export const DeletePost = async (session,id) => {
             }
         }
 
-        const response = await axios.delete(`${process.env.REACT_APP_URL}/api/runningtalk/delete/${id}`,header);
+        const response = await axios.delete(`${process.env.REACT_APP_URL}/api/runningtalk/post/${id}`,header);
         return response
     }
     catch(error){

@@ -19,15 +19,6 @@ const VisuallyHiddenInput = styled('input')({
   });
 
 export default function Navbar(props) {
-    const [value, setValue] = React.useState('recents');
-
-    const navigate = useNavigate();
-
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
     const encodeFileToBase64 = (image) => {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -71,6 +62,7 @@ export default function Navbar(props) {
 
   return (
     <Box sx={{display:'flex',alignItems:"center", position: 'fixed', bottom: 0, left: '50%', right: 0,width:'95%',minWidth:'342px',maxWidth:'399px',transform:'translate(-50%,0)',zIndex:2,height:'65px',borderTop:1,borderTopColor:'#EDEDED',backgroundColor:'#ffffff' }} elevation={0}>
+        
         <Label for="input-file">
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:"100%",ml:0.5}}>
                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'16px'}}>
