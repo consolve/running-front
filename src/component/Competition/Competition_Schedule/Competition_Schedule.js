@@ -17,18 +17,7 @@ import { CompetitionSchedule_MonthLoading,
     CompetitionSchedule_AllLoading,
     CompetitionSchedule_Error,
 } from '../../../state/Competition/CompetitionSchedule_State';
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+import Error from '../../Error/ErrorModal';
 
 function Competition_Schedule(){
 
@@ -82,22 +71,7 @@ function Competition_Schedule(){
             
             <Dial/>
 
-            <Box>   
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    disableScrollLock
-                >
-                    <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {error}
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        
-                    </Typography>
-                    </Box>
-                </Modal>
-            </Box>
+            <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
     )
 }

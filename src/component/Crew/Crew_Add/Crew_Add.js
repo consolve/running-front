@@ -9,7 +9,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import {Modal} from '@mui/material';
 import { useForm } from "react-hook-form"
-import {useRecoilState} from 'recoil';
+import Error from "../../Error/ErrorModal"
 import { Swiper, SwiperSlide } from "swiper/react";
 //모듈 필요
 import { FreeMode } from 'swiper/modules';
@@ -224,22 +224,7 @@ function AddCrew(){
         }
 
 
-
-
-        <Box>
-            <Modal
-                open={modalOpen}
-                onClose={handleClose}
-                disableScrollLock
-            >
-                <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                    {error}
-                </Typography>
-                </Box>
-            </Modal>
-        </Box>
-
+        <Error error={error} open={modalOpen} handleClose={handleClose}/>
     </Box>    
     )
 }

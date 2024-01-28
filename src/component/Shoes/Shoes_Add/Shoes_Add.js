@@ -19,31 +19,7 @@ import 'swiper/css/free-mode';
 
 import "./style.css"
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transForm: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
-
-  const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-    display: 'inline-block',
-    cursor: 'pointer'
-  });
+import Error from "../../Error/ErrorModal";
 
 function AddShoes(){
 
@@ -281,19 +257,7 @@ function AddShoes(){
 
 
 
-        <Box>
-            <Modal
-                open={modalOpen}
-                onClose={handleClose}
-                disableScrollLock
-            >
-                <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                    {error}
-                </Typography>
-                </Box>
-            </Modal>
-        </Box>
+        <Error error={error} open={modalOpen} handleClose={handleClose}/>
 
     </Box>    
     )

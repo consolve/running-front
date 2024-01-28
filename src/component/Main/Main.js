@@ -12,19 +12,7 @@ import Crew from './Main_Crew/Crew'
 import Auth from "../../hoc/auth"
 import {Modal,Divider} from '@mui/material';
 import TopBar from "./TopBar/TopBar"
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
-
+import Error from "../Error/ErrorModal"
 
 function Main(){
     const [loading1,setLoading1] = useState(true);
@@ -91,19 +79,8 @@ function Main(){
 
             </Box>
 
-            <Box>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    disableScrollLock
-                >
-                    <Box sx={style}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
-                        {error===401?"로그인이 필요합니다.":error===403?"권한이 없습니다.":error===404?"존재하지 않는 페이지입니다.":error===500?"서버에 오류가 발생했습니다.":"알 수 없는 오류가 발생했습니다."}
-                    </Typography>
-                    </Box>
-                </Modal>
-            </Box>
+
+            <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
     )
 }

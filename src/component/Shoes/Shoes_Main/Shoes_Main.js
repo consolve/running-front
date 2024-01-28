@@ -18,8 +18,8 @@ import {
     ShoesMain_Error,
     ShoesMain_AllLoading,
 } from '../../../state/Shoes/ShoesMain_State';
+import Error from "../../Error/ErrorModal"
 
-import {Modal} from '@mui/material';
 
 const style = {
     position: 'absolute',
@@ -85,19 +85,7 @@ function Shoes_Main(){
 
             <Dial/>
         
-            <Box>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    disableScrollLock
-                >
-                    <Box sx={style}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            {error}
-                        </Typography>
-                    </Box>
-                </Modal>
-            </Box>
+            <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
     )
 }

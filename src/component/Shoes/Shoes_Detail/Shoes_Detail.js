@@ -21,6 +21,7 @@ import Comment from "./Shoes_Detail_Component/Shoes_Detail_Comment"
 import { FetchRunningshoesCommentPopular } from '../../../API/api/RunningShoes/Shoes_comment_api';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
+import Error from "../../Error/ErrorModal"
 
 
 const style = {
@@ -116,20 +117,7 @@ function Shoes_Detail(){
             </Box>
             <Navbar/>
 
-            <Box>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    disableScrollLock
-                >
-                    <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {error}
-                    </Typography>
-                    
-                    </Box>
-                </Modal>
-            </Box>
+            <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
     )
 }

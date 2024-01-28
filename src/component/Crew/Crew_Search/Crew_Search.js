@@ -9,20 +9,7 @@ import {useLocation} from "react-router-dom"
 import {useRecoilState} from 'recoil'
 import {Skeleton} from '@mui/material';
 import { fetchCrewSearch } from '../../../API/api/RunningCrew/crew_api';
-import {Modal} from '@mui/material';
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
-
+import Error from "../../Error/ErrorModal"
 
 function Crew_Search(){
     const loadinglist = [1,2,3,4,5,6,7,8];
@@ -112,20 +99,8 @@ function Crew_Search(){
                 }
             </Box>
 
-            <Box>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    disableScrollLock
-                >
-                    <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {error}
-                    </Typography>
-                    
-                    </Box>
-                </Modal>
-            </Box>
+           
+            <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
     )
 }

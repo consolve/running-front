@@ -19,7 +19,7 @@ import {
     ShoesSearch_Error
 } from '../../../state/Shoes/ShoesSearch_State';
 import { fetchSearchShoes } from '../../../API/api/RunningShoes/shoes_api';
-import {Modal} from '@mui/material';
+import Error from "../../Error/ErrorModal"
 
 const style = {
     position: 'absolute',
@@ -201,20 +201,7 @@ function Shoes_Search(){
                 }
             </Box>
 
-            <Box>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    disableScrollLock
-                >
-                    <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {error}
-                    </Typography>
-                    
-                    </Box>
-                </Modal>
-            </Box>
+            <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
     )
 }

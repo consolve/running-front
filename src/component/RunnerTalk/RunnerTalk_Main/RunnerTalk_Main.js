@@ -19,6 +19,8 @@ import { RunnerTalkMain_FilterLoading,
 } from '../../../state/RunnerTalk/RunnerTalkMain_State';
 import {fetchRunnerTalkAll} from "../../../API/api/RunningTalk/runningTalk_api"
 import {fetchPopularTalk} from "../../../API/api/RunningTalk/runningTalk_api"
+import Error from "../../Error/ErrorModal";
+
 
 const style = {
     position: 'absolute',
@@ -129,20 +131,7 @@ function RunnerTalk(){
             
             <Dial/>
 
-            <Box>   
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    disableScrollLock
-                >
-                    <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {error}
-                    </Typography>
-                    
-                    </Box>
-                </Modal>
-            </Box>
+            <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
     )
 }
