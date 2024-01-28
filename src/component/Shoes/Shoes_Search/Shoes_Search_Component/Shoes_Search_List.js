@@ -16,7 +16,7 @@ import {
 } from '../../../../state/Shoes/ShoesSearch_State';
 import {ShoesMain_ShoesBookMark} from "../../../../state/Shoes/ShoesMain_State"
 import { fetchSearchShoes,runningShoesBookMark } from '../../../../API/api/RunningShoes/shoes_api';
-
+import { shoesList } from '../../../../style/plate/ShoesList';
 
 export default function Shoes_Search_List(props){
 
@@ -132,14 +132,14 @@ export default function Shoes_Search_List(props){
                                                         }
                                                     </Box>
                                                     
-                                                    <Box sx={{my:1}}>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                    <Box sx={shoesList.shoesDetailBox}>
+                                                        <Typography sx={shoesList.shoesDetailBrand}>
                                                             {item.brand}
                                                         </Typography>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                        <Typography sx={shoesList.shoesDetailName}>
                                                             {item.koreanName}
                                                         </Typography>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                        <Typography sx={shoesList.shoesDetailPrice}>
                                                             {formatNumberWithCommas(item.price)}{"원"}
                                                         </Typography>
                                                     </Box>
@@ -162,14 +162,14 @@ export default function Shoes_Search_List(props){
                                                         }
                                                     </Box>
                                                     
-                                                    <Box sx={{my:1}}>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                    <Box sx={shoesList.shoesDetailBox}>
+                                                        <Typography sx={shoesList.shoesDetailBrand}>
                                                             {item.brand}
                                                         </Typography>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'300',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                        <Typography sx={shoesList.shoesDetailName}>
                                                             {item.koreanName}
                                                         </Typography>
-                                                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                                                        <Typography sx={shoesList.shoesDetailPrice}>
                                                             {formatNumberWithCommas(item.price)}{"원"}
                                                         </Typography>
                                                     </Box>

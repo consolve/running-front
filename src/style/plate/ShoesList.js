@@ -15,7 +15,7 @@ export const shoesList = {
     "shoesDetailName":{
         fontFamily:'Pretendard Variable',
         lineHeight:"19.09px",
-        fonrWeight:"300",
+        fontWeight:"300",
         fontSize:'16px',
         whiteSpace:'nowrap',
         overflow:'hidden',
