@@ -56,7 +56,6 @@ function Main(){
 
     useEffect(()=>{
         const session = window.localStorage.getItem("sessionid");
-        console.log(session)
 
     },[])    
 

@@ -75,14 +75,16 @@ export default function Profile_ChangeImage_Drawer({open,handleOpen,setImage}){
     };
 
     const FetchProfileImage = async (data) =>{
-        // const response = await fetchUserImage(session,data);
+        const response = await fetchUserImage(session,data);
 
-        // if(response.response){
+        console.log(response);
 
-        // }
-        // else{
+        if(response.response){
+
+        }
+        else{
             
-        // }
+        }
     }
 
     const FetchProfileImageDefault = () =>{

@@ -15,7 +15,6 @@ export default function Navbar() {
 
   const pathname = window.location.pathname; // in case user visits the path directly. The BottomNavBar is able to follow suit.
   const [value, setValue] = React.useState(pathname);
-  console.log(pathname)
 
   const navigate = useNavigate();
 

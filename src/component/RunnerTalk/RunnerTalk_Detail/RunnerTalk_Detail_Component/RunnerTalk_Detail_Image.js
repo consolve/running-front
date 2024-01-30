@@ -23,7 +23,6 @@ export default function RunnerTalk_Detail_Image(props) {
     }
 
     useEffect(()=>{
-        console.log(props.detail)
         setOfficialImg(props.detail.courseImgs);
     },[])
 
