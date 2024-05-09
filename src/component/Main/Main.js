@@ -62,6 +62,7 @@ function Main(){
 
     return(
         <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column'}}>
+            <div id="FFEMAIL" style="display:none"> qus7146@gmail.com </div>
             <Box sx={{display:'flex',flexDirection:'column',width:"100%",background: 'linear-gradient(to bottom, #4F1D76, rgba(255, 255, 255, 0.26))'}}>
                 <TopBar/>
                 <Banner/>
