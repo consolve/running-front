@@ -5,42 +5,42 @@ import {
   Routes,
   Route,
 } from  "react-router-dom";
-import LoginMain from "./component/User/Login_Main"
-import Login from "./component/User/Login/User_Login"
-import RegisterTel from "./component/User/Register/Register_Tel"
-import RegisterNickname from "./component/User/Register/Register_Nickname"
-import RegisterCrew from "./component/User/Register/Register_Crew"
-import Schedule from "./component/Competition/Competition_Schedule/Competition_Schedule"
-import Main from "./component/Main/Main";
+import LoginMain from "./pages/User/Login_Main"
+import Login from "./pages/User/Login/User_Login"
+import RegisterTel from "./pages/User/Register/Register_Tel"
+import RegisterNickname from "./pages/User/Register/Register_Nickname"
+import RegisterCrew from "./pages/User/Register/Register_Crew"
+import Schedule from "./pages/Competition/Competition_Schedule/Competition_Schedule"
+import Main from "./pages/Main/Main";
 import styled from "styled-components"
 import Navbar from "./component/Navbar/Navbar"
-import Competition_Detail from './component/Competition/Competition_Detail/Competition_Detail'
-import ScheduleSearch from './component/Competition/Competition_Search/Competition_Search'
-import CompetitionAdd from "./component/Competition/Competition_Add/Competition_Add"
-import Shoes from "./component/Shoes/Shoes_Main/Shoes_Main";
+import Competition_Detail from './pages/Competition/Competition_Detail/Competition_Detail'
+import ScheduleSearch from './pages/Competition/Competition_Search/Competition_Search'
+import CompetitionAdd from "./pages/Competition/Competition_Add/Competition_Add"
+import Shoes from "./pages/Shoes/Shoes_Main/Shoes_Main";
 import { Outlet } from 'react-router-dom';
-import ShoesSearch from "./component/Shoes/Shoes_Search/Shoes_Search"
-import Shoes_Detail from "./component/Shoes/Shoes_Detail/Shoes_Detail"
-import ShoesAdd from "./component/Shoes/Shoes_Add/Shoes_Add"
+import ShoesSearch from "./pages/Shoes/Shoes_Search/Shoes_Search"
+import Shoes_Detail from "./pages/Shoes/Shoes_Detail/Shoes_Detail"
+import ShoesAdd from "./pages/Shoes/Shoes_Add/Shoes_Add"
 
-import Crew from "./component/Crew/Crew_Main/Crew_Main"
-import CrewLocation from "./component/Crew/Crew_Location/Crew_Location"
-import CrewDetail from './component/Crew/Crew_Detail/Crew_Detail';
-import CrewSearch from "./component/Crew/Crew_Search/Crew_Search"
-import CrewAdd from "./component/Crew/Crew_Add/Crew_Add"
+import Crew from "./pages/Crew/Crew_Main/Crew_Main"
+import CrewLocation from "./pages/Crew/Crew_Location/Crew_Location"
+import CrewDetail from './pages/Crew/Crew_Detail/Crew_Detail';
+import CrewSearch from "./pages/Crew/Crew_Search/Crew_Search"
+import CrewAdd from "./pages/Crew/Crew_Add/Crew_Add"
 
-import RunnerTalk from "./component/RunnerTalk/RunnerTalk_Main/RunnerTalk_Main"
-import RunnerTalkFilter from "./component/RunnerTalk/RunnerTalk_Filtering/RunnerTalk_Filtering"
-import RunnerTalkDetail from "./component/RunnerTalk/RunnerTalk_Detail/RunnerTalk_Detail"
-import RunnerTalkSearch from "./component/RunnerTalk/RunnerTalk_Search/RunnerTalk_Search"
-import RunnerTalkWrite from "./component/RunnerTalk/RunnerTalk_Write/RunnerTalk_Write"
+import RunnerTalk from "./pages/RunnerTalk/RunnerTalk_Main/RunnerTalk_Main"
+import RunnerTalkFilter from "./pages/RunnerTalk/RunnerTalk_Filtering/RunnerTalk_Filtering"
+import RunnerTalkDetail from "./pages/RunnerTalk/RunnerTalk_Detail/RunnerTalk_Detail"
+import RunnerTalkSearch from "./pages/RunnerTalk/RunnerTalk_Search/RunnerTalk_Search"
+import RunnerTalkWrite from "./pages/RunnerTalk/RunnerTalk_Write/RunnerTalk_Write"
 
-import Profile from "./component/Profile/Profile_Main/Profile_Main"
-import MyCompetition from './component/Profile/Profile_My/Container/SavedCompetition';
-import MyCrew from "./component/Profile/Profile_My/Container/SavedCrew";
-import MyShoes from "./component/Profile/Profile_My/Container/SavedShoes";
-import MyRunnerTalk from "./component/Profile/Profile_My/Container/MyRunnerTalk";
-import MySavedPost from "./component/Profile/Profile_My/Container/SavedRunnerTalk";
+import Profile from "./pages/Profile/Profile_Main/Profile_Main"
+import MyCompetition from './pages/Profile/Profile_My/Container/SavedCompetition';
+import MyCrew from "./pages/Profile/Profile_My/Container/SavedCrew";
+import MyShoes from "./pages/Profile/Profile_My/Container/SavedShoes";
+import MyRunnerTalk from "./pages/Profile/Profile_My/Container/MyRunnerTalk";
+import MySavedPost from "./pages/Profile/Profile_My/Container/SavedRunnerTalk";
 
 import ScrollTop from "./hoc/scrollTop"
 import {
