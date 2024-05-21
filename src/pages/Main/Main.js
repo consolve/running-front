@@ -50,6 +50,7 @@ function Main(){
         setLoading3(true);
         setLoading4(true);
         setLoadingall(true);
+
         window.scrollTo({top:0})
     },[])
 
@@ -59,6 +60,10 @@ function Main(){
 
 
     return(
+        <>
+        <script>23  re        Larademo.postMessage(number); 
+            Larademo.postMessage({number});
+        </script>
         <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column'}}>
             <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
             <Box sx={{display:'flex',flexDirection:'column',width:"100%",background: 'linear-gradient(to bottom, #6C57E5, rgba(255, 255, 255, 0.26))'}}>
@@ -79,7 +84,8 @@ function Main(){
 
 
             <Error error={error} open={open} handleClose={handleClose}/>
-        </Box>    
+        </Box>  
+        </>  
     )
 }
 
