@@ -61,7 +61,7 @@ function Main(){
 
     return(
         <>
-        <script>23  re        Larademo.postMessage(number); 
+        <script>
             Larademo.postMessage({number});
         </script>
         <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column'}}>
