@@ -62,7 +62,7 @@ function Main(){
     return(
         <>
         <script>
-            Larademo.postMessage({number});
+            Larademo.postMessage("loadFCM");
         </script>
         <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column'}}>
             <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
