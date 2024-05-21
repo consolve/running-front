@@ -86,7 +86,6 @@ export default function TemporaryDrawer(props) {
         return;
         }
         props.setOpen((prev)=>prev=open);
-        console.log(props.open)
     };
 
     const reSendOtp = async () =>{

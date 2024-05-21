@@ -20,6 +20,7 @@ export default function MyRunningLife(){
     const navigateToLogout = () =>{
         window.localStorage.removeItem('sessionid');
         window.localStorage.removeItem('profile');
+        window.localStorage.removeItem('user_number');
         navigate("/login/main")
         window.location.reload();
     }

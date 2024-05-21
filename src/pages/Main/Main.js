@@ -15,6 +15,9 @@ import TopBar from "./TopBar/TopBar"
 import Error from "../../component/Error/ErrorModal"
 
 function Main(){
+            
+    const number = localStorage.getItem('user_number');
+
     const [loading1,setLoading1] = useState(true);
     const [loading2,setLoading2] = useState(true);
     const [loading3,setLoading3] = useState(true);
@@ -54,15 +57,10 @@ function Main(){
         LoadingCompilation();
     },[loading1,loading2,loading3,loading4])
 
-    useEffect(()=>{
-        const session = window.localStorage.getItem("sessionid");
-
-    },[])    
-
 
     return(
         <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column'}}>
-            <div id="FFEMAIL" style={{display:"none"}}> qus7146@gmail.com </div>
+            <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
             <Box sx={{display:'flex',flexDirection:'column',width:"100%",background: 'linear-gradient(to bottom, #6C57E5, rgba(255, 255, 255, 0.26))'}}>
                 <TopBar/>
                 <Banner/>

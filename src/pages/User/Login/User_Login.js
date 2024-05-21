@@ -54,11 +54,11 @@ function Login(){
 
     const navigateToRegisterName = async () =>{
         setLoading(true);
-        console.log(number)
+
         const res = await SmsSendCode(number);
-        console.log(res)
 
         if(res.status===200){
+            localStorage.setItem('user_number',number);
             setLoading(false);
             setOpen(true)
         }

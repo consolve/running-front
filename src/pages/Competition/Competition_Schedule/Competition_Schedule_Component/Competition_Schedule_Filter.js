@@ -50,17 +50,17 @@ export default function Competition_Schedule_Filter(){
     return(
         <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'62px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'100%',minWidth:'360px',maxWidth:'450px'}}>
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',px:"20px"}}>
-                <Box backgroundColor={month.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
+                <Box backgroundColor={month.length == 0?'':'primary.main'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {month.length == 0?'black':'white'} sx={buttonTyphography}>
                         날짜별 {month.length == 0?'':month.length}{'>'}
                     </Typography>
                 </Box>
-                <Box backgroundColor={course.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
+                <Box backgroundColor={course.length == 0?'':'primary.main'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {course.length == 0?'black':'white'} sx={buttonTyphography}>
                         코스별 {course.length == 0?'':course.length }{'>'}
                     </Typography>
                 </Box>
-                <Box backgroundColor={location.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
+                <Box backgroundColor={location.length == 0?'':'primary.main'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {location.length == 0?'black':'white'} sx={buttonTyphography}>
                         지역별 {location.length == 0?'':location.length}{'>'}
                     </Typography>

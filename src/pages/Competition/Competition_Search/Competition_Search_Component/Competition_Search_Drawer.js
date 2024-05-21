@@ -133,7 +133,7 @@ export default function TemporaryDrawer(props) {
                         <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:'0px'}}>
                             {['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월','접수가능'].map((text,index)=>(
                                 <Grid item mobile={2} largeMobile={2} key = {index}>
-                                    <Box onClick ={()=>handleToggleMonth(index+1)} backgroundColor={month.includes(index+1)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                    <Box onClick ={()=>handleToggleMonth(index+1)} backgroundColor={month.includes(index+1)?'primary.main':'#ffffff'} sx={tagbox}>
                                         <Typography color = {month.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
@@ -154,7 +154,7 @@ export default function TemporaryDrawer(props) {
                         <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:10,largeMobile:12}} sx={{mb:'11px',mt:"0px"}}>
                             {['FULL','HALF','10K','5K','ULTRA','챌린지'].map((text,index)=>(
                                 <Grid item mobile={2} largeMobile={2} key = {index}>
-                                    <Box onClick ={()=>handleToggleCourse(index)} backgroundColor={course.includes(index)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                    <Box onClick ={()=>handleToggleCourse(index)} backgroundColor={course.includes(index)?'primary.main':'#ffffff'} sx={tagbox}>
                                         <Typography color = {course.includes(index)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
@@ -176,7 +176,7 @@ export default function TemporaryDrawer(props) {
                         <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:"0px"}}>
                             {['수도권','충청권','강원권','전라권','경상권','제주권'].map((text,index)=>(
                                 <Grid item mobile={2} largeMobile={2} key = {index}>
-                                    <Box onClick ={()=>handleToggleLocation(index)} backgroundColor={location.includes(index)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                    <Box onClick ={()=>handleToggleLocation(index)} backgroundColor={location.includes(index)?'primary.main':'#ffffff'} sx={tagbox}>
                                         <Typography color = {location.includes(index)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>

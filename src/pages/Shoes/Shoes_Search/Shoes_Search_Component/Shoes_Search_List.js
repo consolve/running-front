@@ -105,7 +105,7 @@ export default function Shoes_Search_List(props){
     },[list])
 
     return(
-        <Box sx={{mt:2,display:"flex",justifyContent:"center",flexDirection:'column',alignItems:"center",px:'20px'}}>
+        <Box sx={{mt:2,display:"flex",justifyContent:"center",flexDirection:'column',alignItems:"center",px:'20px',mb:'60px'}}>
         {
             list.length!=0?
             <Box sx={{width:"100%"}}>
