@@ -52,9 +52,11 @@ function Main(){
         setLoadingall(true);
 
         try{
+            // eslint-disable-next-line
             Larademo.postMessage("loadFCM");
         }
         catch(e){
+
         }
 
         window.scrollTo({top:0})
