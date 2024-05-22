@@ -51,7 +51,7 @@ function Main(){
         setLoading4(true);
         setLoadingall(true);
 
-        Larademo.postMessage("loadFCM");
+        window.Larademo.postMessage("loadFCM");
 
         window.scrollTo({top:0})
     },[])
