@@ -76,11 +76,11 @@ export default function TemporaryDrawer(props) {
     }
 
     const handlePrivacyTerm = () => {
-        setPersonalTerm(!personalTerm);
+        navigate("/term/privacy");
     }
 
     const handleServiceTerm = () => {
-        sestServiceTerm(!serviceTerm);
+        navigate("/term/service")
     }
 
     const RegisterUser = async () =>{
@@ -133,7 +133,7 @@ export default function TemporaryDrawer(props) {
                    <Box>
                         <Box sx={{display:'flex',alignItems:'center'}}>
                             <Checkbox checked={service&&information&&marketing} onChange={allConfirm} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'primary.main'}} />} />
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'20px',width:"290px"}}>
+                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'20px'}}>
                                 모두 동의
                             </Typography>
                         </Box>
@@ -149,7 +149,7 @@ export default function TemporaryDrawer(props) {
                     <Box sx={{display:'flex',position:'relative',alignItems:'center',justifyContent:"space-between"}}>
                         <Box sx={{display:'flex',alignItems:'center'}}>
                             <Checkbox checked={service} onChange={handleChange1} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'primary.main'}} />} />
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'17px',width:"290px"}}>
+                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'17px'}}>
                                 (필수) 서비스 이용약관 동의
                             </Typography>
                         </Box>
@@ -166,7 +166,7 @@ export default function TemporaryDrawer(props) {
                     <Box sx={{display:'flex',position:'relative',alignItems:'center',justifyContent:"space-between"}}>
                         <Box sx={{display:'flex',alignItems:'center'}}>
                             <Checkbox checked={information} onChange={handleChange2} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'primary.main'}} />} />
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'17px',width:"290px"}}>
+                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'17px'}}>
                                 (필수) 개인정보 처리방침 동의
                             </Typography>
                         </Box>
@@ -182,7 +182,7 @@ export default function TemporaryDrawer(props) {
                     <Box sx={{display:'flex',position:'relative',alignItems:'center'}}>
                         <Box sx={{display:'flex',alignItems:'center'}}>
                             <Checkbox checked={marketing} onChange={handleChange3} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'primary.main'}} />} />
-                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'17px',width:"290px"}}>
+                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'17px'}}>
                                 (선택) 마케팅 수신 동의
                             </Typography>
                         </Box>
