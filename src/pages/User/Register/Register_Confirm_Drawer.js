@@ -16,7 +16,7 @@ import {
 import {Modal} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LoadingButton from '@mui/lab/LoadingButton';
-import Personal from '../../../component/Term/Personal';
+import Personal from '../../../component/Term/privacy';
 
 
 export default function TemporaryDrawer(props) {
@@ -33,7 +33,6 @@ export default function TemporaryDrawer(props) {
     const [information,setInformation] = useState(false);
     const [marketing,setMarketing] = useState(false);
     const [personalTerm,setPersonalTerm] = useState(false);
-    const [serviceTerm,setServiceTerm] = useState(false);
     
     const DrawerTheme = {
         width:'100%',
@@ -75,7 +74,7 @@ export default function TemporaryDrawer(props) {
     }
 
     const handlePersonalTerm = () => {
-        setPersonalTerm(!personalTerm);
+        navigate("term/privacy");
     }
 
     const RegisterUser = async () =>{
@@ -108,10 +107,6 @@ export default function TemporaryDrawer(props) {
         }
 
     }
-
-    useEffect(()=>{
-        console.log(personalTerm);
-    },[personalTerm])
 
     const list = (anchor) => (
         <Box

@@ -1,21 +1,15 @@
 import {Box,Typography,Divider,Backdrop, CircularProgress} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import Auth from "../../../hoc/auth"
+import Auth from "../../hoc/auth"
 import { useNavigate } from "react-router-dom";
-import TopBar from "../../../component/Community/Post_Component/RunnerTalk_Write_TopBar";
-import { fetchRunnerTalkCategory } from '../../../API/api/RunningTalk/runningTalk_api';
+import TopBar from "./_component/TopBar";
 import {Modal} from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
-import Drawer from "../../../component/Community/Post_Component/RunnerTalk_Write_Drawer"
-import Header from "../../../component/Community/Post_Component/RunnerTalk_Write_Header"
-import Content from "../../../component/Community/Post_Component/RunnerTalk_Write_Content"
-import SetImage from "../../../component/Community/Post_Component/RunnerTalk_Write_Image"
-import {useRecoilState} from 'recoil';
-import {
-    RunnerTalk_Write_Category,
-} from '../../../state/RunnerTalk/RunnerTalk_Write_State';
-import Error from "../../../component/Error/ErrorModal";
+import Header from "./_component/Header"
+import Content from "./_component/Content"
+import SetImage from "./_component/Image"
+import Error from "../../component/Error/ErrorModal";
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -37,15 +31,13 @@ const style = {
     p: 4,
 };
 
-function RunnerTalk({isUpdate=false}){
+function Report({isUpdate=false}){
 
     const navigate = useNavigate();
 
     const navigateToBack  = () =>{
         navigate(-1);
     }
-
-    const [loading,setLoading] = useState(true);
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -54,26 +46,9 @@ function RunnerTalk({isUpdate=false}){
         navigateToBack();
     };
 
-    const FetchRunnerTalkCategoryFunction = async () => {
-        const _Category = await fetchRunnerTalkCategory();
-
-        if(_Category.response){
-            setError(_Category.response.status)
-            setErrorOpen(true)
-        }
-        else{
-            setCategory(prev=>prev=_Category)
-        }
-
-        setLoading(false);
-    }
 
     const [errorOpen, setErrorOpen] = React.useState(false);
     const [error,setError] = useState("");
-    const [category,setCategory] = useState([]);
-    //카테고리 이름
-    const [checkCategory,setCheckCategory] = useRecoilState(RunnerTalk_Write_Category);
-
     const [Base64s, setBase64s] = React.useState([]);
 
     const deleteImage = (index) =>{
@@ -82,12 +57,10 @@ function RunnerTalk({isUpdate=false}){
 
     useEffect(() =>{
         window.scrollTo({top:0})
-        FetchRunnerTalkCategoryFunction();
     },[])
 
     useEffect(() => {
         return () => {
-            setCheckCategory("");
             setBase64s([]);
         };
       }, [])
@@ -95,25 +68,13 @@ function RunnerTalk({isUpdate=false}){
 
     return(
         <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
-            <TopBar setError = {setError} setErrorOpen={setErrorOpen} setLoading = {setLoading}/>
+            <TopBar setError = {setError} setErrorOpen={setErrorOpen} />
            
             <Box sx={{width:"100%",mb:'70px',mt:'62.4px'}}>
 
-                {
-                    loading?
-                    <Backdrop
-                        sx={{ color: '#fff', zIndex:1000 }}
-                        open={true}
-                        >
-                        <CircularProgress color="primary" />
-                    </Backdrop>
-                    :
-                    <Drawer category ={category} setCheckCategory={setCheckCategory} open={open} setOpen={setOpen}/>
-                }
-
                 <Box onClick={handleOpen} sx={{px:"20px"}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',my:'22px'}}>
-                        {checkCategory?checkCategory:"주제를 선택해주세요"}
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px',my:'9px'}}>
+                        문의 및 신고
                     </Typography>
 
                     <Divider sx={{color:"#EDEDED",wdith:"100%"}}/>
@@ -122,7 +83,7 @@ function RunnerTalk({isUpdate=false}){
                 <Box sx={{px:"20px"}}>
                     <Header/>                   
 
-                    <Content placeholder={"러너님의 러닝라이프를 공유해주세요"}/>
+                    <Content placeholder={"자세한 문의 및 신고내용을 입력해주세요"}/>
                 </Box>
 
                 <Box sx={{width:"100%",my:1}}>
@@ -164,4 +125,4 @@ function RunnerTalk({isUpdate=false}){
     )
 }
 
-export default Auth(RunnerTalk,null);
+export default Auth(Report,null);

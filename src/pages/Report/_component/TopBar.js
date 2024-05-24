@@ -57,21 +57,6 @@ export default function RunnerTalk_Main_TopBar(props){
                         <WestIcon sx={{}}/>
                     </IconButton>
                 </Box>
-                <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:"column"}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'23px'}}>
-                        글쓰기
-                    </Typography>
-                </Box>
-
-                <Box
-                    color={header&&content&&categoryState?"primary.main":"#A6A6A6"}
-                    onClick={header&&content&&categoryState?FetchRunningTalkPostFunction:()=>{}}
-                    sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:"column",mr:1}}
-                    >
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',mt:'4px'}}>
-                        확인
-                    </Typography>
-                </Box>
             </Box>
         </Box>    
     )

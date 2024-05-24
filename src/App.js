@@ -42,6 +42,10 @@ import MyShoes from "./pages/Profile/Profile_My/Container/SavedShoes";
 import MyRunnerTalk from "./pages/Profile/Profile_My/Container/MyRunnerTalk";
 import MySavedPost from "./pages/Profile/Profile_My/Container/SavedRunnerTalk";
 
+import InformationTerm from "./component/Term/privacy";
+
+import Report from "./pages/Report/report";
+
 import ScrollTop from "./hoc/scrollTop"
 import {
   RecoilRoot,
@@ -69,6 +73,7 @@ const WithoutNav =()=>{
 }
 
 function App() {
+
   return (
     <RecoilRoot>
       <WebMain>
@@ -118,6 +123,11 @@ function App() {
                 <Route path="/profile/savedshoes" element={<MyShoes/>}/>
                 <Route path="/profile/myrunnertalk" element={<MyRunnerTalk/>}/>
                 <Route path="/profile/savedrunnertalk" element={<MySavedPost/>}/>
+
+                <Route path="/term/privacy" element={<InformationTerm/>}/>
+                <Route path="/term/service" element={<InformationTerm/>}/>
+
+                <Route path="/report" element={<Report/>}/>
               </Route>
 
             </Routes>

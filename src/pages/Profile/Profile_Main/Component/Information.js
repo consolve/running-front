@@ -2,7 +2,7 @@ import { Box,Typography } from "@mui/material"
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from "react-router-dom";
 import React from 'react';
-import Personal from "../../../../component/Term/Personal";
+import Personal from "../../../../component/Term/privacy";
 
 export default function MyRunningLife(){
     const navigate = useNavigate();
@@ -25,11 +25,11 @@ export default function MyRunningLife(){
     }
 
     const navigateToTerms = () =>{
-        setTermOpen(true);
+        navigate("/term/service")
     }
 
     const navigateToPrivacy = () =>{
-    
+        navigate("/term/privacy");
     }
 
     const navigateToOSL = () =>{
@@ -49,18 +49,18 @@ export default function MyRunningLife(){
                         </Typography>
                         <ChevronRightIcon color="primary" sx={{width:"20px",height:"20px"}}/>
                     </Box>
-                    <Box onClick={navigateToNotification} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
+                    {/* <Box onClick={navigateToNotification} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',lineHeight:"17px"}}>
                             공지사항
                         </Typography>
                         <ChevronRightIcon color="primary" sx={{width:"20px",height:"20px"}}/>
-                    </Box>
-                    <Box onClick={navigateToRule} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
+                    </Box> */}
+                    {/* <Box onClick={navigateToRule} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',lineHeight:"17px"}}>
                             커뮤니티 이용규칙
                         </Typography>
                         <ChevronRightIcon color="primary" sx={{width:"20px",height:"20px"}}/>
-                    </Box>
+                    </Box> */}
                     <Box onClick={navigateToTerms} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',lineHeight:"17px"}}>
                             서비스 이용약관
@@ -73,15 +73,15 @@ export default function MyRunningLife(){
                         </Typography>
                         <ChevronRightIcon color="primary" sx={{width:"20px",height:"20px"}}/>
                     </Box>
-                    <Box onClick={navigateToOSL} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
+                    {/* <Box onClick={navigateToOSL} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',lineHeight:"17px"}}>
                             오픈소스 라이선스
                         </Typography>
                         <ChevronRightIcon color="primary" sx={{width:"20px",height:"20px"}}/>
-                    </Box>
+                    </Box> */}
                 </Box>
             </Box>
-            
+
             {
                 termOpen&&<Personal handleClose={handleClose}/>
             }

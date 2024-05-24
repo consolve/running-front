@@ -1,10 +1,16 @@
 import TopBar from "./Topbar"
 import { Box,Typography } from "@mui/material"
 import {content} from "./const"
+import { useNavigate } from "react-router-dom"
 
-export default function Personal({
-    handleClose,
-}){
+export default function Personal(){
+    
+    const navigate = useNavigate();
+
+    const handleClose = () =>{
+        navigate(-1)
+    }
+
     return(
         <Box sx={{
             width:"100%",
@@ -79,7 +85,6 @@ export default function Personal({
                 </Box>
 
             </Box>
-        
         </Box>
     )
 }

@@ -1,12 +1,9 @@
 import {Box,IconButton,Paper} from '@mui/material';
-import { useNavigate } from "react-router-dom";
 import TopbarTheme from '../../style/plate/topbar';
 import WestIcon from '@mui/icons-material/West';
 
 
 export default function TopBar({handleClose}){
-
-    const navigate = useNavigate();
 
     return(
     <Box sx={TopbarTheme}>

@@ -18,9 +18,9 @@ export default function ProfileContainer(){
 
                 <MyRunningLife/>
                 <Divider sx={{color:"#F6F6F6",border:8}}/>
-
+{/* 
                 <Setting/>
-                <Divider sx={{color:"#F6F6F6",border:8}}/>
+                <Divider sx={{color:"#F6F6F6",border:8}}/> */}
 
                 <Information/>
                 <Divider sx={{color:"#F6F6F6",border:8}}/>

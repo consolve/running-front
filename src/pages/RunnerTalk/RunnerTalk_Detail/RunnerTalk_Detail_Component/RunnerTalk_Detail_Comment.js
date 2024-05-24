@@ -142,6 +142,7 @@ export default function RunningTalk_Detail_Comment(props) {
         role="presentation"
         onKeyDown={toggleDrawer(false)}
         >
+
             <Box sx={DrawerTheme}>
                 <Box sx={{}}>
                     <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',position:'relative',flexDirection:'column',px:'20px',pb:'10px'}}>
@@ -176,7 +177,10 @@ export default function RunningTalk_Detail_Comment(props) {
                             {
                                 comment.map((item,index) => {
                                     return(
-                                       <Comment key = {item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction={RunningTalkCommentLike}/>
+                                        <>
+                                            <div id="FFEMAIL" style={{display:"none"}}> {1} </div>
+                                            <Comment key = {item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction={RunningTalkCommentLike}/>
+                                        </>
                                     )
                                 })
                             }
