@@ -6,10 +6,9 @@ import { RunnerTalk_Write_Content } from "../../../state/RunnerTalk/RunnerTalk_W
 
 
 export default function RunnerTalk_Write_Content_Component({
+    setContent,
     placeholder
 }){
-
-    const [content,setContent] = useRecoilState(RunnerTalk_Write_Content);
     
     const onChangeContent = (e) => {
         setContent(e.target.value);

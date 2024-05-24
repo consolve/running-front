@@ -2,13 +2,11 @@ import { useState } from "react";
 import { Box } from "@mui/material";
 import styled from "styled-components"
 import { useRecoilState } from "recoil";
-import { RunnerTalk_Write_Header } from "../../../state/RunnerTalk/RunnerTalk_Write_State";
 
 
-export default function RunnerTalk_Write_Header_Component(){
-
-
-    const [header,setHeader] = useRecoilState(RunnerTalk_Write_Header);
+export default function RunnerTalk_Write_Header_Component({
+    setHeader
+}){
 
     const onChangeHeader = (e) => {
         setHeader(e.target.value);

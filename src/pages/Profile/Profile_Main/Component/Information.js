@@ -13,7 +13,7 @@ export default function MyRunningLife(){
     }
 
     const navigateToReport = () =>{
-       
+       navigate("/report")
     }
 
     const navigateToNotification = () =>{

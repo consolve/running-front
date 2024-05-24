@@ -25,6 +25,7 @@ export default function RunningTalk_Detail_Comment(props) {
 
     const { id } = useParams();
     const session = localStorage.getItem('sessionid');
+    const number = localStorage.getItem('user_number');
 
     const [Modalopen, setModalOpen] = React.useState(false);
     const handleOpen = (id=0) => {
@@ -84,6 +85,7 @@ export default function RunningTalk_Detail_Comment(props) {
     const [loading,setLoading] = useState(false);
     const [childOpen,setChildOpen] = useState(false);
     const [parentId,setParentId] = useState(1);
+    const [reportId,setReportId] = useState(0);
 
     const [clickedId,setClickedId] = useState(0);
 
@@ -110,6 +112,19 @@ export default function RunningTalk_Detail_Comment(props) {
         setLoading(false);
 
     }
+
+    const onClickReport = (id) => {
+        setReportId(id);
+
+        try{
+            // eslint-disable-next-line
+            Larademo.postMessage("reportArticle");
+        }
+        catch(e){
+
+        }
+    }
+
 
     const FetchRunningTalkCommentPopularFunction = async () => {
         const _Comment = await FetchRunningtalkCommentPopular(id,session);
@@ -142,6 +157,8 @@ export default function RunningTalk_Detail_Comment(props) {
         role="presentation"
         onKeyDown={toggleDrawer(false)}
         >
+            <div id="reportComment" style={{display:"none"}}> {number} </div>
+            <div id="reportComment" style={{display:"none"}}> {reportId} </div>
 
             <Box sx={DrawerTheme}>
                 <Box sx={{}}>
@@ -178,8 +195,7 @@ export default function RunningTalk_Detail_Comment(props) {
                                 comment.map((item,index) => {
                                     return(
                                         <>
-                                            <div id="FFEMAIL" style={{display:"none"}}> {1} </div>
-                                            <Comment key = {item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction={RunningTalkCommentLike}/>
+                                            <Comment onClickComment={() => onClickReport(item.id)} key = {item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction={RunningTalkCommentLike}/>
                                         </>
                                     )
                                 })

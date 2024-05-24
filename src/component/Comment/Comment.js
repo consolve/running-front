@@ -33,7 +33,7 @@ function timeForToday(value) {
 
 
 
-export default function Comment({item,toggleChildCommentDrawer,LikeFunction}){
+export default function Comment({item,toggleChildCommentDrawer,LikeFunction,onClickComment}){
     const [likePoint,setlikePoint] = useState(item.likePoint);
     const sessionid = localStorage.getItem('sessionid');
     const contentRef = useRef(null);
@@ -64,7 +64,7 @@ export default function Comment({item,toggleChildCommentDrawer,LikeFunction}){
 
 
     return(
-        <Box sx={{display:'flex',alignItems:'start',px:2,py:1.5}}>
+        <Box onClick={onClickComment} sx={{display:'flex',alignItems:'start',px:2,py:1.5}}>
             <Box sx={{height:'100%',display:'block',mt:0.5}}>
                 <Avatar src={`${API_URL}${item.user_profile}`} sx={{width:'20px',height:'20px',mr:1}}/>
             </Box>

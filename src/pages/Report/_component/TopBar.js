@@ -20,34 +20,9 @@ export default function RunnerTalk_Main_TopBar(props){
 
     const navigate = useNavigate();
 
-    const session = localStorage.getItem("sessionid");
-
-    const [header,setHeader] = useRecoilState(RunnerTalk_Write_Header);
-    const [content,setContent] = useRecoilState(RunnerTalk_Write_Content);
-    const [categoryState,setCategoryState] = useRecoilState(RunnerTalk_Write_Category);
-    const [image,setImage] = useRecoilState(RunnerTalk_Write_Image);
-
     const navigateToRunnerTalkMain = () =>{
         navigate('/runnertalk')
     }
-
-    const FetchRunningTalkPostFunction = async () =>{
-        props.setLoading(true);
-
-        const response = await FetchRunnerTalkPost(session,categoryState,header,content,image);
-
-        if(response.response){
-            props.setError(response.response.status)
-            props.setErrorOpen(true)
-        }
-        else{
-            props.setLoading(false);
-            navigateToRunnerTalkMain();
-        }
-    }
-
-    useEffect(() =>{
-    },[])
 
     return(
         <Box sx={TopbarTheme}>
