@@ -17,7 +17,7 @@ import {Modal} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Personal from '../../../component/Term/privacy';
-import Service from "../../../component/Term/service";
+import Service from "../../../component/Term/Service";
 
 
 export default function TemporaryDrawer(props) {
@@ -235,7 +235,7 @@ export default function TemporaryDrawer(props) {
                 <Personal handleClose={handlePrivacyTerm}/>
             }
 
-{
+            {
                 serviceTerm &&
                 <Service handleClose={handleServiceTerm}/>
             }

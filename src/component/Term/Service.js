@@ -3,13 +3,14 @@ import { Box,Typography } from "@mui/material"
 import {serviceTerm} from "./const"
 import { useNavigate } from "react-router-dom"
 
-export default function Personal({
-    handleClose=-1
-}){
+export default function Service(){
     
     const navigate = useNavigate();
 
-    
+    const handleClose = () =>{
+        navigate(-1)
+    }
+
     return(
         <Box sx={{
             width:"100%",
@@ -36,7 +37,7 @@ export default function Personal({
                     display:"block",
                 }}>
                     {
-                        content.map((item,index)=>{
+                        serviceTerm.map((item,index)=>{
                             return(
                                 <Box key={index} sx={{pt:2}}>
                                     <Typography sx={{
