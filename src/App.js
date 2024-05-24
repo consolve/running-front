@@ -45,6 +45,7 @@ import MySavedPost from "./pages/Profile/Profile_My/Container/SavedRunnerTalk";
 import InformationTerm from "./component/Term/privacy";
 
 import Report from "./pages/Report/report";
+import Resign from "./pages/Resign/resign"
 
 import ScrollTop from "./hoc/scrollTop"
 import {
@@ -128,6 +129,7 @@ function App() {
                 <Route path="/term/service" element={<InformationTerm/>}/>
 
                 <Route path="/report" element={<Report/>}/>
+                <Route path="/resign" element={<Resign/>}/>
               </Route>
 
             </Routes>

@@ -14,6 +14,7 @@ export default function MyRunningLife(){
     }
     
     const navigateToExit = () =>{
+        navigate('/resign')
         
     }
 

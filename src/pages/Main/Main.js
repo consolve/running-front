@@ -94,4 +94,4 @@ function Main(){
     )
 }
 
-export default Auth(Main,null)
+export default Auth(Main,true)
