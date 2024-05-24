@@ -11,6 +11,7 @@ export default function RunnerTalk_Detail_Detail(props){
 
     const navigate = useNavigate();
     const session = window.localStorage.getItem("sessionid");
+    const number = localStorage.getItem('user_number');
 
     const [open,setOpen] = useState(false);
     const [opendelete,setOpendelete] = useState(false);
@@ -46,10 +47,25 @@ export default function RunnerTalk_Detail_Detail(props){
         navigate('/runnertalk/write')
     }
 
+    const onClickReport = (id) => {
+
+        try{
+            // eslint-disable-next-line
+            Larademo.postMessage("reportArticle");
+        }
+        catch(e){
+
+        }
+    }
+
+
 
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',backgroundColor:'#ffffff',borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
             
+            <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
+            <div id="reportPostId" style={{display:"none"}}> {props.detail.id} </div>
+
             <Backdrop
             sx={{ backgroundColor:"transparent", zIndex:1001 }}
             open={open}
@@ -77,7 +93,7 @@ export default function RunnerTalk_Detail_Detail(props){
                                     </Typography>
                                 </Box>
 
-                                <Box onClick={navigateToRunnerTalkWrite} sx={{display:'flex',ml:2,my:0.5}}>
+                                <Box onClick={onClickReport} sx={{display:'flex',ml:2,my:0.5}}>
                                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
                                         신고하기
                                     </Typography>

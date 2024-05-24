@@ -118,7 +118,7 @@ export default function RunningTalk_Detail_Comment(props) {
 
         try{
             // eslint-disable-next-line
-            Larademo.postMessage("reportArticle");
+            Larademo.postMessage("reportComment");
         }
         catch(e){
 
