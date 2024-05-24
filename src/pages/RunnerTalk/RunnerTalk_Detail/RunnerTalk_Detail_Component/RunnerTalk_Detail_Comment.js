@@ -157,8 +157,8 @@ export default function RunningTalk_Detail_Comment(props) {
         role="presentation"
         onKeyDown={toggleDrawer(false)}
         >
-            <div id="reportComment" style={{display:"none"}}> {number} </div>
-            <div id="reportComment" style={{display:"none"}}> {reportId} </div>
+            <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
+            <div id="reportID" style={{display:"none"}}> {reportId} </div>
 
             <Box sx={DrawerTheme}>
                 <Box sx={{}}>
