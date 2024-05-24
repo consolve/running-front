@@ -11,7 +11,7 @@ export async function resignApi(session,number){
         const body ={
             "phonenumber":number,
         }
-        const response = await axios.post(`${process.env.REACT_APP_URL}/api/users/inquiry`,body,header);
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/users/deactivate`,body,header);
         return response;
     }
     catch(error){

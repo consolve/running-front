@@ -131,6 +131,7 @@ export default function TemporaryDrawer(props) {
                     setCrew("");
             
                     navigate('/');
+                    window.location.reload();
                 }
                 break;
             case "Invalid code.":

@@ -18,7 +18,7 @@ function Resign({isUpdate=false}){
     const session = localStorage.getItem('sessionid');
 
     const navigateToBack  = () =>{
-        navigate(-1);
+        navigate('/login/main');
     }
 
     const [loading,setLoading] = useState(false);
@@ -55,6 +55,8 @@ function Resign({isUpdate=false}){
         }
         else{
             setLoading(false);
+            localStorage.removeItem('sessionid');
+            localStorage.removeItem('user_number');
             navigateToBack();
         }
     }

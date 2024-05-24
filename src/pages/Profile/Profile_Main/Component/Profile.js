@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { API_URL } from '../../../../API/URL';
 import { fetchUserName } from '../../../../API/api/RunningShoes/shoes_api';
 import ProfileChangeDrawer from "./Profile_ChangeImage_Drawer"
-import DefaultProfile from '../../../../Image/user-circle.png';
+import { useNavigate } from 'react-router-dom';
 
 export default function Profile(){
+    const navigate = useNavigate();
     const profile = window.localStorage.getItem('profile');
     const [userName, setUserName] = useState('');
     const [image,setImage] = useState("");
@@ -19,6 +20,11 @@ export default function Profile(){
 
     const getUserName = async () =>{
         const response = await fetchUserName(session);
+
+        if(response.response){
+            navigate('/login/main');
+        }
+
         setUserName(prev=>prev=response);
         return response;
     }
