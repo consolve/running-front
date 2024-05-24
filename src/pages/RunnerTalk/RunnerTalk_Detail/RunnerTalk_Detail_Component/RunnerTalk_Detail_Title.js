@@ -47,7 +47,7 @@ export default function RunnerTalk_Detail_Detail(props){
         navigate('/runnertalk/write')
     }
 
-    const onClickReport = (id) => {
+    const onClickReport = () => {
 
         try{
             // eslint-disable-next-line
