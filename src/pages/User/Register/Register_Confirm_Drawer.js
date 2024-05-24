@@ -17,6 +17,7 @@ import {Modal} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Personal from '../../../component/Term/privacy';
+import Service from "../../../component/Term/service";
 
 
 export default function TemporaryDrawer(props) {
@@ -33,6 +34,7 @@ export default function TemporaryDrawer(props) {
     const [information,setInformation] = useState(false);
     const [marketing,setMarketing] = useState(false);
     const [personalTerm,setPersonalTerm] = useState(false);
+    const [serviceTerm,sestServiceTerm] = useState(false);
     
     const DrawerTheme = {
         width:'100%',
@@ -73,8 +75,12 @@ export default function TemporaryDrawer(props) {
         setMarketing(e.target.checked);
     }
 
-    const handlePersonalTerm = () => {
-        navigate("term/privacy");
+    const handlePrivacyTerm = () => {
+        setPersonalTerm(!personalTerm);
+    }
+
+    const handleServiceTerm = () => {
+        sestServiceTerm(!serviceTerm);
     }
 
     const RegisterUser = async () =>{
@@ -148,7 +154,7 @@ export default function TemporaryDrawer(props) {
                             </Typography>
                         </Box>
                         <Box
-                        onClick={handlePersonalTerm}
+                        onClick={handleServiceTerm}
                         sx={{display:"flex",alignItems:"center",pr:'9px'}}>
                             <Typography 
                                 sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:"#C4C9CF"}}>
@@ -165,7 +171,7 @@ export default function TemporaryDrawer(props) {
                             </Typography>
                         </Box>
                         <Box
-                        onClick={handlePersonalTerm}
+                        onClick={handlePrivacyTerm}
                         sx={{display:"flex",alignItems:"center",pr:'9px'}}>
                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:"#C4C9CF"}}>
                                 보기
@@ -226,7 +232,12 @@ export default function TemporaryDrawer(props) {
 
             {
                 personalTerm &&
-                <Personal handleClose={handlePersonalTerm}/>
+                <Personal handleClose={handlePrivacyTerm}/>
+            }
+
+{
+                serviceTerm &&
+                <Service handleClose={handleServiceTerm}/>
             }
 
         </Box>
