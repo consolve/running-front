@@ -234,7 +234,7 @@ export default function RunningTalk_Detail_Comment(props) {
             
             {
                 childOpen&&
-                <ChildComment setError = {props.setError} setErrorOpen={props.setErrorOpen} open={childOpen} setOpen={setChildOpen} id={parentId}/>
+                <ChildComment onClickReport={onClickReport} setError = {props.setError} setErrorOpen={props.setErrorOpen} open={childOpen} setOpen={setChildOpen} id={parentId}/>
             }
         </Box>
     );

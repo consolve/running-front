@@ -27,7 +27,7 @@ function timeForToday(value) {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
 }
 
-export default function ChildComment({item,LikeFunction}){
+export default function ChildComment({item,LikeFunction,onClickComment}){
     const navigate = useNavigate();
 
     const [likePoint,setlikePoint] = useState(item.likePoint);

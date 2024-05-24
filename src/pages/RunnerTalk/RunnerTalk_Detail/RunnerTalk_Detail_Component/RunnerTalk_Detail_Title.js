@@ -71,19 +71,19 @@ export default function RunnerTalk_Detail_Detail(props){
                         <Fade {...TransitionProps} timeout={350}>
                             <Box sx={{display:'flex',flexDirection:'column',alignItems:'start',justifyContent:"center",width:'180px',backgroundColor:'primary.light',borderRadius:'15px',border:1,borderColor:'primary.main',zIndex:1002}}>
 
-                                <Box onClick={navigateToRunnerTalkWrite} sx={{display:'flex',ml:2}}>
+                                <Box onClick={navigateToRunnerTalkWrite} sx={{display:'flex',ml:2,my:1}}>
                                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
                                         수정하기
                                     </Typography>
                                 </Box>
 
-                                <Box onClick={navigateToRunnerTalkWrite} sx={{display:'flex',ml:2}}>
+                                <Box onClick={navigateToRunnerTalkWrite} sx={{display:'flex',ml:2,my:0.5}}>
                                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
-                                        수정하기
+                                        신고하기
                                     </Typography>
                                 </Box>  
 
-                                <Box onClick={handleDeleteOpen} sx={{display:'flex',ml:2,mt:0.2}}>
+                                <Box onClick={handleDeleteOpen} sx={{display:'flex',ml:2,mt:0.2,my:1}}>
                                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
                                         삭제
                                     </Typography>

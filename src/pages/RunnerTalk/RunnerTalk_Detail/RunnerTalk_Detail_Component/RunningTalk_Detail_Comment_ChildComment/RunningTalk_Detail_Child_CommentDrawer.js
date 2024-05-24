@@ -39,18 +39,6 @@ export default function TemporaryDrawer(props) {
         backgroundColor:'#ffffff',
     }
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '320px',
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 2,
-      };
-
     const navigateToBack = ()=>{
         navigate(-1);
     }
@@ -107,6 +95,7 @@ export default function TemporaryDrawer(props) {
         setLoading(false);
 
     }
+
     useEffect(()=>{
         setLoading(true);
         FetchRunningTalkCommentRepliesFunction();
@@ -154,7 +143,9 @@ export default function TemporaryDrawer(props) {
                                     {
                                         comment.map((item,index) => {
                                             return(
-                                                <Comment key = {item.id} item={item} LikeFunction={RunningTalkCommentLike}/>
+                                                <>
+                                                    <Comment onClickComment={() => props.onClickReport(item.id)} key = {item.id} item={item} LikeFunction={RunningTalkCommentLike}/>
+                                                </>
                                             )
                                         })
                                     }
