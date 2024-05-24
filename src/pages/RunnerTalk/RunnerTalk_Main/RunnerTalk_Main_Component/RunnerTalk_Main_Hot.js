@@ -64,7 +64,7 @@ export default function RunnerTalk_Main_Hot(props){
                                     list.map((item,index) =>(
                                         <Box key={index} onClick={()=>navigateToDetail(item.id)} sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',mt:1}}>
                                             <Box sx={{width:'30px',height:'30px',mr:1,backgroundImage:`url(${Hot})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
-                                            <Box sx={{width:'calc(100% - 38px)',height:'36px',backgroundColor:'rgba(79, 29, 118, 0.25)',borderRadius:'7px',display:'flex',alignItems:"center"}}>
+                                            <Box sx={{width:'calc(100% - 38px)',height:'36px',backgroundColor:'primary.light',borderRadius:'7px',display:'flex',alignItems:"center"}}>
                                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',ml:1}}>
                                                     {item.title}
                                                 </Typography>

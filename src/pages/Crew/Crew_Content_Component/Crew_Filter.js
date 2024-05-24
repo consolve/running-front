@@ -28,7 +28,7 @@ export default function Crew_Main_Filter(props){
         alignItems:'center',
         border:1,
         borderRadius:3,     
-        borderColor:'#4F1D76',
+        borderColor:'primary.main',
         mr:1
     }
 
@@ -49,8 +49,8 @@ export default function Crew_Main_Filter(props){
     return(
         <Box sx={{backgroundColor:'#ffffff',display:'flex',justifyContent:'start',alignItems:'center',borderColor:'#E8E8E8'}}>
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center'}}>
-                <Box backgroundColor={location.length == 0?'rgba(79, 29, 118, 0.07)':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
-                    <Typography color = {location.length == 0?'#4F1D76':'white'} sx={buttonTyphography}>
+                <Box backgroundColor={location.length == 0?'rgba(79, 29, 118, 0.07)':'primary.main'} onClick ={openDrawer} sx={buttonTheme}>
+                    <Typography color = {location.length == 0?'primary.main':'white'} sx={buttonTyphography}>
                         {location.length==0?'지역 >':`${locationName[location]} >`}
                     </Typography>
                 </Box>

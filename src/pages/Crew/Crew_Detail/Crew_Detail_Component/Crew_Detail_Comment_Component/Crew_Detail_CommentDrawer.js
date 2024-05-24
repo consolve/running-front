@@ -15,10 +15,6 @@ import {
     CrewDetail_Comment,
     CrewDetail_Comment_Order
 } from "../../../../../state/Crew/CrewDetail_Comment_State"
-import {API_URL} from "../../../../../API/URL/index"
-import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import {FetchCrewCommentLatest,FetchCrewCommentPopular,CrewCommentLike  } from "../../../../../API/api/RunningCrew/crew_comment_api"
 import CommentAdder from "./Crew_Detail_CommentDrawer_AddComment"
 import ChildComment from "../Crew_Detail_Comment_ChildComment/Crew_Detail_Child_CommentDrawer"
@@ -153,12 +149,12 @@ export default function TemporaryDrawer(props) {
                             댓글
                         </Typography>
                         <Box sx={{display:'flex',mt:1,ml:-0.5}}>
-                            <Box onClick ={()=>handleToggleOrder(0)} backgroundColor={commentOrder.includes(0)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                            <Box onClick ={()=>handleToggleOrder(0)} backgroundColor={commentOrder.includes(0)?'primary.main':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                 <Typography color = {commentOrder.includes(0)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px'}}>
                                     {"인기순"}
                                 </Typography>
                             </Box>
-                            <Box onClick ={()=>handleToggleOrder(1)} backgroundColor={commentOrder.includes(1)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                            <Box onClick ={()=>handleToggleOrder(1)} backgroundColor={commentOrder.includes(1)?'primary.main':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                 <Typography color = {commentOrder.includes(1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px'}}>
                                     {"최신순"}
                                 </Typography>

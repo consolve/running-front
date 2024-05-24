@@ -2,7 +2,7 @@ import {Box,Typography,Modal} from '@mui/material';
 import Topbar from "../Component/Topbar"
 import {useState,useEffect} from "react"
 import Content from "../Component/Content_Post"
-import ContentSkeleton from '../../../../component/feed/wide_Skeleton';
+import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
 import { useNavigate } from 'react-router-dom';
 import {FetchMySavedPost,runningTalkBookMark} from "../../../../API/api/RunningTalk/runningTalk_api"
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';

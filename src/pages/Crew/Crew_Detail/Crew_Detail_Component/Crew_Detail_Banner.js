@@ -13,7 +13,7 @@ export default function Crew_Detail_Banner(props){
     },[])
 
     return(
-        <Box sx={{position:'relative',zIndex:0,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',flexDirection:'column',width:'100%',height:'300px'}}>
+        <Box sx={{position:'relative',zIndex:0,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'primary.main',flexDirection:'column',width:'100%',height:'300px'}}>
             {
                 props.crew?
                 <Box sx={{backgroundImage:`url(${API_URL}${props.crew.mainImg})`,width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'contain'}}>
@@ -23,7 +23,7 @@ export default function Crew_Detail_Banner(props){
                     </Box>
                 </Box>
                 :
-                <Box sx={{backgroundColor:"#4F1D76",width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                <Box sx={{backgroundColor:"primary.main",width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
             }
             
         

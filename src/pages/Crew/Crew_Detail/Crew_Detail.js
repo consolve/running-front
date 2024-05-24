@@ -80,7 +80,7 @@ function Crew_Detail(){
             <Box sx={{width:'100%'}}>
                 {
                     loading&&comment?
-                    <Box sx={{position:'fixed',width:'100%',width:"100%",backgroundColor:'#4F1D76',maxWidth:"450px",minWidth:"360px"}}>
+                    <Box sx={{position:'fixed',width:'100%',width:"100%",backgroundColor:'primary.main',maxWidth:"450px",minWidth:"360px"}}>
                         <Skeleton variant="rectangular" width={'100%'} height={"300px"} sx={{position:'relative',zIndex:-1}}/>
                     </Box>
                     :
@@ -92,7 +92,7 @@ function Crew_Detail(){
                             <Banner crew={crew}/>
                         </Box>
                         :
-                        <Box sx={{position:'fixed',width:'100%',height:'300px',backgroundColor:'#4F1D76'}}>
+                        <Box sx={{position:'fixed',width:'100%',height:'300px',backgroundColor:'primary.main'}}>
                         </Box>
                     }
                     </Box>

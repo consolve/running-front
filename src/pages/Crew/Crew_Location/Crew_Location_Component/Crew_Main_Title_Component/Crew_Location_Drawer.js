@@ -5,10 +5,8 @@ import { Typography } from '@mui/material';
 import { useEffect,useState } from 'react';
 import Divider from '@mui/material/Divider';
 import ClearIcon from '@mui/icons-material/Clear';
-import {Button,Slider} from '@mui/material';
+import {Button,Grid} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useSearchParams } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
 import {useRecoilState} from 'recoil'
 import {
     CrewLocation_Location
@@ -78,18 +76,18 @@ export default function TemporaryDrawer(props) {
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
                             지역
                         </Typography>
-                        <Box sx={{mt:2}}>
-                            <Box sx={{display:'flex',width:"100%"}}>
-                                {['수도권','충청권','강원권','전라권','경상권','제주권'].map((text,index)=>(
-                                    <Box key = {index} onClick ={()=>handleToggleLocation(index+1)} backgroundColor={location.includes(index+1)?'#4F1D76':''} sx={{border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                        <Grid container rowSpacing={1} columnSpacing={0} column={{mobile:10,largeMobile:10}} sx={{mb:'20px',mt:'0px'}}>
+                            {['수도권','충청권','강원권','전라권','경상권','제주권'].map((text,index)=>(
+                                <Grid item mobile={2} largeMobile={2} key = {index}>
+                                    <Box key = {index} onClick ={()=>handleToggleLocation(index+1)} backgroundColor={location.includes(index+1)?'primary.main':''} sx={{border:1,borderRadius:'10px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                         <Typography color = {location.includes(index+1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',lineHeight:"16.71px",mx:'9px',my:"7px"}}>
                                             {text}
                                         </Typography>
-                                    </Box>   
+                                    </Box>    
+                                </Grid>
                                 ))
-                                }
-                            </Box>
-                        </Box>
+                            }
+                        </Grid>
                     </Box>
 
                     {/*하단 버튼*/}

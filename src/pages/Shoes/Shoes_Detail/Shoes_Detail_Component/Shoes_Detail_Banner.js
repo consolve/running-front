@@ -29,7 +29,7 @@ export default function Competition_Detail_Banner(props){
     },[])
 
     return(
-        <Box ref = {ref} sx={{position:'relative',zIndex:0,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',flexDirection:'column',height:'350px'}}>
+        <Box ref = {ref} sx={{position:'relative',zIndex:0,display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'primary.main',flexDirection:'column',height:'350px'}}>
             {
                 props.shoes.shoesImg?
                     <Swiper
@@ -55,7 +55,7 @@ export default function Competition_Detail_Banner(props){
                         }
                     </Swiper>
                 :
-                    <Box sx={{backgroundColor:"#4F1D76",width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                    <Box sx={{backgroundColor:"primary.main",width:'100%',height:'100%',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
             }
         </Box>    
     )

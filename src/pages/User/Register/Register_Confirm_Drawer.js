@@ -16,29 +16,7 @@ import {
 import {Modal} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LoadingButton from '@mui/lab/LoadingButton';
-
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
-
-const getSeconds = (time) => {
-    const seconds = Number(time % 60);
-    if(seconds < 10) {
-        return "0" + String(seconds);
-    } else {
-        return String(seconds);
-    }
-}
-
+import Personal from '../../../component/Term/Personal';
 
 
 export default function TemporaryDrawer(props) {
@@ -54,6 +32,8 @@ export default function TemporaryDrawer(props) {
     const [service,setService] = useState(false);
     const [information,setInformation] = useState(false);
     const [marketing,setMarketing] = useState(false);
+    const [personalTerm,setPersonalTerm] = useState(false);
+    const [serviceTerm,setServiceTerm] = useState(false);
     
     const DrawerTheme = {
         width:'100%',
@@ -74,7 +54,6 @@ export default function TemporaryDrawer(props) {
         return;
         }
         props.setOpen((prev)=>prev=open);
-        console.log(props.open)
     };
 
     const allConfirm = (e) => {
@@ -95,6 +74,10 @@ export default function TemporaryDrawer(props) {
         setMarketing(e.target.checked);
     }
 
+    const handlePersonalTerm = () => {
+        setPersonalTerm(!personalTerm);
+    }
+
     const RegisterUser = async () =>{
         setLoading(true);
         if(name===""||number===""||nickName===""||crew===""||service===false||information===false){
@@ -111,6 +94,7 @@ export default function TemporaryDrawer(props) {
             props.setModalOpen(true);
             setLoading(false);
         }
+        
         else{
             window.localStorage.setItem('sessionid', response.data.access);
             window.localStorage.setItem('profile', response.data.user.profile);
@@ -124,6 +108,10 @@ export default function TemporaryDrawer(props) {
         }
 
     }
+
+    useEffect(()=>{
+        console.log(personalTerm);
+    },[personalTerm])
 
     const list = (anchor) => (
         <Box
@@ -143,7 +131,7 @@ export default function TemporaryDrawer(props) {
                 <Box sx={{display:'flex',width:'95%',mt:3,position:'relative',alignItems:'center'}}>
                    <Box>
                         <Box sx={{display:'flex',alignItems:'center'}}>
-                            <Checkbox checked={service&&information&&marketing} onChange={allConfirm} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'#4F1D76'}} />} />
+                            <Checkbox checked={service&&information&&marketing} onChange={allConfirm} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'primary.main'}} />} />
                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'20px',width:"290px"}}>
                                 모두 동의
                             </Typography>
@@ -157,27 +145,42 @@ export default function TemporaryDrawer(props) {
                 <Divider sx={{width:"95%",mt:2}}/>
 
                 <Box sx={{display:'flex',flexDirection:"column",justifyContent:"center",width:'95%',mt:2}}>
-                    <Box sx={{display:'flex',position:'relative',alignItems:'center'}}>
+                    <Box sx={{display:'flex',position:'relative',alignItems:'center',justifyContent:"space-between"}}>
                         <Box sx={{display:'flex',alignItems:'center'}}>
-                            <Checkbox checked={service} onChange={handleChange1} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'#4F1D76'}} />} />
+                            <Checkbox checked={service} onChange={handleChange1} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'primary.main'}} />} />
                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'17px',width:"290px"}}>
                                 (필수) 서비스 이용약관 동의
                             </Typography>
                         </Box>
+                        <Box
+                        onClick={handlePersonalTerm}
+                        sx={{display:"flex",alignItems:"center",pr:'9px'}}>
+                            <Typography 
+                                sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:"#C4C9CF"}}>
+                                보기
+                            </Typography>
+                        </Box>
                     </Box>
 
-                    <Box sx={{display:'flex',position:'relative',alignItems:'center'}}>
+                    <Box sx={{display:'flex',position:'relative',alignItems:'center',justifyContent:"space-between"}}>
                         <Box sx={{display:'flex',alignItems:'center'}}>
-                            <Checkbox checked={information} onChange={handleChange2} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'#4F1D76'}} />} />
+                            <Checkbox checked={information} onChange={handleChange2} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'primary.main'}} />} />
                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'17px',width:"290px"}}>
                                 (필수) 개인정보 처리방침 동의
+                            </Typography>
+                        </Box>
+                        <Box
+                        onClick={handlePersonalTerm}
+                        sx={{display:"flex",alignItems:"center",pr:'9px'}}>
+                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',color:"#C4C9CF"}}>
+                                보기
                             </Typography>
                         </Box>
                     </Box>
 
                     <Box sx={{display:'flex',position:'relative',alignItems:'center'}}>
                         <Box sx={{display:'flex',alignItems:'center'}}>
-                            <Checkbox checked={marketing} onChange={handleChange3} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'#4F1D76'}} />} />
+                            <Checkbox checked={marketing} onChange={handleChange3} icon={<CheckCircleIcon sx={{color:"#D7D8E0"}}/>} checkedIcon={<CheckCircleIcon sx={{color:'primary.main'}} />} />
                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'17px',width:"290px"}}>
                                 (선택) 마케팅 수신 동의
                             </Typography>
@@ -226,7 +229,10 @@ export default function TemporaryDrawer(props) {
 
             </React.Fragment>
 
-            
+            {
+                personalTerm &&
+                <Personal handleClose={handlePersonalTerm}/>
+            }
 
         </Box>
     );

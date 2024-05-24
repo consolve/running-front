@@ -125,19 +125,6 @@ export default function RunningTalk_Detail_Comment(props) {
         setLoading(false);
     }
 
-    const RunningTalkCommentLikeFunction = async () => {
-        const response = await RunningTalkCommentLike(clickedId,session);
-
-        if(response.response){
-            handleClose();
-            return;
-        }
-        else{
-            handleClose();
-        }
-    
-    }
-
     useEffect(()=>{
         setLoading(true);
         if(commentOrder.includes(0)){
@@ -162,12 +149,12 @@ export default function RunningTalk_Detail_Comment(props) {
                             댓글
                         </Typography>
                         <Box sx={{display:'flex',mt:2,ml:-0.5}}>
-                            <Box onClick ={()=>handleToggleOrder(0)} backgroundColor={commentOrder.includes(0)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                            <Box onClick ={()=>handleToggleOrder(0)} backgroundColor={commentOrder.includes(0)?'primary.main':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                 <Typography color = {commentOrder.includes(0)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px'}}>
                                     {"인기순"}
                                 </Typography>
                             </Box>
-                            <Box onClick ={()=>handleToggleOrder(1)} backgroundColor={commentOrder.includes(1)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                            <Box onClick ={()=>handleToggleOrder(1)} backgroundColor={commentOrder.includes(1)?'primary.main':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                 <Typography color = {commentOrder.includes(1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px'}}>
                                     {"최신순"}
                                 </Typography>

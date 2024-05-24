@@ -20,7 +20,7 @@ import {
 } from '../../../state/Competition/CompetitionSearch_State';
 import Error from '../../../component/Error/ErrorModal';
 
-import ContentSkeleton from '../../../component/feed/wide_Skeleton';
+import ContentSkeleton from '../../../component/shoes/wide_Skeleton';
 
 
 function Competition_Search(){

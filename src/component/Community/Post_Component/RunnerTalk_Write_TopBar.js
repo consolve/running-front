@@ -65,7 +65,7 @@ export default function RunnerTalk_Main_TopBar(props){
                 </Box>
 
                 <Box
-                    color={header&&content&&categoryState?"#4F1D76":"#A6A6A6"}
+                    color={header&&content&&categoryState?"primary.main":"#A6A6A6"}
                     onClick={header&&content&&categoryState?FetchRunningTalkPostFunction:()=>{}}
                     sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:"column",mr:1}}
                     >

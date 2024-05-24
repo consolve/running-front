@@ -1,7 +1,7 @@
 import {Box,Typography,IconButton,Card} from '@mui/material';
 import { shoesList } from '../../../../../style/plate/ShoesList';
 import {useNavigate} from "react-router-dom";
-import Feed from "../../../../../component/feed/feed"
+import Feed from "../../../../../component/shoes/feed"
 
 import { Swiper, SwiperSlide } from "swiper/react";
 //모듈 필요

@@ -59,7 +59,7 @@ export default function RunnerTalk_Detail_Detail(props){
 
             <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',width:'90%'}}>
                 
-                <Typography onClick={()=>navigateToCategory(props.detail.category)} color = {"#4F1D76"} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
+                <Typography onClick={()=>navigateToCategory(props.detail.category)} color = {"primary"} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px'}}>
                     {props.detail.category}{" >"}
                 </Typography>
 
@@ -69,15 +69,15 @@ export default function RunnerTalk_Detail_Detail(props){
                     <Popper id={id} open={open} anchorEl={anchorEl} transition placement={'bottom-end'} style={{zIndex:1002}}>
                         {({ TransitionProps }) => (
                         <Fade {...TransitionProps} timeout={350}>
-                            <Box sx={{display:'flex',flexDirection:'column',alignItems:'start',justifyContent:"center",width:'180px',height:'85px',backgroundColor:'#DEDAE0',borderRadius:'15px',border:1,borderColor:'#4F1D76',zIndex:1002}}>
+                            <Box sx={{display:'flex',flexDirection:'column',alignItems:'start',justifyContent:"center",width:'180px',height:'85px',backgroundColor:'primary.light',borderRadius:'15px',border:1,borderColor:'primary.main',zIndex:1002}}>
 
                                 <Box onClick={navigateToRunnerTalkWrite} sx={{display:'flex',ml:2}}>
-                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"#4F1D76",ml:1,lineHeight:'25px'}}>
+                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
                                         수정하기
                                     </Typography>
                                 </Box>
                                 <Box onClick={handleDeleteOpen} sx={{display:'flex',ml:2,mt:0.2}}>
-                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"#4F1D76",ml:1,lineHeight:'23px'}}>
+                                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
                                         삭제
                                     </Typography>
                                 </Box>

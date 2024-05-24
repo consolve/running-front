@@ -1,9 +1,16 @@
 import { Box,Typography } from "@mui/material"
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Personal from "../../../../component/Term/Personal";
 
 export default function MyRunningLife(){
     const navigate = useNavigate();
+    const [termOpen,setTermOpen] = React.useState(false); 
+
+    const handleClose = () =>{
+        setTermOpen(false);
+    }
 
     const navigateToReport = () =>{
        
@@ -18,7 +25,7 @@ export default function MyRunningLife(){
     }
 
     const navigateToTerms = () =>{
-        
+        setTermOpen(true);
     }
 
     const navigateToPrivacy = () =>{
@@ -74,6 +81,10 @@ export default function MyRunningLife(){
                     </Box>
                 </Box>
             </Box>
+            
+            {
+                termOpen&&<Personal handleClose={handleClose}/>
+            }
         </Box>
     )
 }

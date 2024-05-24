@@ -13,8 +13,8 @@ import { CompetitionSchedule_AccceptableLoading,
 
 import Title from "../../../../component/Competition/Competition_Title"
 import More from "../../../../component/Competition/Competition_More"
-import Content from "../../../../component/feed/wide_feed"
-import ContentSkeleton from '../../../../component/feed/wide_Skeleton';
+import Content from "../../../../component/shoes/wide_feed"
+import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
 
 export default function Competition_Schedule_canRegister(props){
 

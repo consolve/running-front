@@ -77,7 +77,7 @@ function RunnerTalk({isUpdate=false}){
     //카테고리 이름
     const [checkCategory,setCheckCategory] = useRecoilState(RunnerTalk_Write_Category);
 
-    const [Base64s, setBase64s] = useRecoilState(RunnerTalk_Write_Image);
+    const [Base64s, setBase64s] = React.useState([]);
 
     const deleteImage = (index) =>{
         setBase64s(Base64s.filter((_,i)=>i!==index));
@@ -87,11 +87,6 @@ function RunnerTalk({isUpdate=false}){
         window.scrollTo({top:0})
         FetchRunnerTalkCategoryFunction();
     },[])
-
-    const onSubmit = (data) => {
-        data["images"] = Base64s;
-        console.log(data);
-    }
 
     useEffect(() => {
         return () => {

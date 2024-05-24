@@ -1,8 +1,8 @@
 import {Box,Typography,Modal} from '@mui/material';
 import Topbar from "../Component/Topbar"
 import {useState,useEffect} from "react"
-import Content from "../../../../component/feed/wide_feed"
-import ContentSkeleton from '../../../../component/feed/wide_Skeleton';
+import Content from "../../../../component/shoes/wide_feed"
+import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
 import { useNavigate } from 'react-router-dom';
 import {FetchMySavedContest,ContestBookMark} from "../../../../API/api/Contest/contest_api"
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';

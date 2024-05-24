@@ -68,7 +68,7 @@ export default function RunnerTalk_Main_List(props){
                     <React.Fragment key={index}>
                         {
                             list.length-1==index?
-                            <Box ref = {ref} onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'rgba(237, 237, 237, 1)'}}>
+                            <Box ref = {ref} onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'primary.light'}}>
                                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 81px)`,flexDirection:'column'  }}>
                                     <Box sx={{width:'100%'}}>
                                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px'}}>
@@ -104,10 +104,10 @@ export default function RunnerTalk_Main_List(props){
                                         </Box>
                                     </Box>
                                  </Box>
-                                <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'75px',height:'75px',backgroundColor:'primary.light',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
                             :
-                            <Box onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'rgba(237, 237, 237, 1)'}}>
+                            <Box onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'primary.light'}}>
                                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 81px)`,flexDirection:'column'  }}>
                                     <Box sx={{width:'100%'}}>
                                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px'}}>
@@ -143,7 +143,7 @@ export default function RunnerTalk_Main_List(props){
                                         </Box>
                                     </Box>
                                  </Box>
-                                <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'75px',height:'75px',backgroundColor:'primary.light',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
 
                         }

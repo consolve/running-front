@@ -1,9 +1,9 @@
 import {Box,Grid,Typography,IconButton} from '@mui/material';
 import React from "react";
-import Feed from "../../../../../component/feed/feed";
+import Feed from "../../../../../component/shoes/feed";
 
 
-export default function AllShoes({list,shoesBookmark,onClickBookMart}){
+export default function AllShoes({list,shoesBookmark}){
 
     return(
         <Box sx={{width:"100%",mt:2,display:"flex",justifyContent:"center"}}>
@@ -20,7 +20,6 @@ export default function AllShoes({list,shoesBookmark,onClickBookMart}){
                                             <Feed data={{
                                                 item:item,
                                                 shoesBookmark:shoesBookmark,
-                                                onClickBookMart:onClickBookMart,
                                             }}/>
                                         </Grid>
                                     }

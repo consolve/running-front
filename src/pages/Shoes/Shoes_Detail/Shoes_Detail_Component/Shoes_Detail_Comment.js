@@ -33,7 +33,7 @@ export default function Shoes_Detail_Comment(props) {
     return (
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',mt:2}}>
             <Box sx={{width:'90%',display:'flex',alignItems:'end'}}>
-                <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
+                <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
                     댓글
                 </Typography>
                 <Typography color = "#9D9D9D" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',ml:0.5}}>

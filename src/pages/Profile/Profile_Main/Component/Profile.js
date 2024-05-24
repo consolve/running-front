@@ -41,7 +41,7 @@ export default function Profile(){
                         {'오늘 러닝은 어떠셨나요?'}
                     </Typography>
 
-                    <Box onClick={handleOpen} sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#4F1D76',width:'100%',height:'22px',borderRadius:'10px',boxShadow:0,mt:1}}>
+                    <Box onClick={handleOpen} sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'primary.main',width:'100%',height:'22px',borderRadius:'10px',boxShadow:0,mt:1}}>
                         <Typography sx={{color:"white",fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'10px'}}>
                             프로필 사진 변경
                         </Typography>

@@ -43,16 +43,16 @@ export default function BasicSpeedDial() {
         
             <Box sx={{ position:"absolute",right:130}}>
                 <Fade in={open}>
-                        <Box sx={{display:'flex',flexDirection:'column',alignItems:'start',justifyContent:"center",position:"fixed",bottom:150,width:'180px',height:'85px',backgroundColor:'#DEDAE0',borderRadius:'15px',border:1,borderColor:'#4F1D76',zIndex:1002}}>
+                        <Box sx={{display:'flex',flexDirection:'column',alignItems:'start',justifyContent:"center",position:"fixed",bottom:150,width:'180px',height:'85px',backgroundColor:'primary.light',borderRadius:'15px',border:1,borderColor:'primary.main',zIndex:1002}}>
                             <Box onClick={navigateToRunnerTalkWrite} sx={{display:'flex',ml:2}}>
                                 <AddIcon color="primary" sx={{size:'15px'}}/>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"#4F1D76",ml:1,lineHeight:'25px'}}>
+                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
                                     글쓰기
                                 </Typography>
                             </Box>
                             <Box sx={{display:'flex',ml:2,mt:0.2}}>
                                 <BookmarkBorderIcon color="primary" sx={{size:'15px'}}/>
-                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"#4F1D76",ml:1,lineHeight:'23px'}}>
+                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
                                     저장한 러너톡
                                 </Typography>
                             </Box>

@@ -15,10 +15,6 @@ import {
     CompetitionSchedule_Comment,
     CompetitionSchedule_Comment_Order
 } from "../../../../../state/Competition/CompetitionSchedule_State"
-import {API_URL} from "../../../../../API/URL/index"
-import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import {FetchContestCommentLatest} from "../../../../../API/api/Contest/contest_comment_api"
 import { FetchContestCommentPopular,ContestCommentLike } from '../../../../../API/api/Contest/contest_comment_api';
 import CommentAdder from "./Competition_Detail_CommentDrawer_AddComment"
@@ -40,18 +36,6 @@ export default function TemporaryDrawer(props) {
     const handleClose = () => {
         setOpen(false)
     };
-
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '320px',
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 2,
-      };
 
     const DrawerTheme = {
         width:'100%',
@@ -131,19 +115,6 @@ export default function TemporaryDrawer(props) {
         setLoading(false);
     }
 
-    const ContestCommentLikeFunction = async () => {
-        const response = await ContestCommentLike(clickedId,session);
-
-        if(response.response){
-            handleClose();
-            return;
-        }
-        else{
-            handleClose();
-        }
-    
-    }
-
     useEffect(()=>{
         setLoading(true);
         if(commentOrder.includes(0)){
@@ -168,12 +139,12 @@ export default function TemporaryDrawer(props) {
                             댓글
                         </Typography>
                         <Box sx={{display:'flex',mt:1,ml:-0.5}}>
-                            <Box onClick ={()=>handleToggleOrder(0)} backgroundColor={commentOrder.includes(0)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                            <Box onClick ={()=>handleToggleOrder(0)} backgroundColor={commentOrder.includes(0)?'primary.main':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                 <Typography color = {commentOrder.includes(0)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px'}}>
                                     {"인기순"}
                                 </Typography>
                             </Box>
-                            <Box onClick ={()=>handleToggleOrder(1)} backgroundColor={commentOrder.includes(1)?'#4F1D76':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
+                            <Box onClick ={()=>handleToggleOrder(1)} backgroundColor={commentOrder.includes(1)?'primary.main':''}  sx={{width:"48px",height:'25px',border:1,borderRadius:'8px',display:'flex',justifyContent:'center',alignItems:'center',mr:1,borderColor:'#D9D9D9'}}>
                                 <Typography color = {commentOrder.includes(1)?'white':'black'} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px'}}>
                                     {"최신순"}
                                 </Typography>

@@ -95,7 +95,7 @@ function Login(){
         </Box>
 
         <Box sx={{width:'100%',pt:3}}>
-            <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
+            <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
                 환영합니다!
             </Typography>
             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px',mt:3}}>
@@ -119,7 +119,7 @@ function Login(){
             open&&
             <AnimatedBox sx={{width:"100%"}}>
                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px',color:"red"}}>
-                    {"닉네임이 너무 길어요! 조금만 줄여볼까요?"}
+                    {"닉네임은 10글자 이내로 입력해주세요."}
                 </Typography>
             </AnimatedBox>
         }

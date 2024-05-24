@@ -40,7 +40,7 @@ export default function RunnerTalk_Detail_Image(props) {
                             return(
                                 <SwiperSlide key={index} className="swiper-left-margin-16">
                                     <Box sx={{width:'100%'}}>
-                                        <Box sx={{width:'280px',height:'280px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${item.img})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                        <Box sx={{width:'280px',height:'280px',backgroundColor:'primary.main',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${item.img})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
                                     </Box>
                                 </SwiperSlide>
                             )

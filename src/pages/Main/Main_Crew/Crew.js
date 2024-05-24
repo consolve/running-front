@@ -113,7 +113,7 @@ export default function Crew(props){
                                             <SwiperSlide key={index} className='shoes'>
                                                 <Box onClick={()=>navigateToShoesDetail(item.id)} sx={{width:'100%'}}>
                                                     <Box sx={{position:'relative'}}>
-                                                        <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${item.mainImg})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                                        <Box sx={{width:'170px',height:'170px',backgroundColor:'primary.main',borderRadius:3,mx:'auto',backgroundImage:`url(${API_URL}${item.mainImg})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
                                                         {
                                                             crewBookmark[item.id]?
                                                             <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
@@ -130,7 +130,7 @@ export default function Crew(props){
                                                             {
                                                                 item.activityAreaTag.map((item,index)=>{
                                                                     return(
-                                                                        <Box key={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'40px',height:'15px',backgroundColor:'#4F1D76',borderRadius:3,mr:1}}>
+                                                                        <Box key={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'40px',height:'15px',backgroundColor:'primary.main',borderRadius:3,mr:1}}>
                                                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'10px',color:'#ffffff'}}>
                                                                                 {item.name}
                                                                             </Typography>

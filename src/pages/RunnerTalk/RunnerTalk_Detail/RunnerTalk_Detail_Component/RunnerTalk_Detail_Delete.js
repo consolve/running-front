@@ -57,7 +57,7 @@ export default function DeletePopper({id,sessionid,open,handleOpen,setOpen,setEr
                             </Typography>
                         </Box>
                         
-                        <Box onClick={deletePost} sx={{backgroundColor:"#4F1D76",width:'140px',borderRadius:'7px',height:'40px',display:"flex",alignItems:"center",justifyContent:"center"}}>
+                        <Box onClick={deletePost} sx={{backgroundColor:"primary.main",width:'140px',borderRadius:'7px',height:'40px',display:"flex",alignItems:"center",justifyContent:"center"}}>
                             <Typography sx={{fontFamily:'Pretendard Variable',color:"white",fontWeight:600}}>
                                 삭제
                             </Typography>

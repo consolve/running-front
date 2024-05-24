@@ -10,8 +10,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 
 import Title from "../Main_Component/Main_Title"
-import Content from "../../../component/feed/wide_feed";
-import ContentSkeleton from "../../../component/feed/wide_Skeleton"
+import Content from "../../../component/shoes/wide_feed";
+import ContentSkeleton from "../../../component/shoes/wide_Skeleton"
 
 
 

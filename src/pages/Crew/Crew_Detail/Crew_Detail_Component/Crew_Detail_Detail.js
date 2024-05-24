@@ -38,7 +38,7 @@ export default function Crew_Detail_Detail(props) {
     return (
         <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',flexDirection:'column',width:'100%',mt:'15px'}}>
             <Box sx={{px:"20px"}}>
-                <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
+                <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px'}}>
                     대회상세
                 </Typography>
             </Box>

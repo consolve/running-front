@@ -28,7 +28,7 @@ function Login(){
                     src={Logo}
                 />
                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column',pt:3}}>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'bold',fontSize:'13px',color:'#4F1D76'}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'bold',fontSize:'13px',color:'primary.main'}}>
                         Running + Life = RIFE
                     </Typography>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:500,fontSize:'13px',pt:1}}>
@@ -50,7 +50,7 @@ function Login(){
                         이미 계정이 있나요? 
                     </Typography>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'bold',fontSize:'14px'}}>
-                        <Link to ="/login" style={{ textDecoration: 'none', color:'#4F1D76' }}>
+                        <Link to ="/login" style={{ textDecoration: 'none', color:'primary.main' }}>
                             로그인
                         </Link>
                     </Typography>

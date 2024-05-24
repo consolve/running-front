@@ -79,7 +79,7 @@ export default function Content({item,isVisible}){
                             {
                                 item.activityAreaTag.map((item,index)=>{
                                     return(
-                                        <Box key={index} sx={{backgroundColor:'#4F1D76',borderRadius:'6px',mr:'3px'}}>
+                                        <Box key={index} sx={{backgroundColor:'primary.main',borderRadius:'6px',mr:'3px'}}>
                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'9px',color:'#ffffff',my:'2px',mx:'6px',lineHeight:"normal"}}>
                                                 {item.name}
                                             </Typography>

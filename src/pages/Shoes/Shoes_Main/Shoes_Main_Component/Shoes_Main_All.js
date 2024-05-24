@@ -104,7 +104,7 @@ export default function Shoes_Main_All(props){
                 loading||loadingall?
                 <AllSkeleton/>
                 :
-                <All list={list} shoesBookmark={shoesBookmark} onClickBookMart={onClickBookMart}/>
+                <All list={list} shoesBookmark={shoesBookmark}/>
             }
 
             {/*더보기 버튼*/}

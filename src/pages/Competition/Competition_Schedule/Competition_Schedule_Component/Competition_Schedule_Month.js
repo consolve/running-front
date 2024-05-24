@@ -9,10 +9,10 @@ import {useRecoilState} from 'recoil'
 import { CompetitionSchedule_MonthLoading,
     CompetitionSchedule_AllLoading
 } from '../../../../state/Competition/CompetitionSchedule_State';
-import Content from "../../../../component/feed/wide_feed"
+import Content from "../../../../component/shoes/wide_feed"
 import Title from "../../../../component/Competition/Competition_Title"
 import More from "../../../../component/Competition/Competition_More"
-import ContentSkeleton from '../../../../component/feed/wide_Skeleton';
+import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
 
 export default function Competition_Schedule_Month(props){
 

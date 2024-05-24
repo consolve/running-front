@@ -4,7 +4,7 @@ import {useState,useEffect} from "react"
 import Content from "../Component/Content_Post.js"
 import {FetchMySavedPost,runningTalkBookMark} from "../../../../API/api/RunningTalk/runningTalk_api"
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import ContentSkeleton from '../../../../component/feed/wide_Skeleton.js';
+import ContentSkeleton from '../../../../component/shoes/wide_Skeleton.js';
 
 const style = {
     position: 'absolute',

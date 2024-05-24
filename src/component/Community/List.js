@@ -1,45 +1,46 @@
-import {Box,Typography,Avatar,Divider} from '@mui/material';
+import {Box,Typography,Avatar,Divider,Skeleton} from '@mui/material';
 import React, { useState,useCallback } from "react";
 import { useRef,useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import TurnedInNotIcon from '@mui/icons-material/TurnedInNot';
-import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
-import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import {useLocation} from "react-router-dom"
 import { useInView } from "react-intersection-observer"
-import {Skeleton} from '@mui/material';
-import {API_URL} from '../../../../API/URL/index';
-import { fetchRunnerTalkCategoryPost } from '../../../../API/api/RunningTalk/runningTalk_api';
-import {useRecoilState} from 'recoil'
-import {
-    RunnerTalkFiltering_Error,
-    RunnerTalkFiltering_List,
-    RunnerTalkFiltering_Category
-} from '../../../../state/RunnerTalk/RunnerTalkFiltering_State';
+import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
+import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import {API_URL} from "../../../../API/URL/index"
+import { fetchRunnerTalkSearch } from '../../../../API/api/RunningTalk/runningTalk_api';
 
-export default function RunnerTalk_Main_List(props){
+
+export default function RunnerTalk_Search_list({list,}){
+
     const navigate = useNavigate();
-    const {id} = useParams();
-
-    const [error,setError] = useRecoilState(RunnerTalkFiltering_Error);
-    const [list,setList] = useRecoilState(RunnerTalkFiltering_List);
-    const [category,setCategory] = useRecoilState(RunnerTalkFiltering_Category);
+    const querylocation = useLocation();
+    const session = localStorage.getItem("sessionid");
+    
     const [ref, inView] = useInView();
     const [page, setPage] = useState(2);
-    const [loading, setLoading] = useState(false);    
-
+    const [loading, setLoading] = useState(false);  
+    
     const getItems = useCallback(async () => {
+        const query = querylocation.search
+        const decodeUri = decodeURI(query);
         setLoading(true);
 
-        const _RunnerTalkList = await fetchRunnerTalkCategoryPost(id,"?page="+page);
+        let _RunnerTalkList = "";
+    
+        if(decodeUri === ""){
+            _RunnerTalkList = await fetchRunnerTalkSearch("?page="+page,session);
+        }
+        else{
+            _RunnerTalkList = await fetchRunnerTalkSearch(decodeUri+"&page="+page,session);
+        }
 
         if(_RunnerTalkList.response){
-            setError(_RunnerTalkList.response.status)
+            props.setError(_RunnerTalkList.response.status)
             props.setOpen(true);
         }
         else{
-            setList((prev)=>[...prev,..._RunnerTalkList])
+            props.setList((prev)=>prev=[...prev,..._RunnerTalkList])
         }
 
         setLoading(false);
@@ -56,7 +57,7 @@ export default function RunnerTalk_Main_List(props){
         }
     }, [inView])
 
-    const navigateToCompetitionDetail =(id) =>{
+    const navigateToRunnerTalkDetail =(id) =>{
         navigate(`/runnertalk/detail/${id}`);
     }
 
@@ -65,12 +66,12 @@ export default function RunnerTalk_Main_List(props){
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%',height:'100%',mb:8}}>
 
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%',flexDirection:'column'}}>
-                {list.map((item,index) =>{
+                {props.list.map((item,index) =>{
                     return(
                     <React.Fragment key={index}>
                         {
-                            list.length-1==index?
-                            <Box ref = {ref} onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'rgba(237, 237, 237, 1)'}}>
+                            props.list.length-1==index?
+                            <Box ref = {ref} onClick ={()=>navigateToRunnerTalkDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'rgba(237, 237, 237, 1)'}}>
                                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 81px)`,flexDirection:'column'  }}>
                                     <Box sx={{width:'100%'}}>
                                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px'}}>
@@ -85,7 +86,7 @@ export default function RunnerTalk_Main_List(props){
                                     <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:"center"}}>
                                         <Box sx={{display:'flex',height:'14px',alignItems:"center",mr:0.5}}>
                                             <Avatar sx={{width:'11px',height:'11px',mr:0.5}}/>
-                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060'  ,height:'100%',lineHeight:'normal'}}>
+                                            <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px',color:'#606060'  ,height:'100%',lineHeight:'normal'}}>
                                                 {item.user}
                                             </Typography>
                                         </Box>
@@ -93,23 +94,23 @@ export default function RunnerTalk_Main_List(props){
                                         <Box sx={{ml:0.5, display:'flex'}}>
                                             <Box sx={{display:'flex',alignItems:'center',height:'14px'}}> 
                                                 <ThumbUpOffAltOutlinedIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px',color:'#606060',mr:1,height:'100%'}}>
                                                     {item.likePoint}
                                                 </Typography>
                                             </Box>
                                             <Box sx={{display:'flex',alignItems:'center',height:'14px'}}>
                                                 <ModeCommentOutlinedIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',height:'100%'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px',color:'#606060',height:'100%'}}>
                                                     {item.commentPoint}
                                                 </Typography>
                                             </Box>
                                         </Box>
                                     </Box>
                                  </Box>
-                                <Box sx={{width:'75px',height:'75px',backgroundColor:'primary.light',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images[0]})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
                             :
-                            <Box onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'rgba(237, 237, 237, 1)'}}>
+                            <Box onClick ={()=>navigateToRunnerTalkDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'rgba(237, 237, 237, 1)'}}>
                                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 81px)`,flexDirection:'column'  }}>
                                     <Box sx={{width:'100%'}}>
                                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'15px'}}>
@@ -124,7 +125,7 @@ export default function RunnerTalk_Main_List(props){
                                     <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:"center"}}>
                                         <Box sx={{display:'flex',height:'14px',alignItems:"center",mr:0.5}}>
                                             <Avatar sx={{width:'11px',height:'11px',mr:0.5}}/>
-                                            <Typography sx={{fontFamily:'Pretendard Variable',color:'#606060',height:'100%',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px'}}>
+                                            <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px',color:'#606060'  ,height:'100%',lineHeight:'normal'}}>
                                                 {item.user}
                                             </Typography>
                                         </Box>
@@ -132,20 +133,20 @@ export default function RunnerTalk_Main_List(props){
                                         <Box sx={{ml:0.5, display:'flex'}}>
                                             <Box sx={{display:'flex',alignItems:'center',height:'14px'}}> 
                                                 <ThumbUpOffAltOutlinedIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',color:'#606060',mr:1,height:'100%',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px',color:'#606060',mr:1,height:'100%'}}>
                                                     {item.likePoint}
                                                 </Typography>
                                             </Box>
                                             <Box sx={{display:'flex',alignItems:'center',height:'14px'}}>
                                                 <ModeCommentOutlinedIcon sx={{width:'11px',height:'11px',mr:0.3}}/>
-                                                <Typography sx={{fontFamily:'Pretendard Variable',color:'#606060',height:'100%',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px'}}>
+                                                <Typography sx={{fontFamily:'Pretendard Variable',lineHeight:'15.51px',fontWeight:'500',fontSize:'13px',color:'#606060',height:'100%'}}>
                                                     {item.commentPoint}
                                                 </Typography>
                                             </Box>
                                         </Box>
                                     </Box>
                                  </Box>
-            <Box sx={{width:'75px',height:'75px',backgroundColor:'primary.light',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'75px',height:'75px',backgroundColor:'rgba(79, 29, 118, 0.1)',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
 
                         }

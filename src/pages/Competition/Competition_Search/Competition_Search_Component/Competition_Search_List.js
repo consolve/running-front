@@ -15,8 +15,8 @@ import {
     CompetitionSearch_Error
 } from '../../../../state/Competition/CompetitionSearch_State';
 
-import ContentSkeleton from '../../../../component/feed/wide_Skeleton';
-import Content from '../../../../component/feed/wide_feed';
+import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
+import Content from '../../../../component/shoes/wide_feed';
 
 export default function Competition_Search_List(props){
 

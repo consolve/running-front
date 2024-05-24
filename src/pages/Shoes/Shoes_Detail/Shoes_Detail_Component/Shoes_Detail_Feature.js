@@ -53,11 +53,11 @@ export default function Shoes_Detail_Feature(props) {
                                                 {
                                                     props.shoes[item[1]]>100
                                                     ?
-                                                    <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'12px'}}>
+                                                    <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'12px'}}>
                                                         커요           
                                                     </Typography>
                                                     :
-                                                    <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'12px'}}>
+                                                    <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'12px'}}>
                                                         작아요        
                                                     </Typography>
                                                 }
@@ -78,7 +78,7 @@ export default function Shoes_Detail_Feature(props) {
                             {"그 외"}
                         </Typography>
                         <Box sx={{display:'flex',alignItems:"center"}}>
-                            <Typography color = "#4F1D76" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',lineHeight:'14.32px'}}>
+                            <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'12px',lineHeight:'14.32px'}}>
                                 {
                                     props.shoes.etcTag.map(item=>item.content).join(", ")
                                 }

@@ -1,8 +1,8 @@
 import {Box,Typography,Modal,Skeleton,Grid} from '@mui/material';
 import Topbar from "../Component/Topbar"
 import {useState,useEffect} from "react"
-import Content from "../Component/Content_Shoes"
 import {FetchMyShoes} from "../../../../API/api/RunningShoes/shoes_api"
+import Feed from "../../../../component/shoes/feed"
 
 
 const style = {
@@ -86,7 +86,11 @@ export default function MyShoes(){
                             <Grid container spacing={'10px'} columns={16} >
                                 {
                                     savedShoes.map((contest,index) => (
-                                        <Content key={contest.id} item={contest}/>
+                                        <Grid item xs={8} key={contest.id} sx={{display:'flex',justifyContent:'center'}}>
+                                            <Feed data={{
+                                                item:contest,
+                                            }}/>
+                                        </Grid>
                                     ))
                                 }
                             </Grid>

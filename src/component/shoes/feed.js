@@ -3,6 +3,7 @@ import { API_URL } from '../../API/URL';
 import { useNavigate } from 'react-router-dom';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookMarkHandle from '../../Util/bookmark';
 import React from "react";
 
 function formatNumberWithCommas(number) {
@@ -11,24 +12,37 @@ function formatNumberWithCommas(number) {
 
 export default function Feed({data}){
     const navigate = useNavigate();
+    const session = localStorage.getItem("sessionid");
+    const [isBookmark,setIsBookmark] = React.useState(false);
 
-    const {item,shoesBookmark,onClickBookMart} = data;
+    const {item} = data;
 
     const navigateToShoesDetail =(id) =>{
         navigate(`/shoes/detail/${id}`)
     }
 
+    const onClickBookMark = (id,event) =>{
+        event.stopPropagation();
+        if(BookMarkHandle("shoes",id,session,navigate)){
+            setIsBookmark(!isBookmark)
+        }
+    }
+
+    React.useEffect(()=>{
+        setIsBookmark(item.bookmarked)
+    },[])
+
     return(
         <Box onClick={()=>navigateToShoesDetail(item.id)} sx={{width:'100%',pt:'10px'}}>
-            <Box sx={{position:'relative',backgroundColor:'#f4f4f4',width:"100%"}}>
-                <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',px:1,borderRadius:'8px'}}/>
+            <Box sx={{position:'relative',backgroundColor:'#f4f4f4',width:"100%",height:"170px"}}>
+                <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',px:1,borderRadius:'8px',py:"auto"}}/>
                     {
-                        shoesBookmark[item.id]?
-                        <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                        isBookmark?
+                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
                             <BookmarkIcon/>
                         </IconButton>
                         :
-                        <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                        <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
                             <BookmarkBorderIcon/>
                         </IconButton>
                     }
