@@ -196,6 +196,7 @@ export default function TemporaryDrawer(props) {
         >
             <React.Fragment>
                 <SwipeableDrawer
+                    onOpen={()=>{}}
                     disableScrollLock={ true }
                     PaperProps={{
                         sx: {
