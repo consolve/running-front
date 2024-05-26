@@ -121,11 +121,11 @@ function App() {
                 <Route path="/crew/detail/:id" element={<CrewDetail/>}/>
 
                 <Route path="/profile" element={<Profile/>}/>
-                <Route path="/profile/savedcompetition" element={<MyCompetition/>}/>
-                <Route path="/profile/savedcrew" element={<MyCrew/>}/>
-                <Route path="/profile/savedshoes" element={<MyShoes/>}/>
+                <Route path="/profile/saved/competition" element={<MyCompetition/>}/>
+                <Route path="/profile/saved/crew" element={<MyCrew/>}/>
+                <Route path="/profile/saved/shoes" element={<MyShoes/>}/>
                 <Route path="/profile/myrunnertalk" element={<MyRunnerTalk/>}/>
-                <Route path="/profile/savedrunnertalk" element={<MySavedPost/>}/>
+                <Route path="/profile/saved/runnertalk" element={<MySavedPost/>}/>
 
                 <Route path="/term/privacy" element={<InformationTerm/>}/>
                 <Route path="/term/service" element={<InformationTerm/>}/>

@@ -17,6 +17,10 @@ export default function BasicSpeedDial() {
         navigate('/runnertalk/write')
     }
 
+    const navigateToSavedRunnerTalk = () =>{
+        navigate('/profile/saved/runnertalk')
+    }
+
     const handleOpen = () => {
         {
             open ? setOpen((prev) => prev = false) : setOpen((prev) => prev = true)
@@ -50,7 +54,7 @@ export default function BasicSpeedDial() {
                                     글쓰기
                                 </Typography>
                             </Box>
-                            <Box sx={{display:'flex',ml:2,mt:0.2}}>
+                            <Box onClick={navigateToSavedRunnerTalk} sx={{display:'flex',ml:2,mt:0.2}}>
                                 <BookmarkBorderIcon color="primary" sx={{size:'15px'}}/>
                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
                                     저장한 러너톡

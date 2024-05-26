@@ -33,7 +33,7 @@ export default function MyRunningLife(){
                     기타
                 </Typography>
                 <Box sx={{width:"100%"}}>
-                    <Box onClick={navigateToBan} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
+                    {/* <Box onClick={navigateToBan} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',lineHeight:"17px"}}>
                             이용 제한 내역
                         </Typography>
@@ -44,7 +44,7 @@ export default function MyRunningLife(){
                             정보 동의 설정
                         </Typography>
                         <ChevronRightIcon color="primary" sx={{width:"20px",height:"20px"}}/>
-                    </Box>
+                    </Box> */}
                     <Box onClick={navigateToExit} sx={{display:"flex",justifyContent:"space-between",my:"13px"}}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'14px',lineHeight:"17px"}}>
                             회원 탈퇴

@@ -22,6 +22,10 @@ export default function BasicSpeedDial() {
         navigate('/crew/add')
     }
 
+    const navigateToSavedCrew = () =>{
+        navigate('/profile/saved/crew')
+    }
+
     return (
     <Box sx={{position:"absolute",right:80}}>
         <Backdrop
@@ -49,7 +53,7 @@ export default function BasicSpeedDial() {
                                     러닝크루 등록
                                 </Typography>
                             </Box>
-                            <Box sx={{display:'flex',ml:2,mt:0.2}}>
+                            <Box onClick={navigateToSavedCrew} sx={{display:'flex',ml:2,mt:0.2}}>
                                 <BookmarkBorderIcon color="primary" sx={{size:'15px'}}/>
                                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
                                     저장한 러닝크루

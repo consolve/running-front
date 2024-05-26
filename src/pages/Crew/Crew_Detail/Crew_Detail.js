@@ -120,9 +120,8 @@ function Crew_Detail(){
                                     
                                     <Divider sx={{border:2,color:"#F6F6F6",my:'20px',mx:'20px'}}/>
 
-                                    <Comment setError = {setError} setOpen={setOpen}/>
-
-                                    <Navbar/>
+                                    <Comment setError = {setError} setOpen={setOpen}/> 
+                                    {/*<Navbar/> */}
                                 </Box>
                                 :
                                 <Box sx={{width:'100%',height:"500px",display:'flex',justifyContent:"center",alignItems:"center"}}>

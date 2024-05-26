@@ -15,7 +15,7 @@ export default function Submit({
             }}>
                 <Button disabled = {!header||!content} onClick = {onClick} variant="contained" color="primary" sx={{width:'100%',height:'40px',borderRadius:'10px',boxShadow:0}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'16px'}}>
-                        대회 신청하기
+                        문의 및 신고 하기
                     </Typography>
                 </Button>     
             </Box>

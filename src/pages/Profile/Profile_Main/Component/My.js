@@ -6,19 +6,19 @@ export default function MyRunningLife(){
     const navigate = useNavigate();
 
     const navigateToSavedCompetition = () =>{
-        navigate('/profile/savedcompetition')
+        navigate('/profile/saved/competition')
     }
 
     const navigateToSavedRunnerTalk = () =>{
-        navigate('/profile/savedrunnertalk')
+        navigate('/profile/saved/runnertalk')
     }
     
     const navigateToSavedShoes = () =>{
-        navigate('/profile/savedshoes')
+        navigate('/profile/saved/shoes')
     }
 
     const navigateToSavedCrew = () =>{
-        navigate('/profile/savedcrew')
+        navigate('/profile/saved/crew')
     }
 
     const navigateToMyRunnerTalk = () =>{

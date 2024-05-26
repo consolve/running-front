@@ -80,9 +80,30 @@ export default function Profile_ChangeImage_Drawer({open,handleOpen,setImage}){
         console.log(response);
 
         if(response.response){
-
+            switch(response.response.status){
+                case 400:
+                    alert("사진 업로드에 실패했습니다.");
+                    break;
+                case 401:
+                    alert("로그인이 필요합니다.");
+                    break;
+                case 403:
+                    alert("세션이 만료되었습니다.");
+                    break;
+                case 404:
+                    alert("사진 업로드에 실패했습니다.");
+                    break;
+                case 500:
+                    alert("서버 오류입니다. 잠시 후 다시 시도해주세요.");
+                    break;
+                default:
+                    break;
+            }
         }
         else{
+            setImage(data);
+            localStorage.setItem("profile",data);
+            handleOpen();
             
         }
     }

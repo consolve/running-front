@@ -21,7 +21,7 @@ export default function RunnerTalk_Main_TopBar(props){
     const navigate = useNavigate();
 
     const navigateToRunnerTalkMain = () =>{
-        navigate('/runnertalk')
+        navigate(-1)
     }
 
     return(
