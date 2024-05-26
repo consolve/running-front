@@ -11,7 +11,8 @@ import {
     RunnerTalk_Write_Header,
     RunnerTalk_Write_Content,
     RunnerTalk_Write_Category,
-    RunnerTalk_Write_Image
+    RunnerTalk_Write_Image,
+    RunnerTalk_Write_Id
 } from "../../../state/RunnerTalk/RunnerTalk_Write_State"
 import {FetchRunnerTalkPost} from "../../../API/api/RunningTalk/runningTalk_api"
 import TopbarTheme from '../../../style/plate/topbar';
@@ -26,6 +27,7 @@ export default function RunnerTalk_Main_TopBar(props){
     const [content,setContent] = useRecoilState(RunnerTalk_Write_Content);
     const [categoryState,setCategoryState] = useRecoilState(RunnerTalk_Write_Category);
     const [image,setImage] = useRecoilState(RunnerTalk_Write_Image);
+    const [postId,setPostId] = useRecoilState(RunnerTalk_Write_Id);
 
     const navigateToRunnerTalkMain = () =>{
         navigate('/runnertalk')
@@ -34,10 +36,26 @@ export default function RunnerTalk_Main_TopBar(props){
     const FetchRunningTalkPostFunction = async () =>{
         props.setLoading(true);
 
-        const response = await FetchRunnerTalkPost(session,categoryState,header,content,image);
+        const response = await props.handlePost(session,postId,categoryState,header,content,image);
 
         if(response.response){
-            props.setError(response.response.status)
+            
+            switch(response.response.status){
+                case 401:
+                    props.setError("작성자만 수정할 수 있습니다.");
+                    break;
+                case 404:
+                    props.setError("페이지를 찾을 수 없습니다.");
+                    break;
+                case 500:
+                    props.setError("서버 오류입니다.");
+                    break;
+                default:
+                    props.setError("알 수 없는 오류입니다.");
+                    break;
+            }
+
+
             props.setErrorOpen(true)
         }
         else{

@@ -34,6 +34,7 @@ import RunnerTalkFilter from "./pages/RunnerTalk/RunnerTalk_Filtering/RunnerTalk
 import RunnerTalkDetail from "./pages/RunnerTalk/RunnerTalk_Detail/RunnerTalk_Detail"
 import RunnerTalkSearch from "./pages/RunnerTalk/RunnerTalk_Search/RunnerTalk_Search"
 import RunnerTalkWrite from "./pages/RunnerTalk/RunnerTalk_Write/RunnerTalk_Write"
+import RunnerTalkEdit from "./pages/RunnerTalk/Edit/Edit"
 
 import Profile from "./pages/Profile/Profile_Main/Profile_Main"
 import MyCompetition from './pages/Profile/Profile_My/Container/SavedCompetition';
@@ -114,6 +115,7 @@ function App() {
                 <Route path="/runnertalk/category/:id" element={<RunnerTalkFilter/>}/>
                 <Route path="/runnertalk/detail/:id" element={<RunnerTalkDetail/>}/>
                 <Route path="/runnertalk/write" element={<RunnerTalkWrite/>}/>
+                <Route path="/runnertalk/edit/:id" element={<RunnerTalkEdit/>}/>
 
                 <Route path="/crew/add" element={<CrewAdd/>}/>
                 <Route path="/crew/detail/:id" element={<CrewDetail/>}/>

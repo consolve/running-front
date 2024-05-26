@@ -10,6 +10,10 @@ import Submit from "./_component/Submit"
 import Input from "./_component/Input"
 import {resignApi} from "../../API/api/Profile/resign"  
 import Modal from "./_component/Modal"
+import {
+    checkNumber,
+    ensureNumericInput
+} from "../../Util/checkNumber"
 
 function Resign({isUpdate=false}){
 
@@ -22,16 +26,12 @@ function Resign({isUpdate=false}){
     }
 
     const [loading,setLoading] = useState(false);
-    const [open, setOpen] = useState(false);
     const [modalOpen,setModalOpen] = useState(false);
 
     const [number,setNumber] = useState("");
 
-
-    const handleOpen = () => setOpen(true);
     const handleClose = () => {
-        setOpen(false)
-        navigateToBack();
+        setErrorOpen(false)
     };
     const handleModalClose = () => {
         setModalOpen(false)
@@ -45,19 +45,42 @@ function Resign({isUpdate=false}){
     const [error,setError] = useState("");
 
     const fetchReport = async () =>{
+        const ensureNumber = ensureNumericInput(number);
+
         setLoading(true);
 
-        const response = await resignApi(session,number);
+        const response = await resignApi(session,ensureNumber);
 
         if(response.response){
             setError(response.response.status)
+
+            switch(response.response.status){
+                case 400:
+                    setError("잘못된 전화번호입니다.");
+                    break;
+                case 401:
+                    setError("로그인이 필요합니다.");
+                    break;
+                case 403:
+                    setError("이미 탈퇴된 계정입니다.");
+                    break;
+                case 500:
+                    setError("서버 오류입니다.");
+                    break;
+                default:
+                    setError("알수없는 오류입니다.");
+                    break;
+            }
+
             setErrorOpen(true)
+            setLoading(false);
         }
         else{
             setLoading(false);
             localStorage.removeItem('sessionid');
             localStorage.removeItem('user_number');
             navigateToBack();
+            window.location.reload();
         }
     }
 
@@ -83,7 +106,7 @@ function Resign({isUpdate=false}){
                     ""
                 }
 
-                <Box onClick={handleOpen} sx={{px:"20px"}}>
+                <Box sx={{px:"20px"}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px',my:'9px'}}>
                         회원 탈퇴
                     </Typography>

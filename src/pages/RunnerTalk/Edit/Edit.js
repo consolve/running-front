@@ -4,20 +4,26 @@ import { useRef,useEffect } from 'react';
 import Auth from "../../../hoc/auth"
 import { useNavigate } from "react-router-dom";
 import TopBar from "../../../component/Community/Post_Component/RunnerTalk_Write_TopBar";
-import { fetchRunnerTalkCategory,FetchRunnerTalkPost } from '../../../API/api/RunningTalk/runningTalk_api';
+import { fetchRunnerTalkCategory, fetchRunnerTalkCPostDetail,UpdatePost } from '../../../API/api/RunningTalk/runningTalk_api';
+import { API_URL } from '../../../API/URL';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Drawer from "../../../component/Community/Post_Component/RunnerTalk_Write_Drawer"
 import Header from "../../../component/Community/Post_Component/RunnerTalk_Write_Header"
 import Content from "../../../component/Community/Post_Component/RunnerTalk_Write_Content"
 import SetImage from "../../../component/Community/Post_Component/RunnerTalk_Write_Image"
-import {useRecoilState} from 'recoil';
+import Error from "../../../component/Error/ErrorModal";
+import {useParams} from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 import {
     RunnerTalk_Write_Category,
     RunnerTalk_Write_Image,
+    RunnerTalk_Write_Content,
     RunnerTalk_Write_Header,
-    RunnerTalk_Write_Content
-} from '../../../state/RunnerTalk/RunnerTalk_Write_State';
-import Error from "../../../component/Error/ErrorModal";
+    RunnerTalk_Write_Id
+} from "../../../state/RunnerTalk/RunnerTalk_Write_State"
+import {
+    getBase64FromUrl
+} from "../../../Util/imageType"
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,23 +33,17 @@ import { FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
-
-function RunnerTalk({isUpdate=false}){
+function RunnerTalk(){
+    //카테고리 이름
+    const [checkCategory,setCheckCategory] = useRecoilState(RunnerTalk_Write_Category);
     const [title,setTitle] = useRecoilState(RunnerTalk_Write_Header);
     const [content,setContent] = useRecoilState(RunnerTalk_Write_Content);
+    const [Base64s, setBase64s] = useRecoilState(RunnerTalk_Write_Image);
+    const [postId,setPostId] = useRecoilState(RunnerTalk_Write_Id);
 
+    const { id } = useParams();
     const navigate = useNavigate();
+    const session = localStorage.getItem("sessionid");
 
     const navigateToBack  = () =>{
         navigate(-1);
@@ -58,10 +58,62 @@ function RunnerTalk({isUpdate=false}){
         navigateToBack();
     };
 
+    const handleConvert = async (url) => {
+        try {
+            const base64String = await getBase64FromUrl(`${process.env.REACT_APP_URL}${url}`);
+            return base64String;
+        } catch (error) {
+            console.error('이미지를 base64로 변환하는 중 오류 발생:', error);
+        }
+    };
+
+    const FetchDetail = async () =>{
+        const [_RunnerTalkDetail] = await fetchRunnerTalkCPostDetail(id,session);
+
+        if(_RunnerTalkDetail.response){
+            setError(_RunnerTalkDetail.response.status)
+            setErrorOpen(true)
+        }
+        else{
+            const _id = _RunnerTalkDetail.id;
+            const _category = _RunnerTalkDetail.category;
+            const _title = _RunnerTalkDetail.title;
+            const _content = _RunnerTalkDetail.content;
+            const _images = _RunnerTalkDetail.images;
+
+            const convertImages = []
+
+            for(const item of _images){
+                const convertImage = await handleConvert(`${item.img}`);
+                convertImages.push(convertImage);
+            }
+
+            setPostId(prev=>prev=_id);
+            setCheckCategory(prev=>prev=_category);
+            setTitle(prev=>prev=_title);
+            setContent(prev=>prev=_content);
+            setBase64s(prev=>prev=convertImages);
+
+        }
+    }
+
     const FetchRunnerTalkCategoryFunction = async () => {
         const _Category = await fetchRunnerTalkCategory();
 
         if(_Category.response){
+
+            switch(_Category.response.status){
+                case 401:
+                    localStorage.removeItem("sessionid");
+                    navigate("/login");
+                    break;
+                case 409:
+                    setError("카테고리를 불러오는 중 오류가 발생했습니다.")
+                    break;
+                default:
+                    setError(_Category.response.status)
+            }
+
             setError(_Category.response.status)
             setErrorOpen(true)
         }
@@ -75,10 +127,6 @@ function RunnerTalk({isUpdate=false}){
     const [errorOpen, setErrorOpen] = React.useState(false);
     const [error,setError] = useState("");
     const [category,setCategory] = useState([]);
-    //카테고리 이름
-    const [checkCategory,setCheckCategory] = useRecoilState(RunnerTalk_Write_Category);
-
-    const [Base64s, setBase64s] = useRecoilState(RunnerTalk_Write_Image);
 
     const deleteImage = (index) =>{
         setBase64s(Base64s.filter((_,i)=>i!==index));
@@ -87,6 +135,7 @@ function RunnerTalk({isUpdate=false}){
     useEffect(() =>{
         window.scrollTo({top:0})
         FetchRunnerTalkCategoryFunction();
+        FetchDetail();
     },[])
 
     useEffect(() => {
@@ -101,7 +150,7 @@ function RunnerTalk({isUpdate=false}){
 
     return(
         <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
-            <TopBar handlePost={FetchRunnerTalkPost} setError = {setError} setErrorOpen={setErrorOpen} setLoading = {setLoading}/>
+            <TopBar handlePost={UpdatePost} setError = {setError} setErrorOpen={setErrorOpen} setLoading = {setLoading}/>
            
             <Box sx={{width:"100%",mb:'70px',mt:'62.4px'}}>
 
@@ -133,7 +182,7 @@ function RunnerTalk({isUpdate=false}){
 
                 <Box sx={{width:"100%",my:1}}>
                     {
-                        Base64s.length !==0?
+                        Base64s&&
                         <Swiper
                             spaceBetween={5}
                             modules={[FreeMode]}
@@ -156,8 +205,6 @@ function RunnerTalk({isUpdate=false}){
                                 })
                             }
                         </Swiper>
-                        :
-                        ""
                     }
                 </Box>
 

@@ -115,7 +115,7 @@ function Shoes_Detail(){
 
                 </Box>
             </Box>
-            <Navbar/>
+            {/* <Navbar/> */}
 
             <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    

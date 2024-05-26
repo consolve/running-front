@@ -1,5 +1,10 @@
 import { atom } from "recoil";
 
+export const RunnerTalk_Write_Id = atom({
+    key: 'RunnerTalk_Write_Id', // unique ID (with respect to other atoms/selectors)
+    default: 0, // default value (aka initial value)
+});
+
 export const RunnerTalk_Write_Header = atom({
     key: 'RunnerTalk_Write_Header', // unique ID (with respect to other atoms/selectors)
     default: "", // default value (aka initial value)

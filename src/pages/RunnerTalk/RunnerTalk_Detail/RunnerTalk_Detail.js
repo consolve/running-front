@@ -12,7 +12,7 @@ import Image from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_Image"
 import DetailTitle from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_Detail_Title"
 import Comment from "./RunnerTalk_Detail_Component/RunnerTalk_Detail_Comment"
 import { useParams } from "react-router-dom";
-import {fetchRunnerTalkCPostDetail,UpdateRunningTalkView,fetchRunnerTalkCategory} from "../../../API/api/RunningTalk/runningTalk_api"
+import {fetchRunnerTalkCPostDetail,UpdateRunningTalkView,fetchRunnerTalkCategory,checkWriter} from "../../../API/api/RunningTalk/runningTalk_api"
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import {RunnerTalkDetail_Comment, RunnerTalkDetail_Comment_Order} from "../../../state/RunnerTalk/RunnerTalk_Comment_State"
@@ -32,6 +32,7 @@ function RunnerTalk_Detail(){
         navigate(-1);
     }
 
+    const [isWriter,setIsWriter] = useState(false);
     const [loading,setLoading] = useState(true);
     const [categoryLoading,setCategoryLoading] = useState(true);
     const [error,setError] = useState("");
@@ -49,6 +50,19 @@ function RunnerTalk_Detail(){
         setOpen(false)
         navigateToBack();
     };
+
+    const CheckWriter = async () => {
+        const response = await checkWriter(session,id);
+
+        if(response.response){
+            setError(response.response?response.response.status:"")
+            setOpen(true);
+        }
+        else{
+            setIsWriter(response);
+        }
+    }
+            
 
     const FetchRunnerTalkCategory = async () => {
         const _Category = await fetchRunnerTalkCategory();
@@ -86,6 +100,7 @@ function RunnerTalk_Detail(){
         setCategoryLoading(true);
         FetchDetail();
         FetchRunnerTalkCategory();
+        CheckWriter();
 
         UpdateRunningTalkView(session,id);
     },[])
@@ -107,7 +122,7 @@ function RunnerTalk_Detail(){
                             {
                                 detail!=0?
                                 <Box sx={{width:"100%"}}>
-                                    <Title detail = {detail} category={category} setOpen={setOpen} setError={setError}/>
+                                    <Title isWriter={isWriter} detail = {detail} category={category} setOpen={setOpen} setError={setError}/>
                                     <User detail = {detail}/>
                                     <Box sx={{width:"100%"}}>
                                         <DetailTitle detail = {detail}/>

@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/system';
 import { Button,Typography } from '@mui/material';
 import styled from "styled-components"
+import {
+    RunnerTalk_Write_Image
+} from "../../../state/RunnerTalk/RunnerTalk_Write_State"
+import { useRecoilState } from 'recoil';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -18,7 +22,9 @@ const VisuallyHiddenInput = styled('input')({
     cursor: 'pointer'
   });
 
-export default function Navbar(props) {
+export default function Navbar() {
+    const [base64s,setBase64s] = useRecoilState(RunnerTalk_Write_Image);
+
     const encodeFileToBase64 = (image) => {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -30,7 +36,7 @@ export default function Navbar(props) {
 
     const handleImageUpload = async (e) => {
         const fileArr = e.target.files;
-        props.setBase64s([]);
+        setBase64s([]);
 
         let file;
         let maxFile = 10;
@@ -50,7 +56,7 @@ export default function Navbar(props) {
                 try {
                     const data = await encodeFileToBase64(file);
 
-                    props.setBase64s((prev) => [...prev, data ]);
+                    setBase64s((prev) => [...prev, data ]);
                 } catch (error) {
                     console.error(error);
                 }

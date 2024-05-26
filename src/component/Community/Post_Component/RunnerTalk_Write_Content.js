@@ -23,6 +23,7 @@ export default function RunnerTalk_Write_Content_Component({
     return(
         <Box sx={{width:"100%",my:1}}>
             <ContentInput
+                value={content}
                 onChange={onChangeContent} 
                 rows="1" 
                 color="#A6A6A6" 

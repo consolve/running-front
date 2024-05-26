@@ -92,7 +92,7 @@ export const UpdateRunningTalkView = async (session,id) =>{
     }
 }
 
-export const FetchRunnerTalkPost = async (session,category,title,content,images = []) =>{
+export const FetchRunnerTalkPost = async (session,id=0,category,title,content,images = []) =>{
     try{
         const header = {
             headers: {
@@ -206,6 +206,47 @@ export const DeletePost = async (session,id) => {
     }
     catch(error){
         
+        return error
+    }
+}
+
+export const UpdatePost = async (session,id,category,title,content,images=[]) => {
+    try{
+        const header = {
+            headers: {
+                Authorization:'Bearer '+`${session}`
+            }
+        }
+
+        const body = {
+            "id":id,
+            "category": category,
+            "title" : title,
+            "content" : content,
+            "images":images
+        }
+
+        const response = await axios.put(`${process.env.REACT_APP_URL}/api/runningtalk/post`,body,header);
+        return response
+    }
+    catch(error){
+        return error
+    }
+}
+
+export const checkWriter = async (session,id) => {
+
+    try{
+        const header = {
+            headers: {
+                Authorization:'Bearer '+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/post/${id}/check`,header);
+        return response.data.message
+    }
+    catch(error){
         return error
     }
 }

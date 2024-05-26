@@ -9,6 +9,13 @@ app.use(
             changeOrigin: true,
         })
     );
+app.use(
+    '/media',
+        createProxyMiddleware({
+            target: 'https://test.runninglife.co.kr',
+            changeOrigin: true,
+        })
+    );
     
 app.use(
     'https://dj80obdkys5rw.cloudfront.net/api',

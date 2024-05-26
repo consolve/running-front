@@ -7,22 +7,14 @@ import Divider from '@mui/material/Divider';
 import ClearIcon from '@mui/icons-material/Clear';
 import {Button} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useSearchParams } from 'react-router-dom';
-import {useRecoilState} from 'recoil'
-import {
-    RunnerTalkMain_Category
-} from '../../../state/RunnerTalk/RunnerTalkMain_State';
-
 export default function TemporaryDrawer(props) {
-
-    const [category,setCategory] = useRecoilState(RunnerTalkMain_Category);
 
     const navigate = useNavigate();
     const DrawerTheme = {
         width:'100%',
         height:'100%',
         minWidth:'360px',
-        maxWidth:'420px',
+        maxWidth:'450px',
         borderTopLeftRadius:20,
         borderTopRightRadius:20, 
         backgroundColor:'#ffffff'

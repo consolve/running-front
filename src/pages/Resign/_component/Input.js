@@ -11,7 +11,6 @@ export default function Input({handleNumber}){
                     width:"100%",
                     pt:1,
                 }}
-                type="number"
                 InputProps={{
                     sx:{
                         borderRadius:'7px',

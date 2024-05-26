@@ -16,7 +16,7 @@ export default function RunnerTalk_Write_Header_Component(){
 
     return(
         <Box sx={{width:"100%",my:1.5}}>
-            <HeaderInput onChange={onChangeHeader} color="#A6A6A6" placeholder={"제목을 입력하세요"}/>   
+            <HeaderInput value={header} onChange={onChangeHeader} color="#A6A6A6" placeholder={"제목을 입력하세요"}/>   
         </Box>
     )
 }
