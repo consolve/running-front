@@ -1,4 +1,4 @@
-import {Box,Typography,Avatar,Button} from '@mui/material';
+import {Box,Typography,Avatar,Backdrop,CircularProgress} from '@mui/material';
 import React, { useEffect, useState } from "react";
 import { API_URL } from '../../../../API/URL';
 import { fetchUserName } from '../../../../API/api/RunningShoes/shoes_api';
@@ -11,6 +11,7 @@ export default function Profile(){
     const [userName, setUserName] = useState('');
     const [image,setImage] = useState("");
     const session = window.localStorage.getItem('sessionid');
+    const [loading,setLoading] = useState(false);
 
     const [open,setOpen] = useState(false);
 
@@ -56,7 +57,17 @@ export default function Profile(){
                 </Box>
             </Box>
 
-            <ProfileChangeDrawer open={open} handleOpen={handleOpen} setImage={setImage}/>
+            {
+                loading &&
+                <Backdrop
+                sx={{ color: '#fff', zIndex:1000 }}
+                open={true}
+                >
+                    <CircularProgress color="primary" />
+                </Backdrop>
+            }
+
+            <ProfileChangeDrawer setLoading={setLoading} open={open} handleOpen={handleOpen} setImage={setImage}/>
         </Box>
     )
 }

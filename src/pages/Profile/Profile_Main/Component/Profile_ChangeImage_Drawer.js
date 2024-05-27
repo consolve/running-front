@@ -31,7 +31,7 @@ const DrawerTheme = {
     pb:3
 }
 
-export default function Profile_ChangeImage_Drawer({open,handleOpen,setImage}){
+export default function Profile_ChangeImage_Drawer({open,handleOpen,setImage,setLoading}){
 
     const session = localStorage.getItem("sessionid");
 
@@ -75,6 +75,7 @@ export default function Profile_ChangeImage_Drawer({open,handleOpen,setImage}){
     };
 
     const FetchProfileImage = async (data) =>{
+        setLoading(true)
         const response = await fetchUserImage(session,data);
 
         if(response.response){
@@ -99,9 +100,9 @@ export default function Profile_ChangeImage_Drawer({open,handleOpen,setImage}){
             }
         }
         else{
-            console.log(response.data.userProfileUrl)
             setImage(response.data.userProfileUrl);
             localStorage.setItem("profile",response.data.userProfileUrl);
+            setLoading(false);
             handleOpen();
             
         }
