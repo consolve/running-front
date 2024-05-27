@@ -18,18 +18,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 
 import "./style.css"
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transForm: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+import {ApplyCrew} from "../../../API/api/RunningCrew/crew_api"
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',

@@ -19,6 +19,7 @@ import 'swiper/css/free-mode';
 
 import "./style.css"
 import Error from "../../../component/Error/ErrorModal"
+import {ApplyContest} from "../../../API/api/Contest/contest_api"
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',

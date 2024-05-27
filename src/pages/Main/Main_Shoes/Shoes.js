@@ -37,7 +37,19 @@ export default function Shoes(props){
         const _PopularShoes = await fetchPopularShoes(6,session);
     
         if(_PopularShoes.response){
-            props.setError(_PopularShoes.response.status)
+
+            switch(_PopularShoes.response.status){
+                case 401:
+                    props.setError("로그인이 필요한 서비스입니다.")
+                    props.setOpen(true)
+                    break;
+                case 500:
+                    props.setError("서버에 문제가 발생했습니다.")
+                    props.setOpen(true)
+                    break;
+                default:
+                    break;
+            }
             props.setOpen(true)
         }
         else{

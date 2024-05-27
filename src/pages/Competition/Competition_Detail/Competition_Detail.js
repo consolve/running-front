@@ -125,7 +125,7 @@ function Competition_Detail(){
                                     <Comment setError = {setError} setOpen={setOpen}/>
                                     
                                     
-                                    <Navbar competition = {contest}/>
+                                    {/* <Navbar competition = {contest}/> */}
                                 </Box>
                                 :
                                 <Box sx={{width:'100%',height:"500px",display:'flex',justifyContent:"center",alignItems:"center"}}>

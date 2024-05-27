@@ -124,3 +124,25 @@ export const AddContestChildComment = async (sessionid,data) =>{
         return error
     }
 }
+
+export const ApplyContest = async (sessionid,data) =>{
+    try{
+
+        const header = {
+            headers: { 
+                Authorization:`Bearer `+`${sessionid}`
+            }
+        }
+
+        const request = data;
+
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/contest/apply`,request,header);
+        return response.data;
+    }
+    catch(error){
+        if(error.status === 409){
+            return
+        }
+        return error
+    }
+}

@@ -38,7 +38,18 @@ export default function  Community(props){
         const _PopularRunningTalk = await fetchPopularTalk(6);
     
         if(_PopularRunningTalk.response){
-            props.setError(_PopularRunningTalk.response.status)
+            switch(_PopularRunningTalk.response.status){
+                case 401:
+                    props.setIsLogin(false)
+                    break;
+                case 404:
+                    props.setError("서버와의 연결이 원활하지 않습니다.")
+                    props.setOpen(true)
+                    break;
+                default:
+                    break;
+            }
+
             props.setOpen(true)
         }
         else{

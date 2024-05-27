@@ -31,7 +31,22 @@ export default function Competition(props){
         const _Popularcompetitions = await fetchPopularContest(3);
     
         if(_Popularcompetitions.response){
-            props.setError(_Popularcompetitions.response.status)
+
+            switch(_Popularcompetitions.response.status){
+                case 401:
+                    props.setError("로그인이 필요한 서비스입니다.");
+                    break;
+                case 404:
+                    props.setError("대회가 존재하지 않습니다.");
+                    break;
+                case 500:
+                    props.setError("서버 오류입니다.");
+                    break;
+                default:
+                    props.setError(_Popularcompetitions.response.status);
+                    break;
+            }
+            
             props.setOpen(true)
         }
         else{

@@ -77,8 +77,6 @@ export default function Profile_ChangeImage_Drawer({open,handleOpen,setImage}){
     const FetchProfileImage = async (data) =>{
         const response = await fetchUserImage(session,data);
 
-        console.log(response);
-
         if(response.response){
             switch(response.response.status){
                 case 400:
@@ -101,8 +99,9 @@ export default function Profile_ChangeImage_Drawer({open,handleOpen,setImage}){
             }
         }
         else{
-            setImage(data);
-            localStorage.setItem("profile",data);
+            console.log(response.data.userProfileUrl)
+            setImage(response.data.userProfileUrl);
+            localStorage.setItem("profile",response.data.userProfileUrl);
             handleOpen();
             
         }

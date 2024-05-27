@@ -102,8 +102,8 @@ function AddShoes(){
 
 
     const onSubmit = (data) => {
-        data["images"] = Base64s;
-        data["mainImage"] = CompetitionBase64s;
+
+        console.log(data);
     }
 
     return(

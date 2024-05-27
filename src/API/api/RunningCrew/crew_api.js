@@ -115,3 +115,19 @@ export const FetchMysavedCrew = async (session) =>{
         return error
     }
 }
+
+export const ApplyCrew = async (session,data) =>{  
+    try{
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningcrew/manage`,data,header);
+        return response.data.message;
+    }
+    catch(error){
+        return error
+    }
+}

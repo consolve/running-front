@@ -25,10 +25,12 @@ export default function TemporaryDrawer(props) {
 
     const { id } = useParams();
     const session = localStorage.getItem('sessionid');
+    const number = localStorage.getItem('number');
 
     const navigate = useNavigate();
 
     const [open, setOpen] = React.useState(false);
+    const [reportId,setReportId] = useState(0);
     const handleOpen = (id=0) => {
         setClickedId(id);
         setOpen(true);
@@ -101,6 +103,18 @@ export default function TemporaryDrawer(props) {
 
     }
 
+    const onClickReport = (id) => {
+        setReportId(id);
+
+        try{
+            // eslint-disable-next-line
+            Larademo.postMessage("reportComment");
+        }
+        catch(e){
+
+        }
+    }
+
     const FetchContestCommentPopularFunction = async () => {
         const _Comment = await FetchContestCommentPopular(id,session);
 
@@ -132,6 +146,9 @@ export default function TemporaryDrawer(props) {
         role="presentation"
         onKeyDown={toggleDrawer(false)}
         >
+            <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
+            <div id="reportContestID" style={{display:"none"}}> {reportId} </div>
+
             <Box sx={DrawerTheme}>
                 <Box sx={{}}>
                     <Box sx={{height:'100px',display:'flex',justifyContent:'center',alignItems:'start',position:'relative',flexDirection:'column',px:'20px'}}>
@@ -165,7 +182,7 @@ export default function TemporaryDrawer(props) {
                             {
                                 comment.map((item,index) => {
                                     return(
-                                        <Comment key={item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction = {ContestCommentLike}/>
+                                        <Comment onClickComment={() => onClickReport(item.id)} key={item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction = {ContestCommentLike}/>
                                     )
                                 })
                             }
@@ -203,7 +220,7 @@ export default function TemporaryDrawer(props) {
                 </SwipeableDrawer>
                 {
                     childOpen&&
-                    <ChildComment setError = {props.setError} setErrorOpen={props.setErrorOpen} open={childOpen} setOpen={setChildOpen} id={parentId}/>
+                    <ChildComment onClickReport={onClickReport} setError = {props.setError} setErrorOpen={props.setErrorOpen} open={childOpen} setOpen={setChildOpen} id={parentId}/>
                 }
 
             </React.Fragment>

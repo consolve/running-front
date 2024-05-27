@@ -188,16 +188,18 @@ function RunnerTalk(){
                             modules={[FreeMode]}
                             slidesPerView={'auto'}
                             freeMode={{enabled: true}}	// 추가
-                            style={{paddingLeft:"20px",paddingRight:"20px"}}
+                            style={{paddingLeft:"20px",paddingRight:"20px",width:"auto"}}
                         >
                             {
                                 Base64s.map((item,index)=>{
                                     return(
-                                        <SwiperSlide key={index} className='shoes left-margin-0'>
-                                            <CancelIcon onClick={()=>deleteImage(index,setBase64s,Base64s)} color = "primary" sx={{position:'absolute',top:0,right:0,zIndex:10}}/>
-                                            <Box sx={{position:"relative",width:'100%',display:'flex',alignItems:"center",flexDirection:"column",alignItems:"start"}}>
-                                                <Box sx={{position:'relative'}}>
-                                                    <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${item})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                        <SwiperSlide key={index} className='shoes'>
+                                            <Box sx={{width:"100%"}}>
+                                                <CancelIcon onClick={()=>deleteImage(index,setBase64s,Base64s)} color = "primary" sx={{position:'absolute',top:0,right:0,zIndex:10}}/>
+                                                <Box sx={{position:"relative",width:'100%',display:'flex',alignItems:"center",flexDirection:"column",alignItems:"start"}}>
+                                                    <Box sx={{position:'relative'}}>
+                                                        <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${item})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
+                                                    </Box>
                                                 </Box>
                                             </Box>
                                         </SwiperSlide>

@@ -35,7 +35,25 @@ export default function Crew(props){
         const _AllCrew = await fetchCrewAll("?page=1",session);
     
         if(_AllCrew.response){
-            props.setError(_AllCrew.response.status)
+
+            switch(_AllCrew.response.status){
+                case 401:
+                    props.setError("로그인이 필요합니다.")
+                    props.setOpen(true)
+                    break;
+                case 404:
+                    props.setError("크루가 존재하지 않습니다.")
+                    props.setOpen(true)
+                    break;
+                case 500:
+                    props.setError("서버 오류입니다. 잠시 후 다시 시도해주세요.")
+                    props.setOpen(true)
+                    break;
+                default:
+                    props.setError("알 수 없는 오류입니다. 잠시 후 다시 시도해주세요.")
+                    props.setOpen(true)
+                    break;
+            }
             props.setOpen(true)
         }
         else{

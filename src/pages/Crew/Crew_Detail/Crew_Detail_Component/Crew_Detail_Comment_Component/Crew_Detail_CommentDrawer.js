@@ -23,31 +23,18 @@ import Comment from "../../../../../component/Comment/Comment"
 export default function TemporaryDrawer(props) {
 
     const { id } = useParams();
+    const number = localStorage.getItem('number');
     const session = localStorage.getItem('sessionid');
 
     const navigate = useNavigate();
 
     const [open, setOpen] = React.useState(false);
+    const [reportId,setReportId] = useState(0);
+
     const handleOpen = (id=0) => {
         setClickedId(id);
         setOpen(true);
     }
-    const handleClose = () => {
-        setOpen(false)
-    };
-
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '320px',
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 2,
-      };
-
     const DrawerTheme = {
         width:'100%',
         height:'100%',
@@ -111,6 +98,18 @@ export default function TemporaryDrawer(props) {
 
     }
 
+    const onClickReport = (id) => {
+        setReportId(id);
+
+        try{
+            // eslint-disable-next-line
+            Larademo.postMessage("reportComment");
+        }
+        catch(e){
+
+        }
+    }
+
     const FetchContestCommentPopularFunction = async () => {
         const _Comment = await FetchCrewCommentPopular(id,session);
 
@@ -142,6 +141,9 @@ export default function TemporaryDrawer(props) {
         role="presentation"
         onKeyDown={toggleDrawer(false)}
         >
+            <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
+            <div id="reportCrewID" style={{display:"none"}}> {reportId} </div>
+
             <Box sx={DrawerTheme}>
                 <Box sx={{}}>
                     <Box sx={{height:'100px',display:'flex',justifyContent:'center',alignItems:'start',position:'relative',flexDirection:'column',px:'20px'}}>
@@ -175,7 +177,7 @@ export default function TemporaryDrawer(props) {
                             {
                                 comment.map((item,index) => {
                                     return(
-                                        <Comment key={item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction = {CrewCommentLike}/>
+                                        <Comment onClickComment={() => onClickReport(item.id)} key={item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction = {CrewCommentLike}/>
                                     )
                                 })
                             }
@@ -213,7 +215,7 @@ export default function TemporaryDrawer(props) {
                 </SwipeableDrawer>
                 {
                     childOpen&&
-                    <ChildComment setError = {props.setError} setErrorOpen={props.setErrorOpen} open={childOpen} setOpen={setChildOpen} id={parentId}/>
+                    <ChildComment onClickReport={onClickReport} setError = {props.setError} setErrorOpen={props.setErrorOpen} open={childOpen} setOpen={setChildOpen} id={parentId}/>
                 }
 
             </React.Fragment>
