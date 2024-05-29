@@ -175,3 +175,20 @@ export const FetchMyShoes = async (session) =>{
         return error
     }
 }
+
+export const ApplyShoes = async (session,data) =>{
+    try{
+        const header = {
+            headers: {
+                Authorization:'Bearer '+`${session}`
+            }
+        }
+
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningshoes/add-apply`,data,header);
+
+        return response.data;
+    }
+    catch(error){
+        return error
+    }
+}

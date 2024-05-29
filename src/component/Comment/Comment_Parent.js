@@ -77,7 +77,7 @@ export default function Parent({setHeight,mainComment,LikeFunction}){
             <Box sx={{flex:1}}>
                 <Box sx={{display:'flex'}}>
                     <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',lineHeight:"14px"}}>
-                        {mainComment.user}{" -"}
+                        {mainComment.user_nickname}{" -"}
                     </Typography>
                     <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:0.5,lineHeight:"14px"}}>
                         {timeForToday(mainComment.created)}

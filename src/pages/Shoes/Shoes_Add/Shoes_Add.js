@@ -1,16 +1,11 @@
 import {Box,Typography,Button,Input,CircularProgress} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import Auth from '../../../hoc/auth';
 import styled from "styled-components"
-import { useNavigate } from "react-router-dom";
 import Topbar from "./Shoes_Add_Component/Shoes_Add_TopBar"
-import CancelIcon from '@mui/icons-material/Cancel';
-import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import {Modal} from '@mui/material';
 import { useForm } from "react-hook-form"
-import {useRecoilState} from 'recoil';
-import { Swiper, SwiperSlide } from "swiper/react";
+import { ApplyShoes } from '../../../API/api/RunningShoes/shoes_api';
 //모듈 필요
 import { FreeMode } from 'swiper/modules';
 //Swiper css
@@ -34,6 +29,8 @@ function AddShoes(){
         ["etc",'기타 원하시는 정보',''],
     ]
 
+    const session = localStorage.getItem('sessionid');
+
     const imageInputRef = useRef(null);
 
     const [modalOpen, setModalOpen] = React.useState(false);
@@ -41,59 +38,7 @@ function AddShoes(){
     const handleClose = () => setModalOpen(false);
     const [error,setError] = useState();
     const [loading,setLoading] = useState(false);
-
-    const [Base64s, setBase64s] = useState([]);
-
-    const [CompetitionBase64s, setCompetitionBase64s] = useState([]);
-
-    const encodeFileToBase64 = (image) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(image);    
-            reader.onload = (event) => resolve(event.target.result);
-            reader.onerror = (error) => reject(error);
-        });
-    };
-    
-    const handleImageUpload = async (e,callback) => {
-        
-        const fileArr = e.target.files;
-        callback([]);
-    
-        let file;
-        let maxFile = 10;
-        let filesLength = fileArr.length > maxFile ? maxFile : fileArr.length;
-    
-        if (fileArr.length > maxFile) {
-            alert(`한번에 업로드 가능한 사진은 최대 ${maxFile}장 까지 입니다.`);
-        }
-    
-        for (let i = 0; i < filesLength; i++) {
-            file = fileArr[i];
-
-            console.log(file);
-    
-            if (file.type !== "image/jpeg" && file.type !== "image/jpg") {
-                alert(`JPG 사진 파일만 가능합니다.`);
-                break;
-            } else {
-                try {
-                    const data = await encodeFileToBase64(file);
-                    callback((prev) => [...prev, data ]);
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-        }
-    };
-    
-    const handleImageUploadWithCallBackCourse = async (e) => {
-        handleImageUpload(e,setBase64s);
-    }
-
-    const handleImageUploadWithCallBackMain = async (e) => {
-        handleImageUpload(e,setCompetitionBase64s);
-    }
+    const [modalHeader,setModalHeader] = useState("오류");
 
 
     const deleteImage = (index,setBase64,Base64) =>{
@@ -101,9 +46,32 @@ function AddShoes(){
     }
 
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        setLoading(true);
+        const _response = await ApplyShoes(session,data);
 
-        console.log(data);
+        if(_response.response){
+            switch(_response.response.status){
+                case 401:
+                    setError("로그인이 필요합니다.");
+                    handleOpen();
+                    break;
+                case 409:
+                    setError("이미 등록된 러닝화입니다.");
+                    handleOpen();
+                    break;
+                default:
+                    setError("알 수 없는 오류가 발생했습니다.");
+                    handleOpen();
+                    break;
+            }
+        }
+        else{
+            setModalHeader("러닝화 등록 요청 완료")
+            setError("러닝화 등록 요청이 완료되었습니다.");
+            handleOpen();
+        }
+        setLoading(false);
     }
 
     return(
@@ -135,108 +103,6 @@ function AddShoes(){
                     )
                 })
             }  
-            {/* 
-            <Box sx={{display:'flex',width:'100%',flexDirection:"column",mt:3}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px'}}>
-                    {"코스 이미지"}
-                </Typography>
-                
-                <Box sx={{width:"100%",my:1}}>
-                    {
-                        Base64s.length !==0?
-                        <Swiper
-                            spaceBetween={5}
-                            modules={[FreeMode]}
-                            slidesPerView={'auto'}
-                            freeMode={{enabled: true}}	// 추가
-                        >
-                            {
-                                Base64s.map((item,index)=>{
-                                    return(
-                                        <SwiperSlide key={index} className='shoes left-margin-0'>
-                                            <CancelIcon onClick={()=>deleteImage(index,setBase64s,Base64s)} color = "primary" sx={{position:'absolute',top:0,right:0,zIndex:10}}/>
-                                            <Box sx={{position:"relative",width:'100%',display:'flex',alignItems:"center",flexDirection:"column",alignItems:"start"}}>
-                                                <Box sx={{position:'relative'}}>
-                                                    <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${item})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
-                                                </Box>
-                                            </Box>
-                                        </SwiperSlide>
-                                    )
-                                })
-                            }
-                        </Swiper>
-                        :
-                        ""
-                    }
-                </Box>
-
-                <Label for="input-file">
-                    <InsertPhotoOutlinedIcon sx={{width:'30px',height:'30px'}}/>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
-                        이미지 첨부하기
-                    </Typography> 
-                </Label>
-
-                <VisuallyHiddenInput
-                id="input-file"
-                multiple   
-                name="photo_file"
-                accept=".jpg"
-                onChange={handleImageUploadWithCallBackCourse}
-                type="file"
-                 />
-            </Box>
-
-            <Box sx={{display:'flex',width:'100%',flexDirection:"column",mt:3}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px'}}>
-                    {"대회 공식 이미지"}
-                </Typography>
-                
-                <Box sx={{width:"100%",my:1}}>
-                    {
-                        CompetitionBase64s.length !==0?
-                        <Swiper
-                            spaceBetween={5}
-                            modules={[FreeMode]}
-                            slidesPerView={'auto'}
-                            freeMode={{enabled: true}}	// 추가
-                        >
-                            {
-                                CompetitionBase64s.map((item,index)=>{
-                                    return(
-                                        <SwiperSlide key={index} className='shoes left-margin-0'>
-                                            <CancelIcon onClick={()=>deleteImage(index,setCompetitionBase64s,CompetitionBase64s)} color = "primary" sx={{position:'absolute',top:0,right:0,zIndex:10}}/>
-                                            <Box sx={{position:"relative",width:'100%',display:'flex',alignItems:"center",flexDirection:"column",alignItems:"start"}}>
-                                                <Box sx={{position:'relative'}}>
-                                                    <Box sx={{width:'170px',height:'170px',backgroundColor:'#4F1D76',borderRadius:3,mx:'auto',backgroundImage:`url(${item})`,backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}/>
-                                                </Box>
-                                            </Box>
-                                        </SwiperSlide>
-                                    )
-                                })
-                            }
-                        </Swiper>
-                        :
-                        ""
-                    }
-                </Box>
-
-                <Label for="input-file-main">
-                    <InsertPhotoOutlinedIcon sx={{width:'30px',height:'30px'}}/>
-                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px'}}>
-                        이미지 첨부하기
-                    </Typography> 
-                </Label>
-
-                <VisuallyHiddenInput
-                id="input-file-main"
-                multiple   
-                name="photo_file"
-                accept=".jpg"
-                onChange={handleImageUploadWithCallBackMain}
-                type="file"
-                 />
-            </Box> */}
 
             <Button type = "submit" variant="contained" color="primary" sx={{width:'100%',height:'40px',borderRadius:'10px',boxShadow:0,my:2}}>
                 <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'16px'}}>
@@ -254,10 +120,7 @@ function AddShoes(){
             ""
         }
 
-
-
-
-        <Error error={error} open={modalOpen} handleClose={handleClose}/>
+        <Error propsHeader={modalHeader} error={error} open={modalOpen} handleClose={handleClose}/>
 
     </Box>    
     )
@@ -271,18 +134,6 @@ const Form = styled.form`
   flex-direction:'column';
   padding-top:2;
 
-`
-
-const Label = styled.label`
-    width:100%;
-    height:100px;
-    border-radius:10px;
-    background-color:#E8E8E8;
-    margin-top:1.5;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
 `
 
 

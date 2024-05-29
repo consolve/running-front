@@ -34,6 +34,7 @@ const style = {
 function RunnerTalk_Filtering(){
 
     const { id } = useParams();
+    const session = localStorage.getItem('sessionid');
 
     const navigate = useNavigate();
 
@@ -54,7 +55,7 @@ function RunnerTalk_Filtering(){
     const [list,setList] = useRecoilState(RunnerTalkFiltering_List);
 
     const FetchRunnerTalkAll = async (value) => {
-        const RunnerTalk = await fetchRunnerTalkCategoryPost(value);
+        const RunnerTalk = await fetchRunnerTalkCategoryPost(value,session);
 
         if(RunnerTalk.response){
             setError(RunnerTalk.response.status)

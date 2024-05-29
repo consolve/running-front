@@ -145,3 +145,31 @@ export const FetchMySavedContest = async (sessionid) =>{
         return error
     }
 }
+
+export const ApplyContest = async (sessionid,data) =>{
+    try{
+
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${sessionid}`
+            }
+        }
+
+        const request = data;
+        const response = await axios.post(`${process.env.REACT_APP_URL}/api/contest/add-apply`,request,header);
+        return response.data;
+    }
+    catch(error){
+        return error
+    }
+}
+
+export const getBannerImage = async () =>{
+    try{
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/banner`);
+        return response.data.banner;   
+    }
+    catch(error){
+        return error
+    }
+}

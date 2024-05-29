@@ -1,4 +1,4 @@
-import {Box,Typography} from "@mui/material";
+import {Box,Typography,Fade,Popper,ClickAwayListener } from "@mui/material";
 import React, { useState,useRef,useEffect } from "react";
 import {API_URL} from '../../API/URL/index';
 import Avatar from '@mui/material/Avatar';
@@ -6,7 +6,9 @@ import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import styled from "styled-components"
-
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { BlockUser } from "../../API/api/User/user";
+import BlockModal from "./Modal/BlockModal"
 
 function timeForToday(value) {
     const today = new Date();
@@ -38,10 +40,30 @@ export default function Comment({item,toggleChildCommentDrawer,LikeFunction,onCl
     const sessionid = localStorage.getItem('sessionid');
     const contentRef = useRef(null);
     const [isShowReadMore, setIsShowReadMore] = useState(false);
+    const [modalOpen,setModalOpen] = useState(false);
+
+    const [open,setOpen] = useState(false);
+    const [opendelete,setOpendelete] = useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+  
+    const canBeOpen = open && Boolean(anchorEl);
+    const id = canBeOpen ? 'transition-popper' : undefined;
+
+    const handleModalOpen = () => {
+        setModalOpen(!modalOpen);
+    };
 
     const onClick = (e) => {
         contentRef.current.classList.add("show");
         setIsShowReadMore(false);
+    };
+
+    const handleOpen = () => {
+        setOpen(!open);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
     };
 
     useEffect(()=>{
@@ -62,21 +84,78 @@ export default function Comment({item,toggleChildCommentDrawer,LikeFunction,onCl
     
     }
 
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+        handleOpen();
+    };
+
+    useEffect(()=>{
+        return()=>{
+            setOpen(false);
+        }
+    },[])
 
     return(
-        <Box onClick={onClickComment} sx={{display:'flex',alignItems:'start',px:2,py:1.5}}>
+        <Box sx={{display:'flex',alignItems:'start',px:2,py:1.5}}>
+
+            <BlockModal id={item.user} handleOpen={handleModalOpen} open={modalOpen}/>
+
             <Box sx={{height:'100%',display:'block',mt:0.5}}>
                 <Avatar src={`${API_URL}${item.user_profile}`} sx={{width:'20px',height:'20px',mr:1}}/>
             </Box>
+
             <Box sx={{flex:1}}>
-                <Box sx={{display:'flex'}}>
-                    <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px'}}>
-                        {item.user}{" -"}
-                    </Typography>
-                    <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:0.5}}>
-                        {timeForToday(item.created)}
-                    </Typography>
+                <Box sx={{display:'flex',justifyContent:'space-between'}}>
+                    <Box sx={{display:"flex"}}>
+                        <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px'}}>
+                            {item.user_nickname}{" -"}
+                        </Typography>
+                        <Typography color="#959494" sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'12px',ml:0.5}}>
+                            {timeForToday(item.created)}
+                        </Typography>
+                    </Box>
+
+                    <MoreVertIcon onClick={handleClick} sx={{position:"relative",height:'20px',color:'#D9D9D9'}}/>
+
+                    {
+                        open&&
+                        <ClickAwayListener onClickAway={handleClose}>
+                            <Popper
+                                open={open} 
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                transition
+                                ransition placement={'bottom-end'} 
+                                style={{zIndex:2000}}
+                                >
+                                {({ TransitionProps }) => (
+                                <>
+                                <Fade {...TransitionProps} timeout={350}>
+                                    <Box sx={{display:'flex',flexDirection:'column',alignItems:'start',justifyContent:"center",width:'180px',backgroundColor:'primary.light',borderRadius:'15px',border:1,borderColor:'primary.main',py:1,mt:1}}>
+                                        
+                                        <Box sx={{display:'flex',ml:2,my:1}}>
+                                            <Typography onClick={onClickComment} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
+                                                신고하기 
+                                            </Typography>
+                                        </Box>
+                                        <Box sx={{display:'flex',ml:2,mt:0.2,my:1}}>
+                                            <Typography onClick={()=>{
+                                                handleClose();
+                                                handleModalOpen();
+                                            }} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
+                                                차단하기
+                                            </Typography>
+                                        </Box>
+                    
+                                    </Box>
+                                </Fade>
+                                </>
+                                )}
+                            </Popper>
+                        </ClickAwayListener>
+                    }
                 </Box>
+
                 <Box sx={{width:"100%",mb:0.6}}>
                     <Ellipsis ref={contentRef}>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',whiteSpace:'normal',wordBreak:'break-all'}}>

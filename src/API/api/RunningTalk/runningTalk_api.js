@@ -1,8 +1,15 @@
 import axios from "axios";
 
-export const fetchPopularTalk = async (count) =>{
+export const fetchPopularTalk = async (count,session) =>{
     try{
-        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/popular/${count}`);
+
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/popular/${count}`,header);
         return response.data.posts;   
 
     } catch(error){
@@ -10,9 +17,14 @@ export const fetchPopularTalk = async (count) =>{
     }
 }
 
-export const fetchRunnerTalkAll = async (query) =>{
+export const fetchRunnerTalkAll = async (query,session) =>{
     try{
-        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/post/all${query}`);
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/post/all${query}`,header);
         return response.data.posts.reverse();   
 
     } catch(error){
@@ -30,9 +42,15 @@ export const fetchRunnerTalkCategory = async () =>{
     }
 }
 
-export const fetchRunnerTalkCategoryPost = async (id,query="") =>{
+export const fetchRunnerTalkCategoryPost = async (id,session,query="") =>{
     try{
-        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/post/${id}${query}`);
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/post/${id}${query}`,header);
         return response.data.posts;   
 
     } catch(error){
@@ -193,7 +211,7 @@ export const FetchMySavedPost = async (session) =>{
     }
 }
 
-export const DeletePost = async (session,id) => {
+export const DeletePost = async (id,session) => {
     try{
         const header = {
             headers: {

@@ -27,6 +27,7 @@ import { FreeMode } from 'swiper/modules';
 export default function  Community(props){
 
     const navigate = useNavigate();
+    const session = localStorage.getItem('sessionid');
 
     const navigateToCompetitionDetail =(id) =>{
         navigate(`/runnertalk/detail/${id}`)
@@ -35,7 +36,7 @@ export default function  Community(props){
     const [runningtalk,setRunningTalk] = useState([]);
 
     const FetchList = async () => {
-        const _PopularRunningTalk = await fetchPopularTalk(6);
+        const _PopularRunningTalk = await fetchPopularTalk(6,session);
     
         if(_PopularRunningTalk.response){
             switch(_PopularRunningTalk.response.status){

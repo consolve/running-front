@@ -38,6 +38,7 @@ function RunnerTalk(){
 
     const navigate = useNavigate();
     const loadinglist = [1,2,3,4,5,6,7,8,9];
+    const session  = localStorage.getItem('sessionid');
 
     const navigateToBack  = () =>{
         navigate(-1);
@@ -57,7 +58,7 @@ function RunnerTalk(){
     const [list,setList] = useRecoilState(RunnerTalkMain_List);
 
     const FetchRunnerTalkAll = async () => {
-        const RunnerTalk = await fetchRunnerTalkAll("?page="+1);
+        const RunnerTalk = await fetchRunnerTalkAll("?page="+1,session);
 
         if(RunnerTalk.response){
             setError(RunnerTalk.response.status)

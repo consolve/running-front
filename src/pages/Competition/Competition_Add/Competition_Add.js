@@ -44,25 +44,26 @@ function AddCompetition(){
 
     const inputList = [
         ["name",'대회명','대회명을 입력해주세요'],
-        ["applyActivityArea",'대회일시','20XX.XX.XX 금요일 오후 7시'],
-        ["runningPlace",'접수기간','20XX.XX.XX - 20XX.XX.XX'],
-        ["regularRun",'대회장소','인천광역시 미추홀구 인하로 100 인하대학교'],
-        [ "instagram",'대회종목','울트라, 풀, 하프, 10K, 5K'],
-        ["crewApplyWay",'참가비','종목 순서대로 작성해주세요 / 7만원, 3만원'],
-        ["crewMemberNumber",'대회 홈페이지','www.runninglife.co.kr'],
-        ["company",'주최 / 주관','러닝라이프 컴퍼니 / 러닝라이프'],
-        ['donate','후원','러닝라이프 컴퍼니 / 러닝라이프'],
-        [ "applyContact" ,'연락 가능한 대회 담당자님 연락처','대회 검토과정에서 확인 연락을 드립니다'],
-        [ "applyContact" ,'연락 가능한 대회 담당자님 이메일','대회 검토과정에서 확인 연락을 드립니다']
+        ["competitionTime",'대회일시','20XX.XX.XX 금요일 오후 7시'],
+        ["receptionTime",'접수기간','20XX.XX.XX - 20XX.XX.XX'],
+        ["place",'대회장소','인천광역시 미추홀구 인하로 100 인하대학교'],
+        [ "course",'대회종목','울트라, 풀, 하프, 10K, 5K'],
+        ["price",'참가비','종목 순서대로 작성해주세요 / 7만원, 3만원'],
+        ["homepage",'대회 홈페이지','www.runninglife.co.kr'],
+        ["host",'주최 / 주관','러닝라이프 컴퍼니 / 러닝라이프'],
+        ['managementAgency','후원','러닝라이프 컴퍼니 / 러닝라이프'],
+        [ "contactPhoneNumber" ,'연락 가능한 대회 담당자님 연락처','대회 검토과정에서 확인 연락을 드립니다'],
+        [ "contactEmail" ,'연락 가능한 대회 담당자님 이메일','대회 검토과정에서 확인 연락을 드립니다']
     ]
 
-    const imageInputRef = useRef(null);
+    const session = localStorage.getItem('sessionid');
 
     const [modalOpen, setModalOpen] = React.useState(false);
     const handleOpen = () => setModalOpen(true);
     const handleClose = () => setModalOpen(false);
     const [error,setError] = useState();
     const [loading,setLoading] = useState(false);
+    const [header,setHeader] = useState("오류");
 
     const [Base64s, setBase64s] = useState([]);
 
@@ -130,11 +131,39 @@ function AddCompetition(){
         console.log(CompetitionBase64s);
         },[CompetitionBase64s]);
 
-    const onSubmit = (data) => {
-        data["images"] = Base64s;
-        data["mainImage"] = CompetitionBase64s;
-        console.log(data);
-    }
+    const onSubmit = async (data) => {
+        data["courseImgs"] = Base64s;
+        data["contestOfficialImgs"] = CompetitionBase64s;
+        
+        setLoading(true);
+        const resposne = await ApplyContest(session,data);
+        if(resposne.response){
+            switch(resposne.response.status){
+                case 401:
+                    setError("로그인이 필요합니다.");
+                    handleOpen();
+                    break;
+                case 403:
+                    setError("로그인이 필요합니다.");
+                    handleOpen();
+                    break;
+                case 409:
+                    setError("이미 등록된 대회입니다.");
+                    handleOpen();
+                    break;
+                default:
+                    setError("알 수 없는 오류가 발생했습니다.");
+                    handleOpen();
+                    break;
+            }
+        }
+        else{
+            setHeader("대회 등록 요청")
+            setError("대회 등록 요청이 완료되었습니다.");
+            handleOpen();
+        }
+        setLoading(false);
+    }   
 
     useEffect(()=>{
         window.scrollTo({top:0})
@@ -289,7 +318,7 @@ function AddCompetition(){
         }
 
 
-        <Error error={error} open={modalOpen} handleClose={handleClose}/>
+        <Error propsHeader={header} error={error} open={modalOpen} handleClose={handleClose}/>
 
     </Box>    
     )

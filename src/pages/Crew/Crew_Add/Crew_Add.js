@@ -35,6 +35,7 @@ import {ApplyCrew} from "../../../API/api/RunningCrew/crew_api"
   });
 
 function AddCrew(){
+    const session = localStorage.getItem('sessionid');
 
     const {
         register,
@@ -54,8 +55,7 @@ function AddCrew(){
         [ "applyContact" ,'연락 가능한 대회 크루장(담당자) 연락처','크루 등록 검토과정에서 확인 연락을 드립니다.']
     ]
 
-    const imageInputRef = useRef(null);
-
+    const [header,setHeader] = useState("오류");
     const [modalOpen, setModalOpen] = React.useState(false);
     const handleOpen = () => setModalOpen(true);
     const handleClose = () => setModalOpen(false);
@@ -110,9 +110,33 @@ function AddCrew(){
         setBase64s(Base64s.filter((_,i)=>i!==index));
     }
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         data["images"] = Base64s;
-        console.log(data);
+        setLoading(true);
+        const _response = await ApplyCrew(session,data);
+
+        if(_response.response){
+            switch(_response.response.status){
+                case 401:
+                    setError("로그인이 필요합니다.");
+                    handleOpen();
+                    break;
+                case 409:
+                    setError("이미 등록된 러닝화입니다.");
+                    handleOpen();
+                    break;
+                default:
+                    setError("알 수 없는 오류가 발생했습니다.");
+                    handleOpen();
+                    break;
+            }
+        }
+        else{
+            setHeader("크루 등록 요청 완료")
+            setError("크루 등록 요청이 완료되었습니다.");
+            handleOpen();
+        }
+        setLoading(false);
     }
 
     return(
@@ -213,7 +237,7 @@ function AddCrew(){
         }
 
 
-        <Error error={error} open={modalOpen} handleClose={handleClose}/>
+        <Error propsHeader={header} error={error} open={modalOpen} handleClose={handleClose}/>
     </Box>    
     )
 }

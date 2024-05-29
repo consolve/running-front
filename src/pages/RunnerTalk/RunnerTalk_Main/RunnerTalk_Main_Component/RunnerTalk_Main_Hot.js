@@ -14,6 +14,7 @@ export default function RunnerTalk_Main_Hot(props){
 
     const navigate = useNavigate();
     const loadinglist = [1,2];
+    const session = localStorage.getItem('sessionid');
 
     const [list,setList] = useState([]);
     const [error,setError] = useRecoilState(RunnerTalkMain_Error);
@@ -21,7 +22,7 @@ export default function RunnerTalk_Main_Hot(props){
     const [loadingall,setLoadingall] = useRecoilState(RunnerTalkMain_LoadingAll);
 
     const FetchRunnerTalkHot = async () => {
-        const _HotPost = await fetchPopularTalk(2);
+        const _HotPost = await fetchPopularTalk(2,session);
 
         if(_HotPost.response){
             setError(_HotPost.response.status)

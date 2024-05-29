@@ -20,6 +20,7 @@ import {
 export default function RunnerTalk_Main_List(props){
     const navigate = useNavigate();
     const image = localStorage.getItem('profile');
+    const session = localStorage.getItem('sessionid');
     
     const [error,setError] = useRecoilState(RunnerTalkMain_Error);
     const [list,setList] = useRecoilState(RunnerTalkMain_List);
@@ -30,7 +31,7 @@ export default function RunnerTalk_Main_List(props){
     const getItems = useCallback(async () => {
         setLoading(true);
 
-        const _RunnerTalkList = await fetchRunnerTalkAll("?page="+page);
+        const _RunnerTalkList = await fetchRunnerTalkAll("?page="+page,session);
 
         if(_RunnerTalkList.response){
             setError(_RunnerTalkList.response.status)
@@ -82,7 +83,7 @@ export default function RunnerTalk_Main_List(props){
                                     </Box>
                                     <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:"center"}}>
                                         <Box sx={{display:'flex',height:'14px',alignItems:"center",mr:0.5}}>
-                                            <Avatar src={image==="/media/None.png"?"":`${API_URL}${image}`} sx={{width:'11px',height:'11px',mr:0.5}}/>
+                                            <Avatar src={image==="/media/None.png"?"":`${API_URL}${item.user_profile}`} sx={{width:'11px',height:'11px',mr:0.5}}/>
                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060'  ,height:'100%',lineHeight:'normal'}}>
                                                 {item.user}
                                             </Typography>
@@ -121,7 +122,7 @@ export default function RunnerTalk_Main_List(props){
                                     </Box>
                                     <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:"center"}}>
                                         <Box sx={{display:'flex',height:'14px',alignItems:"center",mr:0.5}}>
-                                            <Avatar src={image==="/media/None.png"?"":`${API_URL}${image}`} sx={{width:'11px',height:'11px',mr:0.5}}/>
+                                            <Avatar src={image==="/media/None.png"?"":`${API_URL}${item.user_profile}`} sx={{width:'11px',height:'11px',mr:0.5}}/>
                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px',color:'#606060'  ,height:'100%',lineHeight:'15.51px'}}>
                                                 {item.user}
                                             </Typography>

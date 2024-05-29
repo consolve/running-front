@@ -6,6 +6,7 @@ import Popper from '@mui/material/Popper';
 import Fade from '@mui/material/Fade';
 import {Backdrop} from '@mui/material';
 import Delete from "./RunnerTalk_Detail_Delete"
+import BlockModal from "../../../../component/Comment/Modal/BlockModal"
 
 export default function RunnerTalk_Detail_Detail(props){
 
@@ -16,6 +17,7 @@ export default function RunnerTalk_Detail_Detail(props){
     const [open,setOpen] = useState(false);
     const [opendelete,setOpendelete] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [modalOpen,setModalOpen] = useState(false);
   
     const canBeOpen = open && Boolean(anchorEl);
     const id = canBeOpen ? 'transition-popper' : undefined;
@@ -25,6 +27,12 @@ export default function RunnerTalk_Detail_Detail(props){
 
         navigate(`/runnertalk/category/${id}`)
     }
+
+    const handleModalOpen = () => {
+        setModalOpen((prev) => prev = !prev);
+    };
+
+
 
     const handleOpen = () => {
         {
@@ -63,6 +71,8 @@ export default function RunnerTalk_Detail_Detail(props){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',backgroundColor:'#ffffff',borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}}>
             
+            <BlockModal id={props.detail.user_id} handleOpen={handleModalOpen} open={modalOpen}/>
+
             <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
             <div id="reportPostId" style={{display:"none"}}> {props.detail.id} </div>
 
@@ -106,6 +116,11 @@ export default function RunnerTalk_Detail_Detail(props){
                                 {
                                     !props.isWriter &&
                                     <>
+                                        <Box onClick={handleModalOpen} sx={{display:'flex',ml:2,my:0.5}}>
+                                            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
+                                                차단하기
+                                            </Typography>
+                                        </Box>  
                                         <Box onClick={onClickReport} sx={{display:'flex',ml:2,my:0.5}}>
                                             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
                                                 신고하기

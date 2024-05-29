@@ -3,8 +3,6 @@ import { useCallback } from 'react';
 import {API_URL} from "../../../../API/URL/index"
 import {Typography,CircularProgress,Divider,Button,Modal} from '@mui/material';
 import { Box } from '@mui/system';
-import Avatar from '@mui/material/Avatar';
-import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 import { useEffect,useState } from 'react';
 import { useRecoilState } from 'recoil';

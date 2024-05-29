@@ -1,7 +1,7 @@
 import {Box,Modal,Typography} from "@mui/material"
 import {useState,useEffect} from "react";
 
-export default function Error({error,open,handleClose}){
+export default function Error({error,open,handleClose,propsHeader="오류가 발생했습니다"}){
 
     const [header,setHeader] = useState("");
     const [body,setBody] = useState("");
@@ -11,6 +11,7 @@ export default function Error({error,open,handleClose}){
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+        border:0,
         width: 300,
         bgcolor: 'background.paper',
         boxShadow: 24,
@@ -20,7 +21,7 @@ export default function Error({error,open,handleClose}){
     };
 
     useEffect(()=>{
-        setHeader("오류가 발생했습니다");
+        setHeader(propsHeader);
         setBody(error);
     },[error])
 

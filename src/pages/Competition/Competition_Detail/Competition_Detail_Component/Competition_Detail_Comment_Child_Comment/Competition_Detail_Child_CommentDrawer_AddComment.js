@@ -14,7 +14,7 @@ import styled from "styled-components"
 export default function CommentAdder(props) {
     const { id } = useParams();
     const session = localStorage.getItem('sessionid');
-    const userProifile = localStorage.getItem("user_profile");
+    const userProifile = localStorage.getItem("profile");
 
     const [value,setValuse] = useState("");
     const [loading,setLoading] = useState(false);

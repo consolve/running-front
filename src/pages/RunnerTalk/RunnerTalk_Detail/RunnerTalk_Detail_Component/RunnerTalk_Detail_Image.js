@@ -15,16 +15,11 @@ import 'swiper/css/free-mode';
 export default function RunnerTalk_Detail_Image(props) {
 
     const [current,setCurrent] = useState(0);
-    const [OfficialImg,setOfficialImg] = useState([]);
 
 
     const handleToggle = (index) =>{
         setCurrent((prev)=>prev=index);
     }
-
-    useEffect(()=>{
-        setOfficialImg(props.detail.courseImgs);
-    },[])
 
     return (
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
