@@ -108,7 +108,7 @@ export default function  Community(props){
                                                 </Box>
                                                 <Box sx={{width:'100%',display:'flex',justifyContent:'space-between',alignItems:"center",mt:0.5}}>
                                                     <Box sx={{display:'flex',height:'14px',alignItems:"center"}}>
-                                                        <Avatar sx={{width:'11px',height:'11px',mr:0.5}}/>
+                                                        <Avatar src={`${API_URL}${item.user_profile}`} sx={{width:'11px',height:'11px',mr:0.5}}/>
                                                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060'  ,height:'100%',lineHeight:'normal'}}>
                                                             {item.user}
                                                         </Typography>
