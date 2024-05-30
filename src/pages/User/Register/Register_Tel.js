@@ -130,68 +130,79 @@ function Login(){
     const isButtonEnabled = name && number ;
 
     return(
-      <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'100vh',flexDirection:'column',pl:2}}>
-        
-        <Box sx={{display:'flex',alignItems:'center',justifyContent:'start',width:'100%',maxWidth:'420px',minWidth:'360px',height:'80px'}}>
-            <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+        <>
+        <Box sx={{
+            position:"fixed",
+            top:10,
+            height:'60px',
+            width:'100%',
+            minWidth:'360px',
+            maxWidth:'450px',
+        }}>
+            <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'start',alignItems:'center',height:"100%",ml:2}}>
                 <WestIcon sx={{}}/>
             </Box>
         </Box>
-        
-        <Box sx={{width:'100%',pt:3}}>
-            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
-                안녕하세요, 러너님!
-            </Typography>
-            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px',mt:-0.5}}>
-                반갑습니다!
-            </Typography>
-        </Box>
 
-        <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'start',flexDirection:'column',pt:7,width:'93%',mr:2}}>
-
-            <Box sx={{display:'flex',width:'100%'}}>
-                <Input value = {name} placeholder="이름을 입력해주세요" onChange={handleName} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
-            </Box>
-
-            <Box sx={{display:'flex',width:'100%',mt:5}}>
-                <Input value = {number} placeholder="전화번호를 입력해주세요" onChange={handlenumber} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
-            </Box>
-        </Box>
-
-        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"absolute",bottom:30,minWidth:'360px',mr:2,maxWidth:'420px',width:"100%"}}>
-            <Button onClick={navigateToRegisterName} variant="contained" color='primary' disabled={!isButtonEnabled} sx={{width:'90%',height:'50px',borderRadius:3}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'19px',fontWeight:'500'}}>
-                    인증번호 발송
-                </Typography>
-            </Button>
-        </Box>
-            
-        <Drawer open={open} setOpen={setOpen} setError={setError} setModalOpen={setModalOpen}/>
-
-        {
-            loading?
-            <Box sx={{position:'absolute',display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',pr:2}}>
-                <CircularProgress color="primary"/>
-            </Box>
-            :
-            ""
-        }
-
-        <Box>
-            <Modal
-                open={modalOpen}
-                onClose={handleClose}
-                disableScrollLock
-            >
-                <Box sx={style}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
-                    {error}
-                </Typography>
+        <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',backgroundColor:'#ffffff',height:'100%',flexDirection:'column',mt:'117px',width:"100%"}}>
+            <Box sx={{display:"flex",flexDirection:"column",px:'22px',width:"calc(100% - 44px)"}}>
+                
+                <Box sx={{width:'100%'}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
+                        안녕하세요, 러너님!
+                    </Typography>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px',mt:-0.5}}>
+                        반갑습니다!
+                    </Typography>
                 </Box>
-            </Modal>
-        </Box>
 
-    </Box>    
+                <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'start',flexDirection:'column',pt:7}}>
+
+                    <Box sx={{display:'flex',width:'100%'}}>
+                        <Input value = {name} placeholder="이름을 입력해주세요" onChange={handleName} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
+                    </Box>
+
+                    <Box sx={{display:'flex',width:'100%',mt:5}}>
+                        <Input value = {number} placeholder="전화번호를 입력해주세요" onChange={handlenumber} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
+                    </Box>
+                </Box>
+            </Box>
+
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"fixed",bottom:30,minWidth:'360px',maxWidth:'420px',width:"100%"}}>
+                <Button onClick={navigateToRegisterName} variant="contained" color='primary' disabled={!isButtonEnabled} sx={{width:'90%',height:'50px',borderRadius:3}}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'19px',fontWeight:'500'}}>
+                        인증번호 발송
+                    </Typography>
+                </Button>
+            </Box>
+                
+            <Drawer open={open} setOpen={setOpen} setModalOpen={setModalOpen} setError={setError}/>
+
+            {
+                loading?
+                <Box sx={{position:'absolute',display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',pr:2}}>
+                    <CircularProgress color="primary"/>
+                </Box>
+                :
+                ""
+            }
+
+            <Box>
+                <Modal
+                    open={modalOpen}
+                    onClose={handleClose}
+                    disableScrollLock
+                >
+                    <Box sx={style}>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'16px'}}>
+                        {error}
+                    </Typography>
+                    </Box>
+                </Modal>
+            </Box>
+
+        </Box>    
+    </>   
     )
 }
 

@@ -71,7 +71,7 @@ function Main(){
         <>
         <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column'}}>
             <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
-            <Box sx={{display:'flex',flexDirection:'column',width:"100%",background: 'linear-gradient(to bottom, #6C57E5, rgba(255, 255, 255, 0.26))'}}>
+            <Box sx={{display:'flex',flexDirection:'column',width:"100%"}}>
                 <TopBar/>
                 <Banner/>
             </Box>
