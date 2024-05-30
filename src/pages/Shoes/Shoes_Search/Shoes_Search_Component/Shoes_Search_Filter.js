@@ -49,22 +49,22 @@ export default function Shoes_Search_Filter(props){
     return(
         <Box sx={{position:"fixed",backgroundColor:'#ffffff',zIndex:1000,top:'62px',display:'flex',justifyContent:'start',alignItems:'center',height:'50px',borderColor:'#E8E8E8',width:'100%',minWidth:'360px',maxWidth:'450px'}}>
             <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',px:"20px"}}>
-                <Box backgroundColor={brand.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
+                <Box backgroundColor={brand.length == 0?'':'primary.main'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {brand.length == 0?'black':'white'} sx={buttonTyphography}>
                         브랜드 {brand.length == 0?'':brand.length}{'>'}
                     </Typography>
                 </Box>
-                <Box backgroundColor={feature.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
+                <Box backgroundColor={feature.length == 0?'':'primary.main'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {feature.length == 0?'black':'white'} sx={buttonTyphography}>
                         특징별 {feature.length == 0?'':feature.length }{'>'}
                     </Typography>
                 </Box>
-                <Box backgroundColor={useage.length == 0?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
+                <Box backgroundColor={useage.length == 0?'':'primary.main'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {useage.length == 0?'black':'white'} sx={buttonTyphography}>
                         용도별 {useage.length == 0?'':useage.length}{'>'}
                     </Typography>
                 </Box>
-                <Box backgroundColor={JSON.stringify(price) === JSON.stringify([0,100])?'':'#4F1D76'} onClick ={openDrawer} sx={buttonTheme}>
+                <Box backgroundColor={JSON.stringify(price) === JSON.stringify([0,100])?'':'primary.main'} onClick ={openDrawer} sx={buttonTheme}>
                     <Typography color = {JSON.stringify(price) === JSON.stringify([0,100])?'black':'white'} sx={buttonTyphography}>
                         가격대 {'>'}
                     </Typography>

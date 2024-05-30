@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import TopbarTheme from '../../../../style/plate/topbar';
 import WestIcon from '@mui/icons-material/West';
+import {ReactComponent as SearchIcon} from '../../../../Image/search.svg';
 
 
 export default function Competition_TopBar(){
@@ -44,7 +44,7 @@ export default function Competition_TopBar(){
                     onClick={navigateToScheduleSearch}
                     >
                     <IconButton type="button" sx={{ }} aria-label="search">
-                        <SearchIcon />
+                        <SearchIcon width={21} height={21}/>
                     </IconButton>
                 </Box>
             </Box>

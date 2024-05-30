@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
+import {ReactComponent as SearchIcon} from '../../../../Image/search.svg';
 import WestIcon from '@mui/icons-material/West';
 import TopbarTheme from '../../../../style/plate/topbar';
 import {useRecoilState} from 'recoil'
@@ -102,7 +102,7 @@ export default function Shoes_TopBar(props){
                         placeholder=""
                     />
                     <IconButton onClick ={navigateToShoesSearch} type="button" sx={{ p: '10px' }} aria-label="search">
-                        <SearchIcon/>
+                        <SearchIcon width={21} height={21}/>
                     </IconButton>
                 </Box>
             </Box>

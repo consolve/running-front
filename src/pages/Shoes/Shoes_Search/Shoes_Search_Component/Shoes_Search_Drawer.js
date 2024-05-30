@@ -222,7 +222,7 @@ export default function TemporaryDrawer(props) {
                         <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:'0px'}}>
                             {['Nike','Adidas','New Balance','Hoka','Asics','Mizno'].map((text,index)=>(
                                 <Grid item mobile={2} largeMobile={2} key = {index}>
-                                    <Box onClick ={()=>handleToggleBrand(index+1)} backgroundColor={brand.includes(index+1)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                    <Box onClick ={()=>handleToggleBrand(index+1)} backgroundColor={brand.includes(index+1)?'primary.main':'#ffffff'} sx={tagbox}>
                                         <Typography color = {brand.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
@@ -243,7 +243,7 @@ export default function TemporaryDrawer(props) {
                         <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:'0px'}}>
                             {['발볼넓은','아치보호','카본플레이트','얇은 소재','두꺼운 소재','단단한 쿠션감','푹신한 쿠션감'].map((text,index)=>(
                                 <Grid item mobile={2} largeMobile={2} key = {index}>
-                                    <Box onClick ={()=>handleToggleFeature(index+1)} backgroundColor={feature.includes(index+1)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                    <Box onClick ={()=>handleToggleFeature(index+1)} backgroundColor={feature.includes(index+1)?'primary.main':'#ffffff'} sx={tagbox}>
                                         <Typography color = {feature.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
@@ -264,7 +264,7 @@ export default function TemporaryDrawer(props) {
                         <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:'0px'}}>
                             {['단거리','장거리','데일리','훈련','경기','트레일'].map((text,index)=>(
                                 <Grid item mobile={2} largeMobile={2} key = {index}>
-                                    <Box onClick ={()=>handleToggleUseage(index+1)} backgroundColor={useage.includes(index+1)?'#4F1D76':'#ffffff'} sx={tagbox}>
+                                    <Box onClick ={()=>handleToggleUseage(index+1)} backgroundColor={useage.includes(index+1)?'primary.main':'#ffffff'} sx={tagbox}>
                                         <Typography color = {useage.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>

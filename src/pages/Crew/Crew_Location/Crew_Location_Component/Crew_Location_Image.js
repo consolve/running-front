@@ -50,7 +50,7 @@ export default function Shoes_Location_Image(props){
                 <Box sx={{width:"100%"}}>
                     
                     <Box sx={{mx:"20px"}}>
-                        <Box sx={{position:'relative',height:'100px',backgroundColor:'#4F1D76',backgroundImage:`url(${locationImage[location]})`,borderRadius:3,mx:'auto',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}>
+                        <Box sx={{position:'relative',height:'100px',backgroundColor:'primary.main',backgroundImage:`url(${locationImage[location]})`,borderRadius:3,mx:'auto',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',backgroundSize: 'cover'}}>
                             <Typography sx={{position:"absolute",left:'50%',top:'50%',transform:"translate(-50%, -50%)",fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'24px',color:'#ffffff'}}>
                                 {locationName[location]}
                             </Typography>
