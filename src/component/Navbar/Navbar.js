@@ -2,15 +2,14 @@ import * as React from 'react';
 import {useEffect} from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import HomeIcon from '@mui/icons-material/Home';
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PeopleIcon from '@mui/icons-material/People';
-import CorporateFareIcon from '@mui/icons-material/CorporateFare';
-import DoNotStepIcon from '@mui/icons-material/DoNotStep';
+import {ReactComponent as HomeIcon} from '../../Image/home.svg';
+import {ReactComponent as DirectionsRunIcon} from '../../Image/contest.svg';
+import {ReactComponent as PeopleIcon} from '../../Image/crew.svg';
+import {ReactComponent as CorporateFareIcon} from '../../Image/community.svg';
+import {ReactComponent as DoNotStepIcon} from '../../Image/shoes.svg';
+import { DoNotStepOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/system';
-import Home from "../../Image/Vector.svg"
 
 export default function Navbar() {
 
@@ -51,31 +50,36 @@ export default function Navbar() {
           label="홈"
           value="/"
           onClick = {navigateToMain}
-          icon={<HomeIcon />}
+          icon={<HomeIcon  style={{ 
+            color: 'inherit'}} width={24} height={24}/>}
         />
         <BottomNavigationAction
           label="대회일정"
           value="/schedule"
           onClick = {navigateToContest}
-          icon={<DirectionsRunIcon />}
+          icon={<DirectionsRunIcon  style={{ 
+            color: 'inherit'}} width={24} height={24}/>}
         />
         <BottomNavigationAction
           label="러너톡"
           value="/runnertalk"
           onClick = {navigateToTalk}
-          icon={<CorporateFareIcon />}
+          icon={<CorporateFareIcon  style={{ 
+            color: 'inherit'}} width={24} height={24}/>}
         />
         <BottomNavigationAction
           label="러닝크루"
           value="/crew"
           onClick = {navigateToCrew}
-          icon={<PeopleIcon />}
+          icon={<PeopleIcon  style={{ 
+            color: 'inherit'}} width={24} height={24}/>}
         />
         <BottomNavigationAction
           label="러닝화"
           value="/shoes"
           onClick = {navigateToShoes}
-          icon={<DoNotStepIcon />}
+          icon={<DoNotStepOutlined  style={{ 
+            color: 'inherit'}} width={24} height={24}/>}
         />
       </BottomNavigation>
     </Box>

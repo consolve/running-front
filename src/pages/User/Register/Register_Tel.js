@@ -1,7 +1,6 @@
 import {Box,Typography,Button,Input,CircularProgress} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import Logo from "../../../Image/RIFE_Logo.png"
 import { styled } from '@mui/system';
 import { useNavigate } from "react-router-dom";
 import Drawer from "./Register_Tel_Drawer"
