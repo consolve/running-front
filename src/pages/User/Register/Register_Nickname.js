@@ -86,14 +86,21 @@ function Login(){
     }
 
     return(
-      <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'100vh',flexDirection:'column',pl:2}}>
-        
-        <Box sx={{display:'flex',alignItems:'center',justifyContent:'start',width:'100%',maxWidth:'420px',minWidth:'360px',height:'80px'}}>
-            <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+        <>
+        <Box sx={{
+            position:"fixed",
+            top:10,
+            height:'60px',
+            width:'100%',
+            minWidth:'360px',
+            maxWidth:'450px',
+        }}>
+            <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'start',alignItems:'center',height:"100%",ml:2}}>
                 <WestIcon sx={{}}/>
             </Box>
         </Box>
-
+      <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'100vh',flexDirection:'column',pl:2}}>
+        
         <Box sx={{width:'100%',pt:3}}>
             <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
                 환영합니다!
@@ -157,7 +164,8 @@ function Login(){
             </Modal>
         </Box> */}
 
-      </Box>    
+      </Box>  
+      </> 
     )
 }
 

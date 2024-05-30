@@ -7,7 +7,6 @@ import {ReactComponent as DirectionsRunIcon} from '../../Image/contest.svg';
 import {ReactComponent as PeopleIcon} from '../../Image/crew.svg';
 import {ReactComponent as CorporateFareIcon} from '../../Image/community.svg';
 import {ReactComponent as DoNotStepIcon} from '../../Image/shoes.svg';
-import { DoNotStepOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/system';
 
@@ -78,7 +77,7 @@ export default function Navbar() {
           label="러닝화"
           value="/shoes"
           onClick = {navigateToShoes}
-          icon={<DoNotStepOutlined  style={{ 
+          icon={<DoNotStepIcon  style={{ 
             color: 'inherit'}} width={24} height={24}/>}
         />
       </BottomNavigation>
