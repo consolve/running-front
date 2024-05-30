@@ -1,10 +1,10 @@
 import {Box,Typography,Button} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import Logo from "../../Image/Vector.svg"
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import Auth from "../../hoc/auth"
+import {ReactComponent as Logo} from "../../Image/Vector.svg"
 
 
 
@@ -19,14 +19,7 @@ function Login(){
     return(
       <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',height:'100vh',flexDirection:'column'}}>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
-                <Box
-                    component="img"
-                    sx={{
-                        width: '150px',
-                    }}
-                    alt="LOGO"
-                    src={Logo}
-                />
+                <Logo width={'150px'} height="150px"/>
                 <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column',pt:3}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'bold',fontSize:'13px',color:'primary.main'}}>
                         Running + Life = RIFE
