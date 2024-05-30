@@ -151,11 +151,11 @@ export default function TemporaryDrawer(props) {
                             코스
                         </Typography>
 
-                        <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:10,largeMobile:12}} sx={{mb:'11px',mt:"0px"}}>
+                        <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:10,largeMobile:12}} sx={{mb:'20px',mt:"0px"}}>
                             {['FULL','HALF','10K','5K','ULTRA','챌린지'].map((text,index)=>(
                                 <Grid item mobile={2} largeMobile={2} key = {index}>
-                                    <Box onClick ={()=>handleToggleCourse(index)} backgroundColor={course.includes(index)?'primary.main':'#ffffff'} sx={tagbox}>
-                                        <Typography color = {course.includes(index)?'white':"#606060"} sx={tagtypo}>
+                                    <Box onClick ={()=>handleToggleCourse(index+1)} backgroundColor={course.includes(index+1)?'primary.main':'#ffffff'} sx={tagbox}>
+                                        <Typography color = {course.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
                                     </Box>   
@@ -176,8 +176,8 @@ export default function TemporaryDrawer(props) {
                         <Grid container rowSpacing={1.5} columnSpacing={0.75} column={{mobile:14,largeMobile:16}} sx={{mb:'20px',mt:"0px"}}>
                             {['수도권','충청권','강원권','전라권','경상권','제주권'].map((text,index)=>(
                                 <Grid item mobile={2} largeMobile={2} key = {index}>
-                                    <Box onClick ={()=>handleToggleLocation(index)} backgroundColor={location.includes(index)?'primary.main':'#ffffff'} sx={tagbox}>
-                                        <Typography color = {location.includes(index)?'white':"#606060"} sx={tagtypo}>
+                                    <Box onClick ={()=>handleToggleLocation(index+1)} backgroundColor={location.includes(index+1)?'primary.main':'#ffffff'} sx={tagbox}>
+                                        <Typography color = {location.includes(index+1)?'white':"#606060"} sx={tagtypo}>
                                             {text}
                                         </Typography>
                                     </Box>   
