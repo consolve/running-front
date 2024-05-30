@@ -1,31 +1,18 @@
 import {Box,Typography,Paper,Avatar} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import TopbarTheme from '../../../style/plate/topbar';
 import { useNavigate } from "react-router-dom";
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
-import WestIcon from '@mui/icons-material/West';
-import Logo from "../../../Image/White_Logo.png"
+import Logo from "../../../Image/Vector.svg"
 import { API_URL } from '../../../API/URL';
-import DefaultProfile from "../../../Image/user-circle.png"
+import DefaultProfile from "../../../Image/user-circle.svg"
 
 export default function Main_TopBar(){
 
     const navigate = useNavigate();
 
-    const [scrollOpacity, setScrollOpacity] = useState(1);
-    const updateScroll = () => {
-        setScrollOpacity(1-(window.scrollY || document.documentElement.scrollTop)/500);
-    }
-
-    useEffect(()=>{
-        window.addEventListener('scroll', updateScroll);
-    });
-
     const navigateToScheduleMain = () =>{
-        navigate('/schedule')
+        navigate('/')
     }
 
     const navigateToProfile = () =>{
@@ -36,31 +23,15 @@ export default function Main_TopBar(){
 
     return(
         <Box 
-        visibility={scrollOpacity>=0.2?'visible':'hidden'}
-        style ={{
-            opacity:scrollOpacity,
-        }}
-        sx={{
-            position:'fixed',
-            top:10,
-            display:'flex',
-            justifyContent:'space-between',
-            alignItems:'center',
-            height:'60px',
-            width:'100%',
-            borderBottom:1,
-            minWidth:'360px',
-            maxWidth:'450px',
-            zIndex:1000,
-            backgroundColor:'transparent',
-            borderBottom:0,
-        }}>
-            <Box onClick = {navigateToScheduleMain} sx={{display:'flex',justifyContent:'center',alignItems:'center',ml:2}}>
-                <Box component='img' src={Logo} sx={{}}/>
-            </Box>
+        sx={TopbarTheme}>
+            <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
+                <Box onClick = {navigateToScheduleMain} sx={{display:'flex',justifyContent:'center',alignItems:'center',ml:2}}>
+                    <Box component="img" src={Logo}/>
+                </Box>
 
-            <Box sx={{mr:2}}>
-                <Avatar onClick={navigateToProfile} alt="Profile" src={profile==="/media/None.png"?DefaultProfile:`${API_URL}${profile}`} sx={{width:"28px",height:"28px"}}/>
+                <Box sx={{mr:2}}>
+                    <Avatar onClick={navigateToProfile} alt="Profile" src={profile==="/media/None.png"?DefaultProfile:`${API_URL}${profile}`} sx={{width:"28px",height:"28px"}}/>
+                </Box>
             </Box>
         </Box>    
     )

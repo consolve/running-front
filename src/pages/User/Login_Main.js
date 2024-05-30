@@ -1,7 +1,7 @@
 import {Box,Typography,Button} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import Logo from "../../Image/RIFE_Logo.png"
+import Logo from "../../Image/Vector.svg"
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import Auth from "../../hoc/auth"

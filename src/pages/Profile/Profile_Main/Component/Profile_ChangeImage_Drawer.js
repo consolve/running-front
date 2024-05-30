@@ -2,7 +2,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import {useState,React} from "react";
 import {Box,Typography} from "@mui/material"
 import CloseIcon from '@mui/icons-material/Close';
-import DefaultProfile from '../../../../Image/user-circle.png';
+import DefaultProfile from '../../../../Image/user-circle.svg';
 import styled from "styled-components"
 import { fetchUserImage } from '../../../../API/api/Profile/profile_api';
 
