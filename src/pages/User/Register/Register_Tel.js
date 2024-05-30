@@ -88,7 +88,7 @@ function Login(){
         console.log(res)
 
         if(res.response){
-            switch(response.response.status){
+            switch(res.response.status){
                 case 400:
                     setError("잘못된 전화번호입니다.");
                     break;
