@@ -85,6 +85,7 @@ export default function TemporaryDrawer(props) {
 
     const RegisterUser = async () =>{
         setLoading(true);
+
         if(name===""||number===""||nickName===""||crew===""||service===false||information===false){
             props.setError("모든 항목을 입력해주세요");
             props.setModalOpen(true);
@@ -95,8 +96,26 @@ export default function TemporaryDrawer(props) {
         const response = await UserRegister(name,number,nickName,crew,service,information,marketing);
 
         if(response.response){
-            props.setError(response.response.status);
-            props.setModalOpen(true);
+
+            switch(response.response.status){
+                case 400:
+                    props.setError("이미 존재하는 유저입니다.");
+                    props.setModalOpen(true);
+                    break;
+                case 401:
+                    props.setError("필수 항목을 입력해주세요");
+                    props.setModalOpen(true);
+                    break;
+                case 500:
+                    props.setError("서버 오류입니다. 잠시 후 다시 시도해주세요");
+                    props.setModalOpen(true);
+                    break;
+                default:
+                    props.setError("알 수 없는 오류입니다. 잠시 후 다시 시도해주세요");
+                    props.setModalOpen(true);
+                    break;
+            }
+
             setLoading(false);
         }
         

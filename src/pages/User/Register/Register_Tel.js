@@ -26,6 +26,7 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    border:0
   };
 
 const CustomInput = React.forwardRef(function CustomInput(props, ref) {
@@ -74,17 +75,24 @@ function Login(){
     const handleName = (e) =>{
         setName(e.target.value);
     }
-
-    const handlenumber = (e) =>{
-        setNumber(e.target.value);
-    }
+    
+    const handlenumber = (event) => {
+        const input = event.target.value.replace(/[^0-9]/g, '');
+        setNumber(input);
+    };
 
     const navigate = useNavigate();
 
     const navigateToRegisterName = async () =>{
+
+        if(number.length !== 11){
+            setError("전화번호를 확인해주세요.");
+            setModalOpen(true);
+            return;
+        }
+
         setLoading(true);
         const res = await SmsSendCode(number);
-        console.log(res)
 
         if(res.response){
             switch(res.response.status){
@@ -162,7 +170,7 @@ function Login(){
                     </Box>
 
                     <Box sx={{display:'flex',width:'100%',mt:5}}>
-                        <Input value = {number} placeholder="전화번호를 입력해주세요" onChange={handlenumber} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
+                        <Input pattern="[0-9]" value = {number} placeholder="전화번호를 입력해주세요" onChange={handlenumber} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
                     </Box>
                 </Box>
             </Box>
@@ -179,7 +187,7 @@ function Login(){
 
             {
                 loading?
-                <Box sx={{position:'absolute',display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',pr:2}}>
+                <Box sx={{position:'fixed',display:'flex',alignItems:'center',justifyContent:'center',top:0,bottom:0,right:0,left:0}}>
                     <CircularProgress color="primary"/>
                 </Box>
                 :

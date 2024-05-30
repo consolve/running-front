@@ -11,6 +11,7 @@ import WestIcon from '@mui/icons-material/West';
 import {Modal} from '@mui/material';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
+import Error from '../../../component/Error/ErrorModal';
 
 
 const vibrate = keyframes`
@@ -59,12 +60,9 @@ function Login(){
     const [crew,setCrew] = useRecoilState(User_Crew);
 
     const [error,setError] = useState();
-    const [Modalopen, setModalOpen] = React.useState(false);
-    const handleModalOpen = () => setModalOpen(true);
-    const handleModalClose = () => {
-        setModalOpen(false)
-    };
+    const [errorOpen,setErrorOpen] = useState(false);
 
+    const [Modalopen, setModalOpen] = React.useState(false);
     const [open,setOpen] = useState(false);
 
     const handleCrew = (e) =>{
@@ -83,6 +81,10 @@ function Login(){
             return;
         }
         setOpen(true);
+    }
+
+    const handleCloseError = () =>{
+        setErrorOpen(false);
     }
 
     const navigateToBack = () =>{
@@ -138,9 +140,9 @@ function Login(){
             </Button>
         </Box>
 
-        <Drawer open={open} setOpen={setOpen} setError={setError} setModalOpen={setModalOpen}/>
+        <Drawer open={open} setOpen={setOpen} setError={setError} setModalOpen={setErrorOpen}/>
 
-    
+        <Error error={error} open={errorOpen} setOpen={setErrorOpen} handleClose={handleCloseError}/> 
         
       </Box>    
     )
