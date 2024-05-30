@@ -1,41 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 
-export default function (SpecificComponent, option, Route = '/login/main') {
-
-    const sessionid = window.localStorage.getItem('sessionid');
-
-    //null    =>  아무나 출입이 가능한 페이지
-    //true    =>  로그인한 유저만 출입이 가능한 페이지
-    //false   =>  로그인한 유저는 출입 불가능한 페이지
-
-    function AuthenticationCheck() {
+export default function withAuth(SpecificComponent, option, Route = '/login/main') {
+    function AuthenticationCheck(props) {
+        const [isAuthenticated, setIsAuthenticated] = useState(null);
         const navigate = useNavigate();
-        
-        useEffect(() => {
-            //로그인 X
-            if(!(sessionid)){
-                //로그인 하지 않은 유저가 로그인한 유저만 출입 가능한 곳 접근
-                if(option){
-                    navigate(Route);
-                }
-            }
+        const sessionid = window.localStorage.getItem('sessionid');
 
-            //로그인 상태
-            else{
-                if(option !== null){
-                    //로그인한 유저 출입 불가능한 곳 접근
-                    if(!option){
-                        navigate(Route);
-                    }
+        useEffect(() => {
+            // 로그인하지 않은 상태
+            if (!sessionid) {
+                if (option) {
+                    // 로그인이 필요한 페이지에 접근 시도
+                    navigate(Route);
+                } else {
+                    // 로그인하지 않아도 되는 페이지
+                    setIsAuthenticated(true);
+                }
+            } else {
+                // 로그인된 상태
+                if (option === false) {
+                    // 로그인한 유저가 접근할 수 없는 페이지 접근 시도
+                    navigate(Route);
+                } else {
+                    // 로그인한 유저가 접근 가능
+                    setIsAuthenticated(true);
                 }
             }
-        }, [])
+        }, [navigate, sessionid]);
+
+        if (isAuthenticated === null) {
+            // 인증 확인 중에는 아무것도 렌더링하지 않거나 로딩 컴포넌트를 렌더링할 수 있음
+            return null; // 또는 로딩 컴포넌트
+        }
 
         return (
-            <SpecificComponent/>
-        )
+            <SpecificComponent {...props} />
+        );
     }
-    return AuthenticationCheck
+    return AuthenticationCheck;
 }

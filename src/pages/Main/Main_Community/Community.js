@@ -41,7 +41,7 @@ export default function  Community(props){
         if(_PopularRunningTalk.response){
             switch(_PopularRunningTalk.response.status){
                 case 401:
-                    props.setIsLogin(false)
+                    props.setError("로그인이 필요합니다.")
                     break;
                 case 404:
                     props.setError("서버와의 연결이 원활하지 않습니다.")
