@@ -87,14 +87,30 @@ function Login(){
         const res = await SmsSendCode(number);
         console.log(res)
 
-        if(res.status===200){
-            setLoading(false);
-            setOpen(true)
-        }
-        else{
-            setError(res.response.status);
+        if(res.response){
+            switch(response.response.status){
+                case 400:
+                    setError("잘못된 전화번호입니다.");
+                    break;
+                case 401:
+                    setError("로그인이 필요합니다.");
+                    break;
+                case 403:
+                    setError("이미 탈퇴된 계정입니다.");
+                    break;
+                case 500:
+                    setError("서버 오류입니다.");
+                    break;
+                default:
+                    setError("알수없는 오류입니다.");
+                    break;
+            }
             setLoading(false);
             setModalOpen(true);
+        }
+        else{
+            setLoading(false);
+            setOpen(true)
         }
 
     }
