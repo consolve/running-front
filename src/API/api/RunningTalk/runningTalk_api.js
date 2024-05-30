@@ -188,7 +188,7 @@ export const FetchMyPost = async (session) =>{
         }
 
         const response = await axios.get(`${process.env.REACT_APP_URL}/api/runningtalk/post`,header);
-        return response.data.post;   
+        return response.data.posts;   
     }
     catch(error){
         return error

@@ -2,8 +2,7 @@ import {Box,Typography,Modal,Divider} from '@mui/material';
 import Topbar from "../Component/Topbar"
 import {useState,useEffect} from "react"
 import Content from "../Component/Content_Post.js"
-import {FetchMySavedPost,runningTalkBookMark} from "../../../../API/api/RunningTalk/runningTalk_api"
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import {FetchMyPost,runningTalkBookMark} from "../../../../API/api/RunningTalk/runningTalk_api"
 import ContentSkeleton from '../../../../component/shoes/wide_Skeleton.js';
 
 const style = {
@@ -32,7 +31,7 @@ export default function MyBookmarkPost(){
     const handleClose = () => setOpen(false);
 
     const FetchList = async () =>{
-        const _savedPost = await FetchMySavedPost(session);
+        const _savedPost = await FetchMyPost(session);
 
         if(_savedPost.response){
             setError(_savedPost.response.status)

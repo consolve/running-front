@@ -7,6 +7,7 @@ import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 
 export default function Post({item}){
     const navigate = useNavigate();
+    const profile = localStorage.getItem('profile');
 
     const navigateToPostDetail = (id) =>{
         navigate(`/runnertalk/detail/${id}`)
@@ -27,7 +28,7 @@ export default function Post({item}){
                 </Box>
                 <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:"center"}}>
                     <Box sx={{display:'flex',height:'14px',alignItems:"center",mr:0.5}}>
-                        <Avatar sx={{width:'11px',height:'11px',mr:0.5}}/>
+                        <Avatar src={item.user_profile?item.user_profile:profile} sx={{width:'11px',height:'11px',mr:0.5}}/>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060'  ,height:'100%',lineHeight:'normal'}}>
                             {item.user}
                         </Typography>
