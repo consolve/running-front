@@ -48,8 +48,8 @@ export default function Crew_Detail_TopBar(props){
     return(
         <Box sx={TopbarTheme}>
             <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                <IconButton type="button" sx={{color:'white' }} aria-label="search">
-                    <WestIcon sx={{ml:2}}/>
+                <IconButton type="button" sx={{color:'white',ml:2 }} aria-label="search">
+                    <WestIcon sx={{}}/>
                 </IconButton>
             </Box>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
