@@ -58,7 +58,7 @@ export default function Competition_TopBar({item,navigateToCompetitionDetail,inp
                         item.courseTags.map((item,index)=>{
                             return(
                                 <Box key ={index} sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'primary.main',borderRadius:'6px',mr:'3px'}}>
-                                    <Typography sx={{fontFamily:'Pretendard',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"10.74px",mx:'6px',my:'2px',width:"auto"}}>
+                                    <Typography sx={{fontFamily:'Pretendard Variable',fontStyle:'normal',fontWeight:'700',fontSize:'9px',color:'#ffffff',lineHeight:"10.74px",mx:'6px',my:'2px',width:"auto"}}>
                                         {item.name}
                                     </Typography>
                                 </Box>

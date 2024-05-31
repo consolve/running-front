@@ -47,7 +47,7 @@ export default function Competition_Schedule_Calendar(props){
     return(
         <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'60%',borderColor:'#E8E8E8',flexDirection:'column',width:'100%',mb:'60px'}}>
 
-            <Title title={"러닝 캘린더"} content={"러닝 대회를 캘린더로 한 눈에 확인하세요"}/>
+            <Title title={"대회 캘린더"} content={"대회 일정을 캘린더로 한 눈에 확인하세요"}/>
 
             {
                 loadingall?
