@@ -145,7 +145,7 @@ function Login(){
                         </Box>
 
                         <Box sx={{display:'flex',width:'100%',mt:5}}>
-                            <Input pattern="[0-9]" value = {number} placeholder="전화번호를 입력해주세요" onChange={handlenumber} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
+                            <Input type='tel' pattern="[0-9]" value = {number} placeholder="전화번호를 입력해주세요" onChange={handlenumber} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
                         </Box>
                     </Box>
                 </Box>

@@ -90,7 +90,7 @@ export default function Competition_Detail_Detail(props) {
                                             {category[index]}
                                         </Typography>
                                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'12px'}}>
-                                            {item[0]} ~ {item[0]}
+                                            {item[0]} - {item[0]}
                                         </Typography>
                                     </Box>
                                 </Box>

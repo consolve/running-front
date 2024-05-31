@@ -99,29 +99,31 @@ function Login(){
                 <WestIcon sx={{}}/>
             </Box>
         </Box>
-      <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',height:'100vh',flexDirection:'column',pl:2}}>
-        
-        <Box sx={{width:'100%',pt:3}}>
-            <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
-                환영합니다!
-            </Typography>
-            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px',mt:3}}>
-                러너님을
-            </Typography>
-            <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
-                어떻게 불러드리면 될까요?
-            </Typography>
-        </Box>
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',flexDirection:'column',pt:2,width:'100%'}}>
-            <Box sx={{display:'flex',width:'100%',mt:5,position:'relative',alignItems:'center'}}>
-                <Input error={open} value = {nickName} placeholder="10자 내로 입력해주세요." onChange={handleNickName} sx={{width:'100%',mr:2,fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'23px'}}/>
-                <Box sx={{position:'absolute',right:'20px',display:'flex',alignItems:'center',height:'100%',mr:2}}>
-                    <Typography color = "#C4C9CF" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'23px'}}>
-                        {nickName.length}{"/10"}
+        <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',backgroundColor:'#ffffff',height:'100%',flexDirection:'column',mt:'94px',width:"100%"}}>
+            <Box sx={{display:"flex",flexDirection:"column",px:'22px',width:"calc(100% - 44px)"}}>
+              
+                <Box sx={{width:'100%',pt:3}}>
+                    <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
+                        환영합니다!
                     </Typography>
-                </Box>  
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px',mt:3}}>
+                        러너님을
+                    </Typography>
+                    <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
+                        어떻게 불러드리면 될까요?
+                    </Typography>
+                </Box>
+                <Box sx={{display:'flex',justifyContent:'start',alignItems:'start',flexDirection:'column',pt:2,width:'100%'}}>
+                    <Box sx={{display:'flex',width:'100%',mt:5,position:'relative',alignItems:'center'}}>
+                        <Input error={open} value = {nickName} placeholder="10자 내로 입력해주세요." onChange={handleNickName} sx={{width:'100%',mr:2,fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'23px'}}/>
+                        <Box sx={{position:'absolute',right:'20px',display:'flex',alignItems:'center',height:'100%',mr:2}}>
+                            <Typography color = "#C4C9CF" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'23px'}}>
+                                {nickName.length}{"/10"}
+                            </Typography>
+                        </Box>  
+                    </Box>
+                </Box>
             </Box>
-        </Box>
         {
             open&&
             <AnimatedBox sx={{width:"100%"}}>

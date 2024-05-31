@@ -166,7 +166,7 @@ export default function TemporaryDrawer(props) {
                 </Box>
 
                 <Box sx={{display:'flex',width:'90%',mt:5,position:'relative',alignItems:'center'}}>
-                    <Input onChange={handleOtp} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>
+                    <Input type='tel' onChange={handleOtp} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>
                     <Box sx={{position:'absolute',right:'85px',display:'flex',alignItems:'center',height:'100%'}}>
                         <Typography color = "#C4C9CF" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'15px'}}>
                             {parseInt(time/60)}:{getSeconds(time)}

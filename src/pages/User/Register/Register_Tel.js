@@ -151,7 +151,7 @@ function Login(){
             </Box>
         </Box>
 
-        <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',backgroundColor:'#ffffff',height:'100%',flexDirection:'column',mt:'117px',width:"100%"}}>
+        <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',backgroundColor:'#ffffff',height:'100%',flexDirection:'column',mt:'94px',width:"100%"}}>
             <Box sx={{display:"flex",flexDirection:"column",px:'22px',width:"calc(100% - 44px)"}}>
                 
                 <Box sx={{width:'100%'}}>
@@ -170,7 +170,7 @@ function Login(){
                     </Box>
 
                     <Box sx={{display:'flex',width:'100%',mt:5}}>
-                        <Input pattern="[0-9]" value = {number} placeholder="전화번호를 입력해주세요" onChange={handlenumber} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
+                        <Input type='tel' pattern="[0-9]" value = {number} placeholder="전화번호를 입력해주세요" onChange={handlenumber} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>   
                     </Box>
                 </Box>
             </Box>

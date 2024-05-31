@@ -32,9 +32,9 @@ export default function Shoes_Detail_Recommend(props) {
                 {
                     props.shoes.recommendTo.map((item,index)=>{
                         return(
-                            <Box key = {index} sx={{display:'flex',justifyContent:'start',alignItems:'center',mx:'20px',mt:1,backgroundColor:'#4F1D76',height:'28px',borderRadius:'14px'}}>
-                                <Box key ={index} sx={{borderRadius:'50%',width:'24px',height:'24px',border:"2.5px solid #4F1D76",backgroundColor:'#ffffff',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                                    <Typography marginRight={index==0?'1px':0} align="center" sx={{color:'#4F1D76',fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px',height:'15px',lineHeight:'15.51px'}}>
+                            <Box key = {index} sx={{display:'flex',justifyContent:'start',alignItems:'center',mx:'20px',mt:1,backgroundColor:'primary.main',height:'28px',borderRadius:'14px'}}>
+                                <Box key ={index} sx={{borderRadius:'50%',width:'24px',height:'24px',border:"2.5px solid primary.main",backgroundColor:'#ffffff',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                                    <Typography marginRight={index==0?'1px':0} align="center" sx={{color:'primary.main',fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'13px',height:'15px',lineHeight:'15.51px'}}>
                                         {index+1}
                                     </Typography>
                                 </Box>
