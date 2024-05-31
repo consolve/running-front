@@ -211,7 +211,7 @@ export const FetchMySavedPost = async (session) =>{
     }
 }
 
-export const DeletePost = async (id,session) => {
+export const DeletePost = async (session,id) => {
     try{
         const header = {
             headers: {
