@@ -3,7 +3,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import {runningTalkBookMark} from "../../../../../API/api/RunningTalk/runningTalk_api"
 import { useRecoilState } from 'recoil';
 import { RunnerTalkDetail_isBookMarked} from '../../../../../state/RunnerTalk/RunnerTalk_Detail_State';
-import {Box,Typography} from '@mui/material';
+import {Box,Typography,IconButton} from '@mui/material';
 import { useState } from 'react';
 import BookMarkHandle from '../../../../../Util/bookmark';
 import {useNavigate} from "react-router-dom"
@@ -34,9 +34,13 @@ export default function Like({point,id}){
     return(
         <Box sx={{display:'flex',alignItems:'center',justifyContent:'center',ml:1}}>
             {isBookmarked?
-                <BookmarkIcon onClick={(e)=>onClickBookMart(id,e)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                <IconButton onClick={(e)=>onClickBookMart(id,e)} sx={{p:0}}>
+                    <BookmarkIcon onClick={(e)=>onClickBookMart(id,e)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                </IconButton>
                 :
-                <BookmarkBorderIcon onClick={(e)=>onClickBookMart(id,e)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                <IconButton onClick={(e)=>onClickBookMart(id,e)} sx={{p:0}}>
+                    <BookmarkBorderIcon onClick={(e)=>onClickBookMart(id,e)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                </IconButton>
             }
             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'18px',lineHeight:"normal",ml:"3px"}}>
                 {bookmarkPoint}

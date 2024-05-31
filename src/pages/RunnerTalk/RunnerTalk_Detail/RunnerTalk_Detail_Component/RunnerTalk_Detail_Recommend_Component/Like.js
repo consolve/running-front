@@ -3,7 +3,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import {runningTalkLike} from "../../../../../API/api/RunningTalk/runningTalk_api"
 import { useRecoilState } from 'recoil';
 import { RunnerTalkDetail_isLiked } from '../../../../../state/RunnerTalk/RunnerTalk_Detail_State';
-import {Box,Typography} from '@mui/material';
+import {Box,Typography,IconButton} from '@mui/material';
 import { useState } from 'react';
 
 export default function Like({point,id}){
@@ -28,9 +28,13 @@ export default function Like({point,id}){
     return(
         <Box sx={{display:'flex',alignItems:'center',justifyContent:'center'}}>
             {isliked === true ?
-                <ThumbUpAltIcon onClick={()=>CommentLikeFunction(id,sessionid)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                <IconButton onClick={()=>CommentLikeFunction(id,sessionid)} sx={{p:0}}>
+                    <ThumbUpAltIcon sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                </IconButton>
                 :
-                <ThumbUpOffAltOutlinedIcon onClick={()=>CommentLikeFunction(id,sessionid)} sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                <IconButton onClick={()=>CommentLikeFunction(id,sessionid)} sx={{p:0}}>
+                    <ThumbUpOffAltOutlinedIcon sx={{width:'21px',height:'21px',cursor:'pointer'}}/>
+                </IconButton>
             }
             <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'18px',lineHeight:"normal",ml:"3px"}}>
                 {likePoint}
