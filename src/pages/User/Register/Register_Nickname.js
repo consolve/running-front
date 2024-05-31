@@ -133,7 +133,7 @@ function Login(){
             </AnimatedBox>
         }
 
-        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"absolute",bottom:30,minWidth:'360px',maxWidth:'420px',mr:2,width:"100%"}}>
+<Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"fixed",bottom:30,minWidth:'360px',maxWidth:'420px',width:"100%"}}>
             <Button onClick={navigateToRegisterCrew} variant="contained" color='primary' disabled={!nickName} sx={{width:'90%',height:'50px',borderRadius:3}}>
                 <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'19px',fontWeight:'500'}}>
                     다음
