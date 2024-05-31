@@ -9,3 +9,7 @@
 .swiper-grid-column > .swiper-wrapper{
   flex-direction: unset !important;
   }
+
+.swiper-wrapper {
+    transition-timing-function: linear;
+ }
