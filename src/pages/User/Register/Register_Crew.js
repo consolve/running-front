@@ -109,7 +109,7 @@ function Login(){
             <Box sx={{display:"flex",flexDirection:"column",px:'22px',width:"calc(100% - 44px)"}}>
                 
 
-                <Box sx={{width:'100%',pt:3}}>
+                <Box sx={{width:'100%'}}>
                     <Typography color = "primary.main" sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'28px'}}>
                         환영합니다!
                     </Typography>

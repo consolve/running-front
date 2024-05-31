@@ -70,9 +70,10 @@ export default function TemporaryDrawer(props) {
         return () => clearInterval(timer);
     }, [time]);
 
-    const handleOtp = (e) =>{
-        setOtp(e.target.value);
-    }
+    const handleOtp = (event) => {
+        const input = event.target.value.replace(/[^0-9]/g, '');
+        setOtp(input);
+    };
 
     const toggleDrawer = (open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -143,7 +144,7 @@ export default function TemporaryDrawer(props) {
                 </Box>
 
                 <Box sx={{display:'flex',width:'90%',mt:5,position:'relative',alignItems:'center'}}>
-                    <Input type='tel' onChange={handleOtp} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>
+                    <Input type='tel' pattern="[0-9]" onChange={handleOtp} sx={{width:'100%',fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'22px'}}/>
                     <Box sx={{position:'absolute',right:'85px',display:'flex',alignItems:'center',height:'100%'}}>
                         <Typography color = "#C4C9CF" sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'15px'}}>
                             {parseInt(time/60)}:{getSeconds(time)}

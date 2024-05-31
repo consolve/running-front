@@ -35,7 +35,7 @@ function Login(){
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column', position:"absolute",bottom:30,minWidth:'360px',maxWidth:"420px",width:"100%"}}>
                 <Button onClick={navigateToRegister} variant="contained" color='primary' sx={{width:'90%',height:'50px',borderRadius:3}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontSize:'14px'}}>
-                        업그레이드 하기
+                        회원가입
                     </Typography>
                 </Button>
                 <Box sx={{display:'flex',pt:2}}>

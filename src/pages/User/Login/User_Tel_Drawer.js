@@ -77,9 +77,12 @@ export default function TemporaryDrawer(props) {
         return () => clearInterval(timer);
     }, [time]);
 
-    const handleOtp = (e) =>{
-        setOtp(e.target.value);
-    }
+
+    const handleOtp = (event) => {
+        const input = event.target.value.replace(/[^0-9]/g, '');
+        setOtp(input);
+    };
+
 
     const toggleDrawer = (open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {

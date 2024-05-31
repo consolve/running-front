@@ -126,7 +126,7 @@ function Login(){
                 </Box>
             </Box>
 
-            <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',backgroundColor:'#ffffff',height:'100%',flexDirection:'column',mt:'117px',width:"100%"}}>
+            <Box sx={{display:'flex',justifyContent:'space-between',alignItems:'center',backgroundColor:'#ffffff',height:'100%',flexDirection:'column',mt:'94px',width:"100%"}}>
                 <Box sx={{display:"flex",flexDirection:"column",px:'22px',width:"calc(100% - 44px)"}}>
                     
                     <Box sx={{width:'100%'}}>
