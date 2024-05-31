@@ -34,5 +34,6 @@
   display: none;
 }
 
-
-a { -webkit-tap-highlight-color:transparent;}
+* { 
+	-webkit-tap-highlight-color:transparent;
+}
