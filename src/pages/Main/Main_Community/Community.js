@@ -86,14 +86,13 @@ export default function  Community(props){
                     }}
                     spaceBetween={'-6px'}
                     modules={[Grid,FreeMode]}
-                    
                     freeMode={{enabled: true}}	// 추가
                     >
                 {
                         runningtalk.map((item,index)=>{
                             return(
                                     <SwiperSlide key = {index} className='swiper-slide-community'>
-                                        <Box onClick ={() => navigateToCompetitionDetail(item.id)} sx={{width:'100%',height:'110px',backgroundColor:'#F6F6F6',borderRadius:3,display:'flex',alignItems:'center'}}>
+                                        <Box onClick ={() => navigateToCompetitionDetail(item.id)} sx={{width:'100%',height:'110px',backgroundColor:'#F6F6F6',borderRadius:3,display:'flex',alignItems:'center',filter:"drop-shadow(0 0 0)"}}>
                                             <Box sx={{width:'90px',height:'90px',backgroundColor:'primary.main',borderRadius:3,mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                                             <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',width:`calc(100% - 106px)`,flexDirection:'column',height:"100%"}}>
                                                 <Box sx={{width:'100%'}}>
