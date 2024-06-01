@@ -32,7 +32,7 @@ export default function Shoes_TopBar(props){
 
     
     const navigateToBack  = () =>{
-        navigate(-1);
+        navigate();
     }
 
     const navigateToShoesMain = () =>{

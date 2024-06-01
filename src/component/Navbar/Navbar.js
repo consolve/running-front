@@ -12,7 +12,7 @@ import { Box } from '@mui/system';
 
 export default function Navbar() {
 
-  const pathname = window.location.pathname; // in case user visits the path directly. The BottomNavBar is able to follow suit.
+  const pathname = window.location.pathname;
   const [value, setValue] = React.useState(pathname);
 
   const navigate = useNavigate();
@@ -44,41 +44,51 @@ export default function Navbar() {
 
   return (
     <Box sx={{ position: 'fixed', bottom: 0, left: '50%', right: 0,width:'100%',minWidth:'360px',maxWidth:'450px',transform:'translate(-50%,0)',zIndex:1000 }} elevation={0}>
-      <BottomNavigation value={value} onChange={handleChange}>
+      <BottomNavigation value={value} onChange={handleChange} showLabels>
         <BottomNavigationAction
           label="홈"
           value="/"
           onClick = {navigateToMain}
           icon={<HomeIcon  style={{ 
-            color: 'inherit'}} width={24} height={24}/>}
+            color: 'inherit'}} width={24} height={24}/>
+          }
+disableTouchRipple = {true}
         />
         <BottomNavigationAction
           label="대회일정"
           value="/schedule"
           onClick = {navigateToContest}
           icon={<DirectionsRunIcon  style={{ 
-            color: 'inherit'}} width={24} height={24}/>}
+            color: 'inherit'}} width={24} height={24}/>
+          }
+disableTouchRipple = {true}  
         />
         <BottomNavigationAction
           label="러너톡"
           value="/runnertalk"
           onClick = {navigateToTalk}
           icon={<CorporateFareIcon  style={{ 
-            color: 'inherit'}} width={24} height={24}/>}
+            color: 'inherit'}} width={24} height={24}/>
+          }
+disableTouchRipple = {true}
         />
         <BottomNavigationAction
           label="러닝크루"
           value="/crew"
           onClick = {navigateToCrew}
           icon={<PeopleIcon  style={{ 
-            color: 'inherit'}} width={24} height={24}/>}
+            color: 'inherit'}} width={24} height={24}/>
+          }
+disableTouchRipple = {true}
         />
         <BottomNavigationAction
           label="러닝화"
           value="/shoes"
           onClick = {navigateToShoes}
           icon={<DoNotStepIcon  style={{ 
-            color: 'inherit'}} width={24} height={24}/>}
+            color: 'inherit'}} width={24} height={24}/>
+          }
+disableTouchRipple = {true} 
         />
       </BottomNavigation>
     </Box>
