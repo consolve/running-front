@@ -7,7 +7,7 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import styled from "styled-components"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { BlockUser } from "../../API/api/User/user";
+import Like from "./component/Like"
 import BlockModal from "./Modal/BlockModal"
 
 function timeForToday(value) {
@@ -71,18 +71,6 @@ export default function Comment({item,toggleChildCommentDrawer,LikeFunction,onCl
             setIsShowReadMore(true);
         }
     },[])
-
-    const CommentLikeFunction = async (id,session) => {
-        const response = await LikeFunction(id,session);
-
-        if(response === "Request success"){
-            setlikePoint(prev=>prev = prev+1)
-        }
-        else{
-            setlikePoint(prev=>prev = prev-1)
-        }
-    
-    }
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -167,13 +155,8 @@ export default function Comment({item,toggleChildCommentDrawer,LikeFunction,onCl
                     </Box>
                 </Box>
                 <Box sx={{display:"flex",mt:1.5}}>
-                    <Box onClick={()=>CommentLikeFunction(item.id,sessionid)} sx={{display:'flex',alignItems:'center',height:'14px'}}> 
-                        <ThumbUpOffAltOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
-                            {likePoint}
-                        </Typography>
-                    </Box>
-                    <Box onClick={()=>toggleChildCommentDrawer(true,item.id)} sx={{display:'flex',alignItems:'center',height:'14px'}}>
+                    <Like handleLike={LikeFunction} item={item}/>
+                    <Box onClick={()=>toggleChildCommentDrawer(true,item.id)} sx={{display:'flex',alignItems:'center',height:'14px',ml:'11px'}}>
                         <ModeCommentOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',height:'100%'}}>
                             {item.commentPoint}

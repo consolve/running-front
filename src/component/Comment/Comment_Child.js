@@ -5,6 +5,7 @@ import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined
 import {useNavigate} from "react-router-dom"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import BlockModal from "./Modal/BlockModal"
+import Like from "./component/Like"
 
 function timeForToday(value) {
     const today = new Date();
@@ -54,23 +55,6 @@ export default function ChildComment({item,LikeFunction,onClickComment}){
         setAnchorEl(event.currentTarget);
         handleOpen();
     };
-
-    const ChildCommentLikeFunction = async (id,session) => {
-        if(!sessionid){
-            navigate("/login/main")
-        }
-
-        const response = await LikeFunction(id,session);
-
-        if(response === "Request success"){
-            setlikePoint(prev=>prev = prev+1)
-        }
-        else{
-            setlikePoint(prev=>prev = prev-1)
-        }
-    
-    }
-
 
     return(
         <Box sx={{display:'flex',alignItems:'start',ml:'40px',my:1.5}}>
@@ -131,18 +115,13 @@ export default function ChildComment({item,LikeFunction,onClickComment}){
                         </ClickAwayListener>
                     }
                 </Box>
-                <Box sx={{width:"100%",mb:0.6}}>
+                <Box sx={{width:"100%",mb:0.6,mr:'11px'}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'14px',color:'#000000',whiteSpace:'normal',wordBreak:'break-all'}}>
                         {item.comment}
                     </Typography>
                 </Box>
                 <Box sx={{display:"flex",mt:1}}>
-                    <Box onClick={()=>ChildCommentLikeFunction(item.id,sessionid)} sx={{display:'flex',alignItems:'center',height:'14px'}}> 
-                        <ThumbUpOffAltOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
-                            {likePoint}
-                        </Typography>
-                    </Box>
+                    <Like handleLike={LikeFunction} item={item}/>
                 </Box>
                 
             </Box>

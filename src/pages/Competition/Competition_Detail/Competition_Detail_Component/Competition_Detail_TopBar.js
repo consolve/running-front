@@ -51,7 +51,7 @@ export default function Competition_TopBar(props){
         <Box sx={TopbarTheme}>
             <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <IconButton type="button" sx={{color:'white' }} aria-label="search">
-                    <WestIcon sx={{}}/>
+                    <WestIcon sx={{width:"28px",height:"28px"}}/>
                 </IconButton>
             </Box>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>

@@ -81,7 +81,7 @@ export default function Competition_TopBar(props){
             <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
                 <Box onClick = {navigateToScheduleMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                     <IconButton type="button" sx={{ }} aria-label="search">
-                        <WestIcon sx={{}}/>
+                        <WestIcon sx={{width:"28px",height:"28px"}}/>
                     </IconButton>
                 </Box>
 
@@ -93,7 +93,7 @@ export default function Competition_TopBar(props){
                         onKeyDown={handleOnKeyPress}
                         onChange={(e) => setValuse((prev)=>prev=e.target.value)}
                         value = {value}
-                        sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
+                        sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:700 }}
                         placeholder="풀코스, 10K, 하프"
                     />
                     <IconButton onClick = {navigateToCompetitionSearch} type="button" sx={{ p: '10px' }} aria-label="search">

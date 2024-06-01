@@ -135,6 +135,18 @@ export default function TemporaryDrawer(props) {
 
     },[commentOrder])
 
+    useEffect(()=>{
+        setLoading(true);
+
+        if(commentOrder.includes(0)){
+            FetchContestCommentPopularFunction();
+        }
+        else if(commentOrder.includes(1)){
+            FetchContestCommentLatestFunction();
+        }
+
+    },[childOpen])
+
     const list = (anchor) => (
         <Box
         sx={{display:'flex',justifyContent:'center'}}

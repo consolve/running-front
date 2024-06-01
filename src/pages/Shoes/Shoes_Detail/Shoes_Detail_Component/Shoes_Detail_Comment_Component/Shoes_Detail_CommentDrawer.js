@@ -39,18 +39,6 @@ export default function TemporaryDrawer(props) {
         setOpen(false)
     };
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '320px',
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 2,
-      };
-
     const DrawerTheme = {
         width:'100%',
         height:'100%',
@@ -151,6 +139,18 @@ export default function TemporaryDrawer(props) {
         }
 
     },[commentOrder])
+
+    useEffect(()=>{
+        setLoading(true);
+
+        if(commentOrder.includes(0)){
+            FetchRunningshoesCommentPopularFunction();
+        }
+        else if(commentOrder.includes(1)){
+            FetchRunningshoesCommentLatestFunction();
+        }
+
+    },[childOpen])
 
     const list = (anchor) => (
         <Box

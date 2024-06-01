@@ -86,7 +86,7 @@ export default function Shoes_TopBar(props){
             <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
                 <Box onClick = {navigateToShoesMain} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                     <IconButton type="button" sx={{}} aria-label="search">
-                        <WestIcon sx={{}}/>
+                        <WestIcon sx={{width:"28px",height:"28px"}}/>
                     </IconButton>
                 </Box>
 

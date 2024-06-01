@@ -5,6 +5,7 @@ import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import {useNavigate} from "react-router-dom";
+import Like from "./component/Like"
 
 function timeForToday(value) {
     const today = new Date();
@@ -35,23 +36,6 @@ export default function Parent({setHeight,mainComment,LikeFunction}){
     
     const [likePoint,setlikePoint] = useState(mainComment.likePoint);
     const sessionid = localStorage.getItem('sessionid');
-
-    const CommentLikeFunction = async (id,session) => {
-        if(!sessionid){
-            navigate("/login/main")
-        }
-
-
-        const response = await LikeFunction(id,session);
-
-        if(response === "Request success"){
-            setlikePoint(prev=>prev = prev+1)
-        }
-        else{
-            setlikePoint(prev=>prev = prev-1)
-        }
-    
-    }
 
     const useGettingHeight = () => {
       
@@ -89,13 +73,8 @@ export default function Parent({setHeight,mainComment,LikeFunction}){
                     </Typography>
                 </Box>
                 <Box sx={{display:"flex"}}>
-                    <Box onClick={()=>CommentLikeFunction(mainComment.id,sessionid)} sx={{display:'flex',alignItems:'center',height:'14px'}}> 
-                        <ThumbUpOffAltOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
-                        <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',mr:1,height:'100%'}}>
-                            {likePoint}
-                        </Typography>
-                    </Box>
-                    <Box sx={{display:'flex',alignItems:'center',height:'14px'}}>
+                    <Like handleLike={LikeFunction} item={mainComment}/>
+                    <Box sx={{display:'flex',alignItems:'center',height:'14px',ml:'11px'}}>
                         <ModeCommentOutlinedIcon sx={{width:'16px',height:'16px',mr:0.3}}/>
                         <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'600',fontSize:'10px',color:'#606060',height:'100%'}}>
                             {mainComment.commentPoint}

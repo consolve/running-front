@@ -147,7 +147,7 @@ function Login(){
             maxWidth:'450px',
         }}>
             <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'start',alignItems:'center',height:"100%",ml:2}}>
-                <WestIcon sx={{}}/>
+                <WestIcon sx={{width:"28px",height:"28px"}}/>
             </Box>
         </Box>
 

@@ -26,7 +26,7 @@ export default function Competition_TopBar(){
 
             <Box onClick = {navigateToHome} sx={{position:"absolute",left:0,display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <IconButton type="button" sx={{ }} aria-label="search">
-                    <WestIcon sx={{}}/>
+                    <WestIcon sx={{width:"28px",height:"28px"}}/>
                 </IconButton>
             </Box>
 

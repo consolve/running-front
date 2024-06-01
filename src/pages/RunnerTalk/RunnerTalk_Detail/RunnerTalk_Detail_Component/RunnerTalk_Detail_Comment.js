@@ -34,19 +34,6 @@ export default function RunningTalk_Detail_Comment(props) {
         setModalOpen(false)
     };
 
-
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '320px',
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 2,
-      };
-
     const DrawerTheme = {
         width:'100%',
         minWidth:'360px',
@@ -148,6 +135,18 @@ export default function RunningTalk_Detail_Comment(props) {
         }
 
     },[commentOrder])
+
+    useEffect(()=>{
+        setLoading(true);
+
+        if(commentOrder.includes(0)){
+            FetchRunningTalkCommentPopularFunction();
+        }
+        else if(commentOrder.includes(1)){
+            FetchRunningTalkCommentLatestFunction();
+        }
+
+    },[childOpen])
 
     const list = (anchor) => (
         <Box
