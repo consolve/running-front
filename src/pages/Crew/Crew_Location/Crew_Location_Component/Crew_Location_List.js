@@ -98,11 +98,11 @@ export default function Crew_Location_List(props){
                                                     {
                                                         crewBookMark[item.id]?
                                                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                            <BookmarkIcon sx={{color:"#ffffff"}}/>
+                                                            <BookmarkIcon sx={{color:"primary.main"}}/>
                                                         </IconButton>
                                                         :
                                                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                            <BookmarkBorderIcon sx={{color:"#ffffff"}}/>
+                                                            <BookmarkIcon sx={{color:"primary.main"}}/>
                                                         </IconButton>
                                                     }
                                                 </Box>
@@ -149,7 +149,7 @@ export default function Crew_Location_List(props){
                                                     {
                                                         crewBookMark[item.id]?
                                                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                                                            <BookmarkIcon sx={{color:"#ffffff"}}/>
+                                                            <BookmarkIcon sx={{color:"primary.main"}}/>
                                                         </IconButton>
                                                         :
                                                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>

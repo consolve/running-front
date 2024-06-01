@@ -39,7 +39,7 @@ export default function Feed({data}){
                     {
                         isBookmark?
                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                            <BookmarkIcon/>
+                            <BookmarkIcon sx={{color:"primary.main"}}/>
                         </IconButton>
                         :
                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>

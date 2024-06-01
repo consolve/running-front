@@ -49,14 +49,14 @@ export default function Crew_Detail_TopBar(props){
         <Box sx={TopbarTheme}>
             <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 <IconButton type="button" sx={{color:'white',ml:2 }} aria-label="search">
-                    <WestIcon sx={{}}/>
+                    <WestIcon sx={{width:"28px",height:"28px"}}/>
                 </IconButton>
             </Box>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 {
                     bookmark?
                     <IconButton onClick={(e)=>onClickBookMart(props.crew.id,e)} sx={{color:'white'}}>
-                        <BookmarkIcon sx={{mr:2}}/>
+                        <BookmarkIcon sx={{mr:2,color:"primary.main"}}/>
                     </IconButton>
                     :
                     <IconButton onClick={(e)=>onClickBookMart(props.crew.id,e)} sx={{color:'white'}}>

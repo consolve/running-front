@@ -45,7 +45,7 @@ export default function Shoes_Detail_Title(props){
                 {
                     bookmark?
                     <IconButton color="primary" onClick={()=>onClickBookMart(props.shoes.id)} sx={{p:0}}>
-                        <BookmarkIcon sx={{fontSize:35}}/>
+                        <BookmarkIcon sx={{fontSize:35,color:"primary.main"}}/>
                     </IconButton>
                     :
                     <IconButton onClick={()=>onClickBookMart(props.shoes.id)} sx={{p:0}}>

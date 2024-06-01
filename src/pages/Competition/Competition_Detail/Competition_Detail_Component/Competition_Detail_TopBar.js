@@ -58,7 +58,7 @@ export default function Competition_TopBar(props){
                 {
                     bookmark?
                     <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white'}}>
-                        <BookmarkIcon sx={{}}/>
+                        <BookmarkIcon sx={{color:"primary.main"}}/>
                     </IconButton>
                     :
                     <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white'}}>

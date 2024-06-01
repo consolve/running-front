@@ -66,7 +66,7 @@ export default function Content({item,isVisible}){
                     {
                         bookmark?
                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
-                            <BookmarkIcon sx={{color:"#ffffff"}}/>
+                            <BookmarkIcon sx={{color:"primary.main"}}/>
                         </IconButton>
                         :
                         <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
