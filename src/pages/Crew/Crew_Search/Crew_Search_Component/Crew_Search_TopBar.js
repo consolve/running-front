@@ -66,7 +66,7 @@ export default function Crew_TopBar(props){
                         onKeyDown={handleOnKeyPress}
                         onChange={(e) => setValuse((prev)=>prev=e.target.value)}
                         value = {value}
-                        sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:500 }}
+                        sx={{ ml: 1, flex: 1,fontFamily: 'Pretendard Variable',fontWeight:700 }}
                     />
                     <IconButton onClick = {navigateToShoesSearch} type="button" sx={{ p: '10px' }} aria-label="search">
                         <SearchIcon width={21} height={21}/>
