@@ -1,7 +1,13 @@
 import axios from "axios";
-export const fetchMonthContest = async (count) =>{
+export const fetchMonthContest = async (count,session) =>{
     try{
-        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/month/${count}`);
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/month/${count}`,header);
         return response.data.month_contest;   
 
     } catch(error){
@@ -9,9 +15,15 @@ export const fetchMonthContest = async (count) =>{
     }
 }
 
-export const fetchAcceptableContest = async (count) =>{
+export const fetchAcceptableContest = async (count,session) =>{
     try{
-        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/acceptable/${count}`);
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/acceptable/${count}`,header);
         return response.data.acceptable_contest;   
     } catch(error){
         return error

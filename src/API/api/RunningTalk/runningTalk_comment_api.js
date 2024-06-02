@@ -124,3 +124,22 @@ export const AddRunningTalkChildComment = async (sessionid,data) =>{
         return error
     }
 }
+
+export const deleteComment = async (sessionid,id) =>{   
+    try{
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${sessionid}`
+            }
+        }
+
+        const response = await axios.delete(`${process.env.REACT_APP_URL}/api/runningtalk/comment/${id}`,header);
+        return response.data;
+    }
+    catch(error){
+        if(error.status === 409){
+            return
+        }
+        return error
+    }
+}

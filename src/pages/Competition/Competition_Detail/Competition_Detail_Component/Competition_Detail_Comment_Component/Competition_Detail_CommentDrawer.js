@@ -8,7 +8,7 @@ import Divider from '@mui/material/Divider';
 import ClearIcon from '@mui/icons-material/Clear';
 import {Avatar,Modal} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useSearchParams } from 'react-router-dom';
+import { deleteComment } from '../../../../../API/api/Contest/contest_comment_api';
 import {useRecoilState} from 'recoil';
 import { useParams } from "react-router-dom";
 import {
@@ -194,7 +194,19 @@ export default function TemporaryDrawer(props) {
                             {
                                 comment.map((item,index) => {
                                     return(
-                                        <Comment onClickComment={() => onClickReport(item.id)} key={item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction = {ContestCommentLike}/>
+                                        <Comment 
+                                            onClickComment={() => onClickReport(item.id)}
+                                            key={item.id} 
+                                            item={item} 
+                                            toggleChildCommentDrawer={toggleChildCommentDrawer} 
+                                            LikeFunction = {ContestCommentLike}
+                                            deleteComment={deleteComment}
+                                            deleteCommentSet={{
+                                                comment,
+                                                setComment,
+                                                index
+                                            }}
+                                        />
                                     )
                                 })
                             }

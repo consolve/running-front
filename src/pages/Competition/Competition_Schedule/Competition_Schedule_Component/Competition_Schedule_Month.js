@@ -17,13 +17,14 @@ import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
 export default function Competition_Schedule_Month(props){
 
     const navigate = useNavigate();
+    const sessionid = localStorage.getItem('sessionid');
 
     const [loading1,setLoading1] = useRecoilState(CompetitionSchedule_MonthLoading);
     const [loadingall,setLoadingall] = useRecoilState(CompetitionSchedule_AllLoading);
     const [month,setMonth] = useState([]);
 
     const FetchList = async () => {
-        const _MonthCompetitions = await fetchMonthContest(6);
+        const _MonthCompetitions = await fetchMonthContest(3,sessionid);
     
         if(_MonthCompetitions.response){
             props.setError(_MonthCompetitions.response.status)

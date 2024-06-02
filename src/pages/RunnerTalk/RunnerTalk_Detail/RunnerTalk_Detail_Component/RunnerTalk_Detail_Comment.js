@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useCallback } from 'react';
-import {API_URL} from "../../../../API/URL/index"
+import {deleteComment} from "../../../../API/api/RunningTalk/runningTalk_comment_api"
 import {Typography,CircularProgress,Divider,Button,Modal} from '@mui/material';
 import { Box } from '@mui/system';
 import { useParams } from "react-router-dom";
@@ -192,7 +192,19 @@ export default function RunningTalk_Detail_Comment(props) {
                                 comment.map((item,index) => {
                                     return(
                                         <>
-                                            <Comment onClickComment={() => onClickReport(item.id)} key = {item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction={RunningTalkCommentLike}/>
+                                            <Comment 
+                                                onClickComment={() => onClickReport(item.id)} 
+                                                key = {item.id} 
+                                                item={item} 
+                                                toggleChildCommentDrawer={toggleChildCommentDrawer} 
+                                                LikeFunction={RunningTalkCommentLike}
+                                                deleteComment={deleteComment}
+                                                deleteCommentSet={{
+                                                    comment,
+                                                    setComment,
+                                                    index
+                                                }}
+                                            />
                                         </>
                                     )
                                 })

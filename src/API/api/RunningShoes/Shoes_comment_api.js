@@ -124,3 +124,19 @@ export const AddRunningshoesChildComment = async (sessionid,data) =>{
         return error
     }
 }
+
+export const deleteComment = async (sessionid,id) =>{
+    try{
+        const header={
+            headers:{
+                Authorization:`Bearer `+`${sessionid}`
+            }
+        }
+        const response = await axios.delete(`${process.env.REACT_APP_URL}/api/runningshoes/comment/${id}`,header);
+        return response.data;
+    }
+
+    catch(error){
+        return error
+    }
+}

@@ -19,12 +19,13 @@ import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
 export default function Competition_Schedule_canRegister(props){
 
     const navigate = useNavigate();
+    const sessionid = localStorage.getItem('sessionid');
     const [loading2,setLoading2] = useRecoilState(CompetitionSchedule_AccceptableLoading);
     const [loadingall,setLoadingall] = useRecoilState(CompetitionSchedule_AllLoading);
     const [acceptable,setacceptable] = useState([]);
 
     const FetchList = async () => {
-        const _AcceptableCompetitions = await fetchAcceptableContest(6);
+        const _AcceptableCompetitions = await fetchAcceptableContest(3,sessionid);
     
         if(_AcceptableCompetitions.response){
             props.setError(_AcceptableCompetitions.response.status)
