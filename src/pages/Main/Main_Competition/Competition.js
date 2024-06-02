@@ -26,9 +26,10 @@ import './style.css';
 
 export default function Competition(props){
     const [competition,setCompetition] = useState([]);
+    const sessionid = localStorage.getItem('sessionid');
 
     const FetchList = async () => {
-        const _Popularcompetitions = await fetchPopularContest(3);
+        const _Popularcompetitions = await fetchPopularContest(3,sessionid);
     
         if(_Popularcompetitions.response){
 

@@ -2,13 +2,12 @@ import {Box,Typography,Fade,Popper,ClickAwayListener } from "@mui/material";
 import React, { useState,useRef,useEffect } from "react";
 import {API_URL} from '../../API/URL/index';
 import Avatar from '@mui/material/Avatar';
-import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import styled from "styled-components"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Like from "./component/Like"
 import BlockModal from "./Modal/BlockModal"
+import DeleteModal from "./Modal/DeleteModal"
 
 function timeForToday(value) {
     const today = new Date();
@@ -35,7 +34,7 @@ function timeForToday(value) {
 
 
 
-export default function Comment({item,toggleChildCommentDrawer,LikeFunction,onClickComment}){
+export default function Comment({item,toggleChildCommentDrawer,LikeFunction,onClickComment,deleteCommentSet,deleteComment}){
     const [likePoint,setlikePoint] = useState(item.likePoint);
     const sessionid = localStorage.getItem('sessionid');
     const contentRef = useRef(null);
@@ -87,6 +86,13 @@ export default function Comment({item,toggleChildCommentDrawer,LikeFunction,onCl
         <Box sx={{display:'flex',alignItems:'start',px:2,py:1.5}}>
 
             <BlockModal id={item.user} handleOpen={handleModalOpen} open={modalOpen}/>
+            <DeleteModal 
+                id={item.id} 
+                handleOpen={handleModalOpen} 
+                open={modalOpen} 
+                deleteComment={deleteComment}
+                deleteCommentSet={deleteCommentSet}
+            />
 
             <Box sx={{height:'100%',display:'block',mt:0.5}}>
                 <Avatar src={`${API_URL}${item.user_profile}`} sx={{width:'20px',height:'20px',mr:1}}/>
@@ -126,12 +132,22 @@ export default function Comment({item,toggleChildCommentDrawer,LikeFunction,onCl
                                                 신고하기 
                                             </Typography>
                                         </Box>
+
                                         <Box sx={{display:'flex',ml:2,mt:0.2,my:1}}>
                                             <Typography onClick={()=>{
                                                 handleClose();
                                                 handleModalOpen();
                                             }} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
                                                 차단하기
+                                            </Typography>
+                                        </Box>
+
+                                        <Box sx={{display:'flex',ml:2,mt:0.2,my:1}}>
+                                            <Typography onClick={()=>{
+                                                handleClose();
+                                                handleModalOpen();
+                                            }} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
+                                                삭제하기
                                             </Typography>
                                         </Box>
                     

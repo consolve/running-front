@@ -72,7 +72,7 @@ export const CrewCommentLike = async (id,sessionid) =>{
         const request = null;
 
         const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningcrew/comment/${id}/like`,request,header);
-        return response.data.message;   
+        return response.data;   
 
     } catch(error){
         if(error.status === 409){
@@ -121,6 +121,22 @@ export const AddCrewChildComment = async (sessionid,data) =>{
         if(error.status === 409){
             return
         }
+        return error
+    }
+}
+
+export const deleteComment = async (sessionid,id) =>{
+    try{
+        const header={
+            headers:{
+                Authorization:`Bearer `+`${sessionid}`
+            }
+        }
+
+        const response = await axios.delete(`${process.env.REACT_APP_URL}/api/runningcrew/comment/${id}`,header);
+        return response.data;
+    }
+    catch(error){
         return error
     }
 }

@@ -28,9 +28,15 @@ export const fetchCalendarContest = async () =>{
     }
 }
 
-export const fetchPopularContest = async (count) =>{
+export const fetchPopularContest = async (count,session) =>{
     try{
-        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/popular/${count}`);
+        const header = {
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/popular/${count}`,header);
         return response.data.contest;   
 
     } catch(error){

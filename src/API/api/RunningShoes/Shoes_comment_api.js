@@ -72,7 +72,7 @@ export const RunningshoesCommentLike = async (id,sessionid) =>{
         const request = null;
 
         const response = await axios.post(`${process.env.REACT_APP_URL}/api/runningshoes/comment/${id}/like`,request,header);
-        return response.data.message;   
+        return response.data;   
 
     } catch(error){
         if(error.status === 409){

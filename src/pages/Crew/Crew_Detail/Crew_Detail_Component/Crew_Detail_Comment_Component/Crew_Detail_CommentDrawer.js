@@ -8,7 +8,7 @@ import Divider from '@mui/material/Divider';
 import ClearIcon from '@mui/icons-material/Clear';
 import {Avatar} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useSearchParams } from 'react-router-dom';
+import { deleteComment } from '../../../../../API/api/RunningCrew/crew_comment_api';
 import {useRecoilState} from 'recoil';
 import { useParams } from "react-router-dom";
 import {
@@ -189,7 +189,19 @@ export default function TemporaryDrawer(props) {
                             {
                                 comment.map((item,index) => {
                                     return(
-                                        <Comment onClickComment={() => onClickReport(item.id)} key={item.id} item={item} toggleChildCommentDrawer={toggleChildCommentDrawer} LikeFunction = {CrewCommentLike}/>
+                                        <Comment 
+                                            onClickComment={() => onClickReport(item.id)} 
+                                            key={item.id} 
+                                            item={item} 
+                                            toggleChildCommentDrawer={toggleChildCommentDrawer} 
+                                            LikeFunction = {CrewCommentLike}
+                                            deleteComment={deleteComment}
+                                            deleteCommentSet={{
+                                                comment,
+                                                setComment,
+                                                index
+                                            }}
+                                        />
                                     )
                                 })
                             }
