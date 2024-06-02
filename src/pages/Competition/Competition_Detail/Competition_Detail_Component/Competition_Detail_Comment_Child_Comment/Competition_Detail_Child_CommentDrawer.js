@@ -9,10 +9,7 @@ import {Avatar} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import WestIcon from '@mui/icons-material/West';
 import { useParams } from "react-router-dom";
-import {API_URL} from "../../../../../API/URL/index"
-import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
+import { deleteComment } from '../../../../../API/api/Contest/contest_comment_api';
 import { FetchContestCommentReplies,ContestCommentLike } from '../../../../../API/api/Contest/contest_comment_api';
 import CommentAdder from "./Competition_Detail_Child_CommentDrawer_AddComment"
 import Comment from "../../../../../component/Comment/Comment_Child"
@@ -174,7 +171,17 @@ export default function TemporaryDrawer(props) {
                                     {
                                         comment.map((item,index) => {
                                             return(
-                                                <Comment key = {item.id} item={item} LikeFunction={ContestCommentLike}/>
+                                                <Comment 
+                                                    key = {item.id} 
+                                                    item={item} 
+                                                    LikeFunction={ContestCommentLike}
+                                                    deleteComment={deleteComment}
+                                                    deleteCommentSet={{
+                                                        comment,
+                                                        setComment,
+                                                        index
+                                                    }}
+                                                />
                                             )
                                         })
                                     }

@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import BlockModal from "./Modal/BlockModal"
 import Like from "./component/Like"
+import DeleteModal from './Modal/DeleteModal';
 
 function timeForToday(value) {
     const today = new Date();
@@ -30,7 +31,7 @@ function timeForToday(value) {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
 }
 
-export default function ChildComment({item,LikeFunction,onClickComment}){
+export default function ChildComment({item,LikeFunction,onClickComment,deleteCommentSet,deleteComment}){
     const navigate = useNavigate();
 
     const [likePoint,setlikePoint] = useState(item.likePoint);
@@ -60,6 +61,13 @@ export default function ChildComment({item,LikeFunction,onClickComment}){
         <Box sx={{display:'flex',alignItems:'start',ml:'40px',my:1.5}}>
 
             <BlockModal id={item.user} handleOpen={handleModalOpen} open={modalOpen}/>
+            <DeleteModal 
+                id={item.id} 
+                handleOpen={handleModalOpen} 
+                open={modalOpen} 
+                deleteComment={deleteComment}
+                deleteCommentSet={deleteCommentSet}
+            />
 
             <Box sx={{height:'100%',mt:0.5}}>
                 <Avatar src={`${API_URL}${item.user_profile}`} sx={{width:'20px',height:'20px',mr:'12px',mb:4.5}}/>
@@ -106,7 +114,15 @@ export default function ChildComment({item,LikeFunction,onClickComment}){
                                                 차단하기
                                             </Typography>
                                         </Box>
-                    
+                                            
+                                        <Box sx={{display:'flex',ml:2,mt:0.2,my:1}}>
+                                            <Typography onClick={()=>{
+                                                handleClose();
+                                                handleModalOpen();
+                                            }} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
+                                                삭제하기
+                                            </Typography>
+                                        </Box>
                                     </Box>
                                 </Fade>
                                 </>

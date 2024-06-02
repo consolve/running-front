@@ -14,6 +14,7 @@ import { FetchRunningshoesCommentReplies,RunningshoesCommentLike } from '../../.
 import CommentAdder from "./Shoes_Detail_Child_CommentDrawer_AddComment"
 import Comment from "../../../../../component/Comment/Comment_Child"
 import Parent from "../../../../../component/Comment/Comment_Parent"
+import { deleteComment } from '../../../../../API/api/RunningShoes/Shoes_comment_api';
 
 export default function TemporaryDrawer(props) {
 
@@ -140,7 +141,18 @@ export default function TemporaryDrawer(props) {
                                     {
                                         comment.map((item,index) => {
                                             return(
-                                                <Comment onClickComment={props.onClickReport} key = {item.id} item={item} LikeFunction={RunningshoesCommentLike}/>
+                                                <Comment 
+                                                    onClickComment={props.onClickReport} 
+                                                    key = {item.id} 
+                                                    item={item} 
+                                                    LikeFunction={RunningshoesCommentLike}
+                                                    deleteComment={deleteComment}
+                                                    deleteCommentSet={{
+                                                        comment,
+                                                        setComment,
+                                                        index
+                                                    }}
+                                                />
                                             )
                                         })
                                     }

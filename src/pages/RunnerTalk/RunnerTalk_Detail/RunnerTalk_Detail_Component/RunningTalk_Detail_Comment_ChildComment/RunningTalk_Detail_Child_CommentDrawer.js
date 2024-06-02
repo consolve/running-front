@@ -5,8 +5,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { Typography,CircularProgress,IconButton,Button,Modal} from '@mui/material';
 import { useEffect,useState } from 'react';
 import Divider from '@mui/material/Divider';
-import ClearIcon from '@mui/icons-material/Clear';
-import {Avatar} from '@mui/material';
+import { deleteComment } from '../../../../../API/api/RunningTalk/runningTalk_comment_api';
 import { useNavigate } from 'react-router-dom';
 import WestIcon from '@mui/icons-material/West';
 import { useParams } from "react-router-dom";
@@ -144,7 +143,18 @@ export default function TemporaryDrawer(props) {
                                         comment.map((item,index) => {
                                             return(
                                                 <>
-                                                    <Comment onClickComment={() => props.onClickReport(item.id)} key = {item.id} item={item} LikeFunction={RunningTalkCommentLike}/>
+                                                    <Comment 
+                                                        onClickComment={() => props.onClickReport(item.id)} 
+                                                        key = {item.id} 
+                                                        item={item} 
+                                                        LikeFunction={RunningTalkCommentLike}
+                                                        deleteComment={deleteComment}
+                                                        deleteCommentSet={{
+                                                            comment,
+                                                            setComment,
+                                                            index
+                                                        }}
+                                                    />
                                                 </>
                                             )
                                         })

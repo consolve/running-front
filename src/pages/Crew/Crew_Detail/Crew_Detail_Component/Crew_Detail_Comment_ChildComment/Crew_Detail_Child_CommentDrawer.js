@@ -14,6 +14,7 @@ import { FetchCrewCommentReplies,CrewCommentLike } from '../../../../../API/api/
 import CommentAdder from "./Crew_Detail_Child_CommentDrawer_AddComment"
 import Parent from '../../../../../component/Comment/Comment_Parent';
 import Comment from '../../../../../component/Comment/Comment_Child';
+import { deleteComment } from '../../../../../API/api/RunningCrew/crew_comment_api';
 
 export default function TemporaryDrawer(props) {
 
@@ -177,7 +178,17 @@ export default function TemporaryDrawer(props) {
                                     {
                                         comment.map((item,index) => {
                                             return(
-                                                <Comment key = {item.id} item={item} LikeFunction={CrewCommentLike}/>
+                                                <Comment 
+                                                    key = {item.id} 
+                                                    item={item} 
+                                                    LikeFunction={CrewCommentLike}
+                                                    deleteComment={deleteComment}
+                                                    deleteCommentSet={{
+                                                        comment,
+                                                        setComment,
+                                                        index
+                                                    }}
+                                                />
                                             )
                                         })
                                     }
