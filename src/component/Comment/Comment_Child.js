@@ -101,28 +101,34 @@ export default function ChildComment({item,LikeFunction,onClickComment,deleteCom
                                 <Fade {...TransitionProps} timeout={350}>
                                     <Box sx={{display:'flex',flexDirection:'column',alignItems:'start',justifyContent:"center",width:'180px',backgroundColor:'primary.light',borderRadius:'15px',border:1,borderColor:'primary.main',py:1,mt:1}}>
                                         
-                                        <Box sx={{display:'flex',ml:2,my:1}}>
-                                            <Typography onClick={onClickComment} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
-                                                신고하기 
-                                            </Typography>
-                                        </Box>
-                                        <Box sx={{display:'flex',ml:2,mt:0.2,my:1}}>
-                                            <Typography onClick={()=>{
-                                                handleClose();
-                                                handleModalOpen();
-                                            }} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
-                                                차단하기
-                                            </Typography>
-                                        </Box>
+                                        {
+                                            item.is_Owner?
+                                            <Box sx={{display:'flex',ml:2,mt:0.2,my:1}}>
+                                                <Typography onClick={()=>{
+                                                    handleClose();
+                                                    handleModalOpen();
+                                                }} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
+                                                    삭제하기
+                                                </Typography>
+                                            </Box>
+                                            :
+                                            <>
+                                            <Box sx={{display:'flex',ml:2,my:1}}>
+                                                <Typography onClick={onClickComment} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'25px'}}>
+                                                    신고하기 
+                                                </Typography>
+                                            </Box>
+                                            <Box sx={{display:'flex',ml:2,mt:0.2,my:1}}>
+                                                <Typography onClick={()=>{
+                                                    handleClose();
+                                                    handleModalOpen();
+                                                }} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
+                                                    차단하기
+                                                </Typography>
+                                            </Box>
+                                            </>
+                                        }
                                             
-                                        <Box sx={{display:'flex',ml:2,mt:0.2,my:1}}>
-                                            <Typography onClick={()=>{
-                                                handleClose();
-                                                handleModalOpen();
-                                            }} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
-                                                삭제하기
-                                            </Typography>
-                                        </Box>
                                     </Box>
                                 </Fade>
                                 </>
