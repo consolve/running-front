@@ -22,6 +22,7 @@ import { FetchRunningshoesCommentPopular } from '../../../API/api/RunningShoes/S
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import Error from "../../../component/Error/ErrorModal"
+import { keyframes } from '@mui/material';
 
 
 const style = {
@@ -39,6 +40,18 @@ const style = {
 
 
 function Shoes_Detail(){
+
+    const spin = keyframes`
+    0%{
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100%{
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    `;
+
     const { id } = useParams();
     const session = localStorage.getItem("sessionid");
 
@@ -75,7 +88,7 @@ function Shoes_Detail(){
     },[])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',animation:`${spin} 0.3s ease`}}>
             <TopBar shoes={shoes}/>
             {/* 60px은 navbar*/}
             <Box sx={{width:'100%',mt:'60px',mb:10}}>

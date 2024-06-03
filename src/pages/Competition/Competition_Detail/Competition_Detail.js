@@ -23,8 +23,20 @@ import { FetchContestCommentPopular } from '../../../API/api/Contest/contest_com
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import Error from '../../../component/Error/ErrorModal';
+import { keyframes } from '@mui/material';
 
 function Competition_Detail(){
+
+    const spin = keyframes`
+    0%{
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100%{
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    `;
 
     const { id } = useParams();
     const session = localStorage.getItem('sessionid');
@@ -74,7 +86,8 @@ function Competition_Detail(){
 
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
+        <Box sx={{backgroundColor:"primary.main"}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',animation:`${spin} 0.3s ease`}}>
             
             <Box sx={{width:'100%'}}>
                 {
@@ -140,6 +153,7 @@ function Competition_Detail(){
 
             <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
+        </Box>
     )
 }
 
