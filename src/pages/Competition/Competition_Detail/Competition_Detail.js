@@ -47,13 +47,13 @@ function Competition_Detail(){
         navigate(-1);
     }
 
-    const [loading,setLoading] = useState(true);
-    const [error,setError] = useState("");
+    
     const [comment,setComment] = useRecoilState(CompetitionSchedule_Comment);
     const [commentOrder,setCommentOrder] = useRecoilState(CompetitionSchedule_Comment_Order);
     const [contest,setContest] = useState({});
-
     const [open, setOpen] = React.useState(false);
+    const [loading,setLoading] = useState(true);
+    const [error,setError] = useState("");
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         setOpen(false)
@@ -109,7 +109,7 @@ function Competition_Detail(){
                     }
                     </Box>
                 }
-                <Box sx={{position:'relative',display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px',mb:10,mt:"270px"}}>
+                <Box sx={{position:'relative',display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px',pb:5,mt:"270px"}}>
                     {
                         loading? 
                         <Box sx={{width:"100%",height:"600px",mb:1}}>

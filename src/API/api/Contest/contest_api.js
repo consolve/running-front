@@ -73,9 +73,16 @@ export const fetchContestDetail = async (id,sessionid) =>{
     }
 }
 
-export const fetchSearchContest = async (query) =>{
+export const fetchSearchContest = async (query,session) =>{
     try{
-        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/search${query}`);
+        
+        const header = {    
+            headers: {
+                Authorization:`Bearer `+`${session}`
+            }
+        }
+
+        const response = await axios.get(`${process.env.REACT_APP_URL}/api/contest/search${query}`,header);
         return response.data.contest;   
 
     } catch(error){

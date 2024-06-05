@@ -26,6 +26,7 @@ import ContentSkeleton from '../../../component/shoes/wide_Skeleton';
 function Competition_Search(){
     const loadinglist = [1,2,3,4,5,6,7,8];
     const querylocation = useLocation();
+    const session = localStorage.getItem('sessionid');
     const filterContent ={
         month:[],
         course:[],
@@ -79,7 +80,7 @@ function Competition_Search(){
     }
 
     const FetchCompetitionList = async (value) => {
-        const _SearchCompetition = await fetchSearchContest(value);
+        const _SearchCompetition = await fetchSearchContest(value,session);
 
         if(_SearchCompetition.response){
             setOpen(true)

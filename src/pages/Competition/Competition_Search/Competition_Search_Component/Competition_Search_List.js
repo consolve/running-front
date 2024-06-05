@@ -21,7 +21,7 @@ import Content from '../../../../component/shoes/wide_feed';
 export default function Competition_Search_List(props){
 
     const querylocation = useLocation();
-
+    const session = localStorage.getItem('sessionid');
     const navigate = useNavigate();
 
     
@@ -39,10 +39,10 @@ export default function Competition_Search_List(props){
         let _SearchCompetition = "";
     
         if(decodeUri === ""){
-            _SearchCompetition = await fetchSearchContest(decodeUri+"?page="+page);
+            _SearchCompetition = await fetchSearchContest(decodeUri+"?page="+page,session);
         }
         else{
-            _SearchCompetition = await fetchSearchContest(decodeUri+"&page="+page);
+            _SearchCompetition = await fetchSearchContest(decodeUri+"&page="+page,session);
         }
 
         if(_SearchCompetition.response){
