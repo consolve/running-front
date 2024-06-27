@@ -50,8 +50,8 @@ function AddCrew(){
         [ "instagram",'크루 SNS 주소','크루 SNS 주소를 입력해주세요'],
         ["crewApplyWay",'크루 가입 방법','크루 가입 방법을 적어주세요'],
         ["crewMemberNumber",'크루 인원','대략적인 크루 인원을 적어주세요'],
-        ['크루 연령대','대략적인 크루 연령대를 적어주세요'],
-        ['크루 개설년도','크루 개설년도를 적어주세요'],
+        ["crewAverageNumber",'크루 연령대','대략적인 크루 연령대를 적어주세요'],
+        ["crewCreatedDay",'크루 개설년도','크루 개설년도를 적어주세요'],
         [ "applyContact" ,'연락 가능한 대회 크루장(담당자) 연락처','크루 등록 검토과정에서 확인 연락을 드립니다.']
     ]
 
@@ -103,8 +103,6 @@ function AddCrew(){
             }
         }
     };
-    
-    const navigate = useNavigate();
 
     const deleteImage = (index) =>{
         setBase64s(Base64s.filter((_,i)=>i!==index));
