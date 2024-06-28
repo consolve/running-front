@@ -36,32 +36,6 @@ export default function Shoes_Search_List(props){
     const [loading, setLoading] = useState(false);
     const [shoesBookmark,setShoesBookmark] = useRecoilState(ShoesMain_ShoesBookMark);  
     
-    const getItems = useCallback(async () => {
-        const query = querylocation.search
-
-        const decodeUri = decodeURI(query);
-        setLoading(true);
-
-        let _ShoesList = "";
-    
-        if(decodeUri === ""){
-            _ShoesList = await fetchSearchShoes("?page="+page,session);
-        }
-        else{
-            _ShoesList = await fetchSearchShoes(decodeUri+"&page="+page,session);
-        }
-        console.log(_ShoesList)
-
-        if(_ShoesList.response){
-            setError(_ShoesList.response.status)
-            props.setOpen(true);
-        }
-        else{
-            setList((prev)=>[...prev,..._ShoesList])
-        }
-
-        setLoading(false);
-    }, [page])
 
     const bookMark = async (id) =>{
         const response = await runningShoesBookMark(id,session);
@@ -88,8 +62,34 @@ export default function Shoes_Search_List(props){
     }
 
     useEffect(() => {
+        const getItems = async () => {
+            const query = querylocation.search
+    
+            const decodeUri = decodeURI(query);
+            setLoading(true);
+    
+            let _ShoesList = "";
+        
+            if(decodeUri === ""){
+                _ShoesList = await fetchSearchShoes("?page="+page,session);
+            }
+            else{
+                _ShoesList = await fetchSearchShoes(decodeUri+"&page="+page,session);
+            }
+            console.log(_ShoesList)
+    
+            if(_ShoesList.response){
+                setError(_ShoesList.response.status)
+                props.setOpen(true);
+            }
+            else{
+                setList((prev)=>[...prev,..._ShoesList])
+            }
+    
+            setLoading(false);
+        }
         getItems();
-    }, [getItems])
+    }, [page])
 
     useEffect(() => {
         // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면

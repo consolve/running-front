@@ -19,53 +19,48 @@ import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
 import Content from '../../../../component/shoes/wide_feed';
 
 export default function Competition_Search_List(props){
-
     const querylocation = useLocation();
     const session = localStorage.getItem('sessionid');
     const navigate = useNavigate();
 
-    
-    const [error,setError] = useRecoilState(CompetitionSearch_Error);
-    const [list,setList] = useRecoilState(CompetitionList);
+    const [error, setError] = useRecoilState(CompetitionSearch_Error);
+    const [list, setList] = useRecoilState(CompetitionList);
     const [ref, inView] = useInView();
     const [page, setPage] = useState(2);
-    const [loading, setLoading] = useState(false);    
+    const [loading, setLoading] = useState(false);
 
-    const getItems = useCallback(async () => {
-        const query = querylocation.search
+    const getItems = async () => {
+        const query = querylocation.search;
         const decodeUri = decodeURI(query);
         setLoading(true);
 
         let _SearchCompetition = "";
-    
-        if(decodeUri === ""){
-            _SearchCompetition = await fetchSearchContest(decodeUri+"?page="+page,session);
-        }
-        else{
-            _SearchCompetition = await fetchSearchContest(decodeUri+"&page="+page,session);
+
+        if (decodeUri === "") {
+            _SearchCompetition = await fetchSearchContest(decodeUri + "?page=" + page, session);
+        } else {
+            _SearchCompetition = await fetchSearchContest(decodeUri + "&page=" + page, session);
         }
 
-        if(_SearchCompetition.response){
-            setError(_SearchCompetition.response.status)
+        if (_SearchCompetition.response) {
+            setError(_SearchCompetition.response.status);
             props.setOpen(true);
-        }
-        else{
-            setList((prev)=>[...prev,..._SearchCompetition])
+        } else {
+            setList((prev) => [...prev, ..._SearchCompetition]);
         }
 
         setLoading(false);
-    }, [page])
+    };  
 
     useEffect(() => {
         getItems();
-    }, [getItems])
+    }, [page]);
 
     useEffect(() => {
-        // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
         if (inView && !loading) {
-            setPage(prevState => prevState + 1)
+            setPage((prevState) => prevState + 1);
         }
-    }, [inView])
+    }, [inView, loading]);
 
     const navigateToCompetitionDetail =(id) =>{
         navigate(`/competition/detail/${id}`);

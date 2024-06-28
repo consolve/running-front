@@ -22,34 +22,33 @@ export default function RunnerTalk_Search_list(props){
     const [page, setPage] = useState(2);
     const [loading, setLoading] = useState(false);  
     
-    const getItems = useCallback(async () => {
-        const query = querylocation.search
-        const decodeUri = decodeURI(query);
-        setLoading(true);
-
-        let _RunnerTalkList = "";
+    useEffect(()=>{
+        const getItems = async () => {
+            const query = querylocation.search
+            const decodeUri = decodeURI(query);
+            setLoading(true);
     
-        if(decodeUri === ""){
-            _RunnerTalkList = await fetchRunnerTalkSearch("?page="+page,session);
+            let _RunnerTalkList = "";
+        
+            if(decodeUri === ""){
+                _RunnerTalkList = await fetchRunnerTalkSearch("?page="+page,session);
+            }
+            else{
+                _RunnerTalkList = await fetchRunnerTalkSearch(decodeUri+"&page="+page,session);
+            }
+    
+            if(_RunnerTalkList.response){
+                props.setError(_RunnerTalkList.response.status)
+                props.setOpen(true);
+            }
+            else{
+                props.setList((prev)=>prev=[...prev,..._RunnerTalkList])
+            }
+    
+            setLoading(false);
         }
-        else{
-            _RunnerTalkList = await fetchRunnerTalkSearch(decodeUri+"&page="+page,session);
-        }
-
-        if(_RunnerTalkList.response){
-            props.setError(_RunnerTalkList.response.status)
-            props.setOpen(true);
-        }
-        else{
-            props.setList((prev)=>prev=[...prev,..._RunnerTalkList])
-        }
-
-        setLoading(false);
-    }, [page])
-
-    useEffect(() => {
         getItems();
-    }, [getItems])
+    },[page])
 
     useEffect(() => {
         // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면

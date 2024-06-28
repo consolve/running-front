@@ -42,22 +42,6 @@ export default function Crew_Location_List(props){
     const [location,setLocation] = useRecoilState(CrewLocation_Location);
     const [crewBookMark,setCrewBookMark] = useRecoilState(CrewMain_CrewBookMark);
 
-    const getItems = useCallback(async () => {
-        
-        setLoading(true);
-        const _CrewList = await fetchCrewLocation(locationMap[location]+"?page="+page,session);
-
-        if(_CrewList.response){
-            setError(_CrewList.response.status)
-            props.setOpen(true);
-        }
-        else{
-            setList((prev)=>[...prev,..._CrewList])
-        }
-
-        setLoading(false);
-    }, [page])
-
     const onClickBookMark = (id,event) =>{
         event.stopPropagation();
         if(BookMarkHandle("crew",id,session,navigate)){
@@ -66,8 +50,23 @@ export default function Crew_Location_List(props){
     }
 
     useEffect(() => {
+        const getItems = async () => {
+        
+            setLoading(true);
+            const _CrewList = await fetchCrewLocation(locationMap[location]+"?page="+page,session);
+    
+            if(_CrewList.response){
+                setError(_CrewList.response.status)
+                props.setOpen(true);
+            }
+            else{
+                setList((prev)=>[...prev,..._CrewList])
+            }
+    
+            setLoading(false);
+        }
         getItems();
-    }, [getItems])
+    }, [page])
 
     const navigateToCrewDetail =(id) =>{
         navigate(`/crew/detail/${id}`);

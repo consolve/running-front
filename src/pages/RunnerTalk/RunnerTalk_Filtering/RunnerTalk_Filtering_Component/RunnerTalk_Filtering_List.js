@@ -30,26 +30,25 @@ export default function RunnerTalk_Main_List(props){
     const [ref, inView] = useInView();
     const [page, setPage] = useState(2);
     const [loading, setLoading] = useState(false);    
-
-    const getItems = useCallback(async () => {
-        setLoading(true);
-
-        const _RunnerTalkList = await fetchRunnerTalkCategoryPost(id,session,"?page="+page);
-
-        if(_RunnerTalkList.response){
-            setError(_RunnerTalkList.response.status)
-            props.setOpen(true);
-        }
-        else{
-            setList((prev)=>[...prev,..._RunnerTalkList])
-        }
-
-        setLoading(false);
-    }, [page])
-
+    
     useEffect(() => {
+        const getItems = async () => {
+            setLoading(true);
+
+            const _RunnerTalkList = await fetchRunnerTalkCategoryPost(id, session, "?page=" + page);
+
+            if (_RunnerTalkList.response) {
+                setError(_RunnerTalkList.response.status);
+                props.setOpen(true);
+            } else {
+                setList((prev) => [...prev, ..._RunnerTalkList]);
+            }
+
+            setLoading(false);
+        };
+
         getItems();
-    }, [getItems])
+    }, [page]);
 
     useEffect(() => {
         // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면

@@ -21,32 +21,6 @@ export default function Crew_Search_List(props){
     const [page, setPage] = useState(2);
     const [loading, setLoading] = useState(false);
     const [crewBookMark,setCrewBookMark] = useState([]);  
-    
-    const getItems = useCallback(async () => {
-        const query = querylocation.search
-        const decodeUri = decodeURI(query);
-        setLoading(true);
-
-        let _CrewList = "";
-    
-        if(decodeUri === ""){
-            _CrewList = await fetchCrewSearch("?page="+page,session);
-        }
-        else{
-            _CrewList = await fetchCrewSearch(decodeUri+"&page="+page,session);
-        }
-
-        if(_CrewList.response){
-            props.setError(_CrewList.response.status)
-            props.setOpen(true);
-        }
-        else{
-            props.setList((prev)=>[...prev,..._CrewList])
-        }
-
-        setLoading(false);
-    }, [page])
-
 
     const onClickBookMark = (id,event) =>{
         event.stopPropagation();
@@ -61,8 +35,32 @@ export default function Crew_Search_List(props){
     }
 
     useEffect(() => {
+        const getItems = async () => {
+            const query = querylocation.search
+            const decodeUri = decodeURI(query);
+            setLoading(true);
+    
+            let _CrewList = "";
+        
+            if(decodeUri === ""){
+                _CrewList = await fetchCrewSearch("?page="+page,session);
+            }
+            else{
+                _CrewList = await fetchCrewSearch(decodeUri+"&page="+page,session);
+            }
+    
+            if(_CrewList.response){
+                props.setError(_CrewList.response.status)
+                props.setOpen(true);
+            }
+            else{
+                props.setList((prev)=>[...prev,..._CrewList])
+            }
+    
+            setLoading(false);
+        }
         getItems();
-    }, [getItems])
+    }, [page])
 
     useEffect(() => {
         // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면

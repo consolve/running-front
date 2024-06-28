@@ -28,25 +28,27 @@ export default function Crew_Main_List(props){
     const [loading, setLoading] = useState(false);  
     const [crewBookMark,setCrewBookMark] = useRecoilState(CrewMain_CrewBookMark);
     
-    const getItems = useCallback(async () => {
-        
-        setLoading(true);
-        const _CrewList = await fetchCrewAll("?page="+page,session);
 
-        if(_CrewList.response){
-            setError(_CrewList.response.status)
-            props.setOpen(true);
-        }
-        else{
-            setList((prev)=>[...prev,..._CrewList])
-        }
-
-        setLoading(false);
-    }, [page])
 
     useEffect(() => {
+        const getItems = async () => {
+        
+            setLoading(true);
+            const _CrewList = await fetchCrewAll("?page="+page,session);
+    
+            if(_CrewList.response){
+                setError(_CrewList.response.status)
+                props.setOpen(true);
+            }
+            else{
+                setList((prev)=>[...prev,..._CrewList])
+            }
+    
+            setLoading(false);
+        }
+
         getItems();
-    }, [getItems])
+    }, [page])
 
     const navigateToCrewDetail =(id) =>{
         navigate(`/crew/detail/${id}`);

@@ -28,25 +28,44 @@ export default function RunnerTalk_Main_List(props){
     const [page, setPage] = useState(2);
     const [loading, setLoading] = useState(false);    
 
-    const getItems = useCallback(async () => {
-        setLoading(true);
+    // const getItems = useCallback(async () => {
+    //     setLoading(true);
 
-        const _RunnerTalkList = await fetchRunnerTalkAll("?page="+page,session);
+    //     const _RunnerTalkList = await fetchRunnerTalkAll("?page="+page,session);
 
-        if(_RunnerTalkList.response){
-            setError(_RunnerTalkList.response.status)
-            props.setOpen(true);
-        }
-        else{
-            setList((prev)=>[...prev,..._RunnerTalkList])
-        }
+    //     if(_RunnerTalkList.response){
+    //         setError(_RunnerTalkList.response.status)
+    //         props.setOpen(true);
+    //     }
+    //     else{
+    //         setList((prev)=>[...prev,..._RunnerTalkList])
+    //     }
 
-        setLoading(false);
-    }, [page])
+    //     setLoading(false);
+    // }, [page])
+
+    // useEffect(() => {
+    //     getItems();
+    // }, [getItems])
 
     useEffect(() => {
+        const getItems = async () => {
+            setLoading(true);
+
+            const _RunnerTalkList = await fetchRunnerTalkAll("?page=" + page, session);
+
+            if (_RunnerTalkList.response) {
+                setError(_RunnerTalkList.response.status);
+                props.setOpen(true);
+            } else {
+                setList((prev) => [...prev, ..._RunnerTalkList]);
+            }
+
+            setLoading(false);
+        };
+
         getItems();
-    }, [getItems])
+    }, [page]);
 
     useEffect(() => {
         // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
