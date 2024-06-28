@@ -39,8 +39,7 @@ export default function Parent({setHeight,mainComment,LikeFunction}){
 
     const useGettingHeight = () => {
       
-        const ref = useCallback((node) => {
-            console.log(node)
+        const ref = useCallback((node) => {     
           if (node !== null) {
             setHeight(node.getBoundingClientRect().height);
           }

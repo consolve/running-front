@@ -117,9 +117,6 @@ export default function TemporaryDrawer(props) {
             setMainComment(prev=>prev=_Comment.main_comment[0]);
         }
 
-        console.log(mainComment)
-        console.log(comment)
-
         setLoading(false);
 
     }
