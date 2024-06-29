@@ -5,7 +5,6 @@ import Auth from "../../../hoc/auth"
 import { useNavigate } from "react-router-dom";
 import TopBar from "../../../component/Community/Post_Component/RunnerTalk_Write_TopBar";
 import { fetchRunnerTalkCategory, fetchRunnerTalkCPostDetail,UpdatePost } from '../../../API/api/RunningTalk/runningTalk_api';
-import { API_URL } from '../../../API/URL';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Drawer from "../../../component/Community/Post_Component/RunnerTalk_Write_Drawer"
 import Header from "../../../component/Community/Post_Component/RunnerTalk_Write_Header"
