@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# RunningLife 소셜 앱
+외주개발
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+***포트폴리오 목적 소스코드 공개 클라이언트 측으로부터 허가 받음***
 
-## Available Scripts
+## 💻 프로젝트 소개
+러너분들을 위한 마라톤 대회, 커뮤니티, 이커머스 서비스입니다.
 
-In the project directory, you can run:
+## ⛓️ Link
+[app.runninglife.co.kr](https://app.runninglife.co.kr/)
 
-### `npm start`
+## ✏️ 요구사항
+https://www.figma.com/file/dauRrSXKx0B2mG1yTys9C8/%EC%9A%B0%EB%A6%AC%EB%B0%A9%EC%8B%9D%EB%8C%80%EB%A1%9C-%EC%9B%B9%EC%95%B1-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-UXUI?type=design&node-id=1310%3A441&mode=design&t=Ta05LnpZJCTS7eik-1
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🕰️ 개발 기간
+2023.08 ~ 진행중
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧑 인원 구성
+김영천 - 프론트엔드 개발, UI/UX 디자인
+<br>
+변재우 - API 개발/DB 설계/앱 패키징
 
-### `npm test`
+## Stacks
+Frontend - React, JavaScript, Recoil, react-hook-form, Material UI, Axios, styled-components, Firebase
+<br>
+CI/CD - Github Actions
+<br>
+Environment - VS code, Git, Github
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Feature
+* 전화번호 인증/로그인 및 회원가입 (결국 Firebase 말고 네이버 클라우드 사용함...)
+* 대회, 러닝화, 크루, 커뮤니티 검색 및 필터 기능
+* 댓글/대댓글 작성 및 좋아요
+* 커뮤니티 글 작성
+* 상세페이지 좋아요 및 북마크
+* 유저 페이지
