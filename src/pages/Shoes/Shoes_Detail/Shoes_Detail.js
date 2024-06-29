@@ -88,7 +88,7 @@ function Shoes_Detail(){
     },[])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',animation:`${spin} 0.3s ease`}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             <TopBar shoes={shoes}/>
             {/* 60px은 navbar*/}
             <Box sx={{width:'100%',mt:'60px',mb:10}}>

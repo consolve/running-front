@@ -87,7 +87,7 @@ function Competition_Detail(){
 
     return(
         <Box sx={{backgroundColor:"primary.main"}}>
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%',animation:`${spin} 0.3s ease`}}>
+        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             
             <Box sx={{width:'100%'}}>
                 {
