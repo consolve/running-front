@@ -15,7 +15,9 @@
 ## 🧑 인원 구성
 김영천 - 프론트엔드 개발, UI/UX 디자인
 <br>
-변재우 - API 개발/DB 설계/앱 패키징
+변재우 - API 개발/DB 설계
+<br>
+유승우 - 앱 패키징
 
 ## Stacks
 Frontend - React, JavaScript, Recoil, Material UI, Axios, react-hook-form
