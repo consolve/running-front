@@ -1,8 +1,15 @@
-# RunningLife 소셜 앱
-러너를 위한 마라톤 대회, 커뮤니티, 이커머스 서비스.
-
 ## 프로젝트 소개
 러너분들을 위한 마라톤 대회, 커뮤니티, 이커머스 서비스입니다.
+
+## 기술 스택
+### Frontend
+ - React, JavaScript, Recoil, Material UI, Axios, react-hook-form
+
+### CI/CD
+ - Github Actions
+
+### Environment
+ - VS code, Git, Github
 
 ## Link
 [app.runninglife.co.kr](https://app.runninglife.co.kr/)
@@ -17,12 +24,6 @@
 <br>
 유승우 - 앱 패키징
 
-## Stacks
-Frontend - React, JavaScript, Recoil, Material UI, Axios, react-hook-form
-<br>
-CI/CD - Github Actions
-<br>
-Environment - VS code, Git, Github
 
 ## Feature
 * 전화번호 인증/로그인 및 회원가입
