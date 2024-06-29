@@ -9,9 +9,6 @@
 ## ⛓️ Link
 [app.runninglife.co.kr](https://app.runninglife.co.kr/)
 
-## ✏️ 요구사항
-https://www.figma.com/file/dauRrSXKx0B2mG1yTys9C8/%EC%9A%B0%EB%A6%AC%EB%B0%A9%EC%8B%9D%EB%8C%80%EB%A1%9C-%EC%9B%B9%EC%95%B1-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-UXUI?type=design&node-id=1310%3A441&mode=design&t=Ta05LnpZJCTS7eik-1
-
 ## 🕰️ 개발 기간
 2023.08 ~ 진행중
 
@@ -21,14 +18,14 @@ https://www.figma.com/file/dauRrSXKx0B2mG1yTys9C8/%EC%9A%B0%EB%A6%AC%EB%B0%A9%EC
 변재우 - API 개발/DB 설계/앱 패키징
 
 ## Stacks
-Frontend - React, JavaScript, Recoil, react-hook-form, Material UI, Axios, styled-components, Firebase
+Frontend - React, JavaScript, Recoil, Material UI, Axios, react-hook-form
 <br>
 CI/CD - Github Actions
 <br>
 Environment - VS code, Git, Github
 
 ## Feature
-* 전화번호 인증/로그인 및 회원가입 (결국 Firebase 말고 네이버 클라우드 사용함...)
+* 전화번호 인증/로그인 및 회원가입 (최종 Firebase 말고 네이버 클라우드 사용)
 * 대회, 러닝화, 크루, 커뮤니티 검색 및 필터 기능
 * 댓글/대댓글 작성 및 좋아요
 * 커뮤니티 글 작성
