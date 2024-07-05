@@ -28,7 +28,7 @@ export default function RunnerTalk_TopBar(props){
 
     return(
         <Box sx={TopbarTheme}>
-            <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6',}}>
+            <Box sx={{mx:'20px',display:'flex',justifyContent:'space-between',alignItems:'center',height:"100%",borderBottom:'3px solid',borderBottomColor:'#F6F6F6'}}>
                 <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                     <IconButton type="button" sx={{}} aria-label="search">
                         <WestIcon sx={{width:"28px",height:"28px"}}/>

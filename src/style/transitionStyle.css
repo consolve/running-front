@@ -1,4 +1,4 @@
-/* .page-enter {
+.page-enter {
   z-index:1001;
   opacity: 0;
   transform: translateY(50px);
@@ -22,9 +22,9 @@
   opacity: 0;
   transform: translateY(-50px);
   transition: opacity 0.3s, transform 0.3s;
-} */
+}
 
-.page-enter {
+/* .page-enter {
   z-index: 1001;
   opacity: 0;
   transform: translateX(30px);
@@ -52,7 +52,7 @@
 
 .page-exit-done {
   display: none;
-}
+} */
 
 .transition-group{
 
