@@ -86,6 +86,7 @@ export default function Competition(props){
                         competition?
                         <Box sx={{width:'100%',pt:1}}>
                             <Swiper
+                                cssMode={true}
                                 spaceBetween={-34}
                                 modules={[FreeMode]}
                                 slidesPerView={'auto'}

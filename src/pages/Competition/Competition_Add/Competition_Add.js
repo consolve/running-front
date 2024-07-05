@@ -212,6 +212,7 @@ function AddCompetition(){
                             modules={[FreeMode]}
                             slidesPerView={'auto'}
                             freeMode={{enabled: true}}	// 추가
+                            cssMode={true}
                         >
                             {
                                 Base64s.map((item,index)=>{
@@ -263,6 +264,7 @@ function AddCompetition(){
                             modules={[FreeMode]}
                             slidesPerView={'auto'}
                             freeMode={{enabled: true}}	// 추가
+                            cssMode={true}
                         >
                             {
                                 CompetitionBase64s.map((item,index)=>{

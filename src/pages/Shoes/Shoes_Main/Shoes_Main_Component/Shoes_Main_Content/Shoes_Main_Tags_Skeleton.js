@@ -20,6 +20,7 @@ export default function TagsSkeleton(){
                             modules={[FreeMode]}
                             slidesPerView={'auto'}
                             freeMode={{enabled: true}}	// 추가
+                            cssMode={true}
                         >
                             {
                                 loadinglist.map((item,index)=>{

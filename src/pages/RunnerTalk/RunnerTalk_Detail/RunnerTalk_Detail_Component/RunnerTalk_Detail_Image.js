@@ -29,6 +29,7 @@ export default function RunnerTalk_Detail_Image(props) {
                     modules={[FreeMode]}
                     slidesPerView={'auto'}
                     freeMode={{enabled: true}}	// 추가
+                    cssMode={true}
                 >
                     {
                         props.detail.images.map((item,index)=>{

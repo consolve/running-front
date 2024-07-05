@@ -27,18 +27,6 @@ import { FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
-
 function RunnerTalk({isUpdate=false}){
     const [title,setTitle] = useRecoilState(RunnerTalk_Write_Header);
     const [content,setContent] = useRecoilState(RunnerTalk_Write_Content);
@@ -140,6 +128,7 @@ function RunnerTalk({isUpdate=false}){
                             slidesPerView={'auto'}
                             freeMode={{enabled: true}}	// 추가
                             style={{paddingLeft:"20px",paddingRight:"20px",width:"auto"}}
+                            cssMode={true}
                         >
                             {
                                 Base64s.map((item,index)=>{

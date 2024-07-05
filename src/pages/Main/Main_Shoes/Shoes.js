@@ -100,6 +100,7 @@ export default function Shoes(props){
                         modules={[FreeMode]}
                         slidesPerView={'auto'}
                         freeMode={{enabled: true}}	// 추가
+                        cssMode={true}
                     >
                         {loadingcomponent.map((item,index)=>{
                             return(

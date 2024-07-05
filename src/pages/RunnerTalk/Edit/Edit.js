@@ -188,6 +188,7 @@ function RunnerTalk(){
                             slidesPerView={'auto'}
                             freeMode={{enabled: true}}	// 추가
                             style={{paddingLeft:"20px",paddingRight:"20px",width:"auto"}}
+                            cssMode={true}
                         >
                             {
                                 Base64s.map((item,index)=>{

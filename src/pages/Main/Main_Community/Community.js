@@ -79,6 +79,7 @@ export default function  Community(props){
                     </Box>
                     :
                     <Swiper
+                    cssMode={true}
                     slidesPerView={1}
                     grid={{
                         rows: 2,

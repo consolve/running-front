@@ -138,6 +138,7 @@ function Report({isUpdate=false}){
                             slidesPerView={'auto'}
                             freeMode={{enabled: true}}	// 추가
                             style={{paddingLeft:"20px",paddingRight:"20px"}}
+                            cssMode={true}
                         >
                             {
                                 Base64s.map((item,index)=>{

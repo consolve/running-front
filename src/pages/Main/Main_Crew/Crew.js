@@ -97,6 +97,7 @@ export default function Crew(props){
                 props.loadingall?
                 <Box sx={{width:'100%',pt:2,height:'250px'}}>
                     <Swiper
+                        cssMode={true}
                         spaceBetween={8}
                         modules={[FreeMode]}
                         slidesPerView={'auto'}
