@@ -50,21 +50,21 @@ export default function Navbar() {
   };
 
   return (
-    <Box sx={{ position: 'fixed', bottom: 0, left: '50%', right: 0,width:'100%',minWidth:'360px',maxWidth:'450px',transform:'translate(-50%,0)',zIndex:1000 }} elevation={0}>
+    <Box sx={{ position: 'fixed', bottom: 0, left: '50%', right: 0,width:'100%',minWidth:'360px',maxWidth:'450px',transform:'translate(-50%,0)',zIndex:1000 }}>
       <BottomNavigation value={path} onChange={handleChange} showLabels>
-                <BottomNavigationAction
-                  label="홈"
-                  value="/"
-                  onClick = {navigateToMain}
-                  icon={
-                    path === '/' ? 
-                      <HomeIconActive style={{ color: 'inherit' }} width={24} height={24} />
-                     : 
-                      <HomeIcon style={{ color: 'inherit' }} width={24} height={24} />
-                    
-                  }
-                  disableTouchRipple = {true}
-                />
+        <BottomNavigationAction
+          label="홈"
+          value="/"
+          onClick = {navigateToMain}
+          icon={
+            path === '/' ? 
+              <HomeIconActive style={{ color: 'inherit' }} width={24} height={24} />
+              : 
+              <HomeIcon style={{ color: 'inherit' }} width={24} height={24} />
+            
+          }
+          disableTouchRipple = {true}
+        />
         <BottomNavigationAction
           label="대회일정"
           value="/schedule"

@@ -8,49 +8,20 @@ import TopBar from "./Shoes_Detail_Component/Shoes_Detail_TopBar"
 import {Divider} from '@mui/material';
 import Recommend from "./Shoes_Detail_Component/Shoes_Detail_Recommend"
 import Feature from "./Shoes_Detail_Component/Shoes_Detail_Feature"
-import Navbar from './Shoes_Detail_Component/Shoes_Detail_Navbar';
 import { fetchShoesDetail } from '../../../API/api/RunningShoes/shoes_api';
 import Skeleton from '@mui/material/Skeleton';
 import { useParams } from "react-router-dom";
-import {Modal} from '@mui/material';
 import {
     ShoesDetail_Comment,
-    ShoesDetail_Comment_Order
 } from "../../../state/Shoes/ShoesMain_State";
 import Comment from "./Shoes_Detail_Component/Shoes_Detail_Comment"
 import { FetchRunningshoesCommentPopular } from '../../../API/api/RunningShoes/Shoes_comment_api';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import Error from "../../../component/Error/ErrorModal"
-import { keyframes } from '@mui/material';
-
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
-
 
 
 function Shoes_Detail(){
-
-    const spin = keyframes`
-    0%{
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100%{
-        opacity: 1;
-        transform: translateY(0px);
-      }
-    `;
 
     const { id } = useParams();
     const session = localStorage.getItem("sessionid");
@@ -62,7 +33,6 @@ function Shoes_Detail(){
     const handleClose = () => setOpen(false);
     const [shoes,setShoes] = useState({});
     const [comment,setComment] = useRecoilState(ShoesDetail_Comment);
-    const [commentOrder,setCommentOrder] = useRecoilState(ShoesDetail_Comment_Order);
     
 
     const FetchShoes = async () => {
@@ -81,18 +51,23 @@ function Shoes_Detail(){
     }
     
     useEffect(()=>{
-        console.log(id)
-        window.scrollTo({top:0})
         setLoading(true);
         FetchShoes();
     },[])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
+        <Box sx={{position:"absolute",zIndex:1001,maxWidth:"450px",minWidth:"360px",display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             <TopBar shoes={shoes}/>
             {/* 60px은 navbar*/}
             <Box sx={{width:'100%',mt:'60px',mb:10}}>
-                <Banner shoes={shoes}/>
+                {
+                    loading?
+                    <Box sx={{width:"100%",height:"720px"}}>
+                        <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{}}/>
+                    </Box>
+                    :
+                    <Banner shoes={shoes}/>
+                }
                 <Box sx={{zIndex:1,backgroundColor:"#ffffff"}}>
                     {
                         loading? 
@@ -131,7 +106,7 @@ function Shoes_Detail(){
             {/* <Navbar/> */}
 
             <Error error={error} open={open} handleClose={handleClose}/>
-        </Box>    
+        </Box>  
     )
 }
 

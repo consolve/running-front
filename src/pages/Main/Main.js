@@ -59,7 +59,6 @@ function Main(){
 
         }
 
-        window.scrollTo({top:0})
     },[])
 
     useEffect(()=>{
@@ -71,8 +70,8 @@ function Main(){
         <>
         <Box sx={{width:'100%',display:'flex',justifyContent:'start',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column'}}>
             <div id="FFEMAIL" style={{display:"none"}}> {number} </div>
+            <TopBar/>
             <Box sx={{display:'flex',flexDirection:'column',width:"100%"}}>
-                <TopBar/>
                 <Banner/>
             </Box>
             <Box sx={{width:'100%',mb:8}}>

@@ -74,7 +74,6 @@ function Crew_Detail(){
     }
     
     useEffect(()=>{
-        window.scrollTo({top:0})
         setLoading(true);
         Fetchcrew();
 
@@ -86,8 +85,7 @@ function Crew_Detail(){
     },[])
 
     return(
-        <Box sx={{backgroundColor:"primary.main"}}>
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
+        <Box sx={{position:"absolute",zIndex:1001,display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             
             <Box sx={{width:'100%'}}>
                 {
@@ -147,8 +145,7 @@ function Crew_Detail(){
             </Box>
 
             <Error error={error} open={open} handleClose={handleClose}/>
-        </Box>  
-    </Box>  
+        </Box>   
     )
 }
 

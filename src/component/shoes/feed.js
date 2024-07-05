@@ -1,6 +1,6 @@
 import {Box, Typography, IconButton} from '@mui/material';
 import { API_URL } from '../../API/URL';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookMarkHandle from '../../Util/bookmark';

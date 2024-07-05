@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import Detail from "./Competition_Detail_Component/Competition_Detail_Detail"
 import Course from "./Competition_Detail_Component/Competition_Detail_Course"
 import Image from "./Competition_Detail_Component/Competition_Detail_Image"
-import Navbar from './Competition_Detail_Component/Competition_Detail_Navbar';
 import {
     CompetitionSchedule_Comment,
     CompetitionSchedule_Comment_Order
@@ -86,8 +85,18 @@ function Competition_Detail(){
 
 
     return(
-        <Box sx={{backgroundColor:"primary.main"}}>
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
+        <Box sx={{
+        position:"absolute",
+        zIndex:1001,
+        display:'flex',
+        justifyContent:'start',
+        alignItems:'center',
+        flexDirection:'column',
+        width:'100%',
+        maxWidth:"450px",
+        minWidth:"360px",
+        height:"100vh"
+        }}>
             
             <Box sx={{width:'100%'}}>
                 {
@@ -109,11 +118,11 @@ function Competition_Detail(){
                     }
                     </Box>
                 }
-                <Box sx={{position:'relative',display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",mt:'-30px',zIndex:1,backgroundColor:"#ffffff",borderTopLeftRadius:'20px',borderTopRightRadius:'20px',pb:5,mt:"270px"}}>
+                <Box sx={{position:'relative',display:"flex",flexDirection:"column",justifyContent:"start",alignItems:"center",mt:'-30px',zIndex:1,backgroundColor:"#ffffff",pb:5,mt:"270px"}}>
                     {
                         loading? 
                         <Box sx={{width:"100%",height:"600px",mb:1}}>
-                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{borderTopLeftRadius:'20px',borderTopRightRadius:'20px',pb:11}}/>
+                            <Skeleton variant="rectangular" width={'100%'} height={"100%"} sx={{pb:11}}/>
                         </Box>
                         :
                         <Box sx={{width:"100%",display:"flex",justifyContent:"center"}}>
@@ -153,7 +162,6 @@ function Competition_Detail(){
 
             <Error error={error} open={open} handleClose={handleClose}/>
         </Box>    
-        </Box>
     )
 }
 

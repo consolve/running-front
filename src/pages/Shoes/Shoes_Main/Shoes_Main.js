@@ -20,19 +20,6 @@ import {
 } from '../../../state/Shoes/ShoesMain_State';
 import Error from "../../../component/Error/ErrorModal"
 
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
-
 function Shoes_Main(){
     const navigate = useNavigate();
 
@@ -57,7 +44,6 @@ function Shoes_Main(){
     }
 
     useEffect(() =>{  
-        window.scrollTo({top:0})
         setLoading1(true);
         setLoading2(true);
         setLoading3(true);
@@ -69,7 +55,7 @@ function Shoes_Main(){
     },[loading1,loading2,loading3])
 
     return(
-        <Box sx={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
+        <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#ffffff',flexDirection:'column',width:'100%'}}>
             <TopBar/>
             <Box sx={{width:'100%',mt:'60px'}}>
                 <Filter setOpen = {handleOpen} setClose = {handleClose} setError = {setError}/>

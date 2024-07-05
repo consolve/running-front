@@ -21,19 +21,6 @@ import {
 import { fetchSearchShoes } from '../../../API/api/RunningShoes/shoes_api';
 import Error from "../../../component/Error/ErrorModal"
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 200,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
-
-
 function Shoes_Search(){
     const loadinglist = [1,2,3,4,5,6,7,8];
     const querylocation = useLocation();

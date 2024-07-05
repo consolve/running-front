@@ -5,7 +5,7 @@
 ### Frontend
  - React, JavaScript, Recoil, Material UI, Axios, react-hook-form
 
-### CI/CD
+### 배포 자동화
  - Github Actions
 
 ### Environment

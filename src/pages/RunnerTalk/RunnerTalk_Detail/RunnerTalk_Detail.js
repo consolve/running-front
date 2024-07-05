@@ -95,7 +95,6 @@ function RunnerTalk_Detail(){
     }
     
     useEffect(()=>{
-        window.scrollTo({top:0})
         setLoading(true);
         setCategoryLoading(true);
         FetchDetail();
@@ -106,7 +105,7 @@ function RunnerTalk_Detail(){
     },[])
 
     return(
-        <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
+        <Box sx={{position:"absolute",zIndex:1001,display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             <TopBar detail={detail}/>
             <Box sx={{width:'100%',mb:'54px',mt:'61px'}}>
                 {

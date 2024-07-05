@@ -4,7 +4,10 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  useNavigationType,
+  useLocation,
 } from  "react-router-dom";
+import React from "react"
 import LoginMain from "./pages/User/Login_Main"
 import Login from "./pages/User/Login/User_Login"
 import RegisterTel from "./pages/User/Register/Register_Tel"
@@ -49,6 +52,8 @@ import Report from "./pages/Report/report";
 import Resign from "./pages/Resign/resign"
 
 import ScrollTop from "./hoc/scrollTop"
+import RouteTransition from "./Util/RouteTransition"
+
 import {
   RecoilRoot,
   atom,
@@ -57,6 +62,7 @@ import {
   useRecoilValue,
 } from 'recoil';
 import './style/plate/reset.css'
+import "./style/transitionStyle.css"
 
 
 const WithNav = () =>{
@@ -75,14 +81,18 @@ const WithoutNav =()=>{
 }
 
 function App() {
+  const location = useLocation();
+
+  React.useEffect(()=>{
+    window.scrollTo(0,0);
+  },[location.pathname])
 
   return (
     <RecoilRoot>
       <WebMain>
         <APP>
-          <BrowserRouter>
-            <ScrollTop/>
-            <Routes>
+          <RouteTransition location={location}>
+            <Routes location={location}>
               <Route element={<WithNav/>}>
                 <Route path ="/" element={<Main/>}/>
                 <Route path='/schedule' element = {<Schedule/>}/>
@@ -135,7 +145,7 @@ function App() {
               </Route>
 
             </Routes>
-          </BrowserRouter>
+            </RouteTransition>
         </APP>
       </WebMain>
     </RecoilRoot>
