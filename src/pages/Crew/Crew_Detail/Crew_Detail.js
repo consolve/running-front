@@ -85,8 +85,18 @@ function Crew_Detail(){
     },[])
 
     return(
-        <Box sx={{position:"absolute",zIndex:1001,display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
-            
+        <Box sx={{
+            position:"absolute",
+            zIndex:1001,
+            maxWidth:"450px",
+            minWidth:"360px",
+            display:'flex',
+            justifyContent:'start',
+            alignItems:'center',
+            flexDirection:'column',
+            width:'100%'
+        }}>
+            <TopBar crew={crew}/>
             <Box sx={{width:'100%'}}>
                 {
                     loading&&comment?
@@ -98,7 +108,6 @@ function Crew_Detail(){
                     {
                         crew!=0&&comment?
                         <Box sx={{width:"100%",height:"300px",position:"fixed",maxWidth:"450px",minWidth:"360px"}}>
-                            <TopBar crew={crew}/>
                             <Banner crew={crew}/>
                         </Box>
                         :

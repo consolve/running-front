@@ -1,12 +1,10 @@
 import {Box,Typography,IconButton} from '@mui/material';
 import React, { useState } from "react";
 import { useRef,useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import WestIcon from '@mui/icons-material/West';
-import {runningCrewBookMark} from "../../../../API/api/RunningCrew/crew_api"
 import BookMarkHandle from "../../../../Util/bookmark";
 
 const TopbarTheme = {
@@ -55,12 +53,12 @@ export default function Crew_Detail_TopBar(props){
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 {
                     bookmark?
-                    <IconButton onClick={(e)=>onClickBookMart(props.crew.id,e)} sx={{color:'white'}}>
-                        <BookmarkIcon sx={{mr:2,color:"primary.main"}}/>
+                    <IconButton onClick={(e)=>onClickBookMart(props.crew.id,e)} sx={{color:'white',mr:1}}>
+                        <BookmarkIcon/>
                     </IconButton>
                     :
-                    <IconButton onClick={(e)=>onClickBookMart(props.crew.id,e)} sx={{color:'white'}}>
-                        <BookmarkBorderIcon sx={{mr:2}}/>
+                    <IconButton onClick={(e)=>onClickBookMart(props.crew.id,e)} sx={{color:'white',mr:1}}>
+                        <BookmarkBorderIcon/>
                     </IconButton>
                 }
             </Box>

@@ -19,7 +19,7 @@ const TopbarTheme = {
     transform: 'translate(-50%, 0)',
     left: '50%',
     height:'60px',
-    width:'90%',
+    width:'100%',
     minWidth:'324px',
     maxWidth:'405px',
     zIndex:1000
@@ -49,7 +49,7 @@ export default function Competition_TopBar(props){
 
     return(
         <Box sx={TopbarTheme}>
-            <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+            <Box onClick = {navigateToBack} sx={{display:'flex',justifyContent:'center',alignItems:'center',ml:'12px'}}>
                 <IconButton type="button" sx={{color:'white' }} aria-label="search">
                     <WestIcon sx={{width:"28px",height:"28px"}}/>
                 </IconButton>
@@ -57,12 +57,12 @@ export default function Competition_TopBar(props){
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 {
                     bookmark?
-                    <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white'}}>
-                        <BookmarkIcon sx={{color:"primary.main"}}/>
+                    <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white',mr:1}}>
+                        <BookmarkIcon/>
                     </IconButton>
                     :
-                    <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white'}}>
-                        <BookmarkBorderIcon sx={{}}/>
+                    <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white',mr:1}}>
+                        <BookmarkBorderIcon/>
                     </IconButton>
                 }
             </Box>

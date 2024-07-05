@@ -97,7 +97,7 @@ function Competition_Detail(){
         minWidth:"360px",
         height:"100vh"
         }}>
-            
+            <TopBar competition={contest}/>
             <Box sx={{width:'100%'}}>
                 {
                     loading?
@@ -109,7 +109,6 @@ function Competition_Detail(){
                     {
                         contest&&comment?
                         <Box sx={{width:"100%",height:"300px",position:"fixed",maxWidth:"450px",minWidth:"360px"}}>
-                            <TopBar competition={contest}/>
                             <Banner competition={contest}/>
                         </Box>
                         :

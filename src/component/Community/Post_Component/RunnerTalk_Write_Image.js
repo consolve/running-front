@@ -7,6 +7,7 @@ import {
     RunnerTalk_Write_Image
 } from "../../../state/RunnerTalk/RunnerTalk_Write_State"
 import { useRecoilState } from 'recoil';
+import {ReactComponent as ImageIcon} from '../../../Image/icon/ImageIconOutlined.svg';
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -68,11 +69,7 @@ export default function Navbar() {
     <Box sx={{display:'flex',alignItems:"center", position: 'fixed', bottom: 0, left: '50%', right: 0,width:'95%',minWidth:'342px',maxWidth:'399px',transform:'translate(-50%,0)',zIndex:2,height:'65px',borderTop:1,borderTopColor:'#EDEDED',backgroundColor:'#ffffff' }} elevation={0}>
         
         <Label for="input-file">
-            <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:"100%",ml:0.5}}>
-                <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'16px'}}>
-                    사진
-                </Typography>
-            </Box>
+            <ImageIcon width={26} height={26} style={{marginLeft:'8px'}}/>
         </Label>
 
         <VisuallyHiddenInput
