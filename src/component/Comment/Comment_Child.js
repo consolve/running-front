@@ -37,11 +37,16 @@ export default function ChildComment({item,LikeFunction,onClickComment,deleteCom
     const [likePoint,setlikePoint] = useState(item.likePoint);
     const sessionid = localStorage.getItem('sessionid');
     const [open,setOpen] = useState(false);
+    const [deleteOpen,setDeleteOpen] = useState(false);
     const [modalOpen,setModalOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleModalOpen = () => {
         setModalOpen(!modalOpen);
+    };
+
+    const handleDeleteModalOpen = () => {
+        setDeleteOpen(!deleteOpen);
     };
 
     const handleClose = () => {
@@ -63,8 +68,8 @@ export default function ChildComment({item,LikeFunction,onClickComment,deleteCom
             <BlockModal id={item.user} handleOpen={handleModalOpen} open={modalOpen}/>
             <DeleteModal 
                 id={item.id} 
-                handleOpen={handleModalOpen} 
-                open={modalOpen} 
+                handleOpen={handleDeleteModalOpen} 
+                open={deleteOpen} 
                 deleteComment={deleteComment}
                 deleteCommentSet={deleteCommentSet}
             />
@@ -106,7 +111,7 @@ export default function ChildComment({item,LikeFunction,onClickComment,deleteCom
                                             <Box sx={{display:'flex',ml:2,mt:0.2,my:1}}>
                                                 <Typography onClick={()=>{
                                                     handleClose();
-                                                    handleModalOpen();
+                                                    handleDeleteModalOpen();
                                                 }} sx={{fontFamily:'Pretendard Variable',fontWeight:'500',fontSize:'15px',color:"primary.main",ml:1,lineHeight:'23px'}}>
                                                     삭제하기
                                                 </Typography>
