@@ -112,7 +112,6 @@ function Competition_Search(){
             setLocation([]);
             setKeyword("");
             setList("");
-          // ...
         };
       }, []);
 

@@ -75,7 +75,6 @@ function RunnerTalk_Filtering(){
     }
 
     useEffect(() =>{
-        window.scrollTo({top:0})
         setLoading1(true);
         setLoading2(true);
         setLoadingall(true);
@@ -85,10 +84,6 @@ function RunnerTalk_Filtering(){
     useEffect(()=>{
         LoadingCompilation();
     },[loading1,loading2])
-
-    useEffect(()=>{
-        console.log(list);
-    },[list])
 
     useEffect(()=>{
         window.scrollTo({top:0})

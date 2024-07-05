@@ -14,8 +14,6 @@ import {
     CompetitionList,
     CompetitionSearch_Error
 } from '../../../../state/Competition/CompetitionSearch_State';
-
-import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
 import Content from '../../../../component/shoes/wide_feed';
 
 export default function Competition_Search_List(props){
@@ -29,34 +27,34 @@ export default function Competition_Search_List(props){
     const [page, setPage] = useState(2);
     const [loading, setLoading] = useState(false);
 
-    const getItems = async () => {
-        const query = querylocation.search;
-        const decodeUri = decodeURI(query);
-        setLoading(true);
-
-        let _SearchCompetition = "";
-
-        if (decodeUri === "") {
-            _SearchCompetition = await fetchSearchContest(decodeUri + "?page=" + page, session);
-        } else {
-            _SearchCompetition = await fetchSearchContest(decodeUri + "&page=" + page, session);
-        }
-
-        if (_SearchCompetition.response) {
-            setError(_SearchCompetition.response.status);
-            props.setOpen(true);
-        } else {
-            setList((prev) => [...prev, ..._SearchCompetition]);
-        }
-
-        setLoading(false);
-    };  
-
     useEffect(() => {
+        const getItems = async () => {
+            const query = querylocation.search;
+            const decodeUri = decodeURI(query);
+            setLoading(true);
+
+            let _SearchCompetition = "";
+
+            if (decodeUri === "") {
+                _SearchCompetition = await fetchSearchContest(decodeUri + "?page=" + page, session);
+            } else {
+                _SearchCompetition = await fetchSearchContest(decodeUri + "&page=" + page, session);
+            }
+
+            if (_SearchCompetition.response) {
+                setError(_SearchCompetition.response.status);
+                props.setOpen(true);
+            } else {
+                setList((prev) => [...prev, ..._SearchCompetition]);
+            }
+
+            setLoading(false);
+        };  
         getItems();
     }, [page]);
 
     useEffect(() => {
+        console.log(inView,loading,page)
         if (inView && !loading) {
             setPage((prevState) => prevState + 1);
         }
@@ -76,13 +74,13 @@ export default function Competition_Search_List(props){
                     <React.Fragment key={index}>
                         {
                             list.length-1===index?
-                            <Content inputref={ref} item={item} navigateToCompetitionDetail={navigateToCompetitionDetail}/>
+                            <Content inputRef={ref} item={item} navigateToCompetitionDetail={navigateToCompetitionDetail}/>
                             :
                             <Content item={item} navigateToCompetitionDetail={navigateToCompetitionDetail}/>
 
                         }
                     </React.Fragment>
-                    )  
+                    )   
                 })}
             </Box>
             {

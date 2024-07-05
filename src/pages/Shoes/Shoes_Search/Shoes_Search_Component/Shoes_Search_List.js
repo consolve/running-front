@@ -76,7 +76,6 @@ export default function Shoes_Search_List(props){
             else{
                 _ShoesList = await fetchSearchShoes(decodeUri+"&page="+page,session);
             }
-            console.log(_ShoesList)
     
             if(_ShoesList.response){
                 setError(_ShoesList.response.status)

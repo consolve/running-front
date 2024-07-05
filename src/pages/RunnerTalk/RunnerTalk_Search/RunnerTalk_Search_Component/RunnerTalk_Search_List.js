@@ -107,7 +107,7 @@ export default function RunnerTalk_Search_list(props){
                                         </Box>
                                     </Box>
                                  </Box>
-                                <Box sx={{width:'75px',height:'75px',backgroundColor:'primary.light',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'75px',height:'75px',backgroundColor:'white',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
                             :
                             <Box onClick ={()=>navigateToRunnerTalkDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'rgba(237, 237, 237, 1)'}}>
@@ -146,7 +146,7 @@ export default function RunnerTalk_Search_list(props){
                                         </Box>
                                     </Box>
                                  </Box>
-                                <Box sx={{width:'75px',height:'75px',backgroundColor:'primary.light',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'75px',height:'75px',backgroundColor:'white',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
 
                         }

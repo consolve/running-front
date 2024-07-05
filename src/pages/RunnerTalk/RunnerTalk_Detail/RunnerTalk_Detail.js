@@ -105,7 +105,7 @@ function RunnerTalk_Detail(){
     },[])
 
     return(
-        <Box sx={{position:"absolute",zIndex:1001,display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
+        <Box sx={{position:"absolute",zIndex:1001,maxWidth:"450px",minWidth:"360px",display:'flex',justifyContent:'start',alignItems:'center',flexDirection:'column',width:'100%'}}>
             <TopBar detail={detail}/>
             <Box sx={{width:'100%',mb:'54px',mt:'61px'}}>
                 {

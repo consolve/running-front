@@ -51,6 +51,7 @@ export default function RunnerTalk_Main_List(props){
     }, [page]);
 
     useEffect(() => {
+        console.log(inView,loading)
         // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
         if (inView && !loading) {
             setPage(prevState => prevState + 1)
@@ -107,7 +108,7 @@ export default function RunnerTalk_Main_List(props){
                                         </Box>
                                     </Box>
                                  </Box>
-                                <Box sx={{width:'75px',height:'75px',backgroundColor:'primary.light',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images[0]})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+                                <Box sx={{width:'75px',height:'75px',backgroundColor:'white',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images[0]})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
                             :
                             <Box onClick ={()=>navigateToCompetitionDetail(item.id)} key = {item.id} sx={{display:'flex',alignItems:'center',height:'100px',width:'100%',borderBottom:1,borderColor:'rgba(237, 237, 237, 1)'}}>
@@ -146,7 +147,7 @@ export default function RunnerTalk_Main_List(props){
                                         </Box>
                                     </Box>
                                  </Box>
-            <Box sx={{width:'75px',height:'75px',backgroundColor:'primary.light',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
+            <Box sx={{width:'75px',height:'75px',backgroundColor:'white',borderRadius:'7px',mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                             </Box>
 
                         }
