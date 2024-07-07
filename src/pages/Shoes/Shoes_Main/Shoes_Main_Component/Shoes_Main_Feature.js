@@ -48,7 +48,7 @@ export default function Shoes_feature(props){
     const navigate = useNavigate();
 
     const navigateToShoesSearch =(value) =>{
-        navigate(`/shoes/search?keyword=${value}`);
+        navigate(`/shoes/search?feature=${value}`);
     }
 
     const onClickBookMart = (id,event) =>{

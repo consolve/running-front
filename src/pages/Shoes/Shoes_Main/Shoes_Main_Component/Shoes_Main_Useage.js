@@ -49,7 +49,7 @@ export default function Shoes_Useage(props){
 
     
     const navigateToShoesSearch =(value) =>{
-        navigate(`/shoes/search?keyword=${value}`);
+        navigate(`/shoes/search?useage=${value}`);
     }
 
     const navigateToShoesDetail =(id) =>{
