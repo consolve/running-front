@@ -1,8 +1,6 @@
 import {Box,Typography} from '@mui/material';
 import { API_URL } from '../../API/URL';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-
-import { keyframes } from '@mui/material';
+import Bookmark from './_component/bookmark';
 
 const convertToCustomDate = (date) => {
     const customDate = new Date(date); // 월은 0부터 시작하므로 2는 3월을 의미합니다.
@@ -12,16 +10,17 @@ const convertToCustomDate = (date) => {
     return `${year}.${month}.${day}`;
 };
 
-export default function Competition_TopBar({item,navigateToCompetitionDetail,inputRef}){
+export default function Competition_wide_feed({item,navigateToCompetitionDetail,inputRef}){
+
     return(
-        <Box key ={item.id} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,mx:"20px"}}>
+        <Box key ={item.id} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{position:"relative",display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,mx:"20px"}}>
+            <Bookmark item={item}/>
             <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.thumbnail})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
                 <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'21.46px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                         {item.name}
                     </Typography>
-                    <NotificationsActiveIcon fontSize={'small'} sx={{pr:2}}/>
                 </Box>
                 <Box sx={{width:'100%',mt:'7px'}}>
                     <Box sx={{display:'flex',justifyContent:'start',alignItems:'center',width:'100%'}}>

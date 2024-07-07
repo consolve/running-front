@@ -10,11 +10,10 @@ const functionEnum = {
     "community":runningTalkBookMark
 }
 
-export default function BookMarkHandle(where,id,sessionid,navigate){
+export default async function BookMarkHandle(where,id,sessionid,navigate){
 
     if(sessionid){
-        const response = checkresponse(where,id,sessionid); 
-
+        const response = await checkresponse(where,id,sessionid); 
         return response
     }
     else{

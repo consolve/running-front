@@ -37,8 +37,8 @@ export default function Competition_TopBar(props){
         navigate(-1);
     }
 
-    const onClickBookMart = (id) =>{
-        if(BookMarkHandle("contest",id,session,navigate)){
+    const onClickBookMark = async (id) =>{
+        if(await BookMarkHandle("contest",id,session,navigate)){
             setBookmark(prev=>prev=!bookmark);
         }
     }
@@ -57,11 +57,11 @@ export default function Competition_TopBar(props){
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                 {
                     bookmark?
-                    <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white',mr:1}}>
+                    <IconButton onClick={(e)=>onClickBookMark(props.competition.id,e)} sx={{color:'white',mr:1}}>
                         <BookmarkIcon/>
                     </IconButton>
                     :
-                    <IconButton onClick={(e)=>onClickBookMart(props.competition.id,e)} sx={{color:'white',mr:1}}>
+                    <IconButton onClick={(e)=>onClickBookMark(props.competition.id,e)} sx={{color:'white',mr:1}}>
                         <BookmarkBorderIcon/>
                     </IconButton>
                 }

@@ -14,7 +14,7 @@ import {
     CompetitionList,
     CompetitionSearch_Error
 } from '../../../../state/Competition/CompetitionSearch_State';
-import Content from '../../../../component/shoes/wide_feed';
+import Content from '../../../../component/Competition/wide_feed';
 
 export default function Competition_Search_List(props){
     const querylocation = useLocation();

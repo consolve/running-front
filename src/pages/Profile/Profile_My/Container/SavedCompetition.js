@@ -1,7 +1,7 @@
 import {Box,Typography,Modal} from '@mui/material';
 import Topbar from "../Component/Topbar"
 import {useState,useEffect} from "react"
-import Content from "../../../../component/shoes/wide_feed"
+import Content from "../../../../component/Competition/wide_feed"
 import ContentSkeleton from '../../../../component/shoes/wide_Skeleton';
 import { useNavigate } from 'react-router-dom';
 import {FetchMySavedContest,ContestBookMark} from "../../../../API/api/Contest/contest_api"
@@ -94,9 +94,9 @@ export default function MyCompetition(){
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'25px',lineHeight:"29.83px"}}>
                         저장한 대회
                     </Typography>
-                    <Typography onClick={handleVisible} color={isVisible?"primary":"#A6A6A6"} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px',lineHeight:"19px"}}>
+                    {/* <Typography onClick={handleVisible} color={isVisible?"primary":"#A6A6A6"} sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'16px',lineHeight:"19px"}}>
                         {isVisible?"완료":"편집"}
-                    </Typography>
+                    </Typography> */}
                 </Box>
             </Box>
 

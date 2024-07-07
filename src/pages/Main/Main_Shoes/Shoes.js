@@ -59,7 +59,7 @@ export default function Shoes(props){
         props.setLoading2(false);
     }
 
-    const onClickBookMart = (id,event) =>{
+    const onClickBookMark = (id,event) =>{
         event.stopPropagation();
         if(BookMarkHandle("shoes",id,session,navigate)){
             setShoesBookmark((prev)=>({...prev,[id]:!shoesBookmark[id]}))
@@ -135,11 +135,11 @@ export default function Shoes(props){
                                                         <img src={`${API_URL}${!item.shoesImg.length?null:item.shoesImg[0].url}`} style={{width:'170px',height:'170px',objectFit:'contain',objectPosition:'center',px:1,borderRadius:'8px'}}/>
                                                             {
                                                                 shoesBookmark[item.id]?
-                                                                <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                                <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
                                                                     <BookmarkIcon sx={{color:"primary.main"}}/>
                                                                 </IconButton>
                                                                 :
-                                                                <IconButton onClick={(e)=>onClickBookMart(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
+                                                                <IconButton onClick={(e)=>onClickBookMark(item.id,e)} sx={{position:"absolute",top:5,right:5,zIndex:999}}>
                                                                     <BookmarkBorderIcon/>
                                                                 </IconButton>
                                                             }

@@ -23,7 +23,7 @@ export default function Competition_Detail_Image(props) {
     }
 
     useEffect(()=>{
-        console.log(props.competition)
+
         setOfficialImg(props.competition.courseImgs);
     },[])
 

@@ -121,8 +121,12 @@ export const ContestBookMark = async (id,session) =>{
         const body ={
                 "postId":id
             }
+
+        const emptyBody = {}
+        const response2 = await axios.post(`${process.env.REACT_APP_URL}/api/contest/alarm/${id}`,emptyBody,header);
         const response = await axios.post(`${process.env.REACT_APP_URL}/api/contest/bookmark`,body,header);
-        return response;   
+
+        return response2;   
 
     } catch(error){
         if(error.status === 409){
@@ -198,3 +202,22 @@ export const getBannerImage = async () =>{
         return error
     }
 }
+
+// export const ContestAlarm = async (id,session) =>{
+//     try{
+//         const header = {
+//             headers: {
+//                 Authorization:`Bearer `+`${session}`
+//             }
+//         }
+
+//         const response = await axios.post(`${process.env.REACT_APP_URL}/api/contest/alarm/${id}`,header);
+//         return response;   
+
+//     } catch(error){
+//         if(error.status === 409){
+//             return
+//         }
+//         return error
+//     }
+// }
