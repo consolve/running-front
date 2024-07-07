@@ -16,8 +16,8 @@ export default function Competition_wide_feed({item,navigateToCompetitionDetail,
         <Box key ={item.id} onClick ={()=>navigateToCompetitionDetail(item.id)} sx={{position:"relative",display:'flex',alignItems:'center',backgroundColor:'#F6F6F6',borderRadius:2,height:'110px',mt:1,mx:"20px"}}>
             <Bookmark item={item}/>
             <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:'8px',mx:'11px',backgroundImage:`url(${API_URL}${item.thumbnail})`,backgroundRepeat:'no-repeat',backgroundSize:'contain',backgroundPosition:'center'}}/>
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
-                <Box sx={{display:'flex',width:'100%',justifyContent:'space-between',alignItems:'center'}}>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',width:`calc(100% - 112px)`,flexDirection:'column'  }}>
+                <Box sx={{display:'flex',width:'calc(100% - 30px)',justifyContent:'space-between',alignItems:'center'}}>
                     <Typography sx={{fontFamily:'Pretendard Variable',fontWeight:'700',fontSize:'18px',lineHeight:'21.46px',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                         {item.name}
                     </Typography>

@@ -87,7 +87,7 @@ export default function  Community(props){
                     }}
                     spaceBetween={'-6px'}
                     modules={[Grid,FreeMode]}
-                    freeMode={{enabled: true}}	// 추가
+
                     >
                 {
                         runningtalk.map((item,index)=>{
