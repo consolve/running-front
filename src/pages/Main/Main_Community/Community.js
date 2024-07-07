@@ -93,7 +93,7 @@ export default function  Community(props){
                         runningtalk.map((item,index)=>{
                             return(
                                     <SwiperSlide key = {index} className='swiper-slide-community'>
-                                        <Box onClick ={() => navigateToCompetitionDetail(item.id)} sx={{width:'100%',height:'110px',borderColor:"#f6f6f6",backgroundColor:'#F6F6F6',borderColor:'#F6F6F6',borderRadius:3,display:'flex',alignItems:'center',filter:"drop-shadow(0 0 0)"}}>
+                                        <Box onClick ={() => navigateToCompetitionDetail(item.id)} sx={{width:'100%',height:'110px',backgroundColor:'#F6F6F6',borderColor:'#F6F6F6',borderRadius:3,display:'flex',alignItems:'center',filter:"drop-shadow(0 0 0)"}}>
                                             <Box sx={{width:'90px',height:'90px',backgroundColor:'#F6F6F6',borderRadius:3,mx:1,backgroundImage:`url(${API_URL}${item.images.length?item.images[0].img:""})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundPosition:'top center'}}/>
                                             <Box sx={{display:'flex',justifyContent:'center',alignItems:'start',width:`calc(100% - 106px)`,flexDirection:'column',height:"100%"}}>
                                                 <Box sx={{width:'100%'}}>
