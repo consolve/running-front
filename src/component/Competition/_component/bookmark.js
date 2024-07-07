@@ -10,9 +10,9 @@ export default function Bookmark({item}){
     const sessionid = localStorage.getItem('sessionid');
     const [alarm,setAlarm] = useState(item.bookmarked)
 
-    const onClickBookMark = async (e) =>{
+    const onClickBookMark = (e) =>{
         e.stopPropagation();
-        if(await BookMarkHandle("contest",item.id,sessionid,navigate)){
+        if(BookMarkHandle("contest",item.id,sessionid,navigate)){
             setAlarm(prev=>prev=!alarm);
             return;
         }
