@@ -51,7 +51,6 @@ import InformationTerm from "./component/Term/privacy";
 import Report from "./pages/Report/report";
 import Resign from "./pages/Resign/resign"
 
-import ScrollTop from "./hoc/scrollTop"
 import RouteTransition from "./Util/RouteTransition"
 
 import {
@@ -83,9 +82,10 @@ const WithoutNav =()=>{
 function App() {
   const location = useLocation();
 
+
   React.useEffect(()=>{
-    window.scrollTo(0,0);
-  },[location.pathname])
+      window.scrollTo(0,0);
+  },[location.pathname]);
 
   return (
     <RecoilRoot>

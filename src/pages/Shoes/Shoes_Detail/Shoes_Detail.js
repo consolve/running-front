@@ -19,12 +19,15 @@ import { FetchRunningshoesCommentPopular } from '../../../API/api/RunningShoes/S
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import Error from "../../../component/Error/ErrorModal"
+import { useLocation } from 'react-router-dom';
 
 
 function Shoes_Detail(){
 
     const { id } = useParams();
     const session = localStorage.getItem("sessionid");
+    const location = useLocation();
+
 
     const [loading,setLoading] = useState(true);
     const [open, setOpen] = React.useState(false);

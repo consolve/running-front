@@ -17,7 +17,7 @@ const RouteTransition = ({ location, children }) => {
       <TransitionGroup className={"transition-group"}>
         <CSSTransition
           key={isRoute ? pathname : null}
-          timeout={300}
+          timeout={100}
           classNames="page"
         >
           <div>{children}</div>
