@@ -11,11 +11,8 @@
 ### Environment
  - VS code, Git, Github
 
-## Link
-[app.runninglife.co.kr](https://app.runninglife.co.kr/)
-
 ## 개발 기간
-2023.08 ~ 진행중
+2023.08 ~ 2024.06
 
 ## 인원 구성
 김영천 - 프론트엔드 개발, UI/UX 디자인
